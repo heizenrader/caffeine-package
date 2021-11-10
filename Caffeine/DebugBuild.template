@@ -1,0 +1,10 @@
+using UnityEditor;
+
+public class DebugBuild
+{
+    [MenuItem("Debug/Build")]
+    public static void Build()
+    {
+        BuildService.Build("f5a421a1-ee1d-419b-b49a-df6040825fa4");
+    }
+}
