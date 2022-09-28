@@ -1,0 +1,16 @@
+{
+    "name": "PulseUnityScripts",
+    "rootNamespace": "",
+    "references": [
+        "GUID:b3b5f9afdb68e2140817aa0d9cc50d3a"
+    ],
+    "includePlatforms": [],
+    "excludePlatforms": [],
+    "allowUnsafeCode": false,
+    "overrideReferences": false,
+    "precompiledReferences": [],
+    "autoReferenced": true,
+    "defineConstraints": [],
+    "versionDefines": [],
+    "noEngineReferences": false
+}
