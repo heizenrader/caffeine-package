@@ -776,6 +776,10 @@ Shader "Mixed Reality Toolkit/Standard"
                 {
                     UNITY_SETUP_INSTANCE_ID(i);
 
+#if defined(_NORMAL) || defined(_REFLECTIONS) || defined(_ENVIRONMENT_COLORING)
+                UNITY_SETUP_STEREO_EYE_INDEX_POST_VERTEX(i);
+#endif
+
     #if defined(_TRIPLANAR_MAPPING)
                 // Calculate triplanar uvs and apply texture scale and offset values like TRANSFORM_TEX.
                 fixed3 triplanarBlend = pow(abs(i.triplanarNormal), _TriplanarMappingBlendSharpness);

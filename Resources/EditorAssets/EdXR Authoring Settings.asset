@@ -12,5 +12,5 @@ MonoBehaviour:
   m_Script: {fileID: -2111020452, guid: 8ac8e203a0bb13147b5a2edd731298a3, type: 3}
   m_Name: EdXR Authoring Settings
   m_EditorClassIdentifier: 
-  phonePreview: 0
+  phonePreview: 3
   desktopPreview: 0
