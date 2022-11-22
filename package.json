@@ -1,11 +1,11 @@
 {
   "name": "com.caffeine",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "displayName": "Caffeine",
   "description": "Caffeine package is a collection of utility methods, design patterns, and extensions for creating, previewing, and distributing interactive courses within Unity.",
   "unity": "2020.3",
   "type": "library",
-  "unityRelease": "10f1",
+  "unityRelease": "39f1",
   "keywords": [
     "edxr",
     "caffeine",
@@ -21,7 +21,7 @@
   "homepage": "https://educationxr.com/",
   "license": "UNLICENSED",
   "author": {
-    "name": "David Greco",
+    "name": "EducationXR",
     "email": "dave.greco@icloud.com",
     "url": "https://educationxr.com"
   },
