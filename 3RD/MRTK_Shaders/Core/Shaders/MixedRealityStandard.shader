@@ -1083,7 +1083,7 @@ Shader "Mixed Reality Toolkit/Standard"
 
                     // Image based lighting (attempt to mimic the Standard shader).
     #if defined(_REFLECTIONS)
-                    fixed3 worldReflection = reflect(incident, worldNormal);
+                    fixed3 worldReflection = BoxProjectedCubemapDirection(reflect(incident, worldNormal), i.worldPosition, unity_SpecCube0_ProbePosition, unity_SpecCube0_BoxMin, unity_SpecCube0_BoxMax);
                     fixed4 iblData = UNITY_SAMPLE_TEXCUBE_LOD(unity_SpecCube0, worldReflection, (1.0 - _Smoothness) * UNITY_SPECCUBE_LOD_STEPS);
                     fixed3 ibl = DecodeHDR(iblData, unity_SpecCube0_HDR);
     #if defined(_REFRACTION)
