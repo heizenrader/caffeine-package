@@ -85,7 +85,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 1868996253550339704}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 128ddff4b8d77e1438c9689973fe9669, type: 3}
+  m_Script: {fileID: -858860618, guid: 8ac8e203a0bb13147b5a2edd731298a3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   targetCamera: {fileID: 5234534873183041137}
@@ -98,6 +98,6 @@ MonoBehaviour:
   m_GameObject: {fileID: 1868996253550339704}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c59726fd3b1f33240a15ccfcdadb9928, type: 3}
+  m_Script: {fileID: -380033900, guid: 8ac8e203a0bb13147b5a2edd731298a3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
