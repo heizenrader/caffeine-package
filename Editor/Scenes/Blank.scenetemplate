@@ -42,6 +42,9 @@ MonoBehaviour:
   - dependency: {fileID: 919132149155446097, guid: 0f55c90b53fe59a4d9d6436e13dba326,
       type: 3}
     instantiationMode: 0
+  - dependency: {fileID: 1868996253550339704, guid: 9bf630d056df69a428c61afc1e4528ad,
+      type: 3}
+    instantiationMode: 0
   - dependency: {fileID: 100000, guid: ec0df24dccaa7794d976f73bc6bb9644, type: 3}
     instantiationMode: 0
   - dependency: {fileID: 2800000, guid: df967c23dac30974098b2d539b8ea0f3, type: 3}
@@ -67,6 +70,7 @@ MonoBehaviour:
   - dependency: {fileID: 2800000, guid: dd5f3ebcd8b826e4c82318b8a2fd6940, type: 3}
     instantiationMode: 0
   templatePipeline: {fileID: 0}
+  badge: {fileID: 0}
   addToDefaults: 0
 --- !u!28 &8724014774240603850
 Texture2D:
