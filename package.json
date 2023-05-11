@@ -3,9 +3,9 @@
   "version": "1.0.2",
   "displayName": "Caffeine",
   "description": "Caffeine package is a collection of utility methods, design patterns, and extensions for creating, previewing, and distributing interactive courses within Unity.",
-  "unity": "2020.3",
+  "unity": "2021.3",
   "type": "library",
-  "unityRelease": "39f1",
+  "unityRelease": "23f1",
   "keywords": [
     "edxr",
     "caffeine",
