@@ -1,0 +1,10 @@
+<ui:UXML xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements" editor-extension-mode="True">
+    <ui:VisualElement style="background-color: rgb(56, 56, 56); justify-content: center; padding-left: 10px; padding-right: 10px; padding-top: 10px; padding-bottom: 10px; width: 300px; height: 100px;">
+        <ui:ScrollView style="flex-grow: 0;">
+            <ui:TextField name="email" label="Email" style="flex-grow: 0; max-height: 20px;" />
+            <ui:TextField password="true" label="Password" name="password" style="flex-grow: 0; max-height: 20px;" />
+            <ui:Button text="Login" name="login-button" style="flex-shrink: 1; flex-grow: 0; flex-direction: row; width: 100px; min-height: 20px; max-height: 20px;" />
+            <ui:Label name="warning" style="color: rgb(200, 0, 0); height: 16px;" />
+        </ui:ScrollView>
+    </ui:VisualElement>
+</ui:UXML>

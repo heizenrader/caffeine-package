@@ -1,0 +1,12 @@
+<ui:UXML xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements" editor-extension-mode="True">
+    <ui:TextField name="title" label="Title" binding-path="textTitleText" />
+    <ui:TextField name="description" label="Description" multiline="true" binding-path="textString" style="flex-direction: column; height: 75px;" />
+    <ui:ScrollView style="flex-grow: 1;">
+        <uie:ObjectField label="Target" type="UnityEngine.GameObject, UnityEngine.CoreModule" name="target" binding-path="target" />
+        <uie:EnumField name="type" label="Type" type="Caffeine.Runtime.Attachments.Animation_Type, Caffeine" binding-path="type" />
+        <uie:PropertyField label="Blend Animation" binding-path="blendAnimation" name="blend-animation" />
+        <uie:PropertyField label="Blend Animation" binding-path="mecAnimation" name="mec-animation" />
+        <ui:Toggle name="autoplay" binding-path="autoPlayAnimation" label="Autoplay" />
+        <ui:Toggle name="loop" label="Loop" binding-path="loopAnimation" />
+    </ui:ScrollView>
+</ui:UXML>

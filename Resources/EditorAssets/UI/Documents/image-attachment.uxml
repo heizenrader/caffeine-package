@@ -1,0 +1,5 @@
+<ui:UXML xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements" editor-extension-mode="True">
+    <uie:ObjectField type="UnityEngine.Texture2D, UnityEngine.CoreModule" label="Image" binding-path="image" />
+    <ui:TextField name="title" binding-path="imageTitleText" label="Title" />
+    <ui:TextField label="Description" name="description" binding-path="imageDescription" style="flex-direction: column; height: 75px;" />
+</ui:UXML>

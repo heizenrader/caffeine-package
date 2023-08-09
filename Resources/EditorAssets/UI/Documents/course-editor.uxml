@@ -1,0 +1,42 @@
+<ui:UXML xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements" xsi="http://www.w3.org/2001/XMLSchema-instance" engine="UnityEngine.UIElements" editor="UnityEditor.UIElements" noNamespaceSchemaLocation="../../../../../../UIElementsSchema/UIElements.xsd" editor-extension-mode="True">
+    <ui:Template name="step-navigation" src="project://database/Packages/com.caffeine/Resources/EditorAssets/UI/Documents/step-navigation.uxml?fileID=9197481963319205126&amp;guid=a55e4516b96743c40ad90ca41b8be405&amp;type=3#step-navigation" />
+    <ui:Template name="view-toolbar" src="project://database/Packages/com.caffeine/Resources/EditorAssets/UI/Documents/view-toolbar.uxml?fileID=9197481963319205126&amp;guid=eb053bddcb94aa84cb365c40e19ed18d&amp;type=3#view-toolbar" />
+    <ui:VisualElement name="body" style="flex-grow: 1; flex-direction: column;">
+        <ui:TwoPaneSplitView fixed-pane-initial-dimension="240" style="flex-direction: row;">
+            <ui:VisualElement name="sidebar" style="min-width: 240px; width: 240px; max-width: none;">
+                <uie:Toolbar>
+                    <uie:ToolbarMenu text="User" name="user-menu" />
+                    <uie:ToolbarMenu text="Course" name="course-menu" />
+                </uie:Toolbar>
+                <ui:VisualElement style="flex-direction: row; flex-grow: 1;">
+                    <uie:Toolbar name="tabs" style="flex-grow: 0; height: 100%; border-right-width: 1px; border-bottom-width: 0; flex-direction: column; width: 40px;">
+                        <uie:ToolbarButton style="background-image: url(&apos;project://database/Packages/com.caffeine/Resources/EditorAssets/UI/Icons/sharp_view_list_white_48dp.png?fileID=2800000&amp;guid=356ea4238e338d145b19401b116ea93b&amp;type=3#sharp_view_list_white_48dp&apos;); -unity-background-scale-mode: scale-to-fit; height: 40px; border-left-width: 0; border-right-width: 0; border-bottom-width: 1px; padding-left: 5px; padding-right: 5px; padding-top: 5px; padding-bottom: 5px; -unity-slice-left: 8; -unity-slice-top: 8; -unity-slice-right: 8; -unity-slice-bottom: 8;" />
+                        <uie:ToolbarButton style="background-image: url(&apos;project://database/Packages/com.caffeine/Resources/EditorAssets/UI/Icons/sharp_account_tree_white_48dp.png?fileID=2800000&amp;guid=84bdd4a6542d9b440a98e314eecb1406&amp;type=3#sharp_account_tree_white_48dp&apos;); -unity-background-scale-mode: scale-to-fit; height: 40px; border-left-width: 0; border-right-width: 0; border-bottom-width: 1px; padding-left: 5px; padding-right: 5px; padding-top: 5px; padding-bottom: 5px; -unity-slice-left: 8; -unity-slice-top: 8; -unity-slice-right: 8; -unity-slice-bottom: 8;" />
+                        <uie:ToolbarButton style="background-image: url(&apos;project://database/Packages/com.caffeine/Resources/EditorAssets/UI/Icons/sharp_folder_white_48dp.png?fileID=2800000&amp;guid=b7faa230505e6464d9cc302ebf168b5d&amp;type=3#sharp_folder_white_48dp&apos;); -unity-background-scale-mode: scale-to-fit; height: 40px; border-left-width: 0; border-right-width: 0; border-bottom-width: 1px; padding-left: 5px; padding-right: 5px; padding-top: 5px; padding-bottom: 5px; -unity-slice-left: 8; -unity-slice-top: 8; -unity-slice-right: 8; -unity-slice-bottom: 8;" />
+                        <uie:ToolbarButton style="background-image: url(&apos;project://database/Packages/com.caffeine/Resources/EditorAssets/UI/Icons/sharp_settings_white_48dp.png?fileID=2800000&amp;guid=e314b686a5bc59c4aa43434d09766f46&amp;type=3#sharp_settings_white_48dp&apos;); -unity-background-scale-mode: scale-to-fit; height: 40px; border-left-width: 0; border-right-width: 0; border-bottom-width: 1px; padding-left: 5px; padding-right: 5px; padding-top: 5px; padding-bottom: 5px; -unity-slice-left: 8; -unity-slice-top: 8; -unity-slice-right: 8; -unity-slice-bottom: 8;" />
+                        <uie:ToolbarButton style="background-image: url(&apos;project://database/Packages/com.caffeine/Resources/EditorAssets/UI/Icons/sharp_cloud_upload_white_48dp.png?fileID=2800000&amp;guid=ca0f05add6f410141b2f6bac310192c4&amp;type=3#sharp_cloud_upload_white_48dp&apos;); -unity-background-scale-mode: scale-to-fit; height: 40px; border-left-width: 0; border-right-width: 0; border-bottom-width: 1px; padding-left: 5px; padding-right: 5px; padding-top: 5px; padding-bottom: 5px; -unity-slice-left: 0; -unity-slice-top: 0; -unity-slice-right: 0; -unity-slice-bottom: 0;" />
+                    </uie:Toolbar>
+                    <ui:VisualElement name="tab-container" style="flex-grow: 1;" />
+                </ui:VisualElement>
+            </ui:VisualElement>
+            <ui:TwoPaneSplitView fixed-pane-initial-dimension="200" name="step-pane" style="min-width: 875px;">
+                <ui:VisualElement name="sidebar" style="min-width: 200px; width: 200px; max-width: none;">
+                    <uie:Toolbar>
+                        <uie:ToolbarButton style="background-image: url(&apos;project://database/Packages/com.caffeine/Resources/EditorAssets/UI/Icons/sharp_save_white_48dp.png?fileID=2800000&amp;guid=0da3dce99da862946b3946d5f0b5315e&amp;type=3#sharp_save_white_48dp&apos;); width: 25px; -unity-background-scale-mode: scale-to-fit; border-left-width: 0;" />
+                        <uie:ToolbarButton style="background-image: url(&apos;project://database/Packages/com.caffeine/Resources/EditorAssets/UI/Icons/sharp_save_white_48dp.png?fileID=2800000&amp;guid=0da3dce99da862946b3946d5f0b5315e&amp;type=3#sharp_save_white_48dp&apos;); width: 25px; -unity-background-scale-mode: scale-to-fit; border-left-width: 0;" />
+                    </uie:Toolbar>
+                    <ui:VisualElement name="step-properties-container" style="flex-grow: 1;" />
+                    <ui:Instance template="step-navigation" name="step-navigation" style="position: relative; min-height: 35px; height: 35px; max-height: 35px;" />
+                </ui:VisualElement>
+                <ui:VisualElement name="view" style="flex-grow: 1; align-items: center; justify-content: space-around;">
+                    <ui:Toggle name="sidebar-toggle" style="position: absolute; top: 45%; bottom: 45%; left: 0;" />
+                    <ui:Instance template="view-toolbar" name="view-toolbar" style="margin-left: auto; margin-right: auto; bottom: 50px; position: absolute;" />
+                </ui:VisualElement>
+            </ui:TwoPaneSplitView>
+        </ui:TwoPaneSplitView>
+    </ui:VisualElement>
+    <uie:Toolbar name="footer" style="border-bottom-width: 0; border-top-width: 1px; justify-content: flex-end; align-items: center; padding-left: 5px; padding-right: 5px; padding-top: 5px; padding-bottom: 5px;">
+        <uie:ProgressBar name="progress" style="width: 200px; min-width: auto;" />
+    </uie:Toolbar>
+    <ui:VisualElement name="modal" style="position: absolute; left: 0; top: 0; right: 0; bottom: 0; background-color: rgba(0, 0, 0, 0.39); align-items: center; justify-content: center; display: none;" />
+</ui:UXML>

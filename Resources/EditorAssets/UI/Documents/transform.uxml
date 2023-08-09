@@ -1,0 +1,5 @@
+<ui:UXML xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements" editor-extension-mode="True">
+    <uie:Vector3Field name="position" label="Position" binding-path="position" />
+    <uie:PropertyField name="rotation" label="Rotation" binding-path="rotation" />
+    <uie:Vector3Field name="scale" label="Scale" binding-path="scale" />
+</ui:UXML>

@@ -1,0 +1,16 @@
+<ui:UXML xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements" editor-extension-mode="True">
+    <ui:VisualElement style="flex-grow: 1; min-height: 300px;">
+        <ui:Label text="The following materials can be converted to MRTK for better performance. Convert these materials now?" display-tooltip-when-elided="true" style="flex-wrap: nowrap; overflow: visible; flex-direction: row; white-space: normal; margin-left: 5px; margin-right: 5px; margin-top: 5px; margin-bottom: 5px;" />
+        <ui:ScrollView name="materials" vertical-page-size="200" style="flex-grow: 1; background-color: rgb(51, 51, 51); min-height: 200px;" />
+        <ui:VisualElement name="buttons" style="border-left-width: 0; border-right-width: 0; border-top-width: 0; border-bottom-width: 0; flex-grow: 0; height: 50px; flex-direction: row; align-items: center; justify-content: flex-start; margin-left: 5px; margin-right: 5px; margin-top: 5px; margin-bottom: 5px;">
+            <ui:VisualElement name="selectors" style="flex-grow: 1; flex-direction: row; justify-content: flex-start;">
+                <ui:Button text="All" display-tooltip-when-elided="true" name="All" />
+                <ui:Button text="None" display-tooltip-when-elided="true" name="None" />
+            </ui:VisualElement>
+            <ui:VisualElement name="actions" style="flex-grow: 1; justify-content: flex-end; flex-direction: row;">
+                <ui:Button text="Skip" display-tooltip-when-elided="true" name="Skip" />
+                <ui:Button text="Convert" display-tooltip-when-elided="true" name="Convert" />
+            </ui:VisualElement>
+        </ui:VisualElement>
+    </ui:VisualElement>
+</ui:UXML>

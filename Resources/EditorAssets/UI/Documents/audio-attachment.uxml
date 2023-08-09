@@ -1,0 +1,7 @@
+<ui:UXML xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements" editor-extension-mode="True">
+    <uie:ObjectField type="UnityEngine.AudioClip, UnityEngine.AudioModule" label="Audio" binding-path="audioClip" name="audio-clip" />
+    <ui:TextField name="title" binding-path="audioTitleText" label="Title" />
+    <ui:TextField label="Description" name="description" binding-path="audioDescription" style="flex-direction: column; height: 75px;" />
+    <ui:Toggle label="Autoplay" name="autoplay" binding-path="autoPlayAudio" />
+    <ui:Toggle name="loop" label="Loop" binding-path="loopAudio" />
+</ui:UXML>

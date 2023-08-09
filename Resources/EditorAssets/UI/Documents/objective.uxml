@@ -1,0 +1,27 @@
+<ui:UXML xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements" editor-extension-mode="True">
+    <ui:ScrollView>
+        <ui:TextField label="Title" name="title" />
+        <ui:TextField label="Instruction" name="instruction" style="flex-direction: column; height: 66px;" />
+        <uie:ObjectField label="Target" type="UnityEngine.GameObject, UnityEngine.CoreModule" name="target" />
+        <ui:Toggle name="hide" label="Hide" />
+        <ui:Toggle name="play-completion-audio" label="Play Completion Audio" />
+        <ui:Toggle label="Show Objects" name="show-objects" value="false" />
+        <Caffeine.Editor.UIElements.EnhancedList label="Show Objects" name="show-objects-list" style="display: none;" />
+        <ui:Toggle label="Hide Objects" name="hide-objects" />
+        <Caffeine.Editor.UIElements.EnhancedList label="Hide Objects" name="hide-objects-list" style="display: none;" />
+        <ui:Toggle label="Play Audio" name="play-audio" />
+        <uie:ObjectField type="UnityEngine.AudioClip, UnityEngine.AudioModule" label="Audio Clip" name="audio-clip" style="display: none;" />
+        <ui:Toggle label="Show Attachment" name="show-attachment" />
+        <ui:Toggle label="Trigger Animation" name="show-animation" />
+        <ui:Toggle label="Material Swap" name="material-swap" />
+        <ui:VisualElement name="material-swap-container" style="display: none;">
+            <Caffeine.Editor.UIElements.EnhancedList name="material-target-list" label="Targets" />
+            <uie:ObjectField name="material" label="Material" type="UnityEngine.Material, UnityEngine.CoreModule" />
+        </ui:VisualElement>
+        <ui:Toggle name="change-step" label="Change Step" />
+        <ui:VisualElement name="change-step-container" style="display: none;">
+            <uie:IntegerField name="step" label="Step" />
+            <uie:FloatField name="delay" label="Delay" />
+        </ui:VisualElement>
+    </ui:ScrollView>
+</ui:UXML>

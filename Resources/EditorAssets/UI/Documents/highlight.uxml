@@ -1,0 +1,9 @@
+<ui:UXML xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements" editor-extension-mode="True">
+    <ui:ScrollView style="flex-grow: 1;">
+        <uie:ColorField name="color" label="Highlight" />
+        <ui:Toggle name="flashing" label="Flashing" />
+        <uie:FloatField name="time-period" label="Time Period" />
+        <uie:FloatField name="delay" label="Delay" />
+        <uie:ObjectField label="Target" type="UnityEngine.GameObject, UnityEngine.CoreModule" name="target" />
+    </ui:ScrollView>
+</ui:UXML>

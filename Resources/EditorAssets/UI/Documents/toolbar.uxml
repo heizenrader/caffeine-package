@@ -1,0 +1,20 @@
+<ui:UXML xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements" editor-extension-mode="True">
+    <Style src="../Styles/toolbar.uss" />
+    <ui:VisualElement style="justify-content: flex-start; align-items: center; flex-grow: 1; background-color: rgb(40, 40, 40);">
+        <ui:Button display-tooltip-when-elided="true" name="steps-button" tooltip="Steps" class="toolbar-button" style="background-color: rgba(88, 88, 88, 0);">
+            <ui:VisualElement name="icon" class="icon" style="background-image: url(&apos;/Packages/com.caffeine/Resources/EditorAssets/UI/Icons/sharp_view_list_white_48dp.png&apos;);" />
+        </ui:Button>
+        <ui:Button display-tooltip-when-elided="true" name="hierarchy-button" tooltip="Hierarchy" class="toolbar-button" style="background-color: rgba(88, 88, 88, 0);">
+            <ui:VisualElement name="icon" class="icon" style="background-image: url(&apos;/Packages/com.caffeine/Resources/EditorAssets/UI/Icons/sharp_account_tree_white_48dp.png&apos;);" />
+        </ui:Button>
+        <ui:Button display-tooltip-when-elided="true" name="project-button" tooltip="Project" class="toolbar-button" style="background-color: rgba(88, 88, 88, 0);">
+            <ui:VisualElement name="icon" class="icon" style="background-image: url(&apos;/Packages/com.caffeine/Resources/EditorAssets/UI/Icons/sharp_folder_white_48dp.png&apos;);" />
+        </ui:Button>
+        <ui:Button display-tooltip-when-elided="true" name="publish-button" tooltip="Publish" class="toolbar-button" style="background-color: rgba(88, 88, 88, 0);">
+            <ui:VisualElement name="icon" class="icon" style="background-image: url(&apos;/Packages/com.caffeine/Resources/EditorAssets/UI/Icons/sharp_cloud_upload_white_48dp.png&apos;);" />
+        </ui:Button>
+        <ui:Button display-tooltip-when-elided="true" name="settings-button" tooltip="Settings" class="toolbar-button" style="background-color: rgba(88, 88, 88, 0);">
+            <ui:VisualElement name="icon" class="icon" style="background-image: url(&apos;/Packages/com.caffeine/Resources/EditorAssets/UI/Icons/sharp_settings_white_48dp.png&apos;);" />
+        </ui:Button>
+    </ui:VisualElement>
+</ui:UXML>

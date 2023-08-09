@@ -1,0 +1,6 @@
+<ui:UXML xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements" editor-extension-mode="True">
+    <ui:VisualElement style="flex-direction: row; height: auto; justify-content: space-between; align-items: stretch; flex-grow: 0;">
+        <ui:Foldout text="Material Name" name="material-name" style="background-image: none; flex-direction: column; width: 253px; flex-grow: 1;" />
+        <ui:Toggle style="flex-direction: row-reverse; position: absolute; right: 0; top: 0; margin-top: 3px;" />
+    </ui:VisualElement>
+</ui:UXML>

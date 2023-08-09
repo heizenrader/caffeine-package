@@ -1,0 +1,18 @@
+<ui:UXML xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements" editor-extension-mode="True">
+    <ui:Template name="audio-attachment" src="project://database/Packages/com.caffeine/Resources/EditorAssets/UI/Documents/audio-attachment.uxml?fileID=9197481963319205126&amp;guid=399fc8cade8f7c349b61d0fde720aab5&amp;type=3#audio-attachment" />
+    <ui:Template name="image-attachment" src="project://database/Packages/com.caffeine/Resources/EditorAssets/UI/Documents/image-attachment.uxml?fileID=9197481963319205126&amp;guid=f98b4a623d41aaf4c9f246c374fcf0dc&amp;type=3#image-attachment" />
+    <ui:Template name="video-attachment" src="project://database/Packages/com.caffeine/Resources/EditorAssets/UI/Documents/video-attachment.uxml?fileID=9197481963319205126&amp;guid=1656c758b9151a94ea76f5c34be4c8da&amp;type=3#video-attachment" />
+    <ui:Template name="text-attachment" src="project://database/Packages/com.caffeine/Resources/EditorAssets/UI/Documents/text-attachment.uxml?fileID=9197481963319205126&amp;guid=d0569f7f20eb65a44884ed167ef94df2&amp;type=3#text-attachment" />
+    <ui:Template name="pdf-attachment" src="project://database/Packages/com.caffeine/Resources/EditorAssets/UI/Documents/pdf-attachment.uxml?fileID=9197481963319205126&amp;guid=008ffbfbf78c98f4293aaf1502189b7a&amp;type=3#pdf-attachment" />
+    <ui:BindableElement style="flex-grow: 1;">
+        <ui:ScrollView style="flex-grow: 1;">
+            <uie:EnumField label="Type" binding-path="type" type="Caffeine.Runtime.Interactions.Attachment_Type, Caffeine" name="type" />
+            <uie:ObjectField type="UnityEngine.GameObject, UnityEngine.CoreModule" label="Target" name="target" binding-path="target" />
+            <ui:Instance template="audio-attachment" name="audio-attachment" />
+            <ui:Instance template="video-attachment" name="video-attachment" />
+            <ui:Instance template="image-attachment" name="image-attachment" />
+            <ui:Instance template="text-attachment" name="text-attachment" />
+            <ui:Instance template="pdf-attachment" name="pdf-attachment" />
+        </ui:ScrollView>
+    </ui:BindableElement>
+</ui:UXML>

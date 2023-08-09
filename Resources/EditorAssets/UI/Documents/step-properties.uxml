@@ -1,0 +1,34 @@
+<ui:UXML xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements" editor-extension-mode="True">
+    <ui:BindableElement style="flex-grow: 1;">
+        <ui:ScrollView name="properties-view" style="height: auto; flex-grow: 1; flex-direction: column; width: 100%;">
+            <ui:TextField picking-mode="Ignore" text="My First Step" tooltip="Title" password="false" label="Title" name="step-title" binding-path="titleText" style="font-size: 12px; flex-direction: column;" />
+            <ui:Foldout value="true" text="Step Setup">
+                <ui:Toggle label="AR Mode" name="ar-mode" binding-path="AR" />
+                <ui:Toggle label="Block Navigation" name="block-navigation" binding-path="disableNextNavigation" />
+                <ui:TextField picking-mode="Ignore" text="First, do the thing and then do the other things&#10;" tooltip="Instructions" value="Instructions" password="false" multiline="true" label="Instructions" name="step-instructions" binding-path="stepInstructions" class="unity-base-field__input text-label-field" style="flex-shrink: 1; white-space: normal; flex-direction: column; align-items: stretch; justify-content: center; flex-wrap: nowrap;" />
+                <ui:ListView focusable="true" show-add-remove-footer="true" header-title="Animation" show-foldout-header="true" reorderable="true" reorder-mode="Animated" virtualization-method="DynamicHeight" selection-type="Multiple" show-alternating-row-backgrounds="All" show-border="true" binding-path="animations" name="course-animations" />
+            </ui:Foldout>
+            <ui:IMGUIContainer name="step-gui" />
+            <uie:ObjectField type="UnityEngine.AudioClip, UnityEngine.AudioModule" label="Audio Clip" name="audio-clip" binding-path="audioClip" />
+            <ui:Toggle label="Custom Bounds" name="custom-bounds" binding-path="cameraSettings.cameraBounds.customBounds" />
+            <ui:VisualElement name="lerp-properties" style="flex-direction: column; align-items: stretch; justify-content: space-between; flex-grow: 0;">
+                <ui:Toggle label="Lerp" name="lerp" binding-path="cameraSettings.shouldLerp" style="flex-shrink: 1; flex-grow: 1;" />
+                <uie:FloatField name="duration" label="Duration" binding-path="cameraSettings.lerpDuration" style="flex-shrink: 1; flex-grow: 0;" />
+            </ui:VisualElement>
+            <ui:Foldout text="Interactions" name="interactions" value="true">
+                <ui:ListView focusable="true" header-title="Attachments" show-foldout-header="true" show-alternating-row-backgrounds="All" virtualization-method="DynamicHeight" binding-path="interactiveAttachments" name="interactive-attachments" show-border="true" reorderable="true" reorder-mode="Animated" show-add-remove-footer="true" />
+                <ui:ListView focusable="true" header-title="Animations" show-foldout-header="true" show-alternating-row-backgrounds="All" virtualization-method="DynamicHeight" binding-path="animationAttachments" name="animation-attachments" show-border="true" reorderable="true" reorder-mode="Animated" show-add-remove-footer="true" />
+                <ui:ListView focusable="true" header-title="Actions" show-foldout-header="true" show-alternating-row-backgrounds="All" virtualization-method="DynamicHeight" binding-path="objectives" name="objectives" show-border="true" reorderable="true" reorder-mode="Animated" show-add-remove-footer="true" />
+                <ui:ListView focusable="true" header-title="Trigger Interactions" show-foldout-header="true" show-alternating-row-backgrounds="All" virtualization-method="DynamicHeight" binding-path="triggerInteractions" name="trigger-interactions" show-border="true" reorderable="true" reorder-mode="Animated" show-add-remove-footer="true" />
+                <ui:ListView focusable="true" header-title="Click Interactions" show-foldout-header="true" show-alternating-row-backgrounds="All" virtualization-method="DynamicHeight" binding-path="clickInteractions" name="click-interactions" show-border="true" reorderable="true" reorder-mode="Animated" show-add-remove-footer="true" />
+                <ui:ListView focusable="true" header-title="Hold Interactions" show-foldout-header="true" show-alternating-row-backgrounds="All" virtualization-method="DynamicHeight" binding-path="holdInteractions" name="hold-interactions" show-border="true" reorderable="true" reorder-mode="Animated" show-add-remove-footer="true" />
+                <ui:ListView focusable="true" header-title="Interactables" show-foldout-header="true" show-alternating-row-backgrounds="All" virtualization-method="DynamicHeight" binding-path="interactables" name="interactables" show-border="true" reorderable="true" reorder-mode="Animated" show-add-remove-footer="true" />
+            </ui:Foldout>
+            <ui:Foldout text="Appearance" name="appearance" value="false">
+                <ui:ListView focusable="true" header-title="Animations" show-foldout-header="true" show-alternating-row-backgrounds="All" virtualization-method="DynamicHeight" binding-path="animations" name="animations" show-border="true" reorderable="true" reorder-mode="Animated" show-add-remove-footer="true" />
+                <ui:ListView focusable="true" header-title="Labels" show-foldout-header="true" show-alternating-row-backgrounds="All" virtualization-method="DynamicHeight" binding-path="labels" name="labels" show-border="true" reorderable="true" reorder-mode="Animated" show-add-remove-footer="true" />
+                <ui:ListView focusable="true" header-title="Highlights" show-foldout-header="true" show-alternating-row-backgrounds="All" virtualization-method="DynamicHeight" binding-path="highLights" name="highlights" show-border="true" reorderable="true" reorder-mode="Animated" show-add-remove-footer="true" />
+            </ui:Foldout>
+        </ui:ScrollView>
+    </ui:BindableElement>
+</ui:UXML>

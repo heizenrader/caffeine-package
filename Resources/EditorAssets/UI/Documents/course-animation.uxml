@@ -1,0 +1,15 @@
+<ui:UXML xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements" editor-extension-mode="True">
+    <ui:Template name="blend-animation" src="blend-animation.uxml" />
+    <ui:Template name="mec-animation" src="mec-animation.uxml" />
+    <ui:Template name="transform" src="transform.uxml" />
+    <uie:ObjectField type="UnityEngine.GameObject, UnityEngine.CoreModule" label="Target" name="target" binding-path="target" />
+    <uie:EnumField type="Caffeine.Runtime.Attachments.Animation_Type, Caffeine" name="type" label="Type" binding-path="type" />
+    <ui:Instance template="blend-animation" name="blend-animation" binding-path="blendAnimation" />
+    <ui:Instance template="mec-animation" name="mec-animation" binding-path="mecAnimation" />
+    <ui:Toggle name="display-controls" label="Display Controls" binding-path="displayControls" />
+    <ui:TextField name="title" label="Title" binding-path="animationTitle" />
+    <ui:TextField label="Description" name="description" binding-path="animationDescription" style="flex-direction: column; height: 75px;" />
+    <ui:Toggle name="auto-play" label="Autoplay" binding-path="autoplayAnimation" />
+    <ui:Toggle name="loop" label="Loop" binding-path="loopAnimation" />
+    <ui:Instance template="transform" name="vr-panel-transform" binding-path="VRPaneltransform" />
+</ui:UXML>

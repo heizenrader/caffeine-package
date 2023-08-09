@@ -1,0 +1,8 @@
+<ui:UXML xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements" editor-extension-mode="True">
+    <ui:VisualElement style="flex-direction: row; flex-grow: 0; align-items: center; height: 100%;">
+        <ui:VisualElement name="reorder" style="min-width: 20px; min-height: 20px; background-image: url(&apos;/Packages/com.caffeine/Editor/Windows/Course/sharp_reorder_white_48dp.png&apos;); max-height: 20px; justify-content: space-between; -unity-slice-left: 3; -unity-slice-top: 3; -unity-slice-right: 3; -unity-slice-bottom: 3;" />
+        <ui:VisualElement name="content" style="flex-direction: column; flex-grow: 1; flex-shrink: 1; justify-content: space-between; height: 100%;" />
+        <ui:Button name="duplicate" style="max-width: 20px; max-height: 20px; min-width: 20px; min-height: 20px; background-image: url(&apos;/Packages/com.caffeine/Editor/Windows/Course/sharp_content_copy_white_48dp.png&apos;); -unity-background-scale-mode: stretch-to-fill; -unity-slice-left: 3; -unity-slice-top: 3; -unity-slice-right: 3; -unity-slice-bottom: 3;" />
+        <ui:Button name="delete" style="max-width: 20px; max-height: 20px; min-width: 20px; min-height: 20px; background-image: url(&apos;/Packages/com.caffeine/Editor/Windows/Course/sharp_remove_white_48dp.png&apos;); -unity-slice-left: 3; -unity-slice-top: 3; -unity-slice-right: 3; -unity-slice-bottom: 3;" />
+    </ui:VisualElement>
+</ui:UXML>

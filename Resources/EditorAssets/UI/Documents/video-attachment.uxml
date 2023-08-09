@@ -1,0 +1,7 @@
+<ui:UXML xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements" editor-extension-mode="True">
+    <uie:ObjectField type="UnityEngine.Video.VideoClip, UnityEngine.VideoModule" label="Video" binding-path="videoClip" name="video-clip" />
+    <ui:TextField name="title" binding-path="videoTitleText" label="Title" />
+    <ui:TextField label="Description" name="description" binding-path="videoDescription" style="flex-direction: column; height: 75px;" />
+    <ui:Toggle label="Autoplay" name="autoplay" binding-path="autoPlayVideo" />
+    <ui:Toggle name="loop" label="Loop" binding-path="loopVideo" />
+</ui:UXML>
