@@ -1,0 +1,6 @@
+<ui:UXML xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements" editor-extension-mode="True">
+    <ui:ScrollView style="flex-grow: 1;">
+        <ui:TextField label="Label" name="label" />
+        <uie:ObjectField label="Target" type="UnityEngine.GameObject, UnityEngine.CoreModule" name="target" />
+    </ui:ScrollView>
+</ui:UXML>

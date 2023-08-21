@@ -1,0 +1,7 @@
+<ui:UXML xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements" editor-extension-mode="True">
+    <ui:BindableElement name="step" binding-path="step" style="flex-grow: 1; align-items: stretch; justify-content: space-between; width: 150px; height: 100px;">
+        <ui:VisualElement name="preview" style="background-color: rgb(255, 255, 255); align-items: center; justify-content: space-around; flex-grow: 1;">
+            <ui:Label text="Step Title" name="title" binding-path="titleText" style="-unity-font-style: bold; font-size: 16px; -unity-font: resource(&apos;EditorAssets/OpenSans-Bold&apos;); white-space: normal; background-color: rgb(32, 32, 32); position: absolute; bottom: 5px;" />
+        </ui:VisualElement>
+    </ui:BindableElement>
+</ui:UXML>

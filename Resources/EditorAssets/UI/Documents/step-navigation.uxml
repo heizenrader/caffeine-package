@@ -1,0 +1,10 @@
+<ui:UXML xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements">
+    <ui:VisualElement style="flex-direction: row; align-items: center; justify-content: center; bottom: auto; flex-grow: 0; width: 100%; padding-top: 0; padding-bottom: 0; height: 35px;">
+        <ui:Button text="Prev" display-tooltip-when-elided="true" name="previous" style="flex-direction: row; flex-grow: 0;" />
+        <ui:VisualElement style="flex-direction: row;">
+            <uie:IntegerField value="0" name="step-input" style="width: auto;" />
+            <ui:Label text="of 0" display-tooltip-when-elided="true" name="step-count" style="-unity-text-align: middle-left;" />
+        </ui:VisualElement>
+        <ui:Button text="Next" display-tooltip-when-elided="true" name="next" style="flex-grow: 0; flex-direction: row;" />
+    </ui:VisualElement>
+</ui:UXML>

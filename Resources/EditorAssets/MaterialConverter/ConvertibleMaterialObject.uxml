@@ -1,0 +1,5 @@
+<ui:UXML xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements" editor-extension-mode="True">
+    <ui:VisualElement style="flex-direction: row; height: 20px; justify-content: space-between; align-items: stretch;">
+        <ui:Label text="Material Object Name" display-tooltip-when-elided="true" class="unity-disabled" style="flex-grow: 1; -unity-font-style: italic; overflow: hidden; -unity-text-align: middle-left;" />
+    </ui:VisualElement>
+</ui:UXML>

@@ -1,0 +1,5 @@
+<ui:UXML xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements" editor-extension-mode="True">
+    <uie:ObjectField type="Caffeine.Runtime.Assets.PDFAsset, Caffeine" label="PDF" binding-path="_file" name="file" />
+    <ui:TextField name="title" binding-path="_title" label="Title" />
+    <ui:TextField label="Description" name="description" binding-path="_description" style="flex-direction: column; height: 75px;" />
+</ui:UXML>

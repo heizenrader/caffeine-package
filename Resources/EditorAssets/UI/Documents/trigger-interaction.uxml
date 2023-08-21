@@ -1,0 +1,29 @@
+<ui:UXML xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements" editor-extension-mode="True">
+    <ui:Template name="objective-attachment" src="/Packages/com.caffeine/Resources/EditorAssets/UI/Documents/objective-attachment.uxml" />
+    <ui:ScrollView>
+        <ui:TextField name="name" label="Name" />
+        <uie:ObjectField type="UnityEngine.Collider, UnityEngine.PhysicsModule" name="receiver" label="Receiver" />
+        <uie:ObjectField type="UnityEngine.Collider, UnityEngine.PhysicsModule" name="target" label="Target" />
+        <ui:Foldout text="On Trigger Enter" value="true">
+            <uie:EnumField type="Caffeine.Runtime.Interactions.TriggerAction, Caffeine" label="Type" />
+            <Caffeine.Editor.UIElements.EnhancedList name="trigger-enter-event" label="Events" />
+            <Caffeine.Editor.UIElements.EnhancedList name="trigger-enter-vector-event" label="Vector Events" />
+            <uie:IntegerField name="trigger-objective" label="Objective Attachment" />
+            <uie:IntegerField name="trigger-animation-attachment" label="Animation Attachment" />
+            <uie:IntegerField name="trigger-media-attachment" label="Media Attachment" />
+            <ui:Instance template="objective-attachment" name="objective-attachment" />
+        </ui:Foldout>
+        <ui:Foldout text="On Trigger Exit" value="true">
+            <uie:EnumField type="Caffeine.Runtime.Interactions.TriggerAction, Caffeine" label="Type" />
+            <Caffeine.Editor.UIElements.EnhancedList name="trigger-exit-event" label="Events" />
+            <Caffeine.Editor.UIElements.EnhancedList name="trigger-exit-vector-event" label="Vector Events" />
+            <uie:IntegerField name="trigger-objective" label="Objective Attachment" />
+            <uie:IntegerField name="trigger-animation-attachment" label="Animation Attachment" />
+            <uie:IntegerField name="trigger-media-attachment" label="Media Attachment" />
+        </ui:Foldout>
+    </ui:ScrollView>
+    <ui:Foldout text="On Trigger Stay" value="false">
+        <Caffeine.Editor.UIElements.EnhancedList name="trigger-stay-event" label="Events" />
+        <Caffeine.Editor.UIElements.EnhancedList name="trigger-stay-vector-event" label="Vector Events" />
+    </ui:Foldout>
+</ui:UXML>

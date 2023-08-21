@@ -1,0 +1,4 @@
+<ui:UXML xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements" editor-extension-mode="True">
+    <ui:TextField name="title" binding-path="textTitleText" label="Title" />
+    <ui:TextField label="Description" name="description" binding-path="textString" style="flex-direction: column; height: 75px;" />
+</ui:UXML>

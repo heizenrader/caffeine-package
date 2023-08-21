@@ -1,0 +1,10 @@
+<ui:UXML xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements" xsi="http://www.w3.org/2001/XMLSchema-instance" engine="UnityEngine.UIElements" editor="UnityEditor.UIElements" noNamespaceSchemaLocation="../../../../../UIElementsSchema/UIElements.xsd" editor-extension-mode="True">
+    <ui:VisualElement name="container" style="flex-grow: 1; padding-left: 5px; padding-right: 5px; padding-top: 5px; padding-bottom: 5px; flex-shrink: 0; flex-wrap: nowrap; flex-direction: column; align-items: stretch; justify-content: flex-start; height: auto; position: absolute; width: 300px;">
+        <ui:Label name="message" style="flex-grow: 1; flex-wrap: wrap; flex-direction: column; white-space: normal; justify-content: center; align-items: center; -unity-text-align: middle-left;" />
+        <ui:VisualElement name="options" style="flex-grow: 1; flex-direction: row; flex-wrap: wrap; flex-shrink: 0; justify-content: center; align-items: stretch; padding-left: 10px; padding-right: 10px; padding-top: 10px; padding-bottom: 10px;" />
+        <ui:Toggle name="utility-toggle" focusable="true" style="-unity-text-align: middle-left; flex-direction: row; align-items: center; justify-content: flex-end; flex-wrap: wrap; flex-grow: 1; padding-left: 3px; padding-right: 3px; padding-top: 3px; padding-bottom: 3px;" />
+        <ui:VisualElement style="align-items: auto; padding-left: 5px; padding-right: 5px; padding-top: 5px; padding-bottom: 5px;">
+            <ui:Button name="utility-button" text="Settings..." style="-unity-text-align: middle-right; flex-direction: row; justify-content: flex-end; flex-grow: 0; flex-shrink: 1;" />
+        </ui:VisualElement>
+    </ui:VisualElement>
+</ui:UXML>

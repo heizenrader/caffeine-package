@@ -1,0 +1,15 @@
+<ui:UXML xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements" editor-extension-mode="True">
+    <ui:Template name="text-attachment" src="text-attachment.uxml" />
+    <ui:Template name="image-attachment" src="image-attachment.uxml" />
+    <ui:Template name="video-attachment" src="video-attachment.uxml" />
+    <ui:Template name="audio-attachment" src="audio-attachment.uxml" />
+    <ui:Template name="pdf-attachment" src="pdf-attachment.uxml" />
+    <ui:ScrollView>
+        <uie:EnumField type="Caffeine.Runtime.Course.ActionAttachmentType, Caffeine" label="Type" name="type" binding-path="type" />
+        <ui:Instance template="text-attachment" name="text-attachment" binding-path="textAttachment" />
+        <ui:Instance template="image-attachment" name="image-attachment" binding-path="imageAttachment" />
+        <ui:Instance template="video-attachment" name="video-attachment" binding-path="videoAttachment" />
+        <ui:Instance template="audio-attachment" name="audio-attachment" binding-path="audioAttachment" />
+        <ui:Instance template="pdf-attachment" name="pdf-attachment" binding-path="pdfAttachment" />
+    </ui:ScrollView>
+</ui:UXML>

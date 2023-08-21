@@ -1,0 +1,4 @@
+<ui:UXML xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements" xsi="http://www.w3.org/2001/XMLSchema-instance" engine="UnityEngine.UIElements" editor="UnityEditor.UIElements" noNamespaceSchemaLocation="../../../../../UIElementsSchema/UIElements.xsd" editor-extension-mode="True">
+    <uie:ObjectField type="UnityEngine.Animator, UnityEngine.AnimationModule" name="animator" label="Animator" binding-path="animator" />
+    <uie:ObjectField type="UnityEngine.AnimationClip, UnityEngine.AnimationModule" name="animation" label="Animation" binding-path="animation" />
+</ui:UXML>

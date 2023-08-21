@@ -1,0 +1,4 @@
+<ui:UXML xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements" editor-extension-mode="True">
+    <ui:Toggle label="Include Children" name="include-children" binding-path="includeChildren" />
+    <uie:FloatField label="Duration" name="duration" binding-path="duration" />
+</ui:UXML>
