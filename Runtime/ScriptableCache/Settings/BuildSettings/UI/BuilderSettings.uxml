@@ -29,22 +29,18 @@
             <ui:Label text="Disk Space" display-tooltip-when-elided="true" name="Header" style="background-color: rgba(255, 255, 255, 0); color: rgb(0, 0, 0); -unity-font-style: bold; margin-left: 10px; margin-top: 5px;" />
         </ui:VisualElement>
         <ui:VisualElement name="DiskInfo" style="margin-top: 20px; margin-bottom: 10px;">
+            <ui:VisualElement name="AvailableSpace" style="flex-direction: row; margin-top: 0; margin-left: 3px; margin-right: 3px; margin-bottom: 10px;">
+                <ui:VisualElement>
+                    <ui:Label text="Available Space" display-tooltip-when-elided="true" style="width: 100px; padding-top: 2px;" />
+                </ui:VisualElement>
+                <ui:ProgressBar value="1" name="DiskProgress" high-value="1" style="flex-grow: 1; margin-bottom: 0; height: 15px; margin-top: 2px;" />
+            </ui:VisualElement>
             <ui:VisualElement name="ProjectSize" style="flex-direction: row; margin-left: 3px; margin-right: 3px;">
                 <ui:Label text="Builder Projects" display-tooltip-when-elided="true" style="width: 100px;" />
                 <ui:Label display-tooltip-when-elided="true" name="BuilderProjectsSize" style="flex-grow: 1; justify-content: flex-start; -unity-text-align: upper-left; padding-right: 25px;" />
                 <ui:Button text="Remove" display-tooltip-when-elided="true" name="ResetBuildersButton" />
                 <ui:Button text="Create" display-tooltip-when-elided="true" name="CreateBuildersButton" />
             </ui:VisualElement>
-            <ui:VisualElement name="AvailableSpace" style="flex-direction: row; margin-top: 10px; margin-left: 3px; margin-right: 3px;">
-                <ui:VisualElement>
-                    <ui:Label text="Available Space" display-tooltip-when-elided="true" style="width: 100px; padding-top: 2px;" />
-                </ui:VisualElement>
-                <ui:ProgressBar value="1" name="DiskProgress" high-value="1" style="flex-grow: 1; margin-bottom: 0; height: 15px; margin-top: 2px;" />
-            </ui:VisualElement>
         </ui:VisualElement>
-    </ui:VisualElement>
-    <ui:VisualElement name="Buttons" style="flex-direction: row; margin-top: 50px; justify-content: flex-end;">
-        <ui:Button text="Apply" display-tooltip-when-elided="true" name="ApplyButton" style="width: 100px; height: 25px;" />
-        <ui:Button text="Cancel" display-tooltip-when-elided="true" name="CancelButton" style="width: 100px; height: 25px;" />
     </ui:VisualElement>
 </ui:UXML>
