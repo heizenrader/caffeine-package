@@ -1,34 +1,34 @@
 <ui:UXML xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements" xsi="http://www.w3.org/2001/XMLSchema-instance" engine="UnityEngine.UIElements" editor="UnityEditor.UIElements" noNamespaceSchemaLocation="../../../../../../../UIElementsSchema/UIElements.xsd" editor-extension-mode="False">
     <ui:VisualElement name="VerticalContainer" style="flex-grow: 1;">
-        <ui:VisualElement name="BuildHeader" style="height: 25px; padding-top: 10px; background-color: rgb(255, 255, 255);">
+        <ui:VisualElement name="BuildHeader" style="height: 25px; padding-top: 10px; background-color: rgb(255, 255, 255); flex-shrink: 0;">
             <ui:Label text="Builder Settings" display-tooltip-when-elided="true" name="Header" style="background-color: rgba(255, 255, 255, 0); color: rgb(0, 0, 0); -unity-font-style: bold; margin-left: 10px; margin-top: -5px;" />
         </ui:VisualElement>
-        <ui:VisualElement name="Settings" style="margin-top: 20px; margin-bottom: 10px; flex-grow: 1;">
+        <ui:VisualElement name="Settings" style="margin-top: 20px; margin-bottom: 10px; flex-grow: 0; flex-shrink: 0;">
             <ui:VisualElement style="flex-direction: row; margin-top: 5px; margin-bottom: 5px; flex-grow: 1; margin-left: 5px;">
                 <ui:Toggle label="Thread Priority" name="ThreadPriority" style="margin-bottom: 0; margin-top: 0; margin-right: 0; margin-left: 0; -unity-text-align: middle-left;" />
-                <ui:Label text="* Experimental - Build processes will be set to high priority. Potentially decreases overall build time." display-tooltip-when-elided="true" style="flex-grow: 1; font-size: 10px; -unity-text-align: middle-left; white-space: normal; margin-left: 15px;" />
+                <ui:Label text="* Experimental: Build processes will be set to high priority, which may reduce overall build time." display-tooltip-when-elided="true" style="flex-grow: 1; font-size: 10px; -unity-text-align: middle-left; white-space: normal; margin-left: 15px;" />
             </ui:VisualElement>
             <ui:VisualElement style="flex-direction: row; margin-top: 5px; margin-bottom: 5px; flex-grow: 1; margin-left: 5px;">
                 <ui:Toggle label="Use Parallel Building" name="ParallelBuild" style="margin-bottom: 0; margin-top: 0; margin-right: 0; margin-left: 0; -unity-text-align: middle-left;" />
-                <ui:Label text="* Allow&apos;s for multiple processes to spawn to create builders" display-tooltip-when-elided="true" style="flex-grow: 1; font-size: 10px; -unity-text-align: middle-left; white-space: normal; margin-left: 15px;" />
+                <ui:Label text="* Enables simultaneous spawning of build processes for potentially faster build times, as opposed to sequential processes that wait for one to finish before starting the next." display-tooltip-when-elided="true" style="flex-grow: 1; font-size: 10px; -unity-text-align: middle-left; white-space: normal; margin-left: 15px;" />
             </ui:VisualElement>
             <ui:VisualElement style="flex-direction: row; margin-top: 5px; margin-bottom: 5px; flex-grow: 1; margin-left: 5px;">
                 <ui:Toggle label="Use Staggered Building" name="StaggeredBuild" style="margin-left: 13px; margin-right: 0; margin-top: 0; margin-bottom: 0; -unity-text-align: middle-left;" />
-                <ui:Label text="* Staggars the spawning of build processes. \n Useful in situations where multiple  system proccesses are alrady running" display-tooltip-when-elided="true" name="StaggeredTooltip" style="flex-grow: 1; font-size: 10px; -unity-text-align: middle-left; white-space: normal; margin-left: 15px;" />
+                <ui:Label text="* Staggers the start times of parallel build processes to prevent sudden spikes in CPU/RAM usage. Ensures a slight delay between initiating each process." display-tooltip-when-elided="true" name="StaggeredTooltip" style="flex-grow: 1; font-size: 10px; -unity-text-align: middle-left; white-space: normal; margin-left: 15px;" />
             </ui:VisualElement>
             <ui:VisualElement style="flex-direction: row; margin-top: 5px; margin-bottom: 5px; flex-grow: 1; margin-left: 5px; margin-right: 5px;">
                 <ui:Toggle label="Publish Before Backup" name="PublishBeforeExport" style="margin-bottom: 0; margin-top: 0; margin-right: 0; margin-left: 0; -unity-text-align: middle-left;" />
-                <ui:Label text="* Block&apos;s cloud backup until after your build&apos;s have been published." display-tooltip-when-elided="true" style="flex-grow: 1; font-size: 10px; -unity-text-align: middle-left; white-space: normal; margin-left: 15px;" />
+                <ui:Label text="* Ensures build processes complete before initiating cloud backup. When disabled, building and backup tasks run concurrently." display-tooltip-when-elided="true" style="flex-grow: 1; font-size: 10px; -unity-text-align: middle-left; white-space: normal; margin-left: 15px;" />
             </ui:VisualElement>
             <ui:VisualElement style="flex-direction: row; margin-top: 5px; margin-bottom: 5px; flex-grow: 1; margin-left: 5px; margin-right: 5px;">
                 <ui:Toggle label="Remember Platforms" name="RememberBuildPlatforms" style="margin-bottom: 0; margin-top: 0; margin-right: 0; margin-left: 0; -unity-text-align: middle-left;" />
-                <ui:Label text="* Remembers your build platform choices between builds. " display-tooltip-when-elided="true" style="flex-grow: 1; font-size: 10px; -unity-text-align: middle-left; white-space: normal; margin-left: 15px;" />
+                <ui:Label text="* Remembers your build platform selections between builds." display-tooltip-when-elided="true" style="flex-grow: 1; font-size: 10px; -unity-text-align: middle-left; white-space: normal; margin-left: 15px;" />
             </ui:VisualElement>
         </ui:VisualElement>
-        <ui:VisualElement name="DiskHeader" style="height: 25px; padding-top: 0; background-color: rgb(255, 255, 255); margin-top: 21px;">
+        <ui:VisualElement name="DiskHeader" style="height: 25px; padding-top: 0; background-color: rgb(255, 255, 255); margin-top: 21px; flex-shrink: 0;">
             <ui:Label text="Disk Space" display-tooltip-when-elided="true" name="Header" style="background-color: rgba(255, 255, 255, 0); color: rgb(0, 0, 0); -unity-font-style: bold; margin-left: 10px; margin-top: 5px;" />
         </ui:VisualElement>
-        <ui:VisualElement name="DiskInfo" style="margin-top: 20px; margin-bottom: 10px;">
+        <ui:VisualElement name="DiskInfo" style="margin-top: 20px; margin-bottom: 10px; flex-shrink: 0;">
             <ui:VisualElement name="AvailableSpace" style="flex-direction: row; margin-top: 0; margin-left: 3px; margin-right: 3px; margin-bottom: 10px;">
                 <ui:VisualElement>
                     <ui:Label text="Available Space" display-tooltip-when-elided="true" style="width: 100px; padding-top: 2px;" />
