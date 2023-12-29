@@ -1,0 +1,33 @@
+<ui:UXML xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements" xsi="http://www.w3.org/2001/XMLSchema-instance" engine="UnityEngine.UIElements" editor="UnityEditor.UIElements" noNamespaceSchemaLocation="../../../../UIElementsSchema/UIElements.xsd" editor-extension-mode="False">
+    <ui:VisualElement name="UserView">
+        <ui:GroupBox name="Info" style="display: flex;">
+            <ui:GroupBox name="Row2" style="flex-direction: row; padding-top: 0; padding-bottom: 0; align-items: flex-end;">
+                <ui:VisualElement name="LeftSide" style="width: 150px;">
+                    <ui:Label text="First Name" display-tooltip-when-elided="true" name="FirstName" style="flex-grow: 0; padding-left: 10px;" />
+                </ui:VisualElement>
+                <ui:VisualElement name="RightSide" style="width: 100%; margin-right: 0; margin-left: 0;">
+                    <ui:Label display-tooltip-when-elided="true" name="FirstNameValue" style="flex-grow: 1; padding-left: 100px; -unity-text-align: upper-left;" />
+                </ui:VisualElement>
+            </ui:GroupBox>
+            <ui:GroupBox name="Row3" style="flex-direction: row; padding-top: 0; padding-bottom: 0; align-items: flex-end;">
+                <ui:VisualElement name="LeftSide" style="width: 150px;">
+                    <ui:Label text="Last Name" display-tooltip-when-elided="true" name="LastName" style="flex-grow: 0; padding-left: 10px;" />
+                </ui:VisualElement>
+                <ui:VisualElement name="RightSide" style="width: 100%; margin-left: 0;">
+                    <ui:Label display-tooltip-when-elided="true" name="LastNameValue" style="flex-grow: 1; padding-left: 100px;" />
+                </ui:VisualElement>
+            </ui:GroupBox>
+            <ui:GroupBox name="Row1" style="flex-direction: row; padding-top: 0; padding-bottom: 0; align-items: flex-end;">
+                <ui:VisualElement name="LeftSide" style="width: 150px;">
+                    <ui:Label text="Email" display-tooltip-when-elided="true" name="Email" style="flex-grow: 0; padding-left: 10px; -unity-background-image-tint-color: rgb(210, 210, 210);" />
+                </ui:VisualElement>
+                <ui:VisualElement name="RightSide" style="width: 100%; margin-left: 0;">
+                    <ui:Label display-tooltip-when-elided="true" name="EmailValue" style="flex-grow: 1; padding-left: 100px;" />
+                </ui:VisualElement>
+            </ui:GroupBox>
+            <ui:GroupBox name="Logout" style="flex-direction: row; margin-top: 30px;">
+                <ui:Button text="Logout" display-tooltip-when-elided="true" name="LogoutButton" style="flex-grow: 1; background-color: rgb(88, 88, 88); height: 30px; color: rgb(210, 210, 210); -unity-text-outline-color: rgb(9, 9, 9);" />
+            </ui:GroupBox>
+        </ui:GroupBox>
+    </ui:VisualElement>
+</ui:UXML>

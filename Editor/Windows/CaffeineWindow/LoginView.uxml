@@ -1,0 +1,38 @@
+<ui:UXML xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements" xsi="http://www.w3.org/2001/XMLSchema-instance" engine="UnityEngine.UIElements" editor="UnityEditor.UIElements" noNamespaceSchemaLocation="../../../../UIElementsSchema/UIElements.xsd" editor-extension-mode="False">
+    <Style src="project://database/Packages/com.caffeine/Editor/Windows/CaffeineWindow/LoginStyle.uss?fileID=7433441132597879392&amp;guid=4534309819ec8f6429d163c4a1fe550d&amp;type=3#LoginStyle" />
+    <ui:VisualElement name="Body" style="align-items: center;">
+        <ui:Label text="Welcome to" display-tooltip-when-elided="true" name="Welcome" style="padding-top: 10px; font-size: 18px; padding-bottom: 15px;" />
+        <ui:VisualElement name="Logo" style="width: 420px; height: 60px; padding-top: 0; padding-bottom: 0; background-image: resource(&apos;EditorAssets/Textures/education-xr@2x&apos;); -unity-background-image-tint-color: rgb(210, 210, 210);" />
+        <ui:GroupBox name="Form" style="flex-shrink: 1; flex-grow: 1; width: 420px; -unity-text-outline-width: 0; border-left-width: 2px;">
+            <ui:VisualElement name="SignInView" style="display: flex;">
+                <ui:Label text="Continue with Email" display-tooltip-when-elided="true" name="Instructions" style="font-size: 16px; padding-top: 40px; padding-bottom: 50px; -unity-text-align: upper-center;" />
+                <ui:TextField picking-mode="Ignore" label="Email" name="UserEmail" class="customInput" style="margin-bottom: 5px;" />
+                <ui:TextField picking-mode="Ignore" label="Password" name="UserPassword" password="true" class="customInput" style="margin-bottom: 5px;" />
+                <ui:TextField picking-mode="Ignore" label="PIN" name="PIN" class="customInput" style="margin-bottom: 5px;" />
+                <ui:Button text="Next" display-tooltip-when-elided="true" name="Next" style="margin-top: 25px; height: 30px;" />
+            </ui:VisualElement>
+            <ui:VisualElement name="RegistrationView" style="display: none;">
+                <ui:Label text="Continue with Registration" display-tooltip-when-elided="true" name="RegistrationInstructions" style="font-size: 16px; padding-top: 40px; padding-bottom: 50px; -unity-text-align: upper-center;" />
+                <ui:TextField picking-mode="Ignore" label="Email" name="rEmail" class="customInput" style="margin-bottom: 5px;" />
+                <ui:TextField picking-mode="Ignore" label="First Name" name="rFirstName" class="customInput" style="margin-bottom: 5px;" />
+                <ui:TextField picking-mode="Ignore" label="LastName" name="rLastName" class="customInput" style="margin-bottom: 5px;" />
+                <ui:TextField picking-mode="Ignore" label="Organization" name="rOrganization" class="customInput" style="margin-bottom: 5px;" />
+                <ui:VisualElement name="PasswordRow">
+                    <ui:TextField picking-mode="Ignore" label="Password" name="rPassword" password="true" class="customInput" style="margin-bottom: 5px; flex-direction: row;" />
+                    <ui:VisualElement name="SubRow" style="flex-direction: row;">
+                        <ui:Label display-tooltip-when-elided="true" name="PlaceHolder" style="width: 125px;" />
+                        <ui:ProgressBar value="100" name="PasswordStrength" style="margin-left: 0; margin-right: 0; margin-top: 0; margin-bottom: 0; padding-bottom: 0; flex-direction: column; height: 10px; flex-grow: 1; padding-left: 5px; padding-right: 5px;" />
+                    </ui:VisualElement>
+                </ui:VisualElement>
+                <ui:VisualElement name="Actions" style="flex-direction: row; margin-top: 25px; margin-bottom: 25px;">
+                    <ui:VisualElement name="LeftContainer" style="flex-grow: 1;">
+                        <ui:Button text="Back" display-tooltip-when-elided="true" name="BackButton" />
+                    </ui:VisualElement>
+                    <ui:VisualElement name="RightContainer" style="flex-grow: 1;">
+                        <ui:Button text="Register" display-tooltip-when-elided="true" name="RegisterButton" />
+                    </ui:VisualElement>
+                </ui:VisualElement>
+            </ui:VisualElement>
+        </ui:GroupBox>
+    </ui:VisualElement>
+</ui:UXML>

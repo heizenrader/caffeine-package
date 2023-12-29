@@ -1,0 +1,16 @@
+<ui:UXML xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements" xsi="http://www.w3.org/2001/XMLSchema-instance" engine="UnityEngine.UIElements" editor="UnityEditor.UIElements" noNamespaceSchemaLocation="../../../../UIElementsSchema/UIElements.xsd" editor-extension-mode="True">
+    <ui:Template name="Header" src="project://database/Packages/com.caffeine/Editor/Windows/CaffeineWindow/Header.uxml?fileID=9197481963319205126&amp;guid=e436f3391f6be3740aa8c658c9d1facd&amp;type=3#Header" />
+    <ui:Template name="OrganizationSelections" src="project://database/Packages/com.caffeine/Editor/Windows/CaffeineWindow/OrganizationSelections.uxml?fileID=9197481963319205126&amp;guid=bb7d3aa8c0285854493f04bbdf83d4fd&amp;type=3#OrganizationSelections" />
+    <ui:Template name="AuthView" src="project://database/Packages/com.caffeine/Editor/Windows/CaffeineWindow/UserView.uxml?fileID=9197481963319205126&amp;guid=1cd8d6ee6bdd8b44583ef784fa6529b4&amp;type=3#UserView" />
+    <ui:Template name="LoginView" src="project://database/Packages/com.caffeine/Editor/Windows/CaffeineWindow/LoginView.uxml?fileID=9197481963319205126&amp;guid=30d106d72b88e6c4895ae02ec14c23f7&amp;type=3#LoginView" />
+    <ui:Template name="CoursesView" src="project://database/Packages/com.caffeine/Editor/Windows/CaffeineWindow/CoursesView.uxml?fileID=9197481963319205126&amp;guid=e0b598666a6d60549854f56c46cda114&amp;type=3#CoursesView" />
+    <ui:Template name="TemplatesView" src="project://database/Packages/com.caffeine/Editor/Windows/CaffeineWindow/TemplatesView.uxml?fileID=9197481963319205126&amp;guid=1c77c370b16ec2149a96381821052592&amp;type=3#TemplatesView" />
+    <ui:Template name="PublishView" src="project://database/Packages/com.caffeine/Editor/Windows/CaffeineWindow/Publish/PublishView.uxml?fileID=9197481963319205126&amp;guid=d4e4d42857681fd4385627b9f1a12cfd&amp;type=3#PublishView" />
+    <ui:Instance template="Header" name="Header" style="flex-shrink: 0;" />
+    <ui:Instance template="OrganizationSelections" name="OrganizationSelections" style="margin-top: 5px; margin-bottom: 0; height: auto; margin-left: 5px; margin-right: 5px; min-height: 30px;" />
+    <ui:Instance template="AuthView" name="UserView" style="display: flex;" />
+    <ui:Instance template="LoginView" name="LoginView" />
+    <ui:Instance template="CoursesView" name="CoursesView" />
+    <ui:Instance template="TemplatesView" name="TemplatesView" />
+    <ui:Instance template="PublishView" name="PublishView" />
+</ui:UXML>

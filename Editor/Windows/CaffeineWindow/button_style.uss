@@ -1,0 +1,15 @@
+:root {
+    --my-bg-color: rgb(88, 88, 88);
+    --my-bg-selected: rgb(32, 135, 200);
+    --my-font-size: 14px;
+}
+
+.button {
+    background-color: var(--my-bg-color);
+    font-size: var(--my-font-size);
+    -unity-background-image-tint-color: rgb(56, 56, 56);
+}
+
+.button.selected {
+    background-color: var(--my-bg-selected);
+}

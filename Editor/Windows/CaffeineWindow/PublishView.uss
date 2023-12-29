@@ -1,0 +1,10 @@
+.customToggle Label {
+    flex-shrink: 0;
+    width: 20px;
+    height: 20px;
+    align-items: auto;
+    justify-content: flex-start;
+    left: auto;
+    margin-left: 0;
+    margin-right: -50px;
+}
