@@ -1,0 +1,24 @@
+<ui:UXML xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements" xsi="http://www.w3.org/2001/XMLSchema-instance" engine="UnityEngine.UIElements" editor="UnityEditor.UIElements" noNamespaceSchemaLocation="../../../../UIElementsSchema/UIElements.xsd" editor-extension-mode="True">
+    <Style src="project://database/Assets/PublishView.uss?fileID=7433441132597879392&amp;guid=ae4a43b75c8d7954684a4744d8effc5b&amp;type=3#PublishView" />
+    <ui:VisualElement name="Heatmaps" style="padding-left: 10px; padding-right: 10px; margin-bottom: 15px;">
+        <ui:VisualElement name="Header" style="flex-shrink: 0; height: 25px; background-color: rgb(255, 255, 255); flex-direction: row;">
+            <ui:VisualElement name="LeftSide" style="width: 50%; align-items: flex-start;">
+                <ui:Label text="Heatmaps" display-tooltip-when-elided="true" style="color: rgb(33, 33, 33); font-size: 16px; -unity-font-style: bold; padding-left: 10px; -unity-text-align: middle-left; padding-right: 0; padding-top: 2px;" />
+            </ui:VisualElement>
+            <ui:VisualElement name="RightSide" style="width: 50%; align-items: flex-end; justify-content: center;">
+                <ui:Button text="&gt;" display-tooltip-when-elided="true" name="Foldout" style="width: 25px; height: 25px; rotate: 90deg; background-color: rgba(255, 255, 255, 0); border-left-width: 0; border-right-width: 0; border-top-width: 0; border-bottom-width: 0; color: rgb(10, 10, 10); -unity-font-style: bold;" />
+            </ui:VisualElement>
+        </ui:VisualElement>
+        <ui:VisualElement name="Body" style="flex-direction: column; flex-shrink: 1; height: auto; align-items: stretch; justify-content: flex-start; flex-grow: 1; flex-wrap: nowrap;">
+            <ui:VisualElement name="SubHeader" style="flex-grow: 0; flex-direction: row; padding-left: 10px; padding-right: 10px; padding-top: 10px; padding-bottom: 10px;">
+                <ui:VisualElement name="LeftSide" style="width: 50%;">
+                    <ui:Label text="Step" display-tooltip-when-elided="true" style="align-items: flex-start;" />
+                </ui:VisualElement>
+                <ui:VisualElement name="RightSide" style="width: 50%; justify-content: flex-start; align-items: flex-end;">
+                    <ui:Label text="Enabled" display-tooltip-when-elided="true" style="align-items: flex-end; justify-content: flex-end;" />
+                </ui:VisualElement>
+            </ui:VisualElement>
+            <ui:ListView focusable="true" name="ListView" />
+        </ui:VisualElement>
+    </ui:VisualElement>
+</ui:UXML>

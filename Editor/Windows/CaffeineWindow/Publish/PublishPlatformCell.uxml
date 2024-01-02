@@ -1,0 +1,24 @@
+<ui:UXML xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements" xsi="http://www.w3.org/2001/XMLSchema-instance" engine="UnityEngine.UIElements" editor="UnityEditor.UIElements" noNamespaceSchemaLocation="../../../../../../UIElementsSchema/UIElements.xsd" editor-extension-mode="False">
+    <ui:VisualElement name="PublishCell" style="flex-direction: column; flex-grow: 1; align-items: auto; display: flex; margin-bottom: 15px;">
+        <ui:VisualElement name="BuildStatus" style="flex-grow: 1; flex-direction: row;">
+            <ui:VisualElement style="width: 30%; flex-grow: 1;">
+                <ui:Label text="Target" display-tooltip-when-elided="true" name="BuildPlatformLabel" />
+                <ui:Label display-tooltip-when-elided="true" name="SubPlatformLabel" text="Progress" style="visibility: hidden;" />
+            </ui:VisualElement>
+            <ui:VisualElement style="width: 70%; flex-grow: 1;">
+                <ui:Label display-tooltip-when-elided="true" name="BuildDetails" />
+                <ui:Label display-tooltip-when-elided="true" name="SubBuildDetails" />
+            </ui:VisualElement>
+        </ui:VisualElement>
+        <ui:VisualElement name="UploadStatus" style="flex-direction: row; flex-grow: 1; display: none;">
+            <ui:VisualElement style="width: 30%; flex-grow: 1;">
+                <ui:Label text="Progress" display-tooltip-when-elided="true" name="UploadPlatformLabel" />
+                <ui:Label display-tooltip-when-elided="true" name="UploadSubPlatformLabel" />
+            </ui:VisualElement>
+            <ui:VisualElement style="width: 70%; flex-grow: 1;">
+                <ui:ProgressBar value="22" name="UploadProgress" title="0/100" />
+                <ui:Label display-tooltip-when-elided="true" name="UploadDetails" style="-unity-text-align: upper-right; padding-right: 0; padding-left: 0; margin-right: 5px;" />
+            </ui:VisualElement>
+        </ui:VisualElement>
+    </ui:VisualElement>
+</ui:UXML>

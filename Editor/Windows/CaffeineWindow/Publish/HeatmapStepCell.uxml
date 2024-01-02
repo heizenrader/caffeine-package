@@ -1,0 +1,11 @@
+<ui:UXML xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements" xsi="http://www.w3.org/2001/XMLSchema-instance" engine="UnityEngine.UIElements" editor="UnityEditor.UIElements" noNamespaceSchemaLocation="../../../../UIElementsSchema/UIElements.xsd" editor-extension-mode="True">
+    <Style src="project://database/Assets/PublishView.uss?fileID=7433441132597879392&amp;guid=ae4a43b75c8d7954684a4744d8effc5b&amp;type=3#PublishView" />
+    <ui:VisualElement name="HeatmapStepCell" style="padding-left: 0; padding-right: 0; flex-direction: row;">
+        <ui:VisualElement name="LeftSide" style="width: 90%; margin-left: 10px; margin-top: 5px; margin-bottom: 5px;">
+            <ui:Label text="Step" display-tooltip-when-elided="true" name="StepNameLabel" style="align-items: flex-start;" />
+        </ui:VisualElement>
+        <ui:VisualElement name="RightSide" style="width: 10%; justify-content: flex-start; align-items: flex-end; margin-right: 10px; margin-top: 5px; margin-bottom: 5px;">
+            <ui:Toggle name="RecordHeatmap" />
+        </ui:VisualElement>
+    </ui:VisualElement>
+</ui:UXML>

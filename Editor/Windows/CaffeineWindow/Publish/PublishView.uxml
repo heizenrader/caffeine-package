@@ -1,0 +1,6 @@
+<ui:UXML xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements" xsi="http://www.w3.org/2001/XMLSchema-instance" engine="UnityEngine.UIElements" editor="UnityEditor.UIElements" noNamespaceSchemaLocation="../../../../UIElementsSchema/UIElements.xsd" editor-extension-mode="True">
+    <ui:Template name="PublishNode" src="project://database/Packages/com.caffeine/Editor/Windows/CaffeineWindow/Publish/PublishNode.uxml?fileID=9197481963319205126&amp;guid=6aaeeeceaf454f142aa915651f1be5ab&amp;type=3#PublishNode" />
+    <ui:Template name="PublishSelection" src="project://database/Packages/com.caffeine/Editor/Windows/CaffeineWindow/Publish/PublishSelection.uxml?fileID=9197481963319205126&amp;guid=b3f3700c7d0800946b2a4e549e2ea00c&amp;type=3#PublishSelection" />
+    <ui:Instance template="PublishSelection" name="PublishSelection" />
+    <ui:Instance template="PublishNode" name="PublishNode" />
+</ui:UXML>

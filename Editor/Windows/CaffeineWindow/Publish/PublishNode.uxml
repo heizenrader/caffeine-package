@@ -1,0 +1,18 @@
+<ui:UXML xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements" xsi="http://www.w3.org/2001/XMLSchema-instance" engine="UnityEngine.UIElements" editor="UnityEditor.UIElements" noNamespaceSchemaLocation="../../../../UIElementsSchema/UIElements.xsd" editor-extension-mode="True">
+    <ui:Template name="PublishNodeHeader" src="project://database/Packages/com.caffeine/Editor/Windows/CaffeineWindow/Publish/PublishNodeHeader.uxml?fileID=9197481963319205126&amp;guid=4570288ca5550a04bb1e7ed77a95b1aa&amp;type=3#PublishNodeHeader" />
+    <ui:Template name="Platforms" src="project://database/Packages/com.caffeine/Editor/Windows/CaffeineWindow/Publish/Platforms.uxml?fileID=9197481963319205126&amp;guid=37d1068e95f1dce49a06e5078cfbb279&amp;type=3#Platforms" />
+    <ui:Template name="CloudBackup" src="project://database/Packages/com.caffeine/Editor/Windows/CaffeineWindow/Publish/CloudBackup.uxml?fileID=9197481963319205126&amp;guid=8ad845347c723624db47bcaf55ece650&amp;type=3#CloudBackup" />
+    <ui:Template name="CrossPlatformPublish" src="project://database/Packages/com.caffeine/Editor/Windows/CaffeineWindow/Publish/CrossPlatformPublish.uxml?fileID=9197481963319205126&amp;guid=cd1a398d216734a4ba1a3d6e17bbfb2d&amp;type=3#CrossPlatformPublish" />
+    <ui:Template name="PublishNodeFooter" src="project://database/Packages/com.caffeine/Editor/Windows/CaffeineWindow/Publish/PublishNodeFooter.uxml?fileID=9197481963319205126&amp;guid=8f0fbf5eedca08a479f7f6d0cefadecb&amp;type=3#PublishNodeFooter" />
+    <ui:Template name="Heatmaps" src="project://database/Packages/com.caffeine/Editor/Windows/CaffeineWindow/Publish/Heatmaps.uxml?fileID=9197481963319205126&amp;guid=7e15a64730fc76c499a4778fb01572cc&amp;type=3#Heatmaps" />
+    <ui:ScrollView style="flex-grow: 1;">
+        <ui:VisualElement name="PublishViewContent" style="flex-grow: 1; align-items: stretch; justify-content: flex-start;">
+            <ui:Instance template="PublishNodeHeader" name="PublishHeader" />
+            <ui:Instance template="Platforms" name="Platforms" />
+            <ui:Instance template="Heatmaps" name="Heatmaps" />
+            <ui:Instance template="CloudBackup" name="CloudBackup" />
+            <ui:Instance template="CrossPlatformPublish" name="CrossPlatformPublish" />
+            <ui:Instance template="PublishNodeFooter" name="PublishFooter" style="align-items: center; justify-content: center; margin-top: 50px;" />
+        </ui:VisualElement>
+    </ui:ScrollView>
+</ui:UXML>
