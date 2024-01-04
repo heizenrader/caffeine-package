@@ -10,17 +10,7 @@
             </ui:VisualElement>
         </ui:VisualElement>
         <ui:VisualElement name="Body" style="flex-direction: row; flex-shrink: 1; height: 75px; align-items: center; justify-content: flex-start; flex-grow: 1; flex-wrap: nowrap; margin-left: 5px; margin-right: 5px;">
-            <ui:VisualElement name="WaitingForExport" style="flex-grow: 1; flex-direction: row; align-items: center; display: flex;">
-                <ui:VisualElement style="width: 30%; flex-grow: 1;">
-                    <ui:Label text="Progress Details" display-tooltip-when-elided="true" />
-                    <ui:Label display-tooltip-when-elided="true" />
-                </ui:VisualElement>
-                <ui:VisualElement style="width: 70%; flex-grow: 1;">
-                    <ui:Label display-tooltip-when-elided="true" text="Please wait, preparing for upload..." style="-unity-text-align: upper-center;" />
-                    <ui:Label display-tooltip-when-elided="true" />
-                </ui:VisualElement>
-            </ui:VisualElement>
-            <ui:VisualElement name="ExportingProgress" style="flex-direction: row; flex-grow: 1; align-items: center; display: none;">
+            <ui:VisualElement name="ExportingProgress" style="flex-direction: row; flex-grow: 1; align-items: center; display: flex;">
                 <ui:VisualElement style="width: 30%; flex-grow: 1;">
                     <ui:Label text="Progress" display-tooltip-when-elided="true" />
                     <ui:Label display-tooltip-when-elided="true" />
