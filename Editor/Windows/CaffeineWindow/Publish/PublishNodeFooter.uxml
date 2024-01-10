@@ -1,11 +1,12 @@
 <ui:UXML xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements" xsi="http://www.w3.org/2001/XMLSchema-instance" engine="UnityEngine.UIElements" editor="UnityEditor.UIElements" noNamespaceSchemaLocation="../../../../UIElementsSchema/UIElements.xsd" editor-extension-mode="True">
-    <Style src="project://database/Assets/PublishView.uss?fileID=7433441132597879392&amp;guid=ae4a43b75c8d7954684a4744d8effc5b&amp;type=3#PublishView" />
+    <Style src="project://database/Packages/com.caffeine/Editor/Windows/CaffeineWindow/PublishView.uss?fileID=7433441132597879392&amp;guid=ae4a43b75c8d7954684a4744d8effc5b&amp;type=3#PublishView" />
     <ui:VisualElement style="margin-left: 10px; flex-direction: row; height: 50px; align-items: flex-start; flex-grow: 1; margin-right: 10px;">
         <ui:VisualElement name="LeftSide" style="flex-grow: 1; width: 50%; align-items: flex-start; justify-content: flex-start; flex-direction: row;">
             <ui:Button text="Start" display-tooltip-when-elided="true" name="StartButton" style="flex-shrink: 1; flex-grow: 1; background-color: rgb(88, 88, 88); height: 30px;" />
         </ui:VisualElement>
         <ui:VisualElement name="RightSide" style="flex-grow: 1; width: 50%; align-items: flex-start; flex-direction: row;">
             <ui:Button text="Reset" display-tooltip-when-elided="true" name="ResetButton" style="flex-shrink: 1; flex-grow: 1; background-color: rgb(88, 88, 88); height: 30px;" />
+            <ui:Button text="Cancel" display-tooltip-when-elided="true" name="CancelButton" style="flex-shrink: 1; flex-grow: 1; background-color: rgb(88, 88, 88); height: 30px;" />
         </ui:VisualElement>
     </ui:VisualElement>
 </ui:UXML>
