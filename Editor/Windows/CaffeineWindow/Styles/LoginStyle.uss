@@ -1,0 +1,9 @@
+.customInput Label {
+    width: 125px;
+    align-items: flex-start;
+    flex-shrink: 0;
+    display: flex;
+    height: auto;
+    max-width: 125px;
+    min-width: 125px;
+}

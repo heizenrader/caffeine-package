@@ -1,0 +1,18 @@
+.customToggle Label {
+    -unity-text-align: middle-left;
+    width: 40px;
+    flex-shrink: 0;
+    height: 10px;
+    flex-grow: 0;
+    position: absolute;
+    white-space: nowrap;
+    min-width: 0;
+    min-height: 0;
+    padding-left: 15px;
+}
+
+.customToggle VisualElement {
+    flex-shrink: 0;
+    width: 20px;
+    height: 20px;
+}

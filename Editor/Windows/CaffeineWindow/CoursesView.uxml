@@ -26,7 +26,8 @@
         <ui:ScrollView name="ScrollView" style="margin-top: 20px; background-color: rgb(56, 56, 56); flex-grow: 1;">
             <ui:VisualElement name="NodeContent" style="flex-direction: row; flex-wrap: wrap; flex-grow: 1; justify-content: center;" />
         </ui:ScrollView>
-        <ui:VisualElement name="Footer" style="height: 50px; padding-left: 25px; padding-right: 25px; align-items: flex-end; justify-content: flex-end; padding-top: 50px; padding-bottom: 25px;">
+        <ui:VisualElement name="Footer" style="height: 50px; padding-left: 25px; padding-right: 25px; align-items: flex-end; justify-content: flex-end; padding-top: 50px; padding-bottom: 25px; flex-direction: row;">
+            <ui:Button text="New Category" display-tooltip-when-elided="true" name="ButtonNewCategory" style="margin-right: 10px; height: 30px; width: 100px; margin-left: 0; margin-top: 0; margin-bottom: 0; padding-right: 0; padding-left: 0; padding-top: 0; padding-bottom: 0;" />
             <ui:Button text="New Course" display-tooltip-when-elided="true" name="ButtonNewCourse" style="margin-right: 0; height: 30px; width: 100px; margin-left: 0; margin-top: 0; margin-bottom: 0;" />
         </ui:VisualElement>
     </ui:GroupBox>
