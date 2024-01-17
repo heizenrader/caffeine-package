@@ -1,12 +1,13 @@
 <ui:UXML xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements" xsi="http://www.w3.org/2001/XMLSchema-instance" engine="UnityEngine.UIElements" editor="UnityEditor.UIElements" noNamespaceSchemaLocation="../../../../UIElementsSchema/UIElements.xsd" editor-extension-mode="True">
-    <Style src="project://database/Packages/com.caffeine/Editor/Windows/CaffeineWindow/CoursesView.uss?fileID=7433441132597879392&amp;guid=4285b8f8bb8f3354eb61a60073b6b70a&amp;type=3#CoursesView" />
+    <Style src="project://database/Packages/com.caffeine/Editor/Windows/CaffeineWindow/Styles/CoursesView.uss?fileID=7433441132597879392&amp;guid=4285b8f8bb8f3354eb61a60073b6b70a&amp;type=3#CoursesView" />
     <ui:GroupBox style="flex-shrink: 1; flex-grow: 1; margin-top: 0; padding-top: 0; padding-bottom: 0; margin-left: 0; margin-right: 0; margin-bottom: 0; padding-left: 0;">
         <ui:VisualElement name="Header" style="flex-direction: row; justify-content: center; flex-shrink: 0; min-height: 100px; align-items: center; padding-left: 25px; padding-right: 25px;">
             <ui:VisualElement name="LeftContainer" style="flex-direction: column; width: 30%; flex-grow: 1; align-items: flex-start; justify-content: flex-start; min-height: 50%;">
                 <ui:VisualElement name="TopRow" style="flex-direction: column; min-width: auto; min-height: auto; height: 50%;" />
                 <ui:VisualElement name="BottomRow" style="flex-grow: 0; flex-direction: row; min-height: auto; height: 50%;">
-                    <ui:Button text="Back" display-tooltip-when-elided="true" name="BackButton" />
-                    <ui:Label text="Label" display-tooltip-when-elided="true" name="CurrentCategory" style="margin-left: 10px; -unity-text-align: middle-left; padding-top: 1px; padding-bottom: 1px; flex-grow: 1; flex-shrink: 1; width: 165px;" />
+                    <ui:Button text="Back" display-tooltip-when-elided="true" name="BackButton" style="display: flex;" />
+                    <ui:Label text="Label" display-tooltip-when-elided="true" name="CurrentCategory" style="margin-left: 10px; -unity-text-align: middle-left; padding-top: 1px; padding-bottom: 1px; flex-grow: 1; flex-shrink: 1; width: 165px; display: flex;" />
+                    <ui:Label display-tooltip-when-elided="true" name="ToggleDescriptionLabel" style="display: none; flex-grow: 1; flex-shrink: 1; align-items: auto; width: 165px; height: auto; -unity-text-align: middle-left;" />
                 </ui:VisualElement>
             </ui:VisualElement>
             <ui:VisualElement name="RightContainer" style="justify-content: flex-end; align-items: flex-end; flex-direction: column; flex-grow: 1; width: 70%; min-height: 50%;">
