@@ -1,0 +1,11 @@
+<ui:UXML xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements" editor-extension-mode="False">
+    <Style src="project://database/Packages/com.caffeine/Editor/Windows/CaffeineWindow/button_style.uss?fileID=7433441132597879392&amp;guid=b26672924d8f0b440a1e9ea3b29df117&amp;type=3#button_style" />
+    <ui:VisualElement style="flex-direction: row; flex-shrink: 0;">
+        <ui:Button text="User" display-tooltip-when-elided="true" name="AuthUserButton" class="button" style="flex-grow: 1; width: auto; height: 30px; max-width: 100%;" />
+        <ui:Button text="Courses" display-tooltip-when-elided="true" name="Courses" class="button" style="flex-grow: 1; height: 30px; max-width: 100%;" />
+        <ui:Button text="Templates" display-tooltip-when-elided="true" name="Templates" class="button" style="flex-grow: 1; height: 30px; max-width: 100%;" />
+        <ui:Button text="Publish" display-tooltip-when-elided="true" name="Publish" class="button" style="flex-grow: 1; height: 30px; max-width: 100%;" />
+        <ui:Button text="Categories" display-tooltip-when-elided="true" name="Categories" class="button" style="flex-grow: 1; height: 30px; max-width: 100%; visibility: visible;" />
+        <ui:Button display-tooltip-when-elided="true" name="RefreshButton" class="button" style="flex-grow: 0; height: 30px; max-width: 100%; background-image: resource(&apos;EditorAssets/Textures/caffeine-icon-refresh-smaller&apos;); -unity-background-image-tint-color: rgb(255, 255, 255); width: 30px; -unity-background-scale-mode: stretch-to-fill; -unity-slice-left: 0; -unity-slice-top: 0; -unity-slice-right: 0; -unity-slice-bottom: 0;" />
+    </ui:VisualElement>
+</ui:UXML>

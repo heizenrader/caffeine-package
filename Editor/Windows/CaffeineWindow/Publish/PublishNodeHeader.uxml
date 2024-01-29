@@ -1,0 +1,11 @@
+<ui:UXML xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements" xsi="http://www.w3.org/2001/XMLSchema-instance" engine="UnityEngine.UIElements" editor="UnityEditor.UIElements" noNamespaceSchemaLocation="../../../../UIElementsSchema/UIElements.xsd" editor-extension-mode="True">
+    <Style src="project://database/Assets/PublishView.uss?fileID=7433441132597879392&amp;guid=ae4a43b75c8d7954684a4744d8effc5b&amp;type=3#PublishView" />
+    <ui:VisualElement style="margin-left: 0; flex-direction: row; height: 50px; align-items: center; padding-left: 10px; padding-right: 10px;">
+        <ui:VisualElement name="LeftSide" style="flex-grow: 1; width: 50%; align-items: flex-start; justify-content: center;">
+            <ui:Label text="Label" display-tooltip-when-elided="true" name="PublishingForNodeLabel" style="flex-shrink: 0; flex-grow: 0; width: 50%; align-items: auto; justify-content: center;" />
+        </ui:VisualElement>
+        <ui:VisualElement name="RightSide" style="flex-grow: 1; width: 50%; align-items: flex-end;">
+            <ui:Button text="Back" display-tooltip-when-elided="true" name="BackButton" />
+        </ui:VisualElement>
+    </ui:VisualElement>
+</ui:UXML>
