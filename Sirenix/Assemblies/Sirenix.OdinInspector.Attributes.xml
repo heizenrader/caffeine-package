@@ -1234,6 +1234,11 @@
             <para>Note that this attribute does not mean "disable Odin completely for this property"; it is visual only in nature, and in fact represents an Odin drawer which calls into Unity's old property drawing system. As Odin is still ultimately responsible for arranging the drawing of the property, and since other attributes exist with a higher priority than this attribute, and it is not guaranteed that Unity will draw the property if another attribute is present to override this one.</para>
             </remarks>
         </member>
+        <member name="T:Sirenix.OdinInspector.DrawWithVisualElementsAttribute">
+            <summary>
+            Force Odin to draw this value as an IMGUI-embedded UI Toolkit Visual Element.
+            </summary>
+        </member>
         <member name="T:Sirenix.OdinInspector.EnableGUIAttribute">
             <summary>
             <para>An attribute that enables GUI.</para>
@@ -5072,6 +5077,30 @@
             <summary>
             If true, tables are drawn with rows/columns reversed (C# initialization order).
             </summary>
+        </member>
+        <member name="F:Sirenix.OdinInspector.TableMatrixAttribute.Labels">
+            <summary>
+            A resolved string that should evaluate to a tuple (string, LabelDirection) which will be used as the label for the rows and columns of the table.
+            </summary>
+            <code>
+            [TableMatrix(SquareCells = true, Labels = "GetLabel")]
+            public int[,] ChessBoard = new int[8, 8];
+             
+            private (string, LabelDirection) GetLabel(int[,] array, TableAxis axis, int index)
+            {
+                var chessFileLetters = "ABCDEFGH";
+             
+                switch (axis)
+                {
+                    case TableAxis.Y:
+                        return ((array.GetLength(1) - index).ToString(), LabelDirection.LeftToRight);
+                    case TableAxis.X:
+                        return (chessFileLetters[index].ToString(), LabelDirection.TopToBottom);
+                    default:
+                        return (index.ToString(), LabelDirection.LeftToRight);
+                }
+            }
+            </code>
         </member>
         <member name="T:Sirenix.OdinInspector.TitleAttribute">
             <summary>

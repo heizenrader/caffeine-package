@@ -6083,6 +6083,66 @@
             that *should* have been automatically fixed by the AssemblyUpdater, but that broke for one reason or another.
             </summary>
         </member>
+        <member name="T:Sirenix.Utilities.Editor.FieldExpressionContext">
+            <summary>
+            Type containing the necessary components to use C# expressions in fields.
+            </summary>
+            <example>
+            // Creating and using a context with for a static type. 
+            FieldExpressionContext context = FieldExpressionContext.StaticExpression(typeof(MyStaticType));
+            
+            SirenixEditorFields.SmartIntField(context, ...);
+            </example>
+            <example>
+            // Creating and using a context with an instanced type.
+            FieldExpressionContext context = FieldExpressionContext.InstanceContext(myInstance);
+            
+            SirenixEditorFields.SmartIntField(context, ...);
+            </example>
+            <example>
+            // Creating and using context with an InspectorProperty, for example, in a custom Odin drawer.
+            FieldExpressionContext context = property.ToFieldExpressionContext();
+            
+            SirenixEditorFields.SmartIntField(context, ...);
+            </example>
+        </member>
+        <member name="F:Sirenix.Utilities.Editor.FieldExpressionContext.Instance">
+            <summary>
+            Target instance for field expressions.
+            </summary>
+        </member>
+        <member name="F:Sirenix.Utilities.Editor.FieldExpressionContext.Type">
+            <summary>
+            Target type for expressions.
+            </summary>
+        </member>
+        <member name="P:Sirenix.Utilities.Editor.FieldExpressionContext.IsStatic">
+            <summary>
+            Indicates if the expressions targets a static type or not.
+            </summary>
+        </member>
+        <member name="M:Sirenix.Utilities.Editor.FieldExpressionContext.None">
+            <summary>
+            Creates an expression context that targets nothing. Expressions are still possible, but no members can be accessed, and only static method can be called.
+            </summary>
+            <returns>FieldExpresionContext target targets nothing.</returns>
+        </member>
+        <member name="M:Sirenix.Utilities.Editor.FieldExpressionContext.InstanceContext(System.Object)">
+            <summary>
+            Creates an expression context that targets the provided instance. Expression can access members of the instance.
+            </summary>
+            <param name="instance">The instance for the context to target.</param>
+            <returns>FieldExpressionContext that targets an instance.</returns>
+            <exception cref="T:System.ArgumentNullException">Throws if instance is null.</exception>
+        </member>
+        <member name="M:Sirenix.Utilities.Editor.FieldExpressionContext.StaticContext(System.Type)">
+            <summary>
+            Creates an expression context that targets the provided type. Only static members can be accessed.
+            </summary>
+            <param name="type">The type to target.</param>
+            <returns>FieldExpressionContext that targets a static type.</returns>
+            <exception cref="T:System.ArgumentNullException">Throws if type is null.</exception>
+        </member>
         <member name="T:Sirenix.Utilities.Editor.SirenixEditorGUI">
             <summary>
             Collection of various editor GUI functions.
@@ -8388,6 +8448,7 @@
             }
             </code>
             </example>
+            <exception cref="T:System.ArgumentNullException">Throws if either fromUnitInfo or toUnitInfo is null.</exception>
         </member>
         <member name="M:Sirenix.Utilities.Editor.UnitNumberUtility.CanConvertBetween(Sirenix.OdinInspector.Units,Sirenix.OdinInspector.Units)">
             <summary>
