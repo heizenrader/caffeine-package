@@ -4,6 +4,10 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [1.0.12] - 07.20.2024
+### Fixed
+- Fixed a compatibility issue with versions of unity lower than the recommended version.
+
 ## [1.0.11] - 07.20.2024
 ### Added
 - Automatic detection of package updates becoming available.
