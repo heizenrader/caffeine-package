@@ -1,27 +1,23 @@
 <ui:UXML xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements" xsi="http://www.w3.org/2001/XMLSchema-instance" engine="UnityEngine.UIElements" editor="UnityEditor.UIElements" noNamespaceSchemaLocation="../../../../UIElementsSchema/UIElements.xsd" editor-extension-mode="True">
     <ui:GroupBox name="PublishSelection" style="flex-shrink: 1; flex-grow: 1; padding-top: 0; padding-bottom: 0; margin-top: 0; padding-left: 0; margin-left: 0; margin-right: 0; margin-bottom: 0;">
-        <ui:VisualElement name="Header" style="flex-direction: row; justify-content: center; flex-shrink: 0; min-height: 100px; align-items: center; padding-left: 25px; padding-right: 25px;">
-            <ui:VisualElement name="LeftContainer" style="flex-direction: column; width: 30%; flex-grow: 1; align-items: flex-start; justify-content: flex-start; min-height: 50%; height: 100%;">
-                <ui:VisualElement name="TopRow" style="flex-direction: column; min-width: auto; min-height: auto; height: 50%;" />
-                <ui:VisualElement name="BottomRow" style="flex-grow: 0; flex-direction: row; min-height: auto; height: 50%;">
-                    <ui:Label text="No Courses Available For Publishing" display-tooltip-when-elided="true" name="MissingCoursesLabel" style="padding-left: 0; padding-right: 0; align-items: flex-start; padding-top: 10px;" />
-                </ui:VisualElement>
-            </ui:VisualElement>
-            <ui:VisualElement name="RightContainer" style="justify-content: flex-end; align-items: flex-end; flex-direction: column; flex-grow: 1; width: 70%; min-height: 50%; height: 100%;">
+        <ui:VisualElement name="Header" style="flex-direction: row; justify-content: flex-start; flex-shrink: 1; min-height: auto; align-items: flex-start; padding-left: 0; padding-right: 0; flex-grow: 0; padding-top: 0; padding-bottom: 0; margin-top: 5px; margin-right: 5px; margin-bottom: 10px; margin-left: 5px;">
+            <ui:VisualElement name="RightContainer" style="justify-content: flex-end; align-items: flex-end; flex-direction: column; flex-grow: 1; width: auto; min-height: auto; margin-top: 0;">
                 <ui:VisualElement name="TopRow" style="flex-grow: 0; flex-direction: row;">
-                    <ui:VisualElement name="FilterSection" style="flex-direction: row; flex-grow: 1; justify-content: flex-start; min-height: 25px; min-width: 300px; align-items: auto;">
-                        <ui:Label text="Filter" display-tooltip-when-elided="true" enable-rich-text="false" style="flex-shrink: 1; -unity-text-align: middle-left; justify-content: center; margin-bottom: 0; width: 40px; height: 20px; align-items: auto; padding-left: 0; padding-right: 0;" />
-                        <ui:TextField picking-mode="Ignore" name="FilterInput" style="flex-grow: 0; flex-shrink: 1; margin-left: 0; min-width: 250px; min-height: 20px; width: 20px; height: 20px; max-width: 250px; max-height: 20px; margin-right: 0; margin-top: 0; margin-bottom: 0;" />
-                        <ui:Button text="X" display-tooltip-when-elided="true" name="ClearFilterButton" style="flex-shrink: 1; width: 20px; height: 20px;" />
+                    <ui:VisualElement style="flex-direction: row; flex-grow: 0; justify-content: flex-end;">
+                        <ui:Label text="Search" display-tooltip-when-elided="true" enable-rich-text="false" style="flex-shrink: 1; -unity-text-align: middle-left; justify-content: center; margin-bottom: 3px;" />
+                        <ui:TextField picking-mode="Ignore" name="FilterInput" style="flex-grow: 1; flex-shrink: 1; margin-left: 10px; min-width: 250px;" />
+                        <ui:Button text="X" display-tooltip-when-elided="true" name="ClearFilterButton" style="flex-shrink: 1; width: auto; height: auto;" />
                         <ui:Button display-tooltip-when-elided="true" name="SettingsButton" style="background-image: resource(&apos;EditorAssets/Icons/settings-icon&apos;); width: 20px; height: 20px;" />
                     </ui:VisualElement>
                 </ui:VisualElement>
-                <ui:VisualElement name="BottomRow" style="flex-grow: 0; flex-direction: row; min-height: auto; justify-content: flex-end; align-items: center;">
-                    <ui:Toggle label="Updates" name="UpdatesAvailableToggle" class="customToggle" style="min-height: auto; justify-content: center; align-items: auto; min-width: auto; width: 100px; margin-top: 12px; flex-wrap: nowrap; flex-shrink: 0; flex-grow: 0; -unity-text-align: upper-right; white-space: normal; left: auto; display: flex; flex-direction: column-reverse; visibility: hidden;" />
+                <ui:VisualElement name="BottomRow" style="flex-grow: 0; flex-direction: row; min-height: auto; justify-content: center; align-items: auto;">
+                    <ui:Toggle label="Updates" name="UpdatesAvailableToggle" class="customToggle" style="min-height: auto; justify-content: center; align-items: auto; min-width: auto; width: 100px; margin-top: 5px; flex-wrap: nowrap; flex-shrink: 0; flex-grow: 0; -unity-text-align: upper-right; white-space: normal; left: auto; display: none; flex-direction: column-reverse; visibility: hidden;" />
+                    <ui:Toggle label="Installed" name="InstalledToggle" class="customToggle" style="min-height: auto; justify-content: center; align-items: auto; flex-shrink: 0; margin-top: 5px; -unity-text-align: upper-left; left: auto; width: 100px; height: auto; flex-direction: column-reverse; display: none; visibility: hidden;" />
                 </ui:VisualElement>
             </ui:VisualElement>
         </ui:VisualElement>
-        <ui:ScrollView name="ScrollView" style="margin-top: 20px; background-color: rgb(56, 56, 56); flex-grow: 1;">
+        <ui:Label text="No Courses Available For Publishing" display-tooltip-when-elided="true" name="MissingCoursesLabel" style="padding-left: 0; padding-right: 0; align-items: flex-start; padding-top: 0; flex-shrink: 1; -unity-text-align: upper-center; padding-bottom: 0; margin-bottom: 10px;" />
+        <ui:ScrollView name="ScrollView" style="margin-top: 0; background-color: rgb(56, 56, 56); flex-grow: 1;">
             <ui:VisualElement name="NodeContent" style="flex-direction: row; flex-wrap: wrap; flex-grow: 1; justify-content: center;" />
         </ui:ScrollView>
     </ui:GroupBox>
