@@ -27,6 +27,9 @@
                 </ui:VisualElement>
             </ui:VisualElement>
         </ui:VisualElement>
+        <ui:VisualElement name="SubHeader" style="max-height: 50px; margin-bottom: 10px;">
+            <ui:Label text="Templates" display-tooltip-when-elided="true" name="SubTitle" style="align-items: auto; -unity-text-align: upper-center;" />
+        </ui:VisualElement>
         <ui:ScrollView name="ScrollView" style="margin-top: 0; background-color: rgb(56, 56, 56); flex-grow: 1;">
             <ui:VisualElement name="NodeContent" style="flex-direction: row; flex-wrap: wrap; flex-grow: 1; justify-content: center;" />
         </ui:ScrollView>
