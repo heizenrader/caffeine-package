@@ -1,0 +1,16 @@
+{
+    "name": "PackageUpdater",
+    "rootNamespace": "",
+    "references": [
+        "GUID:770e918127bd72347898883c4da19191"
+    ],
+    "includePlatforms": [],
+    "excludePlatforms": [],
+    "allowUnsafeCode": false,
+    "overrideReferences": true,
+    "precompiledReferences": [],
+    "autoReferenced": true,
+    "defineConstraints": [],
+    "versionDefines": [],
+    "noEngineReferences": false
+}
