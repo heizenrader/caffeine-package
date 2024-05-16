@@ -1,14 +1,14 @@
 {
     "name": "PackageUpdater",
     "rootNamespace": "",
-    "references": [
-        "GUID:770e918127bd72347898883c4da19191"
-    ],
+    "references": [],
     "includePlatforms": [],
     "excludePlatforms": [],
     "allowUnsafeCode": false,
     "overrideReferences": true,
-    "precompiledReferences": [],
+    "precompiledReferences": [
+        "Caffeine.dll"
+    ],
     "autoReferenced": true,
     "defineConstraints": [],
     "versionDefines": [],
