@@ -172,12 +172,12 @@ public class CaffeineUpdater : IPackageManagerExtension
         EditorApplication.update -= PackageRequestUpdate;
     }
     
-    private static void RemovePackageSymLinksFromCaffeineBuilders()
+    public static void RemovePackageSymLinksFromCaffeineBuilders()
     {
         try
         {
             var caffeineAssembly = "Caffeine";
-            var className = "Caffeine.BuilderProjectManager";
+            var className = "BuilderProjectManager";
             var methodName = "RemovePackageSymLinksFromBuilders";
 
             var assembly = AppDomain.CurrentDomain.GetAssemblies().FirstOrDefault(a => a.GetName().Name == caffeineAssembly);
@@ -215,7 +215,7 @@ public class CaffeineUpdater : IPackageManagerExtension
         try
         {
             var caffeineAssembly = "Caffeine";
-            var className = "Caffeine.BuilderProjectManager";
+            var className = "BuilderProjectManager";
             var methodName = "RemoveBuilderProjects";
 
             var assembly = AppDomain.CurrentDomain.GetAssemblies().FirstOrDefault(a => a.GetName().Name == caffeineAssembly);
