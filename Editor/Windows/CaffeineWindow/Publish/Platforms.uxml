@@ -1,5 +1,5 @@
 <ui:UXML xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements" xsi="http://www.w3.org/2001/XMLSchema-instance" engine="UnityEngine.UIElements" editor="UnityEditor.UIElements" noNamespaceSchemaLocation="../../../../UIElementsSchema/UIElements.xsd" editor-extension-mode="True">
-    <Style src="project://database/Packages/com.caffeine/Editor/Windows/CaffeineWindow/PublishView.uss?fileID=7433441132597879392&amp;guid=ae4a43b75c8d7954684a4744d8effc5b&amp;type=3#PublishView" />
+    <Style src="project://database/Packages/com.caffeine/Editor/Windows/CaffeineWindow/Styles/PublishView.uss?fileID=7433441132597879392&amp;guid=ae4a43b75c8d7954684a4744d8effc5b&amp;type=3#PublishView" />
     <ui:VisualElement name="Platforms" style="padding-left: 10px; padding-right: 10px; padding-bottom: 15px; min-width: 430px;">
         <ui:VisualElement name="Header" style="flex-shrink: 0; height: 25px; background-color: rgb(255, 255, 255); flex-direction: row;">
             <ui:VisualElement name="LeftSide" style="width: 50%; align-items: flex-start;">
@@ -14,6 +14,7 @@
             <ui:Toggle label="Mac" name="MacToggle" class="customToggle" style="flex-shrink: 1; -unity-text-align: upper-center; flex-grow: 1; width: auto; flex-basis: 25%;" />
             <ui:Toggle label="IOS" name="IOSToggle" class="customToggle" style="flex-shrink: 1; -unity-text-align: upper-center; flex-grow: 1; width: auto; flex-basis: 25%;" />
             <ui:Toggle label="Android" name="AndroidToggle" class="customToggle" style="flex-shrink: 1; flex-grow: 1; -unity-text-align: upper-center; width: auto; flex-basis: 25%;" />
+            <ui:Toggle label="VisionOS" name="VisionOSToggle" class="customToggle" style="flex-shrink: 1; flex-grow: 1; -unity-text-align: upper-center; width: auto; flex-basis: 25%;" />
         </ui:VisualElement>
     </ui:VisualElement>
 </ui:UXML>
