@@ -128,7 +128,7 @@ Shader "Graphics Tools/Samples/Fish"
                 GTInitializeBRDFData(albedo.rgb, 0.0h, half3(1.0h, 1.0h, 1.0h), 0.7h, albedo.a, brdfData);
 
                 // Indirect lighting.
-                half3 output = GTGlobalIllumination(brdfData, GTDefaultAmbientGI, 0.8h, worldNormal, viewDirection);
+                half3 output = GTGlobalIllumination(brdfData, GTDefaultAmbientGI, 0.8h, worldNormal, viewDirection,  input.worldPosition);
 
                 // Direct lighting.
                 output += GTLightingPhysicallyBased(brdfData, half3(1.0h, 1.0h, 1.0h), half3(-0.3h, 0.8h, -0.6h), worldNormal, viewDirection);
