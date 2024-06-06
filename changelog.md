@@ -4,6 +4,18 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [1.1.2] - 03.06.2024
+### Fixed
+- Fixed an example shader error that affected Macs using Metal only.
+
+## [1.1.1] - 06.06.2024
+### Fixed
+- Great news, we've updated to target Unity 2022.3.20f1. Updated todate to take advantage of all the new features.
+
+## [1.1.0] - 05.18.2024
+### Fixed
+- Preparing for new major Unity release.
+
 ## [1.0.16] - 03.04.2024
 ### Fixed
 - Fixed an issue that could break the builder process during auto-updates.
