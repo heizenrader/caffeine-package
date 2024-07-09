@@ -31,7 +31,7 @@
         <ui:VisualElement name="PlatformSettings" style="margin-top: 20px; margin-bottom: 10px; flex-grow: 0; flex-shrink: 0;">
             <ui:VisualElement style="flex-direction: row; margin-top: 5px; margin-bottom: 5px; flex-grow: 1; margin-left: 5px;">
                 <ui:Toggle label="VisionOS Support" name="EnableVisionOS" style="margin-bottom: 0; margin-top: 0; margin-right: 0; margin-left: 0; -unity-text-align: middle-left;" />
-                <ui:Label text="* Enables VisionOS support." display-tooltip-when-elided="true" style="flex-grow: 1; font-size: 10px; -unity-text-align: middle-left; white-space: normal; margin-left: 15px;" />
+                <ui:Label text="* Enables VisionOS support." display-tooltip-when-elided="true" name="VisionOSNoteLabel" style="flex-grow: 1; font-size: 10px; -unity-text-align: middle-left; white-space: normal; margin-left: 15px;" />
             </ui:VisualElement>
         </ui:VisualElement>
         <ui:VisualElement name="DiskHeader" style="height: 25px; padding-top: 0; background-color: rgb(255, 255, 255); margin-top: 21px; flex-shrink: 0;">
