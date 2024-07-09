@@ -5,7 +5,7 @@
   "description": "Caffeine package is a collection of utility methods, design patterns, and extensions for creating, previewing, and distributing interactive courses within Unity.",
   "unity": "2022.3",
   "type": "library",
-  "unityRelease": "20f1",
+  "unityRelease": "29f1",
   "keywords": [
     "edxr",
     "caffeine",
@@ -29,6 +29,8 @@
     "com.unity.textmeshpro": "2.0.1",
     "com.unity.nuget.newtonsoft-json": "2.0.0",
     "com.unity.xr.management": "4.4.1",
-    "com.unity.xr.oculus": "4.2.0"    
+    "com.unity.xr.oculus": "4.2.0",
+    "com.unity.shadergraph": "14.0.11",
+    "com.unity.splines": "2.6.1"
   }
 }
