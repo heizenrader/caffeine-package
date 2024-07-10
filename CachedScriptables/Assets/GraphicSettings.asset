@@ -13,5 +13,5 @@ MonoBehaviour:
   m_Name: GraphicSettings
   m_EditorClassIdentifier: 
   _serializedData:
-    EnabledPipelineName: URP
-    PipelineGUID: f86bba0448f4af14baab9d40c83f50d9
+    EnabledPipelineName: Standard
+    PipelineGUID: 

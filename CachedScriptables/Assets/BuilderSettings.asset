@@ -13,11 +13,11 @@ MonoBehaviour:
   m_Name: BuilderSettings
   m_EditorClassIdentifier: 
   _serializedData:
-    ParallelBuild: 0
+    ParallelBuild: 1
     StaggeredBuild: 0
     PublishBeforeExport: 0
     ThreadPriority: 0
-    RememberBuildChoices: 0
+    RememberBuildChoices: 1
     BuildOptions:
       Win: 0
       Mac: 0
