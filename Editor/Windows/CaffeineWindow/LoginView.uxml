@@ -14,6 +14,11 @@
                     <ui:Button text="Back" display-tooltip-when-elided="true" name="LBackButton" style="margin-top: 25px; height: 30px; flex-shrink: 1; flex-grow: 1;" />
                     <ui:Button text="Next" display-tooltip-when-elided="true" name="Next" style="margin-top: 25px; height: 30px; flex-shrink: 1; flex-grow: 1;" />
                 </ui:VisualElement>
+                <ui:VisualElement style="flex-grow: 1; flex-direction: row;">
+                    <ui:Button text="Login from another device" display-tooltip-when-elided="true" name="LoginFromAnotherDeviceButton" style="margin-top: 5px; height: 30px; flex-shrink: 1; flex-grow: 1;">
+                        <ui:VisualElement style="flex-grow: 0; background-image: resource(&apos;EditorAssets/Textures/right-to-bracket-solid-white&apos;); flex-shrink: 0; width: 25px; height: 25px; left: 85px;" />
+                    </ui:Button>
+                </ui:VisualElement>
             </ui:VisualElement>
             <ui:VisualElement name="RegistrationView" style="display: none;">
                 <ui:Label text="Continue with Registration" display-tooltip-when-elided="true" name="RegistrationInstructions" style="font-size: 16px; padding-top: 40px; padding-bottom: 50px; -unity-text-align: upper-center;" />

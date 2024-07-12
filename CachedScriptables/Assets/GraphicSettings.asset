@@ -9,17 +9,9 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: -2049123947, guid: 8ac8e203a0bb13147b5a2edd731298a3, type: 3}
-  m_Name: BuilderSettings
+  m_Script: {fileID: -899438371, guid: 8ac8e203a0bb13147b5a2edd731298a3, type: 3}
+  m_Name: GraphicSettings
   m_EditorClassIdentifier: 
   _serializedData:
-    ParallelBuild: 1
-    StaggeredBuild: 0
-    PublishBeforeExport: 0
-    ThreadPriority: 0
-    RememberBuildChoices: 1
-    BuildOptions:
-      Win: 0
-      Mac: 0
-      iOS: 0
-      Android: 0
+    EnabledPipelineName: Standard
+    PipelineGUID: 

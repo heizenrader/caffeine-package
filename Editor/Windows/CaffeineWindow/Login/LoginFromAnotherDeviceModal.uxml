@@ -1,0 +1,32 @@
+<ui:UXML xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements" xsi="http://www.w3.org/2001/XMLSchema-instance" engine="UnityEngine.UIElements" editor="UnityEditor.UIElements" noNamespaceSchemaLocation="../../../../../../UIElementsSchema/UIElements.xsd" editor-extension-mode="False">
+    <ui:VisualElement style="flex-grow: 1; border-top-left-radius: 0; border-top-right-radius: 0; border-bottom-right-radius: 0; border-bottom-left-radius: 0;">
+        <ui:VisualElement name="Header" style="flex-grow: 0; height: 30px; background-color: rgb(5, 120, 190); -unity-background-image-tint-color: rgb(5, 120, 190); flex-direction: row; border-top-left-radius: 10px; border-top-right-radius: 10px; display: none;">
+            <ui:VisualElement name="Icon" style="flex-grow: 0; background-image: resource(&apos;EditorAssets/Textures/right-to-bracket-solid-white&apos;); flex-shrink: 0; width: 20px; height: 20px; margin-left: 5px; margin-top: 5px;" />
+            <ui:Label tabindex="-1" text="Login from another device" parse-escape-sequences="true" display-tooltip-when-elided="true" name="Title" style="flex-shrink: 1; flex-grow: 1; -unity-text-align: upper-center; color: rgb(255, 255, 255); -unity-font-style: bold;" />
+            <ui:Button parse-escape-sequences="true" display-tooltip-when-elided="true" name="CloseButton" style="background-color: rgba(255, 255, 255, 0); border-left-color: rgba(149, 149, 149, 0); border-right-color: rgba(149, 149, 149, 0); border-top-color: rgba(149, 149, 149, 0); border-bottom-color: rgba(149, 149, 149, 0); color: rgb(255, 255, 255); background-image: resource(&apos;EditorAssets/Textures/circle-close&apos;); -unity-slice-scale: 1px; scale: 1.2 1.2;" />
+        </ui:VisualElement>
+        <ui:VisualElement name="Body" style="flex-grow: 1; background-color: rgba(255, 255, 255, 0); border-bottom-left-radius: 10px; border-bottom-right-radius: 10px;">
+            <ui:VisualElement name="Instructions" style="flex-grow: 1; margin-left: 10px; margin-top: 10px; margin-right: 10px; justify-content: flex-start;">
+                <ui:Label tabindex="-1" text="• Open &lt;b&gt;&lt;color=#0578BE&gt;EducationXR&lt;/color&gt;&lt;/b&gt; on a device you&apos;re already logged in" parse-escape-sequences="true" display-tooltip-when-elided="true" style="flex-shrink: 1; flex-grow: 0; margin-top: 0; margin-right: 0; margin-bottom: 5px; margin-left: 0; padding-top: 0; padding-right: 0; padding-bottom: 0; padding-left: 0;" />
+                <ui:Label tabindex="-1" text="• Click on the        button" parse-escape-sequences="true" display-tooltip-when-elided="true" name="Label" style="flex-shrink: 1; flex-grow: 0; background-image: none; background-color: rgba(0, 0, 0, 0); margin-top: 0; margin-right: 0; margin-bottom: 5px; margin-left: 0; padding-top: 0; padding-right: 0; padding-bottom: 0; padding-left: 0;">
+                    <ui:VisualElement style="flex-grow: 0; background-image: resource(&apos;EditorAssets/Textures/right-to-bracket-solid-white&apos;); flex-shrink: 0; width: 16px; height: 16px; background-color: rgba(255, 255, 255, 0); -unity-background-image-tint-color: rgb(5, 120, 190); position: relative; left: 82px; top: -2px;" />
+                </ui:Label>
+                <ui:Label tabindex="-1" text="• Enter the code below" parse-escape-sequences="true" display-tooltip-when-elided="true" style="flex-shrink: 0; margin-top: 0; margin-right: 0; margin-bottom: 0; margin-left: 0; padding-top: 0; padding-right: 0; padding-bottom: 0; padding-left: 0;" />
+            </ui:VisualElement>
+            <ui:VisualElement name="Code" style="flex-grow: 1; flex-direction: row; align-items: center; justify-content: center; padding-bottom: 10px; padding-top: 25px;">
+                <ui:VisualElement style="flex-grow: 0; flex-shrink: 0; width: 60px; height: 50px; background-color: rgb(0, 0, 0); border-top-left-radius: 5px; border-top-right-radius: 5px; border-bottom-right-radius: 5px; border-bottom-left-radius: 5px; margin-left: 5px; margin-right: 5px;">
+                    <ui:Label tabindex="-1" parse-escape-sequences="true" display-tooltip-when-elided="true" name="FirstDigit" style="flex-shrink: 1; flex-grow: 1; -unity-text-align: middle-center; color: rgb(255, 255, 255); -unity-font-style: bold; font-size: 48px;" />
+                </ui:VisualElement>
+                <ui:VisualElement style="flex-grow: 0; flex-shrink: 0; width: 60px; height: 50px; background-color: rgb(0, 0, 0); border-top-left-radius: 5px; border-top-right-radius: 5px; border-bottom-right-radius: 5px; border-bottom-left-radius: 5px; margin-right: 5px; margin-left: 5px;">
+                    <ui:Label tabindex="-1" parse-escape-sequences="true" display-tooltip-when-elided="true" name="SecondDigit" style="flex-shrink: 1; flex-grow: 1; -unity-text-align: middle-center; color: rgb(255, 255, 255); -unity-font-style: bold; font-size: 48px;" />
+                </ui:VisualElement>
+                <ui:VisualElement style="flex-grow: 0; flex-shrink: 0; width: 60px; height: 50px; background-color: rgb(0, 0, 0); border-top-left-radius: 5px; border-top-right-radius: 5px; border-bottom-right-radius: 5px; border-bottom-left-radius: 5px; margin-right: 5px; margin-left: 5px;">
+                    <ui:Label tabindex="-1" parse-escape-sequences="true" display-tooltip-when-elided="true" name="ThirdDigit" style="flex-shrink: 1; flex-grow: 1; -unity-text-align: middle-center; color: rgb(255, 255, 255); -unity-font-style: bold; font-size: 48px;" />
+                </ui:VisualElement>
+                <ui:VisualElement style="flex-grow: 0; flex-shrink: 0; width: 60px; height: 50px; background-color: rgb(0, 0, 0); border-top-left-radius: 5px; border-top-right-radius: 5px; border-bottom-right-radius: 5px; border-bottom-left-radius: 5px; margin-right: 5px; margin-left: 5px;">
+                    <ui:Label tabindex="-1" parse-escape-sequences="true" display-tooltip-when-elided="true" name="FourthDigit" style="flex-shrink: 1; flex-grow: 1; -unity-text-align: middle-center; color: rgb(255, 255, 255); -unity-font-style: bold; font-size: 48px;" />
+                </ui:VisualElement>
+            </ui:VisualElement>
+        </ui:VisualElement>
+    </ui:VisualElement>
+</ui:UXML>

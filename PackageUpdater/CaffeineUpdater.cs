@@ -33,7 +33,7 @@ public static class VersionUtility
     {
         return versions
             .Where(IsStableRelease)
-            .Select(v => new { Version = v, Parsed = Version.Parse(Regex.Match(v, @"^\d+(\.\d+)*").Value) })
+            .Select(v => new { Version = v, Parsed = ParseUnityVersion(v) })
             .OrderByDescending(v => v.Parsed)
             .Select(v => v.Version)
             .FirstOrDefault();
@@ -41,11 +41,27 @@ public static class VersionUtility
 
     public static bool IsHigherVersionAvailable(string currentVersion, IEnumerable<string> versions)
     {
-        var currentParsed = Version.Parse(Regex.Match(currentVersion, @"^\d+(\.\d+)*").Value);
+        var currentParsed = ParseUnityVersion(currentVersion);
         return versions
             .Where(IsStableRelease)
-            .Select(v => Version.Parse(Regex.Match(v, @"^\d+(\.\d+)*").Value))
+            .Select(ParseUnityVersion)
             .Any(v => v > currentParsed);
+    }
+
+    public static System.Version ParseUnityVersion(string version)
+    {
+        // Extract the numeric part of the version string
+        var match = Regex.Match(version, @"(\d+)\.(\d+)\.(\d+)");
+        if (!match.Success)
+        {
+            throw new FormatException($"Invalid Unity version format: {version}");
+        }
+
+        int major = int.Parse(match.Groups[1].Value);
+        int minor = int.Parse(match.Groups[2].Value);
+        int build = int.Parse(match.Groups[3].Value);
+
+        return new System.Version(major, minor, build);
     }
 }
 
@@ -123,54 +139,54 @@ public class CaffeineUpdater : IPackageManagerExtension
         EditorApplication.update -= UpdatePackage;
     }
 
-    private static void PackageRequestUpdate()
+private static void PackageRequestUpdate()
+{
+    if (!_listRequest.IsCompleted) return;
+    switch (_listRequest.Status)
     {
-        if (!_listRequest.IsCompleted) return;
-        switch (_listRequest.Status)
+        case StatusCode.Success:
         {
-            case StatusCode.Success:
+            foreach (var package in _listRequest.Result)
             {
-                foreach (var package in _listRequest.Result)
+                if (package.name.ToLower().StartsWith("com.caffeine"))
                 {
-                    if (package.name.ToLower().StartsWith("com.caffeine"))
+                    string currentVersion = package.version;
+                    var compatibleVersions = package.versions.compatible;
+                    var allVersions = package.versions.all;
+                    var latestCompatibleVersion = VersionUtility.GetHighestStableVersion(compatibleVersions);
+
+                    if (!string.IsNullOrEmpty(latestCompatibleVersion) && VersionUtility.ParseUnityVersion(latestCompatibleVersion) > VersionUtility.ParseUnityVersion(currentVersion))
                     {
-                        string currentVersion = package.version;
-                        var compatibleVersions = package.versions.compatible;
-                        var allVersions = package.versions.all;
-                        var latestCompatibleVersion = VersionUtility.GetHighestStableVersion(compatibleVersions);
-                        var highestVersion = VersionUtility.GetHighestStableVersion(allVersions);
-
-                        if (!string.IsNullOrEmpty(latestCompatibleVersion) && new Version(latestCompatibleVersion) > new Version(currentVersion))
+                        var shouldUpdate = EditorUtility.DisplayDialog("Package Update", $"There is an update available for {package.displayName}. Would you like to update to version {latestCompatibleVersion}?", "Ok", "Cancel");
+                        if (shouldUpdate)
                         {
-                            var shouldUpdate = EditorUtility.DisplayDialog("Package Update", $"There is an update available for {package.displayName}. Would you like to update to version {latestCompatibleVersion}?", "Ok", "Cancel");
-                            if (shouldUpdate)
-                            {
-                                RemovePackageSymLinksFromCaffeineBuilders();
-                                var updateToPackage = $"{package.name}@{latestCompatibleVersion}";
-                                _progressId = Progress.Start($"Updating {package.displayName}...");
-                                _addRequest = Client.Add(updateToPackage);
+                            RemovePackageSymLinksFromCaffeineBuilders();
+                            var updateToPackage = $"{package.name}@{latestCompatibleVersion}";
+                            _progressId = Progress.Start($"Updating {package.displayName}...");
+                            _addRequest = Client.Add(updateToPackage);
 
-                                EditorApplication.update += UpdatePackage;
-                            }
+                            EditorApplication.update += UpdatePackage;
                         }
-                        else if (VersionUtility.IsHigherVersionAvailable(currentVersion, allVersions))
-                        {
-                            EditorUtility.DisplayDialog("Package Update", $"There is an update available for {package.displayName}. Please upgrade to Unity 2022.3.20f1. ", "Ok");
-                        }
-
-                        break;
                     }
+                    else if (VersionUtility.IsHigherVersionAvailable(currentVersion, allVersions))
+                    {
+                        EditorUtility.DisplayDialog("Package Update", $"There is an update available for {package.displayName}. Please upgrade to Unity 2022.3.20f1. ", "Ok");
+                    }
+
+                    break;
                 }
-
-                break;
             }
-            case >= StatusCode.Failure:
-                Debug.LogError($"Failed to list packages: {_listRequest.Error.message}");
-                break;
-        }
 
-        EditorApplication.update -= PackageRequestUpdate;
+            break;
+        }
+        case >= StatusCode.Failure:
+            Debug.LogError($"Failed to list packages: {_listRequest.Error.message}");
+            break;
     }
+
+    EditorApplication.update -= PackageRequestUpdate;
+}
+
     
     public static void RemovePackageSymLinksFromCaffeineBuilders()
     {

@@ -31,6 +31,7 @@ Shader "Graphics Tools/Samples/Fish"
 
             #define _SPECULAR_HIGHLIGHTS
 
+            #include "UnityStandardUtils.cginc"
             #include "UnityCG.cginc"
             #include "UnityStandardConfig.cginc"
             #include "Packages/com.caffeine/3RD/MRTK Graphic Tools/Runtime/Shaders/GraphicsToolsCommon.hlsl"

@@ -41,7 +41,7 @@ Shader "Graphics Tools/Magnifier"
             #pragma shader_feature_local _ROUND_CORNERS
 
             #include "Packages/com.unity.render-pipelines.universal/ShaderLibrary/Core.hlsl"
-            #include "Packages/com.microsoft.mrtk.graphicstools.unity/Runtime/Shaders/GraphicsToolsCommon.hlsl"
+            #include "Packages/com.caffeine/3RD/MRTK Graphic Tools/Runtime/Shaders/GraphicsToolsCommon.hlsl"
 
             CBUFFER_START(UnityPerMaterial)
                 float _RoundCornerRadius;
