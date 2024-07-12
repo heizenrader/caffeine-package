@@ -4,7 +4,16 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
-## [1.1.2] - 03.06.2024
+## [1.1.3] - 07.12.2024
+### Added
+- VisionOS Build Support for Windows
+- Added Option to Sign On from Another Device
+- Added limited support for the use Unity Splines (More coming in a future version)
+### Fixed
+- Bug Fixes
+- Performance Enhancements
+
+## [1.1.2] - 06.06.2024
 ### Fixed
 - Fixed an example shader error that affected Macs using Metal only.
 
