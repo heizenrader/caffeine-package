@@ -1,50 +1,96 @@
 <ui:UXML xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements" xsi="http://www.w3.org/2001/XMLSchema-instance" engine="UnityEngine.UIElements" editor="UnityEditor.UIElements" noNamespaceSchemaLocation="../../../../../../../UIElementsSchema/UIElements.xsd" editor-extension-mode="False">
-    <ui:VisualElement name="VerticalContainer" style="flex-grow: 1;">
-        <ui:VisualElement name="BuildHeader" style="height: 25px; padding-top: 10px; background-color: rgb(255, 255, 255); flex-shrink: 0;">
-            <ui:Label text="Builder Settings" display-tooltip-when-elided="true" name="Header" style="background-color: rgba(255, 255, 255, 0); color: rgb(0, 0, 0); -unity-font-style: bold; margin-left: 10px; margin-top: -5px;" />
+    <ui:VisualElement style="flex-grow: 1;">
+        <ui:VisualElement name="BuildHeader" style="height: 25px; padding-top: 0; background-color: rgb(255, 255, 255); flex-shrink: 0; align-items: flex-start; justify-content: center; padding-left: 5px;">
+            <ui:Label text="Builder(s)" display-tooltip-when-elided="true" name="Header" style="background-color: rgba(255, 255, 255, 0); color: rgb(0, 0, 0); -unity-font-style: bold; margin-left: 0; margin-top: 0; margin-right: 0; margin-bottom: 0; padding-top: 0; padding-right: 0; padding-bottom: 0; padding-left: 0; -unity-text-align: upper-left;" />
         </ui:VisualElement>
-        <ui:VisualElement name="Settings" style="margin-top: 20px; margin-bottom: 10px; flex-grow: 0; flex-shrink: 0;">
-            <ui:VisualElement style="flex-direction: row; margin-top: 5px; margin-bottom: 5px; flex-grow: 1; margin-left: 5px;">
+        <ui:VisualElement name="Settings" style="margin-top: 0; margin-bottom: 0; flex-grow: 0; flex-shrink: 0; justify-content: flex-start; margin-right: 0; margin-left: 0;">
+            <ui:VisualElement style="flex-direction: row; margin-top: 10px; margin-bottom: 10px; flex-grow: 1; margin-left: 5px; margin-right: 0;">
                 <ui:Toggle label="Thread Priority" name="ThreadPriority" style="margin-bottom: 0; margin-top: 0; margin-right: 0; margin-left: 0; -unity-text-align: middle-left;" />
                 <ui:Label text="* Experimental: Build processes will be set to high priority, which may reduce overall build time." display-tooltip-when-elided="true" style="flex-grow: 1; font-size: 10px; -unity-text-align: middle-left; white-space: normal; margin-left: 15px;" />
             </ui:VisualElement>
-            <ui:VisualElement style="flex-direction: row; margin-top: 5px; margin-bottom: 5px; flex-grow: 1; margin-left: 5px;">
+            <ui:VisualElement style="flex-direction: row; margin-top: 0; margin-bottom: 10px; flex-grow: 1; margin-left: 5px; margin-right: 0;">
                 <ui:Toggle label="Use Parallel Building" name="ParallelBuild" style="margin-bottom: 0; margin-top: 0; margin-right: 0; margin-left: 0; -unity-text-align: middle-left;" />
                 <ui:Label text="* Enables simultaneous spawning of build processes for potentially faster build times, as opposed to sequential processes that wait for one to finish before starting the next." display-tooltip-when-elided="true" style="flex-grow: 1; font-size: 10px; -unity-text-align: middle-left; white-space: normal; margin-left: 15px;" />
             </ui:VisualElement>
-            <ui:VisualElement style="flex-direction: row; margin-top: 5px; margin-bottom: 5px; flex-grow: 1; margin-left: 5px;">
+            <ui:VisualElement style="flex-direction: row; margin-top: 0; margin-bottom: 10px; flex-grow: 1; margin-left: 5px; margin-right: 0;">
                 <ui:Toggle label="Use Staggered Building" name="StaggeredBuild" style="margin-left: 13px; margin-right: 0; margin-top: 0; margin-bottom: 0; -unity-text-align: middle-left;" />
                 <ui:Label text="* Staggers the start times of parallel build processes to prevent sudden spikes in CPU/RAM usage. Ensures a slight delay between initiating each process." display-tooltip-when-elided="true" name="StaggeredTooltip" style="flex-grow: 1; font-size: 10px; -unity-text-align: middle-left; white-space: normal; margin-left: 15px;" />
             </ui:VisualElement>
-            <ui:VisualElement style="flex-direction: row; margin-top: 5px; margin-bottom: 5px; flex-grow: 1; margin-left: 5px; margin-right: 5px;">
+            <ui:VisualElement style="flex-direction: row; margin-top: 0; margin-bottom: 10px; flex-grow: 1; margin-left: 5px; margin-right: 0;">
                 <ui:Toggle label="Publish Before Backup" name="PublishBeforeExport" style="margin-bottom: 0; margin-top: 0; margin-right: 0; margin-left: 0; -unity-text-align: middle-left;" />
                 <ui:Label text="* Ensures build processes complete before initiating cloud backup. When disabled, building and backup tasks run concurrently." display-tooltip-when-elided="true" style="flex-grow: 1; font-size: 10px; -unity-text-align: middle-left; white-space: normal; margin-left: 15px;" />
             </ui:VisualElement>
-            <ui:VisualElement style="flex-direction: row; margin-top: 5px; margin-bottom: 5px; flex-grow: 1; margin-left: 5px; margin-right: 5px;">
+            <ui:VisualElement style="flex-direction: row; margin-top: 0; margin-bottom: 10px; flex-grow: 1; margin-left: 5px; margin-right: 0;">
                 <ui:Toggle label="Remember Platforms" name="RememberBuildPlatforms" style="margin-bottom: 0; margin-top: 0; margin-right: 0; margin-left: 0; -unity-text-align: middle-left;" />
                 <ui:Label text="* Remembers your build platform selections between builds." display-tooltip-when-elided="true" style="flex-grow: 1; font-size: 10px; -unity-text-align: middle-left; white-space: normal; margin-left: 15px;" />
             </ui:VisualElement>
-        </ui:VisualElement>
-        <ui:VisualElement name="Platforms" style="height: 25px; padding-top: 10px; background-color: rgb(255, 255, 255); flex-shrink: 0;">
-            <ui:Label text="Unity Pro Settings" display-tooltip-when-elided="true" name="Platforms" style="background-color: rgba(255, 255, 255, 0); color: rgb(0, 0, 0); -unity-font-style: bold; margin-left: 10px; margin-top: -5px;" />
-        </ui:VisualElement>
-        <ui:VisualElement name="PlatformSettings" style="margin-top: 20px; margin-bottom: 10px; flex-grow: 0; flex-shrink: 0;">
-            <ui:VisualElement style="flex-direction: row; margin-top: 5px; margin-bottom: 5px; flex-grow: 1; margin-left: 5px;">
-                <ui:Toggle label="VisionOS Support" name="EnableVisionOS" style="margin-bottom: 0; margin-top: 0; margin-right: 0; margin-left: 0; -unity-text-align: middle-left;" />
-                <ui:Label text="* Enables VisionOS support." display-tooltip-when-elided="true" name="VisionOSNoteLabel" style="flex-grow: 1; font-size: 10px; -unity-text-align: middle-left; white-space: normal; margin-left: 15px;" />
+            <ui:VisualElement name="CLIParameters" style="flex-direction: row; margin-top: 0; margin-left: 5px; margin-right: 0; margin-bottom: 20px; flex-grow: 0; align-items: auto;">
+                <ui:VisualElement>
+                    <ui:Label text="CLI Parameter(s)" display-tooltip-when-elided="true" style="width: 100px; padding-top: 0; padding-right: 0; -unity-text-align: lower-left; justify-content: center;" />
+                </ui:VisualElement>
+                <ui:TextField picking-mode="Ignore" value="q" name="CLIParametersField" style="height: 20px; align-items: auto; justify-content: center; align-self: auto; margin-top: 0; margin-right: 0; margin-bottom: 0; margin-left: 75px; flex-shrink: 1; flex-grow: 1;" />
+                <ui:Label text="* Additional Build Parameters ( E.G. &quot;-job-worker-count 2&quot;)." display-tooltip-when-elided="true" style="flex-grow: 1; font-size: 10px; -unity-text-align: upper-center; white-space: normal; margin-left: 15px; align-self: auto; justify-content: flex-start; align-items: auto; padding-top: 0; padding-bottom: 0; padding-left: 0; padding-right: 0; margin-top: 0; margin-bottom: 0; margin-right: 5px;" />
             </ui:VisualElement>
         </ui:VisualElement>
-        <ui:VisualElement name="DiskHeader" style="height: 25px; padding-top: 0; background-color: rgb(255, 255, 255); margin-top: 21px; flex-shrink: 0;">
-            <ui:Label text="Disk Space" display-tooltip-when-elided="true" name="Header" style="background-color: rgba(255, 255, 255, 0); color: rgb(0, 0, 0); -unity-font-style: bold; margin-left: 10px; margin-top: 5px;" />
+        <ui:VisualElement name="Scripting" style="height: 25px; padding-top: 0; background-color: rgb(255, 255, 255); flex-shrink: 0; padding-right: 0; padding-bottom: 0; padding-left: 5px; align-items: flex-start; justify-content: center;">
+            <ui:Label text="Scripting" display-tooltip-when-elided="true" name="Header" style="background-color: rgba(255, 255, 255, 0); color: rgb(0, 0, 0); -unity-font-style: bold; margin-left: 0; margin-top: 0; margin-right: 0; margin-bottom: 0; padding-top: 0; padding-right: 0; padding-bottom: 0; padding-left: 0;" />
         </ui:VisualElement>
-        <ui:VisualElement name="DiskInfo" style="margin-top: 20px; margin-bottom: 10px; flex-shrink: 0;">
-            <ui:VisualElement name="AvailableSpace" style="flex-direction: row; margin-top: 0; margin-left: 3px; margin-right: 3px; margin-bottom: 10px;">
+        <ui:VisualElement name="ScriptSettings" style="margin-top: 0; margin-bottom: 0; flex-grow: 0; flex-shrink: 0; margin-right: 0; margin-left: 0;">
+            <ui:VisualElement style="flex-direction: row; margin-top: 10px; margin-bottom: 10px; flex-grow: 1; margin-left: 5px;">
+                <ui:Toggle label="Caffeine Plus" name="CaffeinePlusToggle" style="margin-bottom: 0; margin-top: 0; margin-right: 0; margin-left: 0; -unity-text-align: middle-left;" />
+                <ui:Label text="* Enable custom scripting through the use of Caffeine Plus assembly." display-tooltip-when-elided="true" style="flex-grow: 1; font-size: 10px; -unity-text-align: middle-left; white-space: normal; margin-left: 15px;" />
+            </ui:VisualElement>
+            <ui:VisualElement style="flex-direction: row; margin-top: 5px; margin-bottom: 20px; flex-grow: 1; margin-left: 5px;">
+                <ui:Toggle label="All Scripts" name="CollectAllScripts" style="margin-bottom: 0; margin-top: 0; margin-right: 0; margin-left: 13px; -unity-text-align: middle-left;" />
+                <ui:Label text="* Package all scripts in project vs subset of scripts referenced by the scene." display-tooltip-when-elided="true" style="flex-grow: 1; font-size: 10px; -unity-text-align: middle-left; white-space: normal; margin-left: 15px;" />
+            </ui:VisualElement>
+        </ui:VisualElement>
+        <ui:VisualElement name="Platforms" style="height: 25px; padding-top: 0; background-color: rgb(255, 255, 255); flex-shrink: 0; padding-right: 0; padding-bottom: 0; padding-left: 5px; align-items: flex-start; justify-content: center;">
+            <ui:Label text="Platforms" display-tooltip-when-elided="true" name="Platforms" style="background-color: rgba(255, 255, 255, 0); color: rgb(0, 0, 0); -unity-font-style: bold; margin-left: 0; margin-top: 0; padding-top: 0; padding-right: 0; padding-bottom: 0; padding-left: 0; margin-right: 0; margin-bottom: 0;" />
+        </ui:VisualElement>
+        <ui:VisualElement name="PlatformSettings" style="margin-top: 0; margin-bottom: 0; flex-grow: 0; flex-shrink: 0;">
+            <ui:VisualElement style="flex-grow: 1; flex-direction: row;">
+                <ui:VisualElement name="LeftSide" style="flex-grow: 1; margin-top: 10px; margin-bottom: 20px; margin-left: 5px;">
+                    <ui:VisualElement name="VisualElement" style="flex-direction: row; margin-top: 5px; margin-bottom: 5px; flex-grow: 1; margin-left: 5px;">
+                        <ui:Toggle label="Mac" name="EnableMac" style="margin-bottom: 0; margin-top: 0; margin-right: 0; margin-left: 0; -unity-text-align: middle-left;" />
+                        <ui:Label text="* Enables Mac support." display-tooltip-when-elided="true" name="MacNoteLabel" style="flex-grow: 1; font-size: 10px; -unity-text-align: middle-left; white-space: normal; margin-left: 15px;" />
+                    </ui:VisualElement>
+                    <ui:VisualElement name="VisualElement" style="flex-direction: row; margin-top: 5px; margin-bottom: 5px; flex-grow: 1; margin-left: 5px;">
+                        <ui:Toggle label="Windows" name="EnableWindows" style="margin-bottom: 0; margin-top: 0; margin-right: 0; margin-left: 0; -unity-text-align: middle-left;" />
+                        <ui:Label text="* Enables Windows support." display-tooltip-when-elided="true" name="WindowsNoteLabel" style="flex-grow: 1; font-size: 10px; -unity-text-align: middle-left; white-space: normal; margin-left: 15px;" />
+                    </ui:VisualElement>
+                    <ui:VisualElement name="VisualElement" style="flex-direction: row; margin-top: 5px; margin-bottom: 5px; flex-grow: 1; margin-left: 5px;">
+                        <ui:Toggle label="Android" name="EnableAndroid" style="margin-bottom: 0; margin-top: 0; margin-right: 0; margin-left: 0; -unity-text-align: middle-left;" />
+                        <ui:Label text="* Enables Android support." display-tooltip-when-elided="true" name="AndroidNoteLabel" style="flex-grow: 1; font-size: 10px; -unity-text-align: middle-left; white-space: normal; margin-left: 15px;" />
+                    </ui:VisualElement>
+                </ui:VisualElement>
+                <ui:VisualElement name="RightSide" style="flex-grow: 1; margin-top: 10px; margin-bottom: 20px; margin-left: 5px;">
+                    <ui:VisualElement name="VisualElement" style="flex-direction: row; margin-top: 5px; margin-bottom: 5px; flex-grow: 1; margin-left: 5px;">
+                        <ui:Toggle label="iOS" name="EnableiOS" style="margin-bottom: 0; margin-top: 0; margin-right: 0; margin-left: 0; -unity-text-align: middle-left;" />
+                        <ui:Label text="* Enables iOS support." display-tooltip-when-elided="true" name="iOSNoteLabel" style="flex-grow: 1; font-size: 10px; -unity-text-align: middle-left; white-space: normal; margin-left: 15px;" />
+                    </ui:VisualElement>
+                    <ui:VisualElement name="VisualElement" style="flex-direction: row; margin-top: 5px; margin-bottom: 5px; flex-grow: 1; margin-left: 5px; align-self: auto; justify-content: flex-start; align-items: flex-start;">
+                        <ui:Toggle label="VisionOS" name="EnableVisionOS" style="margin-bottom: 0; margin-top: 0; margin-right: 0; margin-left: 0; -unity-text-align: middle-left;" />
+                        <ui:Label text="* Enables VisionOS support." display-tooltip-when-elided="true" name="VisionOSNoteLabel" style="flex-grow: 1; font-size: 10px; -unity-text-align: middle-left; white-space: normal; margin-left: 15px;" />
+                    </ui:VisualElement>
+                    <ui:VisualElement name="FuturePlatform" style="flex-direction: row; margin-top: 5px; margin-bottom: 5px; flex-grow: 1; margin-left: 5px; align-self: auto; justify-content: flex-start; align-items: auto; display: flex; visibility: hidden;">
+                        <ui:Toggle label="VisionOS Support" name="EnableVisionOS" style="margin-bottom: 0; margin-top: 0; margin-right: 0; margin-left: 0; -unity-text-align: middle-left;" />
+                        <ui:Label text="* Enables VisionOS support." display-tooltip-when-elided="true" name="VisionOSNoteLabel" style="flex-grow: 1; font-size: 10px; -unity-text-align: middle-left; white-space: normal; margin-left: 15px;" />
+                    </ui:VisualElement>
+                </ui:VisualElement>
+            </ui:VisualElement>
+        </ui:VisualElement>
+        <ui:VisualElement name="DiskHeader" style="height: 25px; padding-top: 0; background-color: rgb(255, 255, 255); margin-top: 0; flex-shrink: 0; margin-right: 0; margin-bottom: 0; margin-left: 0; align-items: flex-start; justify-content: center; padding-left: 5px;">
+            <ui:Label text="Disk Space" display-tooltip-when-elided="true" name="Header" style="background-color: rgba(255, 255, 255, 0); color: rgb(0, 0, 0); -unity-font-style: bold; margin-left: 0; margin-top: 0; margin-right: 0; margin-bottom: 0; padding-top: 0; padding-right: 0; padding-bottom: 0; padding-left: 0;" />
+        </ui:VisualElement>
+        <ui:VisualElement name="DiskInfo" style="margin-top: 0; margin-bottom: 0; flex-shrink: 0;">
+            <ui:VisualElement name="AvailableSpace" style="flex-direction: row; margin-top: 10px; margin-left: 5px; margin-right: 0; margin-bottom: 10px;">
                 <ui:VisualElement>
                     <ui:Label text="Available Space" display-tooltip-when-elided="true" style="width: 100px; padding-top: 2px;" />
                 </ui:VisualElement>
                 <ui:ProgressBar value="1" name="DiskProgress" high-value="1" style="flex-grow: 1; margin-bottom: 0; height: 15px; margin-top: 2px;" />
             </ui:VisualElement>
-            <ui:VisualElement name="ProjectSize" style="flex-direction: row; margin-left: 3px; margin-right: 3px;">
+            <ui:VisualElement name="ProjectSize" style="flex-direction: row; margin-left: 5px; margin-right: 0; margin-top: 10px; margin-bottom: 20px;">
                 <ui:Label text="Builder Projects" display-tooltip-when-elided="true" style="width: 100px;" />
                 <ui:Label display-tooltip-when-elided="true" name="BuilderProjectsSize" style="flex-grow: 1; justify-content: flex-start; -unity-text-align: upper-left; padding-right: 25px;" />
                 <ui:Button text="Remove" display-tooltip-when-elided="true" name="ResetBuildersButton" />

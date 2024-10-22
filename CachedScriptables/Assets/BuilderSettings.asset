@@ -13,13 +13,22 @@ MonoBehaviour:
   m_Name: BuilderSettings
   m_EditorClassIdentifier: 
   _serializedData:
-    ParallelBuild: 1
-    StaggeredBuild: 0
-    PublishBeforeExport: 0
-    ThreadPriority: 0
-    RememberBuildChoices: 1
     BuildOptions:
       Win: 0
       Mac: 0
       iOS: 0
       Android: 0
+      VisionOS: 0
+    ParallelBuild: 1
+    StaggeredBuild: 0
+    PublishBeforeExport: 0
+    ThreadPriority: 0
+    RememberBuildChoices: 1
+    CLIParameters: 
+    EnableCaffeinePlus: 0
+    CollectAllScripts: 0
+    EnableVisionOS: 0
+    EnableMac: 1
+    EnableWindows: 1
+    EnableiOS: 1
+    EnableAndroid: 1
