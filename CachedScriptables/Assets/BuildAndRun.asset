@@ -16,3 +16,5 @@ MonoBehaviour:
     CustomBuildRoute: 0
     VRApplicationPath: 
     NonVRApplicationPath: 
+    VRRegisteredApplicationPath: 
+    NonVRRegisteredApplicationPath: 

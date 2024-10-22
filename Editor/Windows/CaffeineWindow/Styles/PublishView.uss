@@ -1,17 +1,18 @@
 .customToggle Label {
-    flex-shrink: 1;
+    flex-grow: 0;
+    flex-shrink: 0;
+    flex-basis: auto;
     width: auto;
     height: auto;
-    align-items: auto;
+    margin-left: 5;
+    margin-right: 10;
+    align-self: auto;
     justify-content: flex-start;
-    left: auto;
-    margin-left: 0;
-    margin-right: 0;
-    flex-grow: 1;
     min-width: 50px;
 }
 
-.customToggle VisualElement {
-    flex-grow: 0;
-    flex-shrink: 0;
+.customToggle {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
 }
