@@ -139,64 +139,64 @@ public class CaffeineUpdater : IPackageManagerExtension
         EditorApplication.update -= UpdatePackage;
     }
 
-private static void PackageRequestUpdate()
-{
-    if (!_listRequest.IsCompleted) return;
-    switch (_listRequest.Status)
+    private static void PackageRequestUpdate()
     {
-        case StatusCode.Success:
+        if (!_listRequest.IsCompleted) return;
+        switch (_listRequest.Status)
         {
-            foreach (var package in _listRequest.Result)
+            case StatusCode.Success:
             {
-                if (package.name.ToLower().StartsWith("com.caffeine"))
+                foreach (var package in _listRequest.Result)
                 {
-                    string currentVersion = package.version;
-                    var compatibleVersions = package.versions.compatible;
-                    var allVersions = package.versions.all;
-                    var latestCompatibleVersion = VersionUtility.GetHighestStableVersion(compatibleVersions);
-
-                    if (!string.IsNullOrEmpty(latestCompatibleVersion) && VersionUtility.ParseUnityVersion(latestCompatibleVersion) > VersionUtility.ParseUnityVersion(currentVersion))
+                    if (package.name.ToLower().StartsWith("com.caffeine"))
                     {
-                        var shouldUpdate = EditorUtility.DisplayDialog("Package Update", $"There is an update available for {package.displayName}. Would you like to update to version {latestCompatibleVersion}?", "Ok", "Cancel");
-                        if (shouldUpdate)
+                        string currentVersion = package.version;
+                        var compatibleVersions = package.versions.compatible;
+                        var allVersions = package.versions.all;
+                        var latestCompatibleVersion = VersionUtility.GetHighestStableVersion(compatibleVersions);
+
+                        if (!string.IsNullOrEmpty(latestCompatibleVersion) && VersionUtility.ParseUnityVersion(latestCompatibleVersion) > VersionUtility.ParseUnityVersion(currentVersion))
                         {
-                            RemovePackageSymLinksFromCaffeineBuilders();
-                            var updateToPackage = $"{package.name}@{latestCompatibleVersion}";
-                            _progressId = Progress.Start($"Updating {package.displayName}...");
-                            _addRequest = Client.Add(updateToPackage);
+                            var shouldUpdate = EditorUtility.DisplayDialog("Package Update", $"There is an update available for {package.displayName}. Would you like to update to version {latestCompatibleVersion}?", "Ok", "Cancel");
+                            if (shouldUpdate)
+                            {
+                                RemovePackageSymLinksFromCaffeineBuilders();
+                                var updateToPackage = $"{package.name}@{latestCompatibleVersion}";
+                                _progressId = Progress.Start($"Updating {package.displayName}...");
+                                _addRequest = Client.Add(updateToPackage);
 
-                            EditorApplication.update += UpdatePackage;
+                                EditorApplication.update += UpdatePackage;
+                            }
                         }
-                    }
-                    else if (VersionUtility.IsHigherVersionAvailable(currentVersion, allVersions))
-                    {
-                        EditorUtility.DisplayDialog("Package Update", $"There is an update available for {package.displayName}. Please upgrade to Unity 2022.3.20f1. ", "Ok");
-                    }
+                        else if (VersionUtility.IsHigherVersionAvailable(currentVersion, allVersions))
+                        {
+                            EditorUtility.DisplayDialog("Package Update", $"There is an update available for {package.displayName}. Please upgrade to Unity 2022.3.20f1. ", "Ok");
+                        }
 
-                    break;
+                        break;
+                    }
                 }
-            }
 
-            break;
+                break;
+            }
+            case >= StatusCode.Failure:
+                Debug.LogError($"Failed to list packages: {_listRequest.Error.message}");
+                break;
         }
-        case >= StatusCode.Failure:
-            Debug.LogError($"Failed to list packages: {_listRequest.Error.message}");
-            break;
+
+        EditorApplication.update -= PackageRequestUpdate;
     }
 
-    EditorApplication.update -= PackageRequestUpdate;
-}
-
-    
     public static void RemovePackageSymLinksFromCaffeineBuilders()
     {
         try
         {
-            var caffeineAssembly = "Caffeine";
-            var className = "BuilderProjectManager";
+            var caffeineAssembly = "Caffeine".ToLower();
+            var classNameLegacy = "BuilderProjectManager";
+            var className = "Caffeine.Editor.BuilderProjectManager";
             var methodName = "RemovePackageSymLinksFromBuilders";
 
-            var assembly = AppDomain.CurrentDomain.GetAssemblies().FirstOrDefault(a => a.GetName().Name == caffeineAssembly);
+            var assembly = AppDomain.CurrentDomain.GetAssemblies().FirstOrDefault(a => a.GetName().Name.ToLower() == caffeineAssembly);
             if (assembly == null)
             {
                 Debug.LogError($"Assembly '{caffeineAssembly}' not found.");
@@ -206,8 +206,13 @@ private static void PackageRequestUpdate()
             Type type = assembly.GetType(className);
             if (type == null)
             {
-                Debug.LogError($"Type '{className}' not found in assembly '{caffeineAssembly}'.");
-                return;
+                type = assembly.GetType(classNameLegacy);
+
+                if (type == null)
+                {
+                    Debug.LogError($"Type '{className}' not found in assembly '{caffeineAssembly}'.");
+                    return;
+                }
             }
 
             MethodInfo method = type.GetMethod(methodName, BindingFlags.Static | BindingFlags.Public);
@@ -230,11 +235,12 @@ private static void PackageRequestUpdate()
     {
         try
         {
-            var caffeineAssembly = "Caffeine";
-            var className = "BuilderProjectManager";
+            var caffeineAssembly = "Caffeine".ToLower();
+            var classNameLegacy = "BuilderProjectManager";
+            var className = "Caffeine.Editor.BuilderProjectManager";
             var methodName = "RemoveBuilderProjects";
 
-            var assembly = AppDomain.CurrentDomain.GetAssemblies().FirstOrDefault(a => a.GetName().Name == caffeineAssembly);
+            var assembly = AppDomain.CurrentDomain.GetAssemblies().FirstOrDefault(a => a.GetName().Name.ToLower() == caffeineAssembly);
             if (assembly == null)
             {
                 Debug.LogError($"Assembly '{caffeineAssembly}' not found.");
@@ -244,8 +250,13 @@ private static void PackageRequestUpdate()
             Type type = assembly.GetType(className);
             if (type == null)
             {
-                Debug.LogError($"Type '{className}' not found in assembly '{caffeineAssembly}'.");
-                return;
+                type = assembly.GetType(classNameLegacy);
+
+                if (type == null)
+                {
+                    Debug.LogError($"Type '{className}' not found in assembly '{caffeineAssembly}'.");
+                    return;
+                }
             }
 
             MethodInfo method = type.GetMethod(methodName, BindingFlags.Static | BindingFlags.Public);
