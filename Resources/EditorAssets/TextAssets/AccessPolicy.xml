@@ -1,0 +1,71 @@
+<AccessPolicy>
+    
+    <!-- Internal system restrictions -->
+    <Rule id="InternalRestriction">
+        <assembly fullname="Mono.Security">
+            <type fullname="*"/>
+        </assembly>
+        <assembly fullname="MS.Internal">
+            <type fullname="*"/>
+        </assembly>
+        <assembly fullname="UnityEngine.Internal">
+            <type fullname="*"/>
+        </assembly>
+        <assembly fullname="HybridCLR">
+            <type fullname="*"/>
+        </assembly>
+        <assembly fullname="Unity.Properties.Internal">
+            <type fullname="*"/>
+        </assembly>
+    </Rule>
+
+    <!-- Specific Unity restrictions -->
+    <Rule id="UnityRestriction">
+        <assembly fullname="UnityEngine.CoreModule">
+            <type fullname="UnityEngine.Resources.Load.*"/>
+            <type fullname="UnityEngine.Application.Quit"/>
+            <type fullname="UnityEngine.Application.OpenURL"/>
+            <type fullname="UnityEngine.Object.FindObjectsOfTypeIncludingAssets.*"/>
+            <type fullname="UnityEngine.Events.BaseInvokableCall.*"/>
+            <type fullname="UnityEngine.Events.InvokableCall.*"/>
+            <type fullname="UnityEngine.Events.PersistentCall.*"/>
+            <type fullname="UnityEngine.LowLevel.*"/>
+            <type fullname="UnityEngine.Networking.*"/>
+            <type fullname="UnityEngine.PlayerLoop.*"/>
+            <type fullname="UnityEngine.PlayerPrefs.*"/>
+            <type fullname="UnityEngine.Burst.*"/>
+            <type fullname="Unity.Burst.*"/>
+            <type fullname="UnityEngine.Lumin.*"/>
+            <type fullname="UnityEngine.XR.*"/>
+            <type fullname="UnityEngine.Cloth.*"/>
+            <type fullname="UnityEngine.Xml.*"/>
+            <type fullname="UnityEngine.DynamicGI.*"/>
+        </assembly>
+        <assembly fullname="UnityEngine.VRModule">
+            <type fullname="*"/>
+        </assembly>
+    </Rule>
+
+    <!-- Addressable assets specific permissions and restrictions -->
+    <Rule id="AddressableAssets">
+        <assembly fullname="Unity.Addressables">
+            <type fullname="*"/>
+        </assembly>
+    </Rule>
+    
+    <!-- Core restrictions -->
+    <Rule id="CoreRestrictions">
+        <assembly fullname="mscorlib">
+            <type fullname="System.IO.*"/>
+            <type fullname="System.Reflection.*"/>
+            <type fullname="System.Reflection.MemberInfo" access="1"/>
+            <type fullname="System.Reflection.MemberInfo.Name" access="1"/>
+            <type fullname="System.Reflection.MemberInfo.get_Name" access="1"/>
+            <type fullname="System.Type.*"/>
+        </assembly>
+    </Rule>
+
+    <!-- Target Assemblies -->
+    <Target assembly="CaffeinePlus" accessAssemblyNotInRules="0" rules="InternalRestriction,UnityRestriction,AddressableAssets,CoreRestrictions"/>
+
+</AccessPolicy>
