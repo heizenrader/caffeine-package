@@ -9,6 +9,6 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: -1307093160, guid: 8ac8e203a0bb13147b5a2edd731298a3, type: 3}
-  m_Name: ObjectiveNodeEventSO
+  m_Script: {fileID: 746820186, guid: 8ac8e203a0bb13147b5a2edd731298a3, type: 3}
+  m_Name: VoiceBotEventSO
   m_EditorClassIdentifier: 
