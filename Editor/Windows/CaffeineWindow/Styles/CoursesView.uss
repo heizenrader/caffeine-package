@@ -1,9 +1,9 @@
 .customToggle Label {
     -unity-text-align: middle-left;
-    width: 40px;
+    width: auto;
     flex-shrink: 0;
     height: 10px;
-    flex-grow: 0;
+    flex-grow: 1;
     position: absolute;
     white-space: nowrap;
     min-width: 0;
