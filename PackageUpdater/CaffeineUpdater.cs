@@ -1,6 +1,7 @@
 #if UNITY_EDITOR && !EDXR_VIEWER
 using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Reflection;
 using System.Text.RegularExpressions;
@@ -70,6 +71,7 @@ public class CaffeineUpdater : IPackageManagerExtension
     private static ListRequest _listRequest;
     private static AddRequest _addRequest;
     private static int _progressId = -1;
+    private const string _expectedReleaseVersion = "2022.3.54f1";
 
     [InitializeOnLoadMethod]
     public static void PackageUpdateCheck()
@@ -97,10 +99,30 @@ public class CaffeineUpdater : IPackageManagerExtension
     public void OnPackageAddedOrUpdated(PackageInfo packageInfo)
     {
         if (Application.isBatchMode) return;
-        if (packageInfo == null || string.IsNullOrEmpty(packageInfo.name)) return;
+        if (packageInfo == null || string.IsNullOrEmpty(packageInfo.name) || packageInfo.name.ToLower() != "com.caffeine") return;
+        
+        var info = new Caffeine.Package.PackageInfo()
+        {
+            PackageName = packageInfo.name.ToLower(),
+            PackageID = packageInfo.packageId,
+            PackagePath = packageInfo.resolvedPath
+        };
 
-        var packageName = packageInfo.name.ToLower();
-        if (packageName.Contains("caffeine")) { SessionState.SetBool("ResetSymlinks", true); }
+        try
+        {
+            var jsonInfo = JsonUtility.ToJson(info);
+            if (!string.IsNullOrEmpty(jsonInfo))
+            {
+                var path = Path.Combine(Application.persistentDataPath, "Package.info");
+                File.WriteAllText(path, jsonInfo);
+            }
+        }
+        catch (Exception e)
+        {
+            Debug.Log("Exception Saving Package Info: " + e.Message);
+        }
+            
+        SessionState.SetBool("ReLinkPackage", true);
     }
 
     public void OnPackageRemoved(PackageInfo packageInfo)
@@ -108,7 +130,7 @@ public class CaffeineUpdater : IPackageManagerExtension
         if (packageInfo == null || string.IsNullOrEmpty(packageInfo.name)) return;
 
         var packageName = packageInfo.name.ToLower();
-        if (packageName.Contains("caffeine"))
+        if (packageName.Contains("com.caffeine"))
         {
             RemoveCaffeineBuilders();
         }
@@ -166,7 +188,7 @@ public class CaffeineUpdater : IPackageManagerExtension
                         }
                         else if (VersionUtility.IsHigherVersionAvailable(currentVersion, allVersions))
                         {
-                            EditorUtility.DisplayDialog("Package Update", $"There is an update available for {package.displayName}. Please upgrade to Unity 2022.3.20f1. ", "Ok");
+                            EditorUtility.DisplayDialog("Package Update", $"There is an update available for {package.displayName}. Please upgrade to Unity {_expectedReleaseVersion}. ", "Ok");
                         }
 
                         break;
