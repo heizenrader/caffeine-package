@@ -4,35 +4,39 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
-## [1.1.6-pre05] - 03.12.2024
+## [1.1.6-pre06] - 04.23.2025
 ### Fixed
 - Package Pre-Release
 
-## [1.1.6-pre04] - 03.11.2024
+## [1.1.6-pre05] - 03.12.2025
 ### Fixed
 - Package Pre-Release
 
-## [1.1.6-pre03] - 03.10.2024
+## [1.1.6-pre04] - 03.11.2025
 ### Fixed
 - Package Pre-Release
 
-## [1.1.6-pre02] - 03.10.2024
+## [1.1.6-pre03] - 03.10.2025
 ### Fixed
 - Package Pre-Release
 
-## [1.1.6-pre01] - 01.24.2024
+## [1.1.6-pre02] - 03.10.2025
 ### Fixed
 - Package Pre-Release
 
-## [1.1.5] - 01.23.2024
+## [1.1.6-pre01] - 01.24.2025
+### Fixed
+- Package Pre-Release
+
+## [1.1.5] - 01.23.2025
 ### Fixed
 - Bug Fixes
 
-## [1.1.5-pre01] - 01.23.2024
+## [1.1.5-pre01] - 01.23.2025
 ### Fixed
 - Package Pre-Release
 
-## [1.1.4] - 01.10.2024
+## [1.1.4] - 01.10.2025
 ### Fixed
 - FLOW Features
 - AI Assistant
@@ -40,39 +44,39 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Performance Improvements
 See more at https://educationxr.com/1-3-1-release-notes/
 
-## [1.1.4-pre23] - 01.09.2024
+## [1.1.4-pre23] - 01.09.2025
 ### Fixed
 - Package Pre-Release Fixes
 
-## [1.1.4-pre22] - 01.08.2024
+## [1.1.4-pre22] - 01.08.2025
 ### Fixed
 - Package Pre-Release Fixes
 
-## [1.1.4-pre21] - 01.07.2024
+## [1.1.4-pre21] - 01.07.2025
 ### Fixed
 - Package Pre-Release Fixes
 
-## [1.1.4-pre20] - 01.06.2024
+## [1.1.4-pre20] - 01.06.2025
 ### Fixed
 - Package Pre-Release Fixes
 
-## [1.1.4-pre19] - 01.03.2024
+## [1.1.4-pre19] - 01.03.2025
 ### Fixed
 - Package Pre-Release Fixes
 
-## [1.1.4-pre18] - 01.03.2024
+## [1.1.4-pre18] - 01.03.2025
 ### Fixed
 - Package Pre-Release Fixes
 
-## [1.1.4-pre17] - 01.03.2024
+## [1.1.4-pre17] - 01.03.2025
 ### Fixed
 - Package Pre-Release Fixes
 
-## [1.1.4-pre16] - 01.03.2024
+## [1.1.4-pre16] - 01.03.2025
 ### Fixed
 - Package Pre-Release Fixes
 
-## [1.1.4-pre15] - 01.02.2024
+## [1.1.4-pre15] - 01.02.2025
 ### Fixed
 - Package Pre-Release Fixes
 
