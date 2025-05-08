@@ -32,10 +32,10 @@
                 <ui:Label text="* Additional Build Parameters ( E.G. &quot;-job-worker-count 2&quot;)." display-tooltip-when-elided="true" style="flex-grow: 1; font-size: 10px; -unity-text-align: upper-center; white-space: normal; margin-left: 15px; align-self: auto; justify-content: flex-start; align-items: auto; padding-top: 0; padding-bottom: 0; padding-left: 0; padding-right: 0; margin-top: 0; margin-bottom: 0; margin-right: 5px;" />
             </ui:VisualElement>
         </ui:VisualElement>
-        <ui:VisualElement name="Scripting" style="height: 25px; padding-top: 0; background-color: rgb(255, 255, 255); flex-shrink: 0; padding-right: 0; padding-bottom: 0; padding-left: 5px; align-items: flex-start; justify-content: center;">
+        <ui:VisualElement name="Scripting" style="height: 25px; padding-top: 0; background-color: rgb(255, 255, 255); flex-shrink: 0; padding-right: 0; padding-bottom: 0; padding-left: 5px; align-items: flex-start; justify-content: center; visibility: hidden; display: none;">
             <ui:Label text="Scripting" display-tooltip-when-elided="true" name="Header" style="background-color: rgba(255, 255, 255, 0); color: rgb(0, 0, 0); -unity-font-style: bold; margin-left: 0; margin-top: 0; margin-right: 0; margin-bottom: 0; padding-top: 0; padding-right: 0; padding-bottom: 0; padding-left: 0;" />
         </ui:VisualElement>
-        <ui:VisualElement name="ScriptSettings" style="margin-top: 0; margin-bottom: 0; flex-grow: 0; flex-shrink: 0; margin-right: 0; margin-left: 0;">
+        <ui:VisualElement name="ScriptSettings" style="margin-top: 0; margin-bottom: 0; flex-grow: 0; flex-shrink: 0; margin-right: 0; margin-left: 0; display: none;">
             <ui:VisualElement style="flex-direction: row; margin-top: 10px; margin-bottom: 10px; flex-grow: 1; margin-left: 5px;">
                 <ui:Toggle label="Caffeine Plus" name="CaffeinePlusToggle" style="margin-bottom: 0; margin-top: 0; margin-right: 0; margin-left: 0; -unity-text-align: middle-left;" />
                 <ui:Label text="* Enable custom scripting through the use of Caffeine Plus assembly." display-tooltip-when-elided="true" style="flex-grow: 1; font-size: 10px; -unity-text-align: middle-left; white-space: normal; margin-left: 15px;" />
