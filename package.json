@@ -29,7 +29,7 @@
     "com.unity.textmeshpro": "2.0.1",
     "com.unity.nuget.newtonsoft-json": "2.0.0",
     "com.unity.xr.management": "4.4.1",
-    "com.unity.xr.oculus": "4.2.0",
+    "com.unity.xr.openxr": "1.13.2",
     "com.unity.shadergraph": "14.0.0",
     "com.unity.splines": "2.6.0",
     "com.unity.ai.navigation": "1.1.5",
