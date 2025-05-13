@@ -1,6 +1,6 @@
 {
   "name": "com.caffeine",
-  "version": "1.1.6-pre10",
+  "version": "1.1.6-pre11",
   "displayName": "Caffeine",
   "description": "Caffeine package is a collection of utility methods, design patterns, and extensions for creating, previewing, and distributing interactive courses within Unity.",
   "unity": "2022.3",
