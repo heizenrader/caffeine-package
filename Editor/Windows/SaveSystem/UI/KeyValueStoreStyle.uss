@@ -1,0 +1,126 @@
+.console-container {
+    display: flex;
+    flex-direction: column;
+    padding: 10px;
+    background-color: rgb(44, 44, 44);
+}
+
+.console-scrollview {
+    flex-grow: 1;
+    background-color: rgb(60, 60, 60);
+    border-top-left-radius: 0;
+    border-top-right-radius: 0;
+    border-bottom-left-radius: 10px;
+    border-bottom-right-radius: 10px;
+    padding: 10px;
+    position: relative;
+    -unity-overflow-clip-box: padding-box;
+}
+
+#logContent {
+    display: flex;
+    flex-direction: column;
+    color: rgb(255, 255, 255);
+    white-space: normal;
+}
+
+.filter-dropdown-container {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+}
+
+.dropdown-menu {
+    position: absolute;
+    top: 100%;
+    right: 0;
+    background-color: white;
+    display: none;
+    flex-direction: column;
+    padding: 5px;
+    border-bottom-width: 1px;
+    border-left-width: 1px;
+    border-right-width: 1px;
+    border-top-width: 1px;
+    border-bottom-color: rgb(128, 128, 128);
+    border-left-color: rgb(128, 128, 128);
+    border-right-color: rgb(128, 128, 128);
+    border-top-color: rgb(128, 128, 128);
+    flex-grow: 1;
+    justify-content: flex-start;
+    align-self: auto;
+    align-items: auto;
+}
+
+.dropdown-item {
+    margin: 5px 0;
+    flex-grow: 1;
+    max-height: 30px;
+    min-height: 30px;
+    height: 30px;
+}
+
+.header-bar {
+    background-color: rgb(50, 50, 50); /* matches SubHeader */
+    height: 50px;
+    padding: 0 10px;
+    border-bottom-width: 1px;
+    border-bottom-color: rgb(65, 65, 65);
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.log-header {
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    background-color: rgb(80, 80, 80);
+    padding: 4px 10px;
+    border-bottom-width: 1px;
+    border-bottom-color: rgb(110, 110, 110);
+    height: 28px;
+}
+
+.log-header-label {
+    color: white;
+    -unity-font-style: bold;
+    -unity-text-align: middle-left;
+    cursor: link; /* closest equivalent to "pointer" in Unity */
+    background-color: rgba(0, 0, 0, 0);
+    border-top-width: 0;
+    border-right-width: 0;
+    border-bottom-width: 0;
+    border-left-width: 0;
+}
+
+.log-header-label:hover {
+    background-color: rgba(255, 255, 255, 0.05);
+}
+
+.kvs-row {
+    flex-direction: row;
+    height: 33px;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    border-bottom-width: 1px;
+    border-bottom-color: rgb(40, 40, 40);
+    align-items: center;
+}
+
+.kvs-cell {
+    flex-grow: 1;
+    flex-basis: 0;
+    color: white;
+    font-size: 12px;
+    -unity-text-align: middle-left;
+}
+
+.add-button {
+    color: white;
+    font-size: 13px;
+    background-color: rgb(75, 75, 75);
+    padding: 4px 10px;
+    border-radius: 4px;
+    -unity-font-style: bold;
+}
