@@ -1,0 +1,45 @@
+<ui:UXML xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements" xsi="http://www.w3.org/2001/XMLSchema-instance" engine="UnityEngine.UIElements" editor="UnityEditor.UIElements" noNamespaceSchemaLocation="../../../../UIElementsSchema/UIElements.xsd" editor-extension-mode="True">
+    <Style src="project://database/Packages/com.caffeine/Editor/Windows/CaffeineWindow/Styles/PublishView.uss?fileID=7433441132597879392&amp;guid=ae4a43b75c8d7954684a4744d8effc5b&amp;type=3#PublishView" />
+    <ui:VisualElement name="PublishSettings" style="padding-right: 10px; padding-left: 10px; flex-grow: 1; padding-bottom: 0; margin-bottom: 15px;">
+        <ui:VisualElement name="Header" style="flex-shrink: 0; height: 25px; background-color: rgb(255, 255, 255); flex-direction: row;">
+            <ui:VisualElement name="LeftSide" style="width: 50%; align-items: flex-start;">
+                <ui:Label text="Settings" display-tooltip-when-elided="true" style="color: rgb(33, 33, 33); font-size: 16px; -unity-font-style: bold; padding-left: 10px; -unity-text-align: middle-left; padding-right: 0; padding-top: 2px;" />
+            </ui:VisualElement>
+            <ui:VisualElement name="RightSide" style="width: 50%; align-items: flex-end; justify-content: center;">
+                <ui:Button text="&gt;" display-tooltip-when-elided="true" name="Foldout" style="width: 25px; height: 25px; rotate: 90deg; background-color: rgba(255, 255, 255, 0); border-left-width: 0; border-right-width: 0; border-top-width: 0; border-bottom-width: 0; color: rgb(10, 10, 10); -unity-font-style: bold;" />
+            </ui:VisualElement>
+        </ui:VisualElement>
+        <ui:GroupBox name="Body" style="flex-shrink: 1; flex-grow: 1; align-items: stretch; flex-direction: row;">
+            <ui:VisualElement name="Left" style="flex-grow: 1;">
+                <ui:VisualElement name="SubHeader" style="flex-grow: 0; height: 30px;">
+                    <ui:Label tabindex="-1" text="Assets" parse-escape-sequences="true" display-tooltip-when-elided="true" style="justify-content: center; align-self: auto; align-items: auto; -unity-text-align: upper-left; -unity-font-style: bold; padding-left: 10px;" />
+                </ui:VisualElement>
+                <ui:VisualElement name="Body" style="flex-grow: 0; flex-direction: column; justify-content: flex-start; align-items: flex-start; row-gap: 6px; padding-left: 10px; padding-top: 6px; padding-bottom: 6px;">
+                    <ui:VisualElement name="Resources" style="flex-direction: row; align-items: center; flex-grow: 0; margin-bottom: 5px;">
+                        <ui:Toggle name="ResourcesToggle" style="flex-shrink: 0; -unity-text-align: upper-center; flex-grow: 0; min-width: auto; width: auto; flex-basis: auto; display: flex; margin-top: 0; margin-right: 0; margin-bottom: 0; margin-left: 0;" />
+                        <ui:Label tabindex="-1" text="Resources" parse-escape-sequences="true" display-tooltip-when-elided="true" name="Label" style="margin-top: 0; margin-right: 10px; margin-bottom: 0; margin-left: 0; padding-top: 0; padding-right: 0; padding-bottom: 0; padding-left: 10px; -unity-text-align: middle-left;" />
+                    </ui:VisualElement>
+                    <ui:VisualElement name="StreamingAssets" style="flex-direction: row; align-items: center; flex-grow: 0; margin-bottom: 5px;">
+                        <ui:Toggle name="StreamingToggle" style="flex-shrink: 0; -unity-text-align: upper-center; flex-grow: 0; min-width: auto; width: auto; flex-basis: auto; display: flex; margin-top: 0; margin-right: 0; margin-bottom: 0; margin-left: 0;" />
+                        <ui:Label tabindex="-1" text="Streaming Assets" parse-escape-sequences="true" display-tooltip-when-elided="true" name="Label" style="margin-top: 0; margin-right: 10px; margin-bottom: 0; margin-left: 0; padding-top: 0; padding-right: 0; padding-bottom: 0; padding-left: 10px; -unity-text-align: middle-left;" />
+                    </ui:VisualElement>
+                    <ui:VisualElement name="Includes" style="flex-direction: row; align-items: center; flex-grow: 0;">
+                        <ui:Toggle name="StreamingToggle" style="flex-shrink: 0; -unity-text-align: upper-center; flex-grow: 0; min-width: auto; width: auto; flex-basis: auto; display: flex; margin-top: 0; margin-right: 0; margin-bottom: 0; margin-left: 0;" />
+                        <ui:Label tabindex="-1" text="Includes  (*.cginc, hlsl)" parse-escape-sequences="true" display-tooltip-when-elided="true" name="Label" style="margin-top: 0; margin-right: 10px; margin-bottom: 0; margin-left: 0; padding-top: 0; padding-right: 0; padding-bottom: 0; padding-left: 10px; -unity-text-align: middle-left;" />
+                    </ui:VisualElement>
+                </ui:VisualElement>
+            </ui:VisualElement>
+            <ui:VisualElement name="Right" style="flex-grow: 1;">
+                <ui:VisualElement name="SubHeader" style="flex-grow: 0; height: 30px;">
+                    <ui:Label tabindex="-1" text="Scripting" parse-escape-sequences="true" display-tooltip-when-elided="true" name="Label" style="justify-content: center; align-self: auto; align-items: auto; -unity-text-align: upper-left; -unity-font-style: bold; padding-left: 10px;" />
+                </ui:VisualElement>
+                <ui:VisualElement name="Body" style="flex-grow: 1; padding-top: 6px; padding-bottom: 6px; padding-left: 10px;">
+                    <ui:VisualElement name="AllScripts" style="flex-direction: row; align-items: center; flex-grow: 0;">
+                        <ui:Toggle name="AllScriptsToggle" style="flex-shrink: 0; -unity-text-align: upper-center; flex-grow: 0; min-width: auto; width: auto; flex-basis: auto; display: flex; margin-top: 0; margin-right: 0; margin-bottom: 0; margin-left: 0;" />
+                        <ui:Label tabindex="-1" text="Collect All Scripts" parse-escape-sequences="true" display-tooltip-when-elided="true" name="Label" style="margin-top: 0; margin-right: 10px; margin-bottom: 0; margin-left: 0; padding-top: 0; padding-right: 0; padding-bottom: 0; padding-left: 10px; -unity-text-align: middle-left;" />
+                    </ui:VisualElement>
+                </ui:VisualElement>
+            </ui:VisualElement>
+        </ui:GroupBox>
+    </ui:VisualElement>
+</ui:UXML>
