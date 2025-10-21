@@ -1,0 +1,14 @@
+name: Call publish on prod push
+
+on:
+  push:
+    branches:
+      - deploy-prod
+
+jobs:
+  call-webhook-prod:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Call webhook prod url
+        run: curl -X GET https://package-deploy.educationxr.com/publish-prod
