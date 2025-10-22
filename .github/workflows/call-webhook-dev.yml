@@ -1,0 +1,14 @@
+name: Call publish on dev push
+
+on:
+  push:
+    branches:
+      - deploy-dev
+
+jobs:
+  call-webhook-dev:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Call webhook dev url
+        run: curl -X GET https://package-deploy.educationxr.com/publish-dev
