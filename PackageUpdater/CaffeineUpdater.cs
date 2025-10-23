@@ -1,4 +1,4 @@
-#if UNITY_EDITOR && !EDXR_VIEWER
+/*#if UNITY_EDITOR && !EDXR_VIEWER
 using System;
 using System.Collections.Generic;
 using System.IO;
@@ -207,34 +207,9 @@ public class CaffeineUpdater : IPackageManagerExtension
     
     private static void RemoveCaffeineBuilders()
     {
-        try
-        {
-            var caffeineAssembly = "Caffeine".ToLower();
-            var classNameLegacy = "BuilderProjectManager";
-            var className = "Caffeine.Editor.BuilderProjectManager";
-            var methodName = "RemoveBuilderProjects";
-
-            var assembly = AppDomain.CurrentDomain.GetAssemblies().FirstOrDefault(a => a.GetName().Name.ToLower() == caffeineAssembly);
-            if (assembly == null) { return; }
-
-            Type type = assembly.GetType(className);
-            if (type == null)
-            {
-                type = assembly.GetType(classNameLegacy);
-                if (type == null) { return; }
-            }
-
-            MethodInfo method = type.GetMethod(methodName, BindingFlags.Static | BindingFlags.Public);
-            if (method == null) { return; }
-
-            // Invoke the method
-            method.Invoke(null, null);
-        }
-        catch (Exception ex)
-        {
-            Debug.LogError($"Error invoking method: {ex.Message}");
-        }
+        // TO:DO Replace Reflection And Just Remove Builders
+        // Look For Builders Folder And Remove / With Some Verification
     }
 }
 
-#endif
+#endif*/
