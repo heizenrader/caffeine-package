@@ -1,156 +1,6 @@
 {
-  "RestingConvergence": {
-    "ConvergenceTime": {
-      "ScalarTime": {
-        "Value": 15.0,
-        "Unit": "s"
-      }
-    },
-    "MinimumReactionTime": {
-      "ScalarTime": {
-        "Value": 25.0,
-        "Unit": "s"
-      }
-    },
-    "MaximumAllowedStabilizationTime": {
-      "ScalarTime": {
-        "Value": 1000.0,
-        "Unit": "s"
-      }
-    },
-    "PropertyConvergence": [{
-      "DataRequest": {
-        "Category": "Physiology",
-        "PropertyName": "HeartRate"
-      },
-      "PercentDifference": 4.0
-    }, {
-      "DataRequest": {
-        "Category": "Physiology",
-        "PropertyName": "CardiacOutput"
-      },
-      "PercentDifference": 4.0
-    }, {
-      "DataRequest": {
-        "Category": "Physiology",
-        "PropertyName": "DiastolicArterialPressure"
-      },
-      "PercentDifference": 4.0
-    }, {
-      "DataRequest": {
-        "Category": "Physiology",
-        "PropertyName": "SystolicArterialPressure"
-      },
-      "PercentDifference": 4.0
-    }, {
-      "DataRequest": {
-        "Category": "Physiology",
-        "PropertyName": "TidalVolume"
-      },
-      "PercentDifference": 0.25
-    }, {
-      "DataRequest": {
-        "Category": "Physiology",
-        "PropertyName": "OxygenSaturation"
-      },
-      "PercentDifference": 0.25
-    }, {
-      "DataRequest": {
-        "Category": "Physiology",
-        "PropertyName": "CoreTemperature"
-      },
-      "PercentDifference": 0.25
-    }, {
-      "DataRequest": {
-        "Category": "Physiology",
-        "PropertyName": "SkinTemperature"
-      },
-      "PercentDifference": 0.25
-    }]
-  },
-  "FeedbackConvergence": {
-    "ConvergenceTime": {
-      "ScalarTime": {
-        "Value": 15.0,
-        "Unit": "s"
-      }
-    },
-    "MinimumReactionTime": {
-      "ScalarTime": {
-        "Value": 25.0,
-        "Unit": "s"
-      }
-    },
-    "MaximumAllowedStabilizationTime": {
-      "ScalarTime": {
-        "Value": 1000.0,
-        "Unit": "s"
-      }
-    },
-    "PropertyConvergence": [{
-      "DataRequest": {
-        "Category": "Physiology",
-        "PropertyName": "HeartRate"
-      },
-      "PercentDifference": 4.0
-    }, {
-      "DataRequest": {
-        "Category": "Physiology",
-        "PropertyName": "CardiacOutput"
-      },
-      "PercentDifference": 4.0
-    }, {
-      "DataRequest": {
-        "Category": "Physiology",
-        "PropertyName": "DiastolicArterialPressure"
-      },
-      "PercentDifference": 4.0
-    }, {
-      "DataRequest": {
-        "Category": "Physiology",
-        "PropertyName": "SystolicArterialPressure"
-      },
-      "PercentDifference": 4.0
-    }, {
-      "DataRequest": {
-        "Category": "Physiology",
-        "PropertyName": "TidalVolume"
-      },
-      "PercentDifference": 0.25
-    }, {
-      "DataRequest": {
-        "Category": "Physiology",
-        "PropertyName": "OxygenSaturation"
-      },
-      "PercentDifference": 0.25
-    }, {
-      "DataRequest": {
-        "Category": "Physiology",
-        "PropertyName": "LeftAfferentArterioleResistance"
-      },
-      "PercentDifference": 0.25
-    }, {
-      "DataRequest": {
-        "Category": "Physiology",
-        "PropertyName": "RightAfferentArterioleResistance"
-      },
-      "PercentDifference": 0.25
-    }, {
-      "DataRequest": {
-        "Category": "Physiology",
-        "PropertyName": "CoreTemperature"
-      },
-      "PercentDifference": 0.25
-    }, {
-      "DataRequest": {
-        "Category": "Physiology",
-        "PropertyName": "SkinTemperature"
-      },
-      "PercentDifference": 0.25
-    }]
-  },
-  "ConditionConvergence": {
-    "AcuteRespiratoryDistressSyndrome": {
+  "ConvergenceCriteria": {
+    "Consume Meal": {
       "ConvergenceTime": {
         "ScalarTime": {
           "Value": 15.0,
@@ -231,7 +81,7 @@
         "PercentDifference": 0.25
       }]
     },
-    "ChronicAnemia": {
+    "Pneumonia": {
       "ConvergenceTime": {
         "ScalarTime": {
           "Value": 15.0,
@@ -312,7 +162,7 @@
         "PercentDifference": 0.25
       }]
     },
-    "PulmonaryFibrosis": {
+    "Chronic Ventricular Systolic Dysfunction": {
       "ConvergenceTime": {
         "ScalarTime": {
           "Value": 15.0,
@@ -393,7 +243,400 @@
         "PercentDifference": 0.25
       }]
     },
-    "ChronicRenalStenosis": {
+    "Dehydration": {
+      "ConvergenceTime": {
+        "ScalarTime": {
+          "Value": 15.0,
+          "Unit": "s"
+        }
+      },
+      "MinimumReactionTime": {
+        "ScalarTime": {
+          "Value": 25.0,
+          "Unit": "s"
+        }
+      },
+      "MaximumAllowedStabilizationTime": {
+        "ScalarTime": {
+          "Value": 2000.0,
+          "Unit": "s"
+        }
+      },
+      "PropertyConvergence": [{
+        "DataRequest": {
+          "Category": "Physiology",
+          "PropertyName": "HeartRate"
+        },
+        "PercentDifference": 4.0
+      }, {
+        "DataRequest": {
+          "Category": "Physiology",
+          "PropertyName": "CardiacOutput"
+        },
+        "PercentDifference": 4.0
+      }, {
+        "DataRequest": {
+          "Category": "Physiology",
+          "PropertyName": "DiastolicArterialPressure"
+        },
+        "PercentDifference": 4.0
+      }, {
+        "DataRequest": {
+          "Category": "Physiology",
+          "PropertyName": "SystolicArterialPressure"
+        },
+        "PercentDifference": 4.0
+      }, {
+        "DataRequest": {
+          "Category": "Physiology",
+          "PropertyName": "TidalVolume"
+        },
+        "PercentDifference": 0.25
+      }, {
+        "DataRequest": {
+          "Category": "Physiology",
+          "PropertyName": "OxygenSaturation"
+        },
+        "PercentDifference": 0.25
+      }, {
+        "DataRequest": {
+          "Category": "Physiology",
+          "PropertyName": "LeftAfferentArterioleResistance"
+        },
+        "PercentDifference": 0.25
+      }, {
+        "DataRequest": {
+          "Category": "Physiology",
+          "PropertyName": "RightAfferentArterioleResistance"
+        },
+        "PercentDifference": 0.25
+      }, {
+        "DataRequest": {
+          "Category": "Physiology",
+          "PropertyName": "CoreTemperature"
+        },
+        "PercentDifference": 0.25
+      }, {
+        "DataRequest": {
+          "Category": "Physiology",
+          "PropertyName": "SkinTemperature"
+        },
+        "PercentDifference": 0.25
+      }]
+    },
+    "Resting": {
+      "ConvergenceTime": {
+        "ScalarTime": {
+          "Value": 15.0,
+          "Unit": "s"
+        }
+      },
+      "MinimumReactionTime": {
+        "ScalarTime": {
+          "Value": 25.0,
+          "Unit": "s"
+        }
+      },
+      "MaximumAllowedStabilizationTime": {
+        "ScalarTime": {
+          "Value": 1000.0,
+          "Unit": "s"
+        }
+      },
+      "PropertyConvergence": [{
+        "DataRequest": {
+          "Category": "Physiology",
+          "PropertyName": "HeartRate"
+        },
+        "PercentDifference": 4.0
+      }, {
+        "DataRequest": {
+          "Category": "Physiology",
+          "PropertyName": "CardiacOutput"
+        },
+        "PercentDifference": 4.0
+      }, {
+        "DataRequest": {
+          "Category": "Physiology",
+          "PropertyName": "DiastolicArterialPressure"
+        },
+        "PercentDifference": 4.0
+      }, {
+        "DataRequest": {
+          "Category": "Physiology",
+          "PropertyName": "SystolicArterialPressure"
+        },
+        "PercentDifference": 4.0
+      }, {
+        "DataRequest": {
+          "Category": "Physiology",
+          "PropertyName": "TidalVolume"
+        },
+        "PercentDifference": 0.25
+      }, {
+        "DataRequest": {
+          "Category": "Physiology",
+          "PropertyName": "OxygenSaturation"
+        },
+        "PercentDifference": 0.25
+      }, {
+        "DataRequest": {
+          "Category": "Physiology",
+          "PropertyName": "CoreTemperature"
+        },
+        "PercentDifference": 0.25
+      }, {
+        "DataRequest": {
+          "Category": "Physiology",
+          "PropertyName": "SkinTemperature"
+        },
+        "PercentDifference": 0.25
+      }]
+    },
+    "Acute Respiratory Distress Syndrome": {
+      "ConvergenceTime": {
+        "ScalarTime": {
+          "Value": 15.0,
+          "Unit": "s"
+        }
+      },
+      "MinimumReactionTime": {
+        "ScalarTime": {
+          "Value": 25.0,
+          "Unit": "s"
+        }
+      },
+      "MaximumAllowedStabilizationTime": {
+        "ScalarTime": {
+          "Value": 1000.0,
+          "Unit": "s"
+        }
+      },
+      "PropertyConvergence": [{
+        "DataRequest": {
+          "Category": "Physiology",
+          "PropertyName": "HeartRate"
+        },
+        "PercentDifference": 4.0
+      }, {
+        "DataRequest": {
+          "Category": "Physiology",
+          "PropertyName": "CardiacOutput"
+        },
+        "PercentDifference": 4.0
+      }, {
+        "DataRequest": {
+          "Category": "Physiology",
+          "PropertyName": "DiastolicArterialPressure"
+        },
+        "PercentDifference": 4.0
+      }, {
+        "DataRequest": {
+          "Category": "Physiology",
+          "PropertyName": "SystolicArterialPressure"
+        },
+        "PercentDifference": 4.0
+      }, {
+        "DataRequest": {
+          "Category": "Physiology",
+          "PropertyName": "TidalVolume"
+        },
+        "PercentDifference": 0.25
+      }, {
+        "DataRequest": {
+          "Category": "Physiology",
+          "PropertyName": "OxygenSaturation"
+        },
+        "PercentDifference": 0.25
+      }, {
+        "DataRequest": {
+          "Category": "Physiology",
+          "PropertyName": "LeftAfferentArterioleResistance"
+        },
+        "PercentDifference": 0.25
+      }, {
+        "DataRequest": {
+          "Category": "Physiology",
+          "PropertyName": "RightAfferentArterioleResistance"
+        },
+        "PercentDifference": 0.25
+      }, {
+        "DataRequest": {
+          "Category": "Physiology",
+          "PropertyName": "CoreTemperature"
+        },
+        "PercentDifference": 0.25
+      }, {
+        "DataRequest": {
+          "Category": "Physiology",
+          "PropertyName": "SkinTemperature"
+        },
+        "PercentDifference": 0.25
+      }]
+    },
+    "Impaired Alveolar Exchange": {
+      "ConvergenceTime": {
+        "ScalarTime": {
+          "Value": 15.0,
+          "Unit": "s"
+        }
+      },
+      "MinimumReactionTime": {
+        "ScalarTime": {
+          "Value": 25.0,
+          "Unit": "s"
+        }
+      },
+      "MaximumAllowedStabilizationTime": {
+        "ScalarTime": {
+          "Value": 1000.0,
+          "Unit": "s"
+        }
+      },
+      "PropertyConvergence": [{
+        "DataRequest": {
+          "Category": "Physiology",
+          "PropertyName": "HeartRate"
+        },
+        "PercentDifference": 4.0
+      }, {
+        "DataRequest": {
+          "Category": "Physiology",
+          "PropertyName": "CardiacOutput"
+        },
+        "PercentDifference": 4.0
+      }, {
+        "DataRequest": {
+          "Category": "Physiology",
+          "PropertyName": "DiastolicArterialPressure"
+        },
+        "PercentDifference": 4.0
+      }, {
+        "DataRequest": {
+          "Category": "Physiology",
+          "PropertyName": "SystolicArterialPressure"
+        },
+        "PercentDifference": 4.0
+      }, {
+        "DataRequest": {
+          "Category": "Physiology",
+          "PropertyName": "TidalVolume"
+        },
+        "PercentDifference": 0.25
+      }, {
+        "DataRequest": {
+          "Category": "Physiology",
+          "PropertyName": "OxygenSaturation"
+        },
+        "PercentDifference": 0.25
+      }, {
+        "DataRequest": {
+          "Category": "Physiology",
+          "PropertyName": "LeftAfferentArterioleResistance"
+        },
+        "PercentDifference": 0.25
+      }, {
+        "DataRequest": {
+          "Category": "Physiology",
+          "PropertyName": "RightAfferentArterioleResistance"
+        },
+        "PercentDifference": 0.25
+      }, {
+        "DataRequest": {
+          "Category": "Physiology",
+          "PropertyName": "CoreTemperature"
+        },
+        "PercentDifference": 0.25
+      }, {
+        "DataRequest": {
+          "Category": "Physiology",
+          "PropertyName": "SkinTemperature"
+        },
+        "PercentDifference": 0.25
+      }]
+    },
+    "Initial Environmental Conditions": {
+      "ConvergenceTime": {
+        "ScalarTime": {
+          "Value": 15.0,
+          "Unit": "s"
+        }
+      },
+      "MinimumReactionTime": {
+        "ScalarTime": {
+          "Value": 25.0,
+          "Unit": "s"
+        }
+      },
+      "MaximumAllowedStabilizationTime": {
+        "ScalarTime": {
+          "Value": 1000.0,
+          "Unit": "s"
+        }
+      },
+      "PropertyConvergence": [{
+        "DataRequest": {
+          "Category": "Physiology",
+          "PropertyName": "HeartRate"
+        },
+        "PercentDifference": 4.0
+      }, {
+        "DataRequest": {
+          "Category": "Physiology",
+          "PropertyName": "CardiacOutput"
+        },
+        "PercentDifference": 4.0
+      }, {
+        "DataRequest": {
+          "Category": "Physiology",
+          "PropertyName": "DiastolicArterialPressure"
+        },
+        "PercentDifference": 4.0
+      }, {
+        "DataRequest": {
+          "Category": "Physiology",
+          "PropertyName": "SystolicArterialPressure"
+        },
+        "PercentDifference": 4.0
+      }, {
+        "DataRequest": {
+          "Category": "Physiology",
+          "PropertyName": "TidalVolume"
+        },
+        "PercentDifference": 0.25
+      }, {
+        "DataRequest": {
+          "Category": "Physiology",
+          "PropertyName": "OxygenSaturation"
+        },
+        "PercentDifference": 0.25
+      }, {
+        "DataRequest": {
+          "Category": "Physiology",
+          "PropertyName": "LeftAfferentArterioleResistance"
+        },
+        "PercentDifference": 0.25
+      }, {
+        "DataRequest": {
+          "Category": "Physiology",
+          "PropertyName": "RightAfferentArterioleResistance"
+        },
+        "PercentDifference": 0.25
+      }, {
+        "DataRequest": {
+          "Category": "Physiology",
+          "PropertyName": "CoreTemperature"
+        },
+        "PercentDifference": 0.25
+      }, {
+        "DataRequest": {
+          "Category": "Physiology",
+          "PropertyName": "SkinTemperature"
+        },
+        "PercentDifference": 0.25
+      }]
+    },
+    "Chronic Renal Stenosis": {
       "ConvergenceTime": {
         "ScalarTime": {
           "Value": 15.0,
@@ -490,7 +733,44 @@
         "PercentDifference": 4.0
       }]
     },
-    "ConsumeMeal": {
+    "AdvanceUntilStable": {
+      "ConvergenceTime": {
+        "ScalarTime": {
+          "Value": 300.0,
+          "Unit": "s"
+        }
+      },
+      "MinimumReactionTime": {
+        "ScalarTime": {
+          "Value": 300.0,
+          "Unit": "s"
+        }
+      },
+      "MaximumAllowedStabilizationTime": {
+        "ScalarTime": {
+          "Value": 7200.0,
+          "Unit": "s"
+        }
+      },
+      "PropertyConvergence": [{
+        "DataRequest": {
+          "Category": "LiquidCompartment",
+          "CompartmentName": "Aorta",
+          "SubstanceName": "CarbonDioxide",
+          "PropertyName": "PartialPressure"
+        },
+        "PercentDifference": 1.0
+      }, {
+        "DataRequest": {
+          "Category": "LiquidCompartment",
+          "CompartmentName": "Aorta",
+          "SubstanceName": "Oxygen",
+          "PropertyName": "PartialPressure"
+        },
+        "PercentDifference": 1.0
+      }]
+    },
+    "Chronic Pericardial Effusion": {
       "ConvergenceTime": {
         "ScalarTime": {
           "Value": 15.0,
@@ -571,7 +851,7 @@
         "PercentDifference": 0.25
       }]
     },
-    "ImpairedAlveolarExchange": {
+    "Chronic Anemia": {
       "ConvergenceTime": {
         "ScalarTime": {
           "Value": 15.0,
@@ -652,169 +932,7 @@
         "PercentDifference": 0.25
       }]
     },
-    "ChronicPericardialEffusion": {
-      "ConvergenceTime": {
-        "ScalarTime": {
-          "Value": 15.0,
-          "Unit": "s"
-        }
-      },
-      "MinimumReactionTime": {
-        "ScalarTime": {
-          "Value": 25.0,
-          "Unit": "s"
-        }
-      },
-      "MaximumAllowedStabilizationTime": {
-        "ScalarTime": {
-          "Value": 1000.0,
-          "Unit": "s"
-        }
-      },
-      "PropertyConvergence": [{
-        "DataRequest": {
-          "Category": "Physiology",
-          "PropertyName": "HeartRate"
-        },
-        "PercentDifference": 4.0
-      }, {
-        "DataRequest": {
-          "Category": "Physiology",
-          "PropertyName": "CardiacOutput"
-        },
-        "PercentDifference": 4.0
-      }, {
-        "DataRequest": {
-          "Category": "Physiology",
-          "PropertyName": "DiastolicArterialPressure"
-        },
-        "PercentDifference": 4.0
-      }, {
-        "DataRequest": {
-          "Category": "Physiology",
-          "PropertyName": "SystolicArterialPressure"
-        },
-        "PercentDifference": 4.0
-      }, {
-        "DataRequest": {
-          "Category": "Physiology",
-          "PropertyName": "TidalVolume"
-        },
-        "PercentDifference": 0.25
-      }, {
-        "DataRequest": {
-          "Category": "Physiology",
-          "PropertyName": "OxygenSaturation"
-        },
-        "PercentDifference": 0.25
-      }, {
-        "DataRequest": {
-          "Category": "Physiology",
-          "PropertyName": "LeftAfferentArterioleResistance"
-        },
-        "PercentDifference": 0.25
-      }, {
-        "DataRequest": {
-          "Category": "Physiology",
-          "PropertyName": "RightAfferentArterioleResistance"
-        },
-        "PercentDifference": 0.25
-      }, {
-        "DataRequest": {
-          "Category": "Physiology",
-          "PropertyName": "CoreTemperature"
-        },
-        "PercentDifference": 0.25
-      }, {
-        "DataRequest": {
-          "Category": "Physiology",
-          "PropertyName": "SkinTemperature"
-        },
-        "PercentDifference": 0.25
-      }]
-    },
-    "ChronicObstructivePulmonaryDisease": {
-      "ConvergenceTime": {
-        "ScalarTime": {
-          "Value": 15.0,
-          "Unit": "s"
-        }
-      },
-      "MinimumReactionTime": {
-        "ScalarTime": {
-          "Value": 25.0,
-          "Unit": "s"
-        }
-      },
-      "MaximumAllowedStabilizationTime": {
-        "ScalarTime": {
-          "Value": 1000.0,
-          "Unit": "s"
-        }
-      },
-      "PropertyConvergence": [{
-        "DataRequest": {
-          "Category": "Physiology",
-          "PropertyName": "HeartRate"
-        },
-        "PercentDifference": 4.0
-      }, {
-        "DataRequest": {
-          "Category": "Physiology",
-          "PropertyName": "CardiacOutput"
-        },
-        "PercentDifference": 4.0
-      }, {
-        "DataRequest": {
-          "Category": "Physiology",
-          "PropertyName": "DiastolicArterialPressure"
-        },
-        "PercentDifference": 4.0
-      }, {
-        "DataRequest": {
-          "Category": "Physiology",
-          "PropertyName": "SystolicArterialPressure"
-        },
-        "PercentDifference": 4.0
-      }, {
-        "DataRequest": {
-          "Category": "Physiology",
-          "PropertyName": "TidalVolume"
-        },
-        "PercentDifference": 0.25
-      }, {
-        "DataRequest": {
-          "Category": "Physiology",
-          "PropertyName": "OxygenSaturation"
-        },
-        "PercentDifference": 0.25
-      }, {
-        "DataRequest": {
-          "Category": "Physiology",
-          "PropertyName": "LeftAfferentArterioleResistance"
-        },
-        "PercentDifference": 0.25
-      }, {
-        "DataRequest": {
-          "Category": "Physiology",
-          "PropertyName": "RightAfferentArterioleResistance"
-        },
-        "PercentDifference": 0.25
-      }, {
-        "DataRequest": {
-          "Category": "Physiology",
-          "PropertyName": "CoreTemperature"
-        },
-        "PercentDifference": 0.25
-      }, {
-        "DataRequest": {
-          "Category": "Physiology",
-          "PropertyName": "SkinTemperature"
-        },
-        "PercentDifference": 0.25
-      }]
-    },
-    "ChronicVentricularSystolicDysfunction": {
+    "Pulmonary Fibrosis": {
       "ConvergenceTime": {
         "ScalarTime": {
           "Value": 15.0,
@@ -976,7 +1094,7 @@
         "PercentDifference": 0.25
       }]
     },
-    "PulmonaryShunt": {
+    "Chronic Obstructive Pulmonary Disease": {
       "ConvergenceTime": {
         "ScalarTime": {
           "Value": 15.0,
@@ -1057,88 +1175,7 @@
         "PercentDifference": 0.25
       }]
     },
-    "InitialEnvironmentalConditions": {
-      "ConvergenceTime": {
-        "ScalarTime": {
-          "Value": 15.0,
-          "Unit": "s"
-        }
-      },
-      "MinimumReactionTime": {
-        "ScalarTime": {
-          "Value": 25.0,
-          "Unit": "s"
-        }
-      },
-      "MaximumAllowedStabilizationTime": {
-        "ScalarTime": {
-          "Value": 1000.0,
-          "Unit": "s"
-        }
-      },
-      "PropertyConvergence": [{
-        "DataRequest": {
-          "Category": "Physiology",
-          "PropertyName": "HeartRate"
-        },
-        "PercentDifference": 4.0
-      }, {
-        "DataRequest": {
-          "Category": "Physiology",
-          "PropertyName": "CardiacOutput"
-        },
-        "PercentDifference": 4.0
-      }, {
-        "DataRequest": {
-          "Category": "Physiology",
-          "PropertyName": "DiastolicArterialPressure"
-        },
-        "PercentDifference": 4.0
-      }, {
-        "DataRequest": {
-          "Category": "Physiology",
-          "PropertyName": "SystolicArterialPressure"
-        },
-        "PercentDifference": 4.0
-      }, {
-        "DataRequest": {
-          "Category": "Physiology",
-          "PropertyName": "TidalVolume"
-        },
-        "PercentDifference": 0.25
-      }, {
-        "DataRequest": {
-          "Category": "Physiology",
-          "PropertyName": "OxygenSaturation"
-        },
-        "PercentDifference": 0.25
-      }, {
-        "DataRequest": {
-          "Category": "Physiology",
-          "PropertyName": "LeftAfferentArterioleResistance"
-        },
-        "PercentDifference": 0.25
-      }, {
-        "DataRequest": {
-          "Category": "Physiology",
-          "PropertyName": "RightAfferentArterioleResistance"
-        },
-        "PercentDifference": 0.25
-      }, {
-        "DataRequest": {
-          "Category": "Physiology",
-          "PropertyName": "CoreTemperature"
-        },
-        "PercentDifference": 0.25
-      }, {
-        "DataRequest": {
-          "Category": "Physiology",
-          "PropertyName": "SkinTemperature"
-        },
-        "PercentDifference": 0.25
-      }]
-    },
-    "LobarPneumonia": {
+    "Pulmonary Shunt": {
       "ConvergenceTime": {
         "ScalarTime": {
           "Value": 15.0,

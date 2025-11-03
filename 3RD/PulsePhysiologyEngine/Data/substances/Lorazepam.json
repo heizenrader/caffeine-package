@@ -50,7 +50,7 @@
     "TissueKinetics": [{
       "Name": "GutTissue",
       "PartitionCoefficient": {
-        "Value": 7.359799999999999
+        "Value": 7.3598
       }
     }, {
       "Name": "LeftKidneyTissue",
@@ -70,12 +70,12 @@
     }, {
       "Name": "LiverTissue",
       "PartitionCoefficient": {
-        "Value": 6.078799999999999
+        "Value": 6.0788
       }
     }, {
       "Name": "MyocardiumTissue",
       "PartitionCoefficient": {
-        "Value": 7.252000000000001
+        "Value": 7.252
       }
     }, {
       "Name": "RightLungTissue",
@@ -85,7 +85,7 @@
     }, {
       "Name": "BrainTissue",
       "PartitionCoefficient": {
-        "Value": 5.579000000000001
+        "Value": 5.579
       }
     }, {
       "Name": "BoneTissue",

@@ -1,41 +1,42 @@
 ﻿/* Distributed under the Apache License, Version 2.0.
    See accompanying NOTICE file for details.*/
-#if UNITY_EDITOR
+
 using UnityEngine;
 using UnityEditor;
-using System.IO;
 
-[CustomEditor(typeof(PulseEngineScenarioDriver), true)]
-public class PulseEngineScenarioDriverEditor : Editor
+namespace Pulse.Unity
 {
-  SerializedProperty scenarioFileProperty;   // serialized scenario file
-
-  void OnEnable()
+  [CustomEditor(typeof(PulseEngineScenarioDriver), true)]
+  public class PulseEngineScenarioDriverEditor : Editor
   {
-    scenarioFileProperty = serializedObject.FindProperty("scenarioJson");
-  }
+    SerializedProperty scenarioFileProperty;   // serialized scenario file
 
-  public override void OnInspectorGUI()
-  {
-    // Ensure serialized properties are up to date with component
-    serializedObject.Update();
-
-    // Draw UI to select scenario file
-    EditorGUILayout.PropertyField(scenarioFileProperty,
-                                  new GUIContent("Scenario File"));
-    var state = scenarioFileProperty.objectReferenceValue as TextAsset;
-    if (state == null)
+    void OnEnable()
     {
-      string message = "A scenario file to initialize the Pulse engine.";
-      EditorGUILayout.HelpBox(message, MessageType.Warning);
-      return;
+      scenarioFileProperty = serializedObject.FindProperty("scenarioJson");
     }
 
-    // Show the default inspector property editor without the script field
-    DrawPropertiesExcluding(serializedObject, "m_Script", "scenarioJson");
+    public override void OnInspectorGUI()
+    {
+      // Ensure serialized properties are up to date with component
+      serializedObject.Update();
 
-    // Apply modifications back to the component
-    serializedObject.ApplyModifiedProperties();
+      // Draw UI to select scenario file
+      EditorGUILayout.PropertyField(scenarioFileProperty,
+                                    new GUIContent("Scenario File"));
+      var state = scenarioFileProperty.objectReferenceValue as TextAsset;
+      if (state == null)
+      {
+        string message = "A scenario file to initialize the Pulse engine.";
+        EditorGUILayout.HelpBox(message, MessageType.Warning);
+        return;
+      }
+
+      // Show the default inspector property editor without the script field
+      DrawPropertiesExcluding(serializedObject, "m_Script", "scenarioJson");
+
+      // Apply modifications back to the component
+      serializedObject.ApplyModifiedProperties();
+    }
   }
 }
-#endif

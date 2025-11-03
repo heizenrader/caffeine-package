@@ -1,7 +1,7 @@
 {
   "Name": "CombatMultitrauma",
   "Description": "Showcase scenario: Soldier with closed tension pneumothorax and severe bleeding.",
-  "EngineStateFile":"Soldier@0s.pbb",
+  "EngineStateFile":"Soldier@0s.json",
   "DataRequestManager": {
     "DataRequest": 
     [

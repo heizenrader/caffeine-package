@@ -1,22 +1,23 @@
 ﻿/* Distributed under the Apache License, Version 2.0.
    See accompanying NOTICE file for details.*/
 
-#if UNITY_EDITOR
 using UnityEngine;
 using UnityEditor;
 
-[CustomEditor(typeof(PulseActionOnClick), true)]
-public class PulseActionOnClickEditor : PulseEngineControllerEditor
+namespace Pulse.Unity
 {
-  override internal void DrawProperties()
+  [CustomEditor(typeof(PulseActionOnClick), true)]
+  public class PulseActionOnClickEditor : PulseEngineControllerEditor
   {
-    GUI.enabled = Application.isPlaying;
-
-    var obj = target as PulseActionOnClick;
-    if (GUILayout.Button("Run Action"))
+    override internal void DrawProperties()
     {
-      obj.RunAction();
+      GUI.enabled = Application.isPlaying;
+
+      var obj = target as PulseActionOnClick;
+      if (GUILayout.Button("Run Action"))
+      {
+        obj.RunAction();
+      }
     }
   }
 }
-#endif
