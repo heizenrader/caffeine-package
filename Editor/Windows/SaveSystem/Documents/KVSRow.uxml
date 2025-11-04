@@ -1,0 +1,22 @@
+<ui:UXML xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements" xsi="http://www.w3.org/2001/XMLSchema-instance" engine="UnityEngine.UIElements" editor="UnityEditor.UIElements" noNamespaceSchemaLocation="../../../UIElementsSchema/UIElements.xsd" editor-extension-mode="False">
+    <Style src="project://database/Packages/com.caffeine/Editor/Windows/SaveSystem/UI/KeyValueStoreStyle.uss?fileID=7433441132597879392&amp;guid=52ec41caf55c89e428a30dc677b92f10&amp;type=3#KeyValueStoreStyle" />
+    <ui:VisualElement name="Root" class="kvs-row">
+        <ui:VisualElement style="flex-direction: row; flex-grow: 1;">
+            <ui:VisualElement name="KeyCell" class="kvs-cell" style="flex-grow: 1;">
+                <ui:Label name="KeyLabel" />
+            </ui:VisualElement>
+            <ui:VisualElement name="TypeCell" class="kvs-cell" style="flex-grow: 1;">
+                <ui:Label name="TypeLabel" />
+            </ui:VisualElement>
+            <ui:VisualElement name="ValueCell" class="kvs-cell" style="flex-grow: 1;">
+                <ui:Label name="ValueLabel" />
+            </ui:VisualElement>
+        </ui:VisualElement>
+        <ui:VisualElement name="ActionCell" style="width: 100px; flex-direction: row; justify-content: flex-end; align-items: center; flex-shrink: 0;">
+            <ui:Button name="CancelButton" style="display: none; width: 20px; height: 20px; background-color: rgba(255, 255, 255, 0); background-image: resource(&apos;EditorAssets/Textures/cancel_icon&apos;);" />
+            <ui:Button name="ConfirmButton" style="display: none; width: 20px; height: 20px; background-color: rgba(255, 255, 255, 0); background-image: resource(&apos;EditorAssets/Textures/thumbs_up_icon&apos;);" />
+            <ui:Button name="EditButton" style="width: 20px; height: 20px; background-color: rgba(255, 255, 255, 0); background-image: resource(&apos;EditorAssets/Textures/edit_icon&apos;);" />
+            <ui:Button name="DeleteButton" style="width: 20px; height: 20px; background-image: resource(&apos;EditorAssets/Textures/trash_icon&apos;); background-color: rgba(255, 255, 255, 0);" />
+        </ui:VisualElement>
+    </ui:VisualElement>
+</ui:UXML>

@@ -1,0 +1,91 @@
+<ui:UXML xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements"
+         xsi="http://www.w3.org/2001/XMLSchema-instance"
+         engine="UnityEngine.UIElements" editor="UnityEditor.UIElements"
+         noNamespaceSchemaLocation="../../../UIElementsSchema/UIElements.xsd"
+         editor-extension-mode="False">
+
+    <Style src="project://database/Packages/com.caffeine/Editor/Windows/SaveSystem/UI/KeyValueStoreStyle.uss?fileID=7433441132597879392&amp;guid=52ec41caf55c89e428a30dc677b92f10&amp;type=3#KeyValueStoreStyle" />
+    <Style src="project://database/Packages/com.caffeine/Editor/Windows/SaveSystem/UI/SearchField.uss?fileID=7433441132597879392&amp;guid=d2cbb7a3cab5eb248973e08638a97249&amp;type=3#SearchField" />
+
+    <ui:VisualElement name="Root" class="console-container"
+                      style="background-color: rgba(44,44,44,0); padding: 0; width: auto; height: auto; overflow: hidden; min-height: 400px;">
+
+        <ui:VisualElement name="Header" class="header-bar">
+            <ui:VisualElement name="Left"  style="flex-grow: 1; flex-direction: row;">
+                <ui:Button name="AddButton" class="add-button" text="Add (+)" />
+            </ui:VisualElement>
+            <ui:VisualElement name="Right" style="flex-grow: 1; flex-direction: row; justify-content: flex-end; position: relative; align-items: center;">
+                <ui:VisualElement name="searchFieldContainer" class="search-field-container"
+                                  style="flex-grow: 1; width: 300px; min-width: 300px; max-width: 300px; flex-shrink: 1; align-items: center; padding-right: 10px; margin-right: 10px;">
+                    <ui:VisualElement name="SearchIcon" class="search-icon"
+                                      style="flex-grow: 0; background-image: url('project://database/Packages/com.caffeine/Editor/Windows/SaveSystem/UI/Textures/mag-glass.png?fileID=2800000&amp;guid=445be8da34096bb479131bee64482f4f&amp;type=3#mag-glass'); margin-left: 0;" />
+                    <ui:TextField picking-mode="Ignore" name="searchTextField" class="search-text-field custom-textfield" style="flex-shrink: 1;" />
+                    <ui:Button text="X" name="clearSearch" class="clear-button" style="display: none; border-width: 0;" />
+                </ui:VisualElement>
+                <ui:VisualElement name="VisualElement" class="filter-dropdown-container" style="position: relative;" />
+            </ui:VisualElement>
+        </ui:VisualElement>
+
+        <!-- SubHeader: compact height, width-flex layout -->
+        <ui:VisualElement name="SubHeader"
+            style="flex-direction: row; align-items: center; justify-content: space-between;
+                   flex-shrink: 0; flex-grow: 0; padding: 6px; background-color: rgb(50,50,50);
+                   display: flex; width: 100%; height: auto; min-height: 34px;">
+
+            <!-- Left stays compact -->
+            <ui:VisualElement name="LeftContainer"
+                style="flex-grow: 0; flex-shrink: 0; flex-direction: row; align-items: center;">
+                <ui:Label text="Name:" name="NameLabel" style="min-width: 50px; color: white;" />
+                <ui:TextField name="NameInputField"
+                    style="flex-grow: 0; flex-shrink: 0; width: 220px; max-width: 260px; margin-right: 10px;" />
+                <ui:Label text="Type:" name="TypeDropdownLabel"
+                    style="color: white; margin-right: 6px; flex-grow: 0; flex-shrink: 0;" />
+                <ui:DropdownField name="TypeDropdown"
+                                  style="flex-grow: 0; flex-shrink: 0; width: 128px; min-width: 112px; max-width: 140px; margin-right: 8px;" />
+            </ui:VisualElement>
+
+            <!-- Right takes the rest -->
+            <ui:VisualElement name="RightContainer"
+                style="flex-direction: row; align-items: center; flex-grow: 1; flex-shrink: 1; min-width: 0;">
+                <ui:VisualElement name="DefaultInputContainer"
+                    style="margin-right: 10px; flex-grow: 1; flex-shrink: 1; min-width: 0;
+                           align-items: center; justify-content: center; min-height: 24px;" />
+                <ui:Button name="ConfirmAddButton" text="✓" style="width: 30px; margin-right: 4px; flex-shrink: 0;" />
+                <ui:Button name="CancelAddButton"  text="X" style="width: 30px; flex-shrink: 0;" />
+            </ui:VisualElement>
+        </ui:VisualElement>
+
+        <ui:VisualElement name="Content"
+            style="flex-grow: 1; border-top-width: 1px; border-color: rgb(30,30,30);">
+            <ui:VisualElement name="logHeader" class="log-header">
+                <ui:VisualElement style="flex-grow: 1; flex-direction: row;">
+                    <ui:VisualElement class="kvs-cell" style="flex-grow: 1;">
+                        <ui:Button name="SortNameButton" text="Name" class="log-header-label" />
+                    </ui:VisualElement>
+                    <ui:VisualElement class="kvs-cell" style="flex-grow: 1;">
+                        <ui:Button name="SortTypeButton" text="Type" class="log-header-label" />
+                    </ui:VisualElement>
+                    <ui:VisualElement class="kvs-cell" style="flex-grow: 1;">
+                        <ui:Button name="SortValue" text="Default" class="log-header-label" />
+                    </ui:VisualElement>
+                    <ui:VisualElement name="HeaderActionSpacer" style="width: 100px; flex-shrink: 0;" />
+                </ui:VisualElement>
+            </ui:VisualElement>
+
+            <ui:ScrollView name="logScrollView" class="console-scrollview"
+                           style="flex-shrink: 1; flex-grow: 1; height: auto; display: flex; -unity-overflow-clip-box: padding-box;">
+                <ui:VisualElement name="logContent" style="flex-direction: column; flex-grow: 1;" />
+            </ui:ScrollView>
+        </ui:VisualElement>
+
+        <ui:VisualElement name="dropdownMenu" class="dropdown-menu"
+                          style="display: none; top: 90px; right: 20px; min-width: auto; min-height: auto; max-width: 100%; max-height: initial;">
+            <ui:Toggle name="toggleFlowLogs" text="Flow" value="true" class="dropdown-item" />
+            <ui:Toggle name="toggleLogs" text="Logs" value="true" class="dropdown-item" style="display: flex; overflow: hidden;" />
+            <ui:Toggle name="toggleWarnings" text="Warnings" value="true" class="dropdown-item" />
+            <ui:Toggle name="toggleErrors" text="Errors" value="true" class="dropdown-item" />
+            <ui:Toggle name="stackTrace" text="Stacktrace" value="true" class="dropdown-item" />
+        </ui:VisualElement>
+
+    </ui:VisualElement>
+</ui:UXML>
