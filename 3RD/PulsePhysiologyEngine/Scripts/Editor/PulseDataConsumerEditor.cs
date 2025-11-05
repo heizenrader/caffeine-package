@@ -1,56 +1,58 @@
 ﻿/* Distributed under the Apache License, Version 2.0.
    See accompanying NOTICE file for details.*/
-#if UNITY_EDITOR
+
 using UnityEngine;
 using UnityEditor;
 
-[CustomEditor(typeof(PulseDataConsumer), true)]
-public class PulseDataConsumerEditor : Editor
+namespace Pulse.Unity
 {
-  SerializedProperty sourceProp;          // serialized data source
-  SerializedProperty dataFieldIndexProp;  // serialized data field index
-
-  void OnEnable()
+  [CustomEditor(typeof(PulseDataConsumer), true)]
+  public class PulseDataConsumerEditor : Editor
   {
-    sourceProp = serializedObject.FindProperty("source");
-    dataFieldIndexProp = serializedObject.FindProperty("dataFieldIndex");
-  }
+    SerializedProperty sourceProp;          // serialized data source
+    SerializedProperty dataFieldIndexProp;  // serialized data field index
 
-  public override void OnInspectorGUI()
-  {
-    // Ensure serialized properties are up to date with component
-    serializedObject.Update();
-
-    // Draw UI to select data source
-    EditorGUILayout.PropertyField(sourceProp, new GUIContent("Data source"));
-
-    // Display error message if data source is invalid then return
-    var source = sourceProp.objectReferenceValue as PulseDataSource;
-    if (source == null || source.data == null || source.data.fields == null)
+    void OnEnable()
     {
-      dataFieldIndexProp.intValue = 0;
-      serializedObject.ApplyModifiedProperties();
-      EditorGUILayout.LabelField("Error",
-                                 source == null ?
-                                 "Data source missing" :
-                                 "Data source could not generate valid data fields");
-      return;
+      sourceProp = serializedObject.FindProperty("source");
+      dataFieldIndexProp = serializedObject.FindProperty("dataFieldIndex");
     }
 
-    // Draw UI to select datafield
-    string[] fields = source.data.fields.list.ToArray();
-    dataFieldIndexProp.intValue = Mathf.Clamp(dataFieldIndexProp.intValue,
-                                              0,
-                                              source.data.fields.Count - 1);
-    dataFieldIndexProp.intValue = EditorGUILayout.Popup("Data field",
-                                                        dataFieldIndexProp.intValue,
-                                                        fields);
+    public override void OnInspectorGUI()
+    {
+      // Ensure serialized properties are up to date with component
+      serializedObject.Update();
 
-    // Show the default inspector property editor without the script field
-    DrawPropertiesExcluding(serializedObject, "m_Script");
+      // Draw UI to select data source
+      EditorGUILayout.PropertyField(sourceProp, new GUIContent("Data source"));
 
-    // Apply modifications back to the component
-    serializedObject.ApplyModifiedProperties();
+      // Display error message if data source is invalid then return
+      var source = sourceProp.objectReferenceValue as PulseDataSource;
+      if (source == null || source.data == null || source.data.fields == null)
+      {
+        dataFieldIndexProp.intValue = 0;
+        serializedObject.ApplyModifiedProperties();
+        EditorGUILayout.LabelField("Error",
+                                   source == null ?
+                                   "Data source missing" :
+                                   "Data source could not generate valid data fields");
+        return;
+      }
+
+      // Draw UI to select datafield
+      string[] fields = source.data.fields.list.ToArray();
+      dataFieldIndexProp.intValue = Mathf.Clamp(dataFieldIndexProp.intValue,
+                                                0,
+                                                source.data.fields.Count - 1);
+      dataFieldIndexProp.intValue = EditorGUILayout.Popup("Data field",
+                                                          dataFieldIndexProp.intValue,
+                                                          fields);
+
+      // Show the default inspector property editor without the script field
+      DrawPropertiesExcluding(serializedObject, "m_Script");
+
+      // Apply modifications back to the component
+      serializedObject.ApplyModifiedProperties();
+    }
   }
 }
-#endif

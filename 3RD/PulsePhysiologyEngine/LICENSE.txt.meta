@@ -1,7 +1,14 @@
 fileFormatVersion: 2
-guid: 5b78bc8eb46a842ab91eea6515776c8e
+guid: ba89fb81afb8d064ba67ac551341ca39
 TextScriptImporter:
   externalObjects: {}
   userData: 
   assetBundleName: 
   assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 139773
+  packageName: Pulse Physiology Engine
+  packageVersion: 4.3.1
+  assetPath: Assets/PulsePhysiologyEngine/LICENSE.txt
+  uploadId: 728075
