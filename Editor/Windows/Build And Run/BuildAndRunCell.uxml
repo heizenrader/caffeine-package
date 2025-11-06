@@ -1,0 +1,18 @@
+<ui:UXML xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements" xsi="http://www.w3.org/2001/XMLSchema-instance" engine="UnityEngine.UIElements" editor="UnityEditor.UIElements" noNamespaceSchemaLocation="../../../../UIElementsSchema/UIElements.xsd" editor-extension-mode="False">
+    <ui:VisualElement name="PublishCell" style="flex-direction: column; flex-grow: 1; align-items: stretch; display: flex; margin-bottom: 10px;">
+        <ui:VisualElement name="BuildStatus" style="flex-direction: row;">
+            <ui:VisualElement style="width: 18%; flex-grow: 1;">
+                <ui:Label text="Target" name="BuildPlatformLabel" />
+                <ui:Label name="SubPlatformLabel" text="Progress" style="visibility: hidden;" />
+            </ui:VisualElement>
+            <ui:VisualElement style="width: 62%; flex-grow: 1;">
+                <ui:Label name="BuildDetails" text="Idle." />
+                <ui:Label name="SubBuildDetails" />
+            </ui:VisualElement>
+            <ui:VisualElement style="width: 20%; flex-grow: 1;">
+                <ui:Label name="Duration" style="align-items: flex-end; align-self: flex-end; -unity-text-align: upper-right;" />
+                <ui:Label name="SubDuration" style="align-items: flex-end; align-self: flex-end;" />
+            </ui:VisualElement>
+        </ui:VisualElement>
+    </ui:VisualElement>
+</ui:UXML>

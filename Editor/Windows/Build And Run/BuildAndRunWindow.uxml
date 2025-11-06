@@ -1,0 +1,28 @@
+<ui:UXML xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements"
+         xsi="http://www.w3.org/2001/XMLSchema-instance"
+         engine="UnityEngine.UIElements" editor="UnityEditor.UIElements"
+         noNamespaceSchemaLocation="../../../../UIElementsSchema/UIElements.xsd"
+         editor-extension-mode="True">
+    <ui:VisualElement name="BuildRunRoot" style="flex-direction: column; flex-grow: 1; padding-left: 10px; padding-right: 10px; padding-top: 10px;">
+
+        <!-- Body first -->
+        <ui:GroupBox name="Body" style="flex-grow: 1; align-items: stretch;" />
+
+        <!-- Bottom buttons -->
+        <ui:VisualElement name="BottomBar" style="flex-direction: column; align-items: center; justify-content: center;">
+            <ui:VisualElement name="BottomRight" style="flex-direction: row; align-items: center; justify-content: center;">
+                <ui:Button name="BtnBuildRun" text="Build &amp; Run" />
+                <ui:Button name="BtnRunOnly" text="Run" />
+                <ui:Button name="BtnCancel" text="Cancel" />
+            </ui:VisualElement>
+        </ui:VisualElement>
+
+        <!-- TopBar LAST so it’s on top of overlaps -->
+        <ui:VisualElement name="TopBar" class="top-bar">
+            <ui:VisualElement name="ModeRow" class="mode-row">
+                <ui:Button name="BtnMode2D" text="2D" class="seg-btn left is-selected" />
+                <ui:Button name="BtnModeVR" text="VR" class="seg-btn right" />
+            </ui:VisualElement>
+        </ui:VisualElement>
+    </ui:VisualElement>
+</ui:UXML>
