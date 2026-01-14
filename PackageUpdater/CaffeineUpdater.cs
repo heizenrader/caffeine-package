@@ -1,4 +1,4 @@
-#if UNITY_EDITOR && !EDXR_VIEWER
+/*#if UNITY_EDITOR && !EDXR_VIEWER
 using System;
 using System.Collections.Generic;
 using System.IO;
@@ -212,4 +212,4 @@ public class CaffeineUpdater : IPackageManagerExtension
     }
 }
 
-#endif
+#endif*/
