@@ -71,7 +71,7 @@ public class CaffeineUpdater : IPackageManagerExtension
     private static ListRequest _listRequest;
     private static AddRequest _addRequest;
     private static int _progressId = -1;
-    private const string _expectedReleaseVersion = "2022.3.54f1";
+    private const string _expectedReleaseVersion = "6000.0.63f1";
 
     [InitializeOnLoadMethod]
     public static void PackageUpdateCheck()

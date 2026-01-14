@@ -100,7 +100,7 @@ Material:
     - _ColorWriteMask: 15
     - _Cull: 2
     - _CullMode: 0
-    - _CustomMode: 1
+    - _CustomMode: 2
     - _Cutoff: 0.5
     - _DetailNormalMapScale: 1
     - _DirectionalLight: 1

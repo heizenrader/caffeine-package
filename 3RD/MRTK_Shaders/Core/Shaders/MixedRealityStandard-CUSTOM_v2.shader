@@ -29,6 +29,9 @@ Shader "Mixed Reality Toolkit/Standard-CUSTOM_v2"
         [Toggle(_TRIPLANAR_MAPPING)] _EnableTriplanarMapping("Triplanar Mapping", Float) = 0.0
         [Toggle(_LOCAL_SPACE_TRIPLANAR_MAPPING)] _EnableLocalSpaceTriplanarMapping("Local Space", Float) = 0.0
         _TriplanarMappingBlendSharpness("Blend Sharpness", Range(1.0, 16.0)) = 4.0
+        //Just to remove errors
+        [Toggle(_USE_SSAA)] _EnableSSAA("Super Sample Anti Aliasing", Float) = 0.0
+        _MipmapBias("Mipmap Bias", Range(-5.0, 0.0)) = -2.0
 
         // Rendering options.
         [Toggle(_DIRECTIONAL_LIGHT)] _DirectionalLight("Directional Light", Float) = 1.0
@@ -385,14 +388,13 @@ Shader "Mixed Reality Toolkit/Standard-CUSTOM_v2"
 #endif
 
 #if defined(_CLIPPING_SPHERE)
-            float _ClipSphereSide;
-            float4 _ClipSphere;
+            UNITY_DEFINE_INSTANCED_PROP(fixed, _ClipSphereSide)
+            UNITY_DEFINE_INSTANCED_PROP(float4x4, _ClipSphereInverseTransform)
 #endif
 
 #if defined(_CLIPPING_BOX)
-            float _ClipBoxSide;
-            float4 _ClipBoxSize;
-            float4x4 _ClipBoxInverseTransform;
+            UNITY_DEFINE_INSTANCED_PROP(fixed, _ClipBoxSide)
+            UNITY_DEFINE_INSTANCED_PROP(float4x4, _ClipBoxInverseTransform)
 #endif
 
 #if defined(_CLIPPING_PRIMITIVE)
@@ -751,7 +753,7 @@ Shader "Mixed Reality Toolkit/Standard-CUSTOM_v2"
                 return o;
             }
 
-            float4 frag(v2f i, float facing : VFACE) : SV_Target
+            fixed4 frag(v2f i) : SV_Target
             {
 #if defined(_INSTANCED_COLOR)
                 UNITY_SETUP_INSTANCE_ID(i);
@@ -815,10 +817,14 @@ Shader "Mixed Reality Toolkit/Standard-CUSTOM_v2"
                 primitiveDistance = min(primitiveDistance, PointVsPlane(i.worldPosition.xyz, _ClipPlane) * _ClipPlaneSide);
 #endif
 #if defined(_CLIPPING_SPHERE)
-                primitiveDistance = min(primitiveDistance, PointVsSphere(i.worldPosition.xyz, _ClipSphere) * _ClipSphereSide);
+                fixed clipSphereSide = UNITY_ACCESS_INSTANCED_PROP(Props, _ClipSphereSide);
+                float4x4 clipSphereInverseTransform = UNITY_ACCESS_INSTANCED_PROP(Props, _ClipSphereInverseTransform);
+                primitiveDistance = min(primitiveDistance, PointVsSphere(i.worldPosition.xyz, clipSphereInverseTransform) * clipSphereSide);
 #endif
 #if defined(_CLIPPING_BOX)
-                primitiveDistance = min(primitiveDistance, PointVsBox(i.worldPosition.xyz, _ClipBoxSize.xyz, _ClipBoxInverseTransform) * _ClipBoxSide);
+                fixed clipBoxSide = UNITY_ACCESS_INSTANCED_PROP(Props, _ClipBoxSide);
+                float4x4 clipBoxInverseTransform = UNITY_ACCESS_INSTANCED_PROP(Props, _ClipBoxInverseTransform);
+                primitiveDistance = min(primitiveDistance, PointVsBox(i.worldPosition.xyz, clipBoxInverseTransform) * clipBoxSide);
 #endif
 #if defined(_CLIPPING_BORDER)
                 float3 primitiveBorderColor = lerp(_ClippingBorderColor, fixed3(0.0, 0.0, 0.0), primitiveDistance / _ClippingBorderWidth);
@@ -921,10 +927,10 @@ Shader "Mixed Reality Toolkit/Standard-CUSTOM_v2"
                 worldNormal.x = dot(i.tangentX, tangentNormal);
                 worldNormal.y = dot(i.tangentY, tangentNormal);
                 worldNormal.z = dot(i.tangentZ, tangentNormal);
-                worldNormal = normalize(worldNormal) * facing;
+                worldNormal = normalize(worldNormal);
 #endif
 #else
-                worldNormal = normalize(i.worldNormal) * facing;
+                worldNormal = normalize(i.worldNormal);
 #endif
 #endif
 
