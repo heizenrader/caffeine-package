@@ -1,11 +1,11 @@
 {
   "name": "com.caffeine",
-  "version": "1.1.11",
+  "version": "1.1.10",
   "displayName": "Caffeine",
   "description": "Caffeine package is a collection of utility methods, design patterns, and extensions for creating, previewing, and distributing interactive courses within Unity.",
-  "unity": "6000.0",
+  "unity": "2022.3",
   "type": "library",
-  "unityRelease": "63f1",
+  "unityRelease": "20f1",
   "keywords": [
     "edxr",
     "caffeine",
@@ -19,22 +19,27 @@
     "crossplatform"
   ],
   "homepage": "https://educationxr.com/",
-  "license": "UNLICENSED",
   "author": {
     "name": "EducationXR",
     "email": "development@heizenrader.com",
     "url": "https://educationxr.com"
   },
+  "licensesUrl": "https://educationxr.com/caffeine-sdk-license/",
+  "licenseMessage": "By adding or using this package you agree to the terms and conditions of the EducationXR Platform Technologies SDK License Agreement: https://educationxr.com/caffeine-sdk-license/",
   "dependencies": {
-    "com.unity.ugui": "2.0.0",
+    "com.unity.textmeshpro": "2.0.1",
     "com.unity.nuget.newtonsoft-json": "2.0.0",
     "com.unity.xr.management": "4.4.1",
     "com.unity.xr.openxr": "1.13.2",
     "com.unity.shadergraph": "14.0.0",
     "com.unity.splines": "2.6.0",
     "com.unity.ai.navigation": "1.1.5",
-    "com.unity.xr.arfoundation": "5.1.6",
-    "com.unity.visualeffectgraph": "17.0.4"
+    "com.unity.xr.arfoundation": "5.1.6"
   },
-  "resolutionStrategy": "highest"
+  "documentationUrl": "https://docs.educationxr.com",
+  "changelogUrl": "https://educationxr.com/caffeine-changelog/",
+  "resolutionStrategy": "highest",
+  "_upm": {
+    "changelog": "### Changed\n- Migrating to a new package repository."
+  }
 }

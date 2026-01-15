@@ -4,21 +4,9 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
-## [1.1.14] - 08.22.2025
-### Fixed
-- Package migration
-
-## [1.1.13] - 08.22.2025
-### Fixed
-- Package migration base
-
-## [1.1.10-pre02] - 08.27.2025
-### Fixed
-- Package Pre-Release
-
-## [1.1.10-pre01] - 08.25.2025
-### Fixed
-- Package Pre-Release
+## [1.1.10] - 01.15.2026
+### Changed
+- Migrating to a new package repository.
 
 ## [1.1.9] - 08.07.2025
 ### Fixed
@@ -40,168 +28,17 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Performance and User Experience Optimizations
 - URP Support (Experimental)
 
-## [1.1.6-pre13] - 06.01.2025
-### Fixed
-- Package Pre-Release
-
-## [1.1.6-pre12] - 05.13.2025
-### Fixed
-- Package Pre-Release
-
-## [1.1.6-pre11] - 05.13.2025
-### Fixed
-- Package Pre-Release
-
-## [1.1.6-pre10] - 05.12.2025
-### Fixed
-- Package Pre-Release
-
-## [1.1.6-pre09] - 05.08.2025
-### Fixed
-- Package Pre-Release
-
-## [1.1.6-pre08] - 05.01.2025
-### Fixed
-- Package Pre-Release
-
-## [1.1.6-pre07] - 04.30.2025
-### Fixed
-- Package Pre-Release
-
-## [1.1.6-pre06] - 04.23.2025
-### Fixed
-- Package Pre-Release
-
-## [1.1.6-pre05] - 03.12.2025
-### Fixed
-- Package Pre-Release
-
-## [1.1.6-pre04] - 03.11.2025
-### Fixed
-- Package Pre-Release
-
-## [1.1.6-pre03] - 03.10.2025
-### Fixed
-- Package Pre-Release
-
-## [1.1.6-pre02] - 03.10.2025
-### Fixed
-- Package Pre-Release
-
-## [1.1.6-pre01] - 01.24.2025
-### Fixed
-- Package Pre-Release
-
 ## [1.1.5] - 01.23.2025
 ### Fixed
 - Bug Fixes
 
-## [1.1.5-pre01] - 01.23.2025
-### Fixed
-- Package Pre-Release
-
 ## [1.1.4] - 01.10.2025
-### Fixed
+### Added
 - FLOW Features
 - AI Assistant
+### Fixed
 - Bug Fixes
 - Performance Improvements
-See more at https://educationxr.com/1-3-1-release-notes/
-
-## [1.1.4-pre23] - 01.09.2025
-### Fixed
-- Package Pre-Release Fixes
-
-## [1.1.4-pre22] - 01.08.2025
-### Fixed
-- Package Pre-Release Fixes
-
-## [1.1.4-pre21] - 01.07.2025
-### Fixed
-- Package Pre-Release Fixes
-
-## [1.1.4-pre20] - 01.06.2025
-### Fixed
-- Package Pre-Release Fixes
-
-## [1.1.4-pre19] - 01.03.2025
-### Fixed
-- Package Pre-Release Fixes
-
-## [1.1.4-pre18] - 01.03.2025
-### Fixed
-- Package Pre-Release Fixes
-
-## [1.1.4-pre17] - 01.03.2025
-### Fixed
-- Package Pre-Release Fixes
-
-## [1.1.4-pre16] - 01.03.2025
-### Fixed
-- Package Pre-Release Fixes
-
-## [1.1.4-pre15] - 01.02.2025
-### Fixed
-- Package Pre-Release Fixes
-
-## [1.1.4-pre14] - 12.30.2024
-### Fixed
-- Package Pre-Release Fixes
-
-## [1.1.4-pre13] - 12.26.2024
-### Fixed
-- Package Pre-Release Fixes
-
-## [1.1.4-pre12] - 12.12.2024
-### Fixed
-- Package Pre-Release Fixes
-
-## [1.1.4-pre11] - 12.12.2024
-### Fixed
-- Package Pre-Release Fixes
-
-## [1.1.4-pre10] - 12.04.2024
-### Fixed
-- Package Pre-Release Fixes
-
-## [1.1.4-pre9] - 11.27.2024
-### Fixed
-- Package Pre-Release Fixes
-
-## [1.1.4-pre8] - 11.15.2024
-### Fixed
-- Package Pre-Release Fixes
-
-## [1.1.4-pre7] - 11.14.2024
-### Fixed
-- Package Pre-Release Fixes
-
-## [1.1.4-pre6] - 10.31.2024
-### Fixed
-- Package Pre-Release Fixes
-
-## [1.1.4-pre5] - 10.30.2024
-### Fixed
-- Package Pre-Release Fixes
-
-## [1.1.4-pre4] - 10.25.2024
-### Fixed
-- Package Pre-Release Fixes
-
-## [1.1.4-pre3] - 10.24.2024
-### Fixed
-- Package Pre-Release Fixes
-
-## [1.1.4-pre2] - 10.23.2024
-### Fixed
-- Package Pre-Release Fixes
-
-## [1.1.4-pre] - 10.22.2024
-### Added
-- C# Scripting
-### Fixed
-- Bug Fixes
-- Performance Enhancements
 
 ## [1.1.3] - 07.12.2024
 ### Added

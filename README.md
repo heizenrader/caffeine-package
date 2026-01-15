@@ -1,1 +1,1 @@
-caffeine-package
+Documentation for Caffeine is available online at https://docs.educationxr.com
