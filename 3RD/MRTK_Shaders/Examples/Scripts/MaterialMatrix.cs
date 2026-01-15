@@ -116,7 +116,7 @@ namespace Microsoft.MixedReality.Toolkit.Examples.Demos.StandardShader
         /// </summary>
         /// <param name="obj">Unity object to destroy</param>
         /// <param name="t">Time in seconds at which to destroy the object, if applicable.</param>
-        private static void DestroyObject(Object obj, float t = 0.0f)
+        private new static void DestroyObject(Object obj, float t = 0.0f)
         {
             if (Application.isPlaying)
             {

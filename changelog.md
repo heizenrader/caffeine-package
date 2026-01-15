@@ -4,6 +4,29 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [1.1.11] - 01.15.2026
+### Added
+- URP Support. We introduced URP in beta form in 2025, with this release URP becomes an official supported workflow for creators. URP support comes with support for specific URP render features by allowing creators to overwrite the default URP asset and renderer.
+- Save and Persistence System. We are for the first time introducing a cloud sync persistence and saving system for creators. It is fully configurable to support any of our Flow types in key value form, and creators can configure their desired functionality. From progress saves, to scoreboards, the uses are unlimited. These cloud saves are user owned and sync across devices automatically so you never have to worry where you access content from.
+- Flow Event GameObject nodes.  Call events from any graph to any graph and carry a GameObject variable, extremely useful to create dynamic interaction systems.
+- Flow Prefab support, lifecycle improvements.
+- Nested Prefab support for Flow prefabs.
+- UnityEvent Flow node.
+- Graph Variable Sync On Start functionality. Graph variables now offer an option to sync on start so when users join a room they can “grab” the latest value for a graph variable from the host. This allows for synchronization of ongoing simulations in a seamless manner without the need to “program” it in Flow.
+- Step Loaded Node now supports an option for “any step” which allows creators to start a flow at the beginning of any step.
+- ForEach GameObject node. This allows to iterate through GameObject lists without having to worry about index looping in a more automated way.
+- IsPlatform node. This node allows Flow creators to obtain a bool depending on the type of platform, whether that is mobile, VR or desktop, and utilize this to customize interaction systems and locomotion depending on the platform a user access from.
+- Exit Course node. New node that allows to exit a course directly from within Flow graphs. This allows creators to control when a course is exited and the events that come with it such as analytics being sent to the backend.
+- Equal objects and Gameobjects nodes. An equality node to compare Unity Objects or GameObjects.
+- Mathf Clamp nodes.
+- Flow Events can be raised from anywhere including UnityEvents, so you can connect UI events to Flow by using flow events.
+- Split node. A node that allows you to visually split your flow in different branches. It does not provide parallel execution however as the branches will execute in order but it allows you to visually organize your graphs much better.
+### Changed
+- Updated EducationXR to Unity 6 LTS. With this release we mark full support for Unity 6 and all the features that come with it.
+- Updated Pulse Physiology Engine to 4.3.1 version (implementing Editor Play mode support).
+- Improved Dictation by providing a callback when timeouts occur, both with AI assistants as well as with Flow nodes.
+- Updates to Lerp nodes for better rotation lerping.
+
 ## [1.1.10] - 01.15.2026
 ### Changed
 - Migrating to a new package repository.
