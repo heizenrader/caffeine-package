@@ -3,8 +3,11 @@
 
 using UnityEngine;
 
-public class PulseEngineController : MonoBehaviour
+namespace Pulse.Unity
 {
-  [HideInInspector]
-  public PulseEngineSource driver;  // Holds the pulse engine data source
+  public class PulseEngineController : MonoBehaviour
+  {
+    [HideInInspector]
+    public PulseEngineSource driver;  // Holds the pulse engine data source
+  }
 }

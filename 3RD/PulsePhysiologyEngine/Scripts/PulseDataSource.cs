@@ -3,10 +3,13 @@
 
 using UnityEngine;
 
-// Abstract class for any pulse data source that holds a reference
-// to the pulse data container
-public abstract class PulseDataSource : MonoBehaviour
+namespace Pulse.Unity
 {
-  [HideInInspector]
-  public PulseData data = null;
+  // Abstract class for any pulse data source that holds a reference
+  // to the pulse data container
+  public abstract class PulseDataSource : MonoBehaviour
+  {
+    [HideInInspector]
+    public PulseData data = null;
+  }
 }
