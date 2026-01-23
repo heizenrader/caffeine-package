@@ -4,6 +4,9 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [1.1.12] - 01.23.2026
+### Fixed
+- Fixed a rare issue when reordering graph variables can result in a broken graph.
 ## [1.1.11] - 01.15.2026
 ### Added
 - URP Support. We introduced URP in beta form in 2025, with this release URP becomes an official supported workflow for creators. URP support comes with support for specific URP render features by allowing creators to overwrite the default URP asset and renderer.
