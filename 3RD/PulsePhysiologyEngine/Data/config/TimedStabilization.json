@@ -1,66 +1,78 @@
 {
-  "RestingStabilizationTime": {
-    "ScalarTime": {
-      "Value": 600.0,
-      "Unit": "s"
-    }
-  },
-  "FeedbackStabilizationTime": {
-    "ScalarTime": {
-      "Value": 20.0,
-      "Unit": "s"
-    }
-  },
-  "ConditionStabilization": {
-    "AcuteRespiratoryDistressSyndrome": {
+  "ConvergenceCriteria": {
+    "Consume Meal": {
       "ScalarTime": {
         "Value": 600.0,
         "Unit": "s"
       }
     },
-    "ChronicAnemia": {
+    "Pneumonia": {
       "ScalarTime": {
         "Value": 600.0,
         "Unit": "s"
       }
     },
-    "PulmonaryFibrosis": {
+    "Chronic Ventricular Systolic Dysfunction": {
       "ScalarTime": {
         "Value": 600.0,
         "Unit": "s"
       }
     },
-    "ChronicRenalStenosis": {
+    "Dehydration": {
       "ScalarTime": {
         "Value": 600.0,
         "Unit": "s"
       }
     },
-    "ConsumeMeal": {
+    "Resting": {
       "ScalarTime": {
         "Value": 600.0,
         "Unit": "s"
       }
     },
-    "ImpairedAlveolarExchange": {
+    "Acute Respiratory Distress Syndrome": {
       "ScalarTime": {
         "Value": 600.0,
         "Unit": "s"
       }
     },
-    "ChronicPericardialEffusion": {
+    "Impaired Alveolar Exchange": {
       "ScalarTime": {
         "Value": 600.0,
         "Unit": "s"
       }
     },
-    "ChronicObstructivePulmonaryDisease": {
+    "Initial Environmental Conditions": {
       "ScalarTime": {
         "Value": 600.0,
         "Unit": "s"
       }
     },
-    "ChronicVentricularSystolicDysfunction": {
+    "Chronic Renal Stenosis": {
+      "ScalarTime": {
+        "Value": 600.0,
+        "Unit": "s"
+      }
+    },
+    "AdvanceUntilStable": {
+      "ScalarTime": {
+        "Value": 600.0,
+        "Unit": "s"
+      }
+    },
+    "Chronic Pericardial Effusion": {
+      "ScalarTime": {
+        "Value": 600.0,
+        "Unit": "s"
+      }
+    },
+    "Chronic Anemia": {
+      "ScalarTime": {
+        "Value": 600.0,
+        "Unit": "s"
+      }
+    },
+    "Pulmonary Fibrosis": {
       "ScalarTime": {
         "Value": 600.0,
         "Unit": "s"
@@ -72,19 +84,13 @@
         "Unit": "s"
       }
     },
-    "PulmonaryShunt": {
+    "Chronic Obstructive Pulmonary Disease": {
       "ScalarTime": {
         "Value": 600.0,
         "Unit": "s"
       }
     },
-    "InitialEnvironmentalConditions": {
-      "ScalarTime": {
-        "Value": 600.0,
-        "Unit": "s"
-      }
-    },
-    "LobarPneumonia": {
+    "Pulmonary Shunt": {
       "ScalarTime": {
         "Value": 600.0,
         "Unit": "s"

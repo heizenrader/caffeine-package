@@ -71,7 +71,7 @@ public class CaffeineUpdater : IPackageManagerExtension
     private static ListRequest _listRequest;
     private static AddRequest _addRequest;
     private static int _progressId = -1;
-    private const string _expectedReleaseVersion = "2022.3.54f1";
+    private const string _expectedReleaseVersion = "6000.0.63f1";
 
     [InitializeOnLoadMethod]
     public static void PackageUpdateCheck()
@@ -207,33 +207,8 @@ public class CaffeineUpdater : IPackageManagerExtension
     
     private static void RemoveCaffeineBuilders()
     {
-        try
-        {
-            var caffeineAssembly = "Caffeine".ToLower();
-            var classNameLegacy = "BuilderProjectManager";
-            var className = "Caffeine.Editor.BuilderProjectManager";
-            var methodName = "RemoveBuilderProjects";
-
-            var assembly = AppDomain.CurrentDomain.GetAssemblies().FirstOrDefault(a => a.GetName().Name.ToLower() == caffeineAssembly);
-            if (assembly == null) { return; }
-
-            Type type = assembly.GetType(className);
-            if (type == null)
-            {
-                type = assembly.GetType(classNameLegacy);
-                if (type == null) { return; }
-            }
-
-            MethodInfo method = type.GetMethod(methodName, BindingFlags.Static | BindingFlags.Public);
-            if (method == null) { return; }
-
-            // Invoke the method
-            method.Invoke(null, null);
-        }
-        catch (Exception ex)
-        {
-            Debug.LogError($"Error invoking method: {ex.Message}");
-        }
+        // TO:DO Replace Reflection And Just Remove Builders
+        // Look For Builders Folder And Remove / With Some Verification
     }
 }
 

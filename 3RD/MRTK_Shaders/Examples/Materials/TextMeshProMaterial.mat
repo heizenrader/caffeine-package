@@ -60,7 +60,7 @@ Material:
     - _ColorWriteMask: 15
     - _Cull: 0
     - _CullMode: 2
-    - _CustomMode: 0
+    - _CustomMode: 2
     - _Cutoff: 0.5
     - _DirectionalLight: 1
     - _DstBlend: 0
