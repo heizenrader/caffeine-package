@@ -1,0 +1,253 @@
+.console-container {
+    display: flex;
+    flex-direction: column;
+    padding: 10px;
+    background-color: rgb(44, 44, 44);
+}
+
+.console-scrollview {
+    flex-grow: 1;
+    background-color: rgb(60, 60, 60);
+    border-radius: 0 0 10px 10px;
+    padding: 10px;
+    position: relative;
+    -unity-overflow-clip-box: padding-box;
+}
+
+#logContent {
+    display: flex;
+    flex-direction: column;
+    color: rgb(255, 255, 255);
+    white-space: normal;
+}
+
+.filter-dropdown-container {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+}
+
+.dropdown-menu {
+    position: absolute;
+    top: 100%;
+    right: 0;
+    background-color: white;
+    display: none;
+    flex-direction: column;
+    padding: 5px;
+    border-bottom-width: 1px;
+    border-left-width: 1px;
+    border-right-width: 1px;
+    border-top-width: 1px;
+    border-bottom-color: rgb(128, 128, 128);
+    border-left-color: rgb(128, 128, 128);
+    border-right-color: rgb(128, 128, 128);
+    border-top-color: rgb(128, 128, 128);
+    flex-grow: 1;
+    justify-content: flex-start;
+    align-self: auto;
+    align-items: auto;
+}
+
+.dropdown-item {
+    margin: 5px 0;
+    flex-grow: 1;
+    max-height: 30px;
+    min-height: 30px;
+    height: 30px;
+}
+
+.header-bar {
+    background-color: rgb(50, 50, 50);
+    height: 50px;
+    padding: 0 10px;
+    border-bottom-width: 1px;
+    border-bottom-color: rgb(65, 65, 65);
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.log-header {
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    background-color: rgb(80, 80, 80);
+    padding: 4px 10px;
+    border-bottom-width: 1px;
+    border-bottom-color: rgb(110, 110, 110);
+    height: 28px;
+}
+
+.log-header-label {
+    color: white;
+    -unity-font-style: bold;
+    -unity-text-align: middle-left;
+    cursor: link;
+    background-color: rgba(0, 0, 0, 0);
+    border-top-width: 0;
+    border-right-width: 0;
+    border-bottom-width: 0;
+    border-left-width: 0;
+}
+
+.log-header-label:hover {
+    background-color: rgba(255, 255, 255, 0.05);
+}
+
+.kvs-row {
+    flex-direction: row;
+    height: 33px;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    border-bottom-width: 1px;
+    border-bottom-color: rgb(40, 40, 40);
+    align-items: center;
+}
+
+.kvs-cell {
+    flex-grow: 1;
+    flex-basis: 0;
+    color: white;
+    font-size: 12px;
+    -unity-text-align: middle-left;
+}
+
+.add-button {
+    color: white;
+    font-size: 13px;
+    background-color: rgb(75, 75, 75);
+    padding: 4px 10px;
+    border-radius: 4px;
+    -unity-font-style: bold;
+}
+
+/* Let the default editor fill the space and render its inner text/arrow properly */
+#RightContainer { min-width: 0; }      /* critical for flex children in UI Toolkit */
+#DefaultInputContainer { min-width: 0; }
+
+/* Whatever field you mount (DropdownField, ColorField, FloatField, Vector*, etc.) should expand */
+#DefaultInputContainer > * {
+    flex-grow: 1;
+    flex-shrink: 1;
+    width: 100%;
+    min-width: 0;                       /* prevents mysterious truncation */
+    min-height: 22px;
+}
+
+#DefaultInputContainer .unity-base-field__input,
+#DefaultInputContainer .unity-text-input,
+#DefaultInputContainer .unity-popup-field__input,
+#DefaultInputContainer .unity-color-field__input {
+    width: 100%;
+    min-width: 0;
+}
+
+/* ===================== */
+/* SubHeader height fix  */
+/* ===================== */
+
+/* Make the add-row strip follow content height (not a tall fixed block).
+   NOTE: this works only if UXML doesn't force a fixed height inline. */
+#SubHeader {
+    height: auto;
+    min-height: 34px;
+    padding-top: 6px;
+    padding-bottom: 6px;
+}
+
+/* Normalize control heights inside SubHeader so fields don't stretch vertically */
+#SubHeader .unity-base-field,
+#SubHeader .unity-text-field,
+#SubHeader .unity-popup-field,
+#SubHeader .unity-color-field,
+#SubHeader .unity-vector2-field,
+#SubHeader .unity-vector3-field,
+#SubHeader .unity-vector4-field {
+    height: 24px;
+    min-height: 24px;
+    margin-top: 0;
+    margin-bottom: 0;
+}
+
+/* Inner input fits that 24px without extra padding */
+#SubHeader .unity-base-field__input,
+#SubHeader .unity-text-input,
+#SubHeader .unity-popup-field__input,
+#SubHeader .unity-color-field__input {
+    height: 100%;
+    min-height: 0;
+    padding-top: 0;
+    padding-bottom: 0;
+    width: 100%;
+    min-width: 0;
+}
+
+/* Tighten the little X/Y/Z/W labels on vector fields */
+#SubHeader .unity-base-field__label {
+    min-width: 14px;
+    margin-right: 4px;
+}
+
+/* Make confirm/cancel buttons visually match the row */
+#ConfirmAddButton,
+#CancelAddButton {
+    height: 24px;
+    min-height: 24px;
+}
+
+/* Quaternion-only tweaks */
+#DefaultInputContainer .kvs-quat {
+    min-width: 0;
+    flex-wrap: wrap;            /* if super narrow, inputs will wrap 2x2 instead of clipping */
+}
+
+/* Make the tiny X/Y/Z/W labels compact */
+#DefaultInputContainer .kvs-quat .unity-base-field__label {
+    min-width: 12px;
+    margin-right: 4px;
+    padding: 0;
+}
+
+/* Each float input should be flexible but not collapse */
+#DefaultInputContainer .kvs-quat .unity-float-field {
+    flex: 1 1 72px;            /* grow, shrink, preferred ~72px */
+    min-width: 64px;           /* don’t let them get too tiny */
+    min-height: 22px;
+}
+
+/* Ensure the text boxes themselves don't force extra width */
+#DefaultInputContainer .kvs-quat .unity-text-input {
+    min-width: 0;
+    width: 100%;
+    padding-top: 0;
+    padding-bottom: 0;
+}
+
+/* SubHeader-only tightening for the Type dropdown */
+#SubHeader #TypeDropdown {
+    min-width: 112px;
+    max-width: 140px;
+}
+
+/* Trim inner padding so text gets more room */
+#SubHeader #TypeDropdown .unity-popup-field__input {
+    padding-left: 4px;
+    padding-right: 14px; /* leave room for arrow */
+    min-width: 0;
+}
+
+/* Make the text compress instead of forcing width */
+#SubHeader #TypeDropdown .unity-text-element {
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+/* Slightly smaller arrow so the input can breathe */
+#SubHeader #TypeDropdown .unity-popup-field__arrow {
+    width: 10px;
+    min-width: 10px;
+}
+
+
