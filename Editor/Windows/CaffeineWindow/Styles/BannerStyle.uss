@@ -1,0 +1,114 @@
+.update-banner {
+    position: relative;
+    height: 70px;
+    margin: 6px;
+}
+
+.update-banner__shadow {
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: 2px;
+    bottom: -2px;
+
+    background-color: rgba(0, 0, 0, 0.25);
+    border-radius: 6px;
+}
+
+.update-banner__bg {
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: 0;
+    bottom: 0;
+
+    background-color: rgb(72,72,72);
+
+    border-radius: 6px;
+
+    border-top-width: 1px;
+    border-right-width: 1px;
+    border-bottom-width: 1px;
+    border-left-width: 1px;
+
+    border-top-color: rgba(0,0,0,0.35);
+    border-right-color: rgba(0,0,0,0.35);
+    border-bottom-color: rgba(0,0,0,0.35);
+    border-left-color: rgba(0,0,0,0.35);
+}
+
+.update-banner__content {
+    position: relative;
+    height: 100%;
+
+    flex-direction: row;
+    align-items: center;
+    padding-right: 15px;
+}
+
+/* --- Icon --- */
+.update-banner__icon {
+    width: 68px;
+    height: 68px;
+
+    background-color: rgba(255,255,255,0.00);
+    border-radius: 4px;
+    -unity-background-scale-mode: scale-to-fit;
+}
+
+/* --- Text block --- */
+.update-banner__text {
+    flex-direction: column;
+    justify-content: center;
+
+    margin-right: 10px; /* spacing before spacer/buttons */
+}
+
+.update-banner__title {
+    font-size: 18px;
+    color: rgb(230,230,230);
+    -unity-font-style: bold;
+}
+
+.update-banner__subrow {
+    flex-direction: row;
+    align-items: center;
+}
+
+.update-banner__link {
+    font-size: 15px;
+    color: rgb(200,200,200);
+    margin-right: 6px; /* spacing to external icon */
+}
+
+.update-banner__link:hover {
+    color: rgb(235,235,235);
+    border-bottom-color: rgba(235,235,235,0.85);
+}
+
+/* external-link placeholder */
+.update-banner__external-icon {
+    width: 18px;
+    height: 18px;
+
+    background-color: rgba(255,255,255,0.0);
+    border-radius: 2px;
+    -unity-background-scale-mode: scale-to-fit;
+}
+
+/* Spacer pushes buttons to right */
+.update-banner__spacer {
+    flex-grow: 1;
+}
+
+/* --- Buttons --- */
+.update-banner__button {
+    min-width: 90px;
+    height: 32px;
+
+    margin-left: 8px; /* spacing between buttons */
+}
+
+.node-link {
+    cursor: link;
+}
