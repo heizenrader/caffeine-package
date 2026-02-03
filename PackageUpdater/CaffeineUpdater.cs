@@ -12,6 +12,47 @@ using UnityEngine;
 using UnityEngine.UIElements;
 using PackageInfo = UnityEditor.PackageManager.PackageInfo;
 
+internal static class CaffeineUpdateCheckProgress
+{
+    private const string K_Active = "CaffeineUpdater.ManualCheckProgressActive";
+    private const string K_Status = "CaffeineUpdater.ManualCheckProgressStatus";
+    private const string Title = "Caffeine Update";
+
+    public static void Begin(string message)
+    {
+        SessionState.SetBool(K_Active, true);
+        SessionState.SetString(K_Status, message);
+        EditorUtility.DisplayProgressBar(Title, message, 0.5f);
+    }
+
+    public static void SetMessage(string message)
+    {
+        if (!SessionState.GetBool(K_Active, false)) return;
+        SessionState.SetString(K_Status, message);
+        EditorUtility.DisplayProgressBar(Title, message, 0.5f);
+    }
+
+    public static void Clear()
+    {
+        SessionState.SetBool(K_Active, false);
+        SessionState.EraseString(K_Status);
+        EditorUtility.ClearProgressBar();
+    }
+
+    public static bool IsActive()
+    {
+        return SessionState.GetBool(K_Active, false);
+    }
+
+    // Domain reload can leave progress bars stuck; ensure we always clean them up.
+    [InitializeOnLoadMethod]
+    private static void CleanupAfterDomainReload()
+    {
+        if (!SessionState.GetBool(K_Active, false)) return;
+        Clear();
+    }
+}
+
 internal static class CaffeineUpdateProgress
 {
     private const string K_Status = "CaffeineUpdater.CurrentStatus";
@@ -131,6 +172,7 @@ public class CaffeineUpdater : IPackageManagerExtension
     [MenuItem("Caffeine/Help/Check For Updates")]
     public static void CheckForUpdates()
     {
+        CaffeineUpdateCheckProgress.Begin("Checking for updates...");
         QueueUpdateCheck(auto: false);
     }
     
@@ -172,6 +214,11 @@ public class CaffeineUpdater : IPackageManagerExtension
         SessionState.SetString(K_CheckError, string.Empty);
         SessionState.SetString(K_LastCheckUtcTicks, DateTime.UtcNow.Ticks.ToString());
         _checkQueuedOrRunning = false;
+
+        if (CaffeineUpdateCheckProgress.IsActive())
+        {
+            CaffeineUpdateCheckProgress.Clear();
+        }
     }
     
     private static void FinishCheckFailure(string error)
@@ -181,6 +228,11 @@ public class CaffeineUpdater : IPackageManagerExtension
         SessionState.SetString(K_CheckError, error ?? "Unknown error");
         SessionState.SetString(K_LastCheckUtcTicks, DateTime.UtcNow.Ticks.ToString());
         _checkQueuedOrRunning = false;
+        
+        if (CaffeineUpdateCheckProgress.IsActive())
+        {
+            CaffeineUpdateCheckProgress.Clear();
+        }
     }
 
     private static void WaitForEditorStabilityThenRun()
