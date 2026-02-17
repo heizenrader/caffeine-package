@@ -1,14 +1,17 @@
 <ui:UXML xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements" xsi="http://www.w3.org/2001/XMLSchema-instance" engine="UnityEngine.UIElements" editor="UnityEditor.UIElements" noNamespaceSchemaLocation="../../../../UIElementsSchema/UIElements.xsd" editor-extension-mode="True">
     <Style src="project://database/Packages/com.caffeine/Editor/Windows/CaffeineWindow/Styles/PublishView.uss?fileID=7433441132597879392&amp;guid=ae4a43b75c8d7954684a4744d8effc5b&amp;type=3#PublishView" />
-    <ui:VisualElement name="CrossPlatformPublish" style="padding-right: 10px; padding-left: 10px; flex-grow: 1; padding-bottom: 0; margin-bottom: 0;">
+    <ui:VisualElement name="PublishDetails" style="padding-right: 10px; padding-left: 10px; flex-grow: 1; padding-bottom: 0; margin-bottom: 0;">
         <ui:Button name="Header" style="flex-shrink: 0; height: 25px; background-color: rgb(255, 255, 255); flex-direction: row; border-left-width: 0; border-right-width: 0; border-top-width: 0; border-bottom-width: 0; padding: 0; margin: 0; cursor: pointer; margin-bottom: 10px;">
             <ui:VisualElement name="LeftSide" style="width: 50%; align-items: flex-start;">
-                <ui:Label text="Cross Platform Publish" display-tooltip-when-elided="true" style="color: rgb(33, 33, 33); font-size: 16px; -unity-font-style: bold; padding-left: 10px; -unity-text-align: middle-left; padding-right: 0; padding-top: 2px;" />
+                <ui:Label text="Details" display-tooltip-when-elided="true" style="color: rgb(33, 33, 33); font-size: 16px; -unity-font-style: bold; padding-left: 10px; -unity-text-align: middle-left; padding-right: 0; padding-top: 2px; background-color: rgba(0, 0, 0, 0);" />
             </ui:VisualElement>
             <ui:VisualElement name="RightSide" style="width: 50%; align-items: flex-end; justify-content: center;">
                 <ui:VisualElement name="Foldout" style="width: 16px; height: 16px; rotate: 0; background-image: resource(&apos;EditorAssets/Icons/dropdown-icon&apos;); -unity-background-image-tint-color: rgb(0, 0, 0); margin-right: 5px;" />
             </ui:VisualElement>
         </ui:Button>
-        <ui:GroupBox name="Body" style="flex-shrink: 1; flex-grow: 1; align-items: stretch; padding-top: 0; padding-bottom: 10px; margin-top: 0; margin-bottom: 0;" />
+        <ui:GroupBox name="Body" style="flex-shrink: 1; flex-grow: 1; align-items: stretch; flex-direction: column; padding-left: 10px; padding-right: 10px; padding-top: 0; padding-bottom: 10px; margin-top: 0; margin-bottom: 0;">
+            <ui:Label tabindex="-1" text="Notes" parse-escape-sequences="true" display-tooltip-when-elided="true" style="justify-content: center; align-self: auto; align-items: auto; -unity-text-align: upper-left; -unity-font-style: bold; padding-left: 0; margin-bottom: 5px;" />
+            <ui:TextField picking-mode="Ignore" name="NotesField" multiline="true" max-length="-1" style="flex-grow: 1; min-height: 40px; white-space: normal;" />
+        </ui:GroupBox>
     </ui:VisualElement>
 </ui:UXML>
