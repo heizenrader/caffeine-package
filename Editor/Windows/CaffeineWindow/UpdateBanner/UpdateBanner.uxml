@@ -13,8 +13,8 @@
                 </ui:VisualElement>
             </ui:VisualElement>
             <ui:VisualElement class="update-banner__spacer" />
-            <ui:Button name="BannerInstall" text="Install" class="update-banner__button update-banner__button--install" style="background-color: rgb(0, 144, 0); font-size: 20px;" />
-            <ui:Button name="BannerDismiss" text="Dismiss" class="update-banner__button" style="font-size: 20px;" />
+            <ui:Button name="BannerInstall" text="Install" class="update-banner__button update-banner__button--install" style="background-color: rgb(0, 144, 0); font-size: 12px; color: rgb(255, 255, 255);" />
+            <ui:Button name="BannerDismiss" text="Dismiss" class="update-banner__button" style="font-size: 12px; color: rgb(255, 255, 255); background-color: rgb(88, 88, 88);" />
         </ui:VisualElement>
     </ui:VisualElement>
 </ui:UXML>
