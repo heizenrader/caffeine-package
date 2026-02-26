@@ -41,6 +41,6 @@
   "changelogUrl": "https://educationxr.com/caffeine-changelog/",
   "resolutionStrategy": "highest",
   "_upm": {
-    "changelog": "### Fixed\n- Fixed an issue that can sometimes cause failures in the builders while publishing.\n- Fixed two assets that had import issues."
+    "changelog": "### Fixed\n- Fixed an issue that can sometimes cause failures in the builders while publishing.\n- Fixed two assets that had import issues. Test"
   }
 }
