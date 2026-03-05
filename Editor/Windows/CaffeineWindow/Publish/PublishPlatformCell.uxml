@@ -1,11 +1,11 @@
 <ui:UXML xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements" xsi="http://www.w3.org/2001/XMLSchema-instance" engine="UnityEngine.UIElements" editor="UnityEditor.UIElements" noNamespaceSchemaLocation="../../../../../../UIElementsSchema/UIElements.xsd" editor-extension-mode="False">
-    <ui:VisualElement name="PublishCell" style="flex-direction: column; flex-grow: 1; align-items: stretch; display: flex; margin-bottom: 15px;">
-        <ui:VisualElement name="BuildStatus" style="flex-grow: 1; flex-direction: row;">
-            <ui:VisualElement style="width: 15%; flex-grow: 1;">
-                <ui:Label text="Target" display-tooltip-when-elided="true" name="BuildPlatformLabel" />
-                <ui:Label display-tooltip-when-elided="true" name="SubPlatformLabel" text="Progress" style="visibility: hidden;" />
+    <ui:VisualElement name="PublishCell" style="flex-direction: column; flex-grow: 1; align-items: stretch; display: flex; margin-bottom: 10px; padding-right: 0; padding-left: 0; padding-top: 0; padding-bottom: 0;">
+        <ui:VisualElement name="BuildStatus" style="flex-grow: 1; flex-direction: row; padding-right: 10px; padding-bottom: 10px; padding-left: 10px; margin-right: 4px; margin-left: 4px;">
+            <ui:VisualElement style="width: 15%; flex-grow: 1; -unity-text-align: upper-right; margin-right: 5px;">
+                <ui:Label text="Target" display-tooltip-when-elided="true" name="BuildPlatformLabel" style="-unity-font-style: bold; -unity-text-align: upper-left;" />
+                <ui:Label display-tooltip-when-elided="true" name="SubPlatformLabel" text="Progress" style="visibility: hidden; -unity-font-style: normal; -unity-text-align: upper-left;" />
             </ui:VisualElement>
-            <ui:VisualElement style="width: 65%; flex-grow: 1;">
+            <ui:VisualElement style="width: 65%; flex-grow: 1; -unity-text-align: upper-left;">
                 <ui:Label display-tooltip-when-elided="true" name="BuildDetails" />
                 <ui:Label display-tooltip-when-elided="true" name="SubBuildDetails" />
             </ui:VisualElement>
@@ -14,10 +14,10 @@
                 <ui:Label display-tooltip-when-elided="true" name="SubDuration" style="align-items: flex-end; align-self: flex-end;" />
             </ui:VisualElement>
         </ui:VisualElement>
-        <ui:VisualElement name="UploadStatus" style="flex-direction: row; flex-grow: 1; display: none;">
+        <ui:VisualElement name="UploadStatus" style="flex-direction: row; flex-grow: 1; display: none; padding-right: 10px; padding-bottom: 10px; padding-left: 10px; margin-right: 4px; margin-left: 4px;">
             <ui:VisualElement style="width: 30%; flex-grow: 1;">
-                <ui:Label text="Progress" display-tooltip-when-elided="true" name="UploadPlatformLabel" />
-                <ui:Label display-tooltip-when-elided="true" name="UploadSubPlatformLabel" />
+                <ui:Label text="Progress" display-tooltip-when-elided="true" name="UploadPlatformLabel" style="-unity-text-align: upper-left; -unity-font-style: bold;" />
+                <ui:Label display-tooltip-when-elided="true" name="UploadSubPlatformLabel" style="-unity-font-style: normal; -unity-text-align: upper-left;" />
             </ui:VisualElement>
             <ui:VisualElement style="width: 70%; flex-grow: 1;">
                 <ui:ProgressBar value="22" name="UploadProgress" title="0/100" />

@@ -1,0 +1,20 @@
+<ui:UXML xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements" editor-extension-mode="False">
+    <Style src="project://database/Packages/com.caffeine/Editor/Windows/CaffeineWindow/Styles/BannerStyle.uss?fileID=7433441132597879392&amp;guid=6df796a53cf96ca42ba5fcf30332e29f&amp;type=3#BannerStyle" />
+    <ui:VisualElement class="update-banner">
+        <ui:VisualElement picking-mode="Ignore" class="update-banner__shadow" />
+        <ui:VisualElement picking-mode="Ignore" class="update-banner__bg" />
+        <ui:VisualElement class="update-banner__content">
+            <ui:VisualElement name="BannerIcon" class="update-banner__icon" style="background-image: resource(&apos;EditorAssets/Textures/noun-notification-1594277-FFFFFF&apos;);" />
+            <ui:VisualElement class="update-banner__text">
+                <ui:Label name="BannerTitle" text="&lt;b&gt;Caffeine 1.1.2&lt;/b&gt; is now available." class="update-banner__title" style="margin-top: 0; margin-right: 0; margin-bottom: 0; margin-left: 0; padding-top: 0; padding-right: 0; padding-bottom: 0; padding-left: 0; -unity-font-style: normal;" />
+                <ui:VisualElement class="update-banner__subrow">
+                    <ui:Label name="BannerReleaseNotes" text="Release Notes" class="update-banner__link" style="margin-top: 0; margin-right: 0; margin-bottom: 0; margin-left: 0; padding-top: 0; padding-right: 0; padding-bottom: 0; padding-left: 0;" />
+                    <ui:VisualElement name="BannerExternalIcon" class="update-banner__external-icon" style="background-image: resource(&apos;EditorAssets/Textures/noun-export-645403-FFFFFF&apos;); padding-left: 0; margin-left: 3px;" />
+                </ui:VisualElement>
+            </ui:VisualElement>
+            <ui:VisualElement class="update-banner__spacer" />
+            <ui:Button name="BannerInstall" text="Install" class="update-banner__button update-banner__button--install" style="background-color: rgb(0, 144, 0); font-size: 12px; color: rgb(255, 255, 255);" />
+            <ui:Button name="BannerDismiss" text="Dismiss" class="update-banner__button" style="font-size: 12px; color: rgb(255, 255, 255); background-color: rgb(88, 88, 88); margin-right: 8px;" />
+        </ui:VisualElement>
+    </ui:VisualElement>
+</ui:UXML>
