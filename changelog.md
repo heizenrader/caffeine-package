@@ -4,6 +4,27 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [1.1.14] - 03.05.2026
+### Added
+- Publish Notes. Add notes when publishing to describe what changed in each version.
+- Version History & Rollback. Full publish history tracking with the ability to rollback courses to previous versions.
+- Asset Caching. Course assets are now cached locally for faster loading and more reliable update detection.
+- Platform "Select All" and "Deselect All" buttons in the publish UI.
+### Changed
+- Improved course validation to catch more issues before publishing.
+- Creation forms auto-focus the name field and support Enter to submit.
+- Unity window title now shows the current course version and editor info.
+- Update banner is more compact and less intrusive.
+- Course update and remote change dialogs have clearer, more consistent messaging.
+- Significantly faster thumbnail loading with smarter caching and background updates.
+### Fixed
+- Fixed publish views not appearing on first publish in a new project.
+- Fixed an edge case where publish settings could temporarily carry over when creating a course from a template.
+- Resolved thumbnail images occasionally not refreshing after downloading a course update.
+- Minor focus and display fixes in creation and publish windows.
+- Improved socket connection stability.
+- Resolved an issue with macOS archive extraction.
+
 ## [1.1.13] - 01.29.2026
 ### Fixed
 - Fixed an issue that can sometimes cause failures in the builders while publishing.
