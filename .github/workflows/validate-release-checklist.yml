@@ -2,7 +2,7 @@ name: Validate Release Checklist
 
 on:
   pull_request:
-    types: [opened, edited, synchronize, reopened]
+    types: [synchronize]
     branches:
       - deploy-prod
 
