@@ -8,11 +8,11 @@
 
 ## 🔖 Release Summary
 
-**Package name:** *com.caffeine*
-**Version being released:** *1.4.2*
-**Previous version:** *1.4.1*
-**Release type:** *patch | minor | major*
-**Target Unity version (minimum):** *2021.3*
+**Package name:** <!-- e.g. com.educationxr.core -->
+**Version being released:** <!-- e.g. 1.4.2 -->
+**Previous version:** <!-- e.g. 1.4.1 -->
+**Release type:** <!-- patch | minor | major -->
+**Target Unity version (minimum):** <!-- e.g. 2021.3 -->
 
 ---
 
@@ -145,4 +145,4 @@
 
 ## Notes / Context for Reviewers
 
-*Add any context, linked issues, design docs, or migration guides here.*
+<!-- Anything else reviewers should know about this release. Link to related issues, design docs, or migration guides here. -->
