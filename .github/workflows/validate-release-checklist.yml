@@ -19,8 +19,11 @@ jobs:
         with:
           script: |
             const pr = context.payload.pull_request;
-            const body = pr.body || '';
+            const rawBody = pr.body || '';
             const targetBranch = pr.base.ref;
+
+            // Normalize line endings (GitHub API returns \r\n on Windows)
+            const body = rawBody.replace(/\r\n/g, '\n').replace(/\r/g, '\n');
 
             // Empty PR body
             if (!body.trim()) {
@@ -72,8 +75,6 @@ jobs:
         with:
           script: |
             const fs = require('fs');
-            const pr = context.payload.pull_request;
-            const body = pr.body || '';
 
             // --- Locate package.json ---
             let pkgPath = null;
