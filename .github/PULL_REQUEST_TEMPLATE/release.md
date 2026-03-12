@@ -124,16 +124,7 @@
 
 ---
 
-## 12 · npm Publish Readiness
-
-- [ ] `npm pack` has been run locally (or in CI dry-run) and the resulting `.tgz` contents reviewed — only the intended files are included
-- [ ] A `.npmignore` or `"files"` field in `package.json` is correctly configured to exclude development-only files from the published package
-- [ ] The `NPM_TOKEN` / registry secret in GitHub Actions is valid and scoped to publish this package
-- [ ] The publish target registry (npm, OpenUPM, private) is correct and intentional for this release
-
----
-
-## 13 · Reviewer Sign-off
+## 12 · Reviewer Sign-off
 
 **Please tag at least one engineer who did not author this PR.**
 
@@ -145,4 +136,4 @@
 
 ## Notes / Context for Reviewers
 
-<!-- Anything else reviewers should know about this release. Link to related issues, design docs, or migration guides here. -->
+<!-- Anything else reviewers should know about this release goes here. -->
