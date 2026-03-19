@@ -1,6 +1,6 @@
 {
   "name": "com.caffeine",
-  "version": "1.1.16",
+  "version": "1.1.17",
   "displayName": "Caffeine",
   "description": "Caffeine package is a collection of utility methods, design patterns, and extensions for creating, previewing, and distributing interactive courses within Unity.",
   "unity": "6000.0",
@@ -35,12 +35,13 @@
     "com.unity.splines": "2.6.0",
     "com.unity.ai.navigation": "1.1.5",
     "com.unity.xr.arfoundation": "5.1.6",
-    "com.unity.visualeffectgraph": "17.0.4"
+    "com.unity.visualeffectgraph": "17.0.4",
+    "com.unity.cloud.gltfast": "1.0.0"
   },
   "documentationUrl": "https://docs.educationxr.com",
   "changelogUrl": "https://educationxr.com/caffeine-changelog/",
   "resolutionStrategy": "highest",
   "_upm": {
-    "changelog": "## [1.1.16] - 03.11.2026\n### Fixed\n- Fixed a bug that could result in a partially failed publish."
+    "changelog": "## [1.1.17] - 03.19.2026\n### Added\n- GLTFast support."
   }
 }
