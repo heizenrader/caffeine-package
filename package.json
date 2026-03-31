@@ -1,6 +1,6 @@
 {
   "name": "com.caffeine",
-  "version": "1.1.17",
+  "version": "1.1.18-rc.1",
   "displayName": "Caffeine",
   "description": "Caffeine package is a collection of utility methods, design patterns, and extensions for creating, previewing, and distributing interactive courses within Unity.",
   "unity": "6000.0",
@@ -42,6 +42,6 @@
   "changelogUrl": "https://educationxr.com/caffeine-changelog/",
   "resolutionStrategy": "highest",
   "_upm": {
-    "changelog": "## [1.1.17] - 03.19.2026\n### Added\n- GLTFast support."
+    "changelog": "## [1.1.18] - 03.31.2026\n### Changed\n- Significantly faster thumbnail downloads.\n### Fixed\n- Fixed an issue that could result in published builds showing a size of 0."
   }
 }
