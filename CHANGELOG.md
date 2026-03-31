@@ -4,6 +4,12 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [1.1.18] - 03.31.2026
+### Changed
+- Significantly faster thumbnail downloads.
+### Fixed
+- Fixed an issue that could result in published builds showing a size of 0.
+
 ## [1.1.17] - 03.19.2026
 ### Added
 - GLTFast support.
