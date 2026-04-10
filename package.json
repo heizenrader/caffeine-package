@@ -1,6 +1,6 @@
 {
   "name": "com.caffeine",
-  "version": "1.1.17",
+  "version": "1.1.18",
   "displayName": "Caffeine",
   "description": "Caffeine package is a collection of utility methods, design patterns, and extensions for creating, previewing, and distributing interactive courses within Unity.",
   "unity": "6000.0",
@@ -42,6 +42,6 @@
   "changelogUrl": "https://educationxr.com/caffeine-changelog/",
   "resolutionStrategy": "highest",
   "_upm": {
-    "changelog": "## [1.1.17] - 03.19.2026\n### Added\n- GLTFast support."
+    "changelog": "## [1.1.18] - 04.10.2026\n\nFaster downloads, a live import window, and a more reliable publishing experience.\n\n### New\n- **Import progress window.** Watch your course import in real time with live status updates and clear stage labels.\n- **Dirty scene protection.** You are prompted to save, cancel, or continue if you have unsaved changes before publishing.\n- **Network auto-pause and resume.** Downloads pause automatically if your connection drops and pick up where they left off when you reconnect.\n- **Environment indicator.** The title bar now shows which environment you are connected to at a glance.\n- **Resizable text areas.** Description fields in the publish view can now be resized to fit longer content.\n- **Download integrity checks.** Every downloaded file is verified automatically so corrupted transfers are caught before import.\n\n### Improved\n- **Downloads are 2-3x faster,** reaching 70-80 MBps on supported connections.\n- **Course re-imports take seconds instead of minutes** when most of your content has not changed.\n- **Course thumbnails** load noticeably faster.\n- **More reliable publish view.** Platform settings update immediately when changed, broken builders are detected with a repair option, and platform toggles stay the way you set them.\n\n### Fixed\n- Canceling an import no longer removes a course that was already installed.\n- Downloads and imports now complete normally when the Unity editor is in the background or in Play mode.\n- Lighting renders correctly in Built-In pipeline projects."
   }
 }
