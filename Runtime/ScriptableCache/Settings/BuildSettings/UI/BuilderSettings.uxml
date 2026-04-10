@@ -31,6 +31,14 @@
                 <ui:TextField picking-mode="Ignore" value="q" name="CLIParametersField" style="height: 20px; align-items: auto; justify-content: center; align-self: auto; margin-top: 0; margin-right: 0; margin-bottom: 0; margin-left: 75px; flex-shrink: 1; flex-grow: 1;" />
                 <ui:Label text="* Additional Build Parameters ( E.G. &quot;-job-worker-count 2&quot;)." display-tooltip-when-elided="true" style="flex-grow: 1; font-size: 10px; -unity-text-align: upper-center; white-space: normal; margin-left: 15px; align-self: auto; justify-content: flex-start; align-items: auto; padding-top: 0; padding-bottom: 0; padding-left: 0; padding-right: 0; margin-top: 0; margin-bottom: 0; margin-right: 5px;" />
             </ui:VisualElement>
+            <ui:VisualElement style="flex-direction: row; margin-top: 0; margin-bottom: 10px; flex-grow: 1; margin-left: 5px; margin-right: 0;">
+                <ui:Toggle label="Multi-Process Build" name="MultiProcessBuild" style="margin-bottom: 0; margin-top: 0; margin-right: 0; margin-left: 0; -unity-text-align: middle-left;" />
+                <ui:Label text="* Experimental: Enables multi-process asset bundle building for potentially faster build times. May increase memory usage." display-tooltip-when-elided="true" style="flex-grow: 1; font-size: 10px; -unity-text-align: middle-left; white-space: normal; margin-left: 15px;" />
+            </ui:VisualElement>
+            <ui:VisualElement style="flex-direction: row; margin-top: 0; margin-bottom: 10px; flex-grow: 1; margin-left: 5px; margin-right: 0;">
+                <ui:Toggle label="Parallel Import" name="ParallelImport" style="margin-bottom: 0; margin-top: 0; margin-right: 0; margin-left: 0; -unity-text-align: middle-left;" />
+                <ui:Label text="* Experimental: Enables parallel asset importing in builder projects for potentially faster import times." display-tooltip-when-elided="true" style="flex-grow: 1; font-size: 10px; -unity-text-align: middle-left; white-space: normal; margin-left: 15px;" />
+            </ui:VisualElement>
         </ui:VisualElement>
         <ui:VisualElement name="Scripting" style="height: 25px; padding-top: 0; background-color: rgb(255, 255, 255); flex-shrink: 0; padding-right: 0; padding-bottom: 0; padding-left: 5px; align-items: flex-start; justify-content: center; visibility: hidden; display: none;">
             <ui:Label text="Scripting" display-tooltip-when-elided="true" name="Header" style="background-color: rgba(255, 255, 255, 0); color: rgb(0, 0, 0); -unity-font-style: bold; margin-left: 0; margin-top: 0; margin-right: 0; margin-bottom: 0; padding-top: 0; padding-right: 0; padding-bottom: 0; padding-left: 0;" />
