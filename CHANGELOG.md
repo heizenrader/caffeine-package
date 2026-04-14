@@ -17,7 +17,7 @@ A new Course Validator, smoother transfers, and a much better create-from-templa
 - **Scrolling inside text fields** now behaves naturally instead of hijacking the surrounding graph or page.
 
 ### Fixed
-- Environment lighting renders correctly on MRTK materials in URP projects.
+- Environment lighting renders correctly on Graphic Tools materials in URP projects.
 - Uploads now automatically recover from transient storage issues, and canceled or failed uploads clear themselves from the admin panel automatically.
 
 ## [1.1.18] - 04.10.2026
