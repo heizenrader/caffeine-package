@@ -4,11 +4,28 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
-## [1.1.18] - 03.31.2026
-### Changed
-- Significantly faster thumbnail downloads.
+## [1.1.18] - 04.10.2026
+
+Faster downloads, a live import window, and a more reliable publishing experience.
+
+### New
+- **Import progress window.** Watch your course import in real time with live status updates and clear stage labels.
+- **Dirty scene protection.** You are prompted to save, cancel, or continue if you have unsaved changes before publishing.
+- **Network auto-pause and resume.** Downloads pause automatically if your connection drops and pick up where they left off when you reconnect.
+- **Environment indicator.** The title bar now shows which environment you are connected to at a glance.
+- **Resizable text areas.** Description fields in the publish view can now be resized to fit longer content.
+- **Download integrity checks.** Every downloaded file is verified automatically so corrupted transfers are caught before import.
+
+### Improved
+- **Downloads are 2-3x faster,** reaching 70-80 MBps on supported connections.
+- **Course re-imports take seconds instead of minutes** when most of your content has not changed.
+- **Course thumbnails** load noticeably faster.
+- **More reliable publish view.** Platform settings update immediately when changed, broken builders are detected with a repair option, and platform toggles stay the way you set them.
+
 ### Fixed
-- Fixed an issue that could result in published builds showing a size of 0.
+- Canceling an import no longer removes a course that was already installed.
+- Downloads and imports now complete normally when the Unity editor is in the background or in Play mode.
+- Lighting renders correctly in Built-In pipeline projects.
 
 ## [1.1.17] - 03.19.2026
 ### Added
