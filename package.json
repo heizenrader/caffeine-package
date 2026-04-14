@@ -42,6 +42,6 @@
   "changelogUrl": "https://educationxr.com/caffeine-changelog/",
   "resolutionStrategy": "highest",
   "_upm": {
-    "changelog": "## [1.1.19] - 04.14.2026\n\n### Improved\n- Smoother and more reliable transfers.\n- A better experience creating courses from templates."
+    "changelog": "## [1.1.19] - 04.14.2026\n\nA new Course Validator, smoother transfers, and a much better create-from-template experience.\n\n### New\n- **Course Validator.** Catch missing references, misconfigured scenes, and setup issues in your course before you publish. Click any issue to jump to it, or use Fix All to resolve common problems automatically.\n\n### Improved\n- **Faster, smoother uploads** with more accurate progress and timing.\n- **Creating a course from a template** now shows live progress, closes cleanly when finished, and no longer shows a spurious \"Remote changes detected\" warning on first open.\n- **Scrolling inside text fields** now behaves naturally instead of hijacking the surrounding graph or page.\n\n### Fixed\n- Environment lighting renders correctly on MRTK materials in URP projects.\n- Uploads now automatically recover from transient storage issues, and canceled or failed uploads clear themselves from the admin panel automatically."
   }
 }
