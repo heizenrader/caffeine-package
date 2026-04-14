@@ -4,6 +4,22 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [1.1.19] - 04.14.2026
+
+A new Course Validator, smoother transfers, and a much better create-from-template experience.
+
+### New
+- **Course Validator.** Catch missing references, misconfigured scenes, and setup issues in your course before you publish. Click any issue to jump to it, or use Fix All to resolve common problems automatically.
+
+### Improved
+- **Faster, smoother uploads** with more accurate progress and timing.
+- **Creating a course from a template** now shows live progress, closes cleanly when finished, and no longer shows a spurious "Remote changes detected" warning on first open.
+- **Scrolling inside text fields** now behaves naturally instead of hijacking the surrounding graph or page.
+
+### Fixed
+- Environment lighting renders correctly on MRTK materials in URP projects.
+- Uploads now automatically recover from transient storage issues, and canceled or failed uploads clear themselves from the admin panel automatically.
+
 ## [1.1.18] - 04.10.2026
 
 Faster downloads, a live import window, and a more reliable publishing experience.

@@ -44,7 +44,11 @@ GTMainLight GTGetMainLight()
 #define GTDielectricSpec half4(0.04, 0.04, 0.04, 1.0 - 0.04)
 
 // A good ambient global illumination value when spherical harmonics are not available.
+#if defined(_URP)
+#define GTDefaultAmbientGI (unity_AmbientSky.rgb + half3(0.25h, 0.25h, 0.25h))
+#else
 #define GTDefaultAmbientGI (glstate_lightmodel_ambient.rgb + half3(0.25h, 0.25h, 0.25h))
+#endif
 
 struct GTBRDFData
 {
