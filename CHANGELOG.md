@@ -10,13 +10,6 @@ Publishing and importing are noticeably more reliable on slow and unstable conne
 
 ### Improved
 - **Uploads complete reliably on slow and cellular connections**, even under heavy congestion.
-- **Concurrent uploads share bandwidth evenly** so every transfer keeps making progress.
-- **Uploads and downloads handle temporary network issues on their own** without requiring manual retry.
-- **Upload progress stays accurate** throughout the transfer, so you always know where you stand.
-- **The course validator** catches more issues before you publish, including prefab hierarchy conflicts on modified prefab instances.
-
-### Fixed
-- **Camera lerp node preview** now leaves the main scene camera untouched when recording a snapshot.
 
 ## [1.1.19] - 04.14.2026
 
