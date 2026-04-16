@@ -1,6 +1,6 @@
 {
   "name": "com.caffeine",
-  "version": "1.1.19-rc.7",
+  "version": "1.1.20-rc.1",
   "displayName": "Caffeine",
   "description": "Caffeine package is a collection of utility methods, design patterns, and extensions for creating, previewing, and distributing interactive courses within Unity.",
   "unity": "6000.0",
@@ -42,6 +42,6 @@
   "changelogUrl": "https://educationxr.com/caffeine-changelog/",
   "resolutionStrategy": "highest",
   "_upm": {
-    "changelog": "## [1.1.19] - 04.14.2026\n\nA new Course Validator, smoother transfers, and a much better create-from-template experience.\n\n### New\n- **Course Validator.** Catch missing references, misconfigured scenes, and setup issues in your course before you publish. Click any issue to jump to it, or use Fix All to resolve common problems automatically.\n\n### Improved\n- **Faster, smoother uploads** with more accurate progress and timing.\n- **Creating a course from a template** now shows live progress, closes cleanly when finished, and no longer shows a spurious \"Remote changes detected\" warning on first open.\n- **Scrolling inside text fields** now behaves naturally instead of hijacking the surrounding graph or page.\n\n### Fixed\n- Environment lighting renders correctly on MRTK materials in URP projects.\n- Uploads now automatically recover from transient storage issues, and canceled or failed uploads clear themselves from the admin panel automatically."
+    "changelog": "## [1.1.20] - 04.16.2026\n\nPublishing and importing are noticeably more reliable on slow and unstable connections, with clearer progress feedback throughout.\n\n### Improved\n- **Uploads complete reliably on slow and cellular connections**, even under heavy congestion.\n- **Concurrent uploads share bandwidth evenly** so every transfer keeps making progress.\n- **Uploads and downloads handle temporary network issues on their own** without requiring manual retry.\n- **Upload progress stays accurate** throughout the transfer, so you always know where you stand.\n- **The course validator** catches more issues before you publish, including prefab hierarchy conflicts on modified prefab instances.\n\n### Fixed\n- **Camera lerp node preview** now leaves the main scene camera untouched when recording a snapshot."
   }
 }

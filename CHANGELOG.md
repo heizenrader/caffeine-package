@@ -4,6 +4,20 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [1.1.20] - 04.16.2026
+
+Publishing and importing are noticeably more reliable on slow and unstable connections, with clearer progress feedback throughout.
+
+### Improved
+- **Uploads complete reliably on slow and cellular connections**, even under heavy congestion.
+- **Concurrent uploads share bandwidth evenly** so every transfer keeps making progress.
+- **Uploads and downloads handle temporary network issues on their own** without requiring manual retry.
+- **Upload progress stays accurate** throughout the transfer, so you always know where you stand.
+- **The course validator** catches more issues before you publish, including prefab hierarchy conflicts on modified prefab instances.
+
+### Fixed
+- **Camera lerp node preview** now leaves the main scene camera untouched when recording a snapshot.
+
 ## [1.1.19] - 04.14.2026
 
 A new Course Validator, smoother transfers, and a much better create-from-template experience.
@@ -17,7 +31,7 @@ A new Course Validator, smoother transfers, and a much better create-from-templa
 - **Scrolling inside text fields** now behaves naturally instead of hijacking the surrounding graph or page.
 
 ### Fixed
-- Environment lighting renders correctly on MRTK materials in URP projects.
+- Environment lighting renders correctly on Graphic Tools materials in URP projects.
 - Uploads now automatically recover from transient storage issues, and canceled or failed uploads clear themselves from the admin panel automatically.
 
 ## [1.1.18] - 04.10.2026
