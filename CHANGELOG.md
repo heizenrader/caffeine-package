@@ -4,6 +4,25 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [1.1.21] - 05.20.2026
+
+A major Flow Editor refresh: color-code your groups, hide and rename them in one click, and navigate huge courses smoothly with new LOD rendering.
+
+### New
+- **Group colors in the Flow Editor.** You can now assign a color to any group, making it easy to organize and navigate complex courses at a glance.
+- **Hide and rename groups with one click.** A new eye icon on each group collapses it instantly, and collapsed groups now show a pencil icon so you can rename them without expanding first.
+- **LOD rendering for large graphs.** When you zoom out, nodes simplify to clean color blocks so panning and navigating big courses stays smooth. A new "LOD (Performance)" section in Preferences lets you tune the zoom threshold and toggle name labels.
+- **Course Validator catches two more setup issues:** a missing starting point and objects with conflicting IDs, each with a one-click fix.
+
+### Improved
+- **Smoother interaction inside groups.** Drag-selecting now works from inside an open group, and clicking eye buttons or the Course Events panel no longer accidentally selects a group behind them. Open groups appear at lighter opacity so the nodes inside stand out.
+- **Validator collider check is now a warning,** so a label whose target lacks a collider no longer blocks publishing.
+- **Landscape and Joystick course settings** are now included in your published course's metadata.
+
+### Fixed
+- **Unpacking a prefab preserves all flow graph connections,** including in prefabs that contain text components.
+- **Several Flow Editor behaviors work correctly:** resizing a collapsed group, the show/hide eye buttons at high zoom, and duplicating a collapsed group.
+
 ## [1.1.20] - 04.16.2026
 
 Publishing and importing are noticeably more reliable on slow and unstable connections, with clearer progress feedback throughout.

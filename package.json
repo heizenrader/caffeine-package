@@ -1,6 +1,6 @@
 {
   "name": "com.caffeine",
-  "version": "1.1.21-rc.3",
+  "version": "1.1.21",
   "displayName": "Caffeine",
   "description": "Caffeine package is a collection of utility methods, design patterns, and extensions for creating, previewing, and distributing interactive courses within Unity.",
   "unity": "6000.0",
@@ -36,12 +36,13 @@
     "com.unity.ai.navigation": "1.1.5",
     "com.unity.xr.arfoundation": "5.1.6",
     "com.unity.visualeffectgraph": "17.0.4",
-    "com.unity.cloud.gltfast": "1.0.0"
+    "com.unity.cloud.gltfast": "1.0.0",
+    "com.unity.2d.sprite": "1.0.0"
   },
   "documentationUrl": "https://docs.educationxr.com",
   "changelogUrl": "https://educationxr.com/caffeine-changelog/",
   "resolutionStrategy": "highest",
   "_upm": {
-    "changelog": "## [1.1.20] - 04.16.2026\n\nPublishing and importing are noticeably more reliable on slow and unstable connections, with clearer progress feedback throughout.\n\n### Improved\n- **Uploads complete reliably on slow and cellular connections**, even under heavy congestion."
+    "changelog": "## [1.1.21] - 05.20.2026\n\nA major Flow Editor refresh: color-code your groups, hide and rename them in one click, and navigate huge courses smoothly with new LOD rendering.\n\n### New\n- **Group colors in the Flow Editor.** You can now assign a color to any group, making it easy to organize and navigate complex courses at a glance.\n- **Hide and rename groups with one click.** A new eye icon on each group collapses it instantly, and collapsed groups now show a pencil icon so you can rename them without expanding first.\n- **LOD rendering for large graphs.** When you zoom out, nodes simplify to clean color blocks so panning and navigating big courses stays smooth. A new \"LOD (Performance)\" section in Preferences lets you tune the zoom threshold and toggle name labels.\n- **Course Validator catches two more setup issues:** a missing starting point and objects with conflicting IDs, each with a one-click fix.\n\n### Improved\n- **Smoother interaction inside groups.** Drag-selecting now works from inside an open group, and clicking eye buttons or the Course Events panel no longer accidentally selects a group behind them. Open groups appear at lighter opacity so the nodes inside stand out.\n- **Validator collider check is now a warning,** so a label whose target lacks a collider no longer blocks publishing.\n- **Landscape and Joystick course settings** are now included in your published course's metadata.\n\n### Fixed\n- **Unpacking a prefab preserves all flow graph connections,** including in prefabs that contain text components.\n- **Several Flow Editor behaviors work correctly:** resizing a collapsed group, the show/hide eye buttons at high zoom, and duplicating a collapsed group."
   }
 }
