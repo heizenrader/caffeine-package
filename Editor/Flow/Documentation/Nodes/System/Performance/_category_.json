@@ -1,0 +1,9 @@
+{
+  "label": "Performance",
+  "position": 2,
+  "collapsed": true,
+  "link": {
+    "type": "generated-index",
+    "description": "Runtime performance settings, including foveated rendering."
+  }
+}

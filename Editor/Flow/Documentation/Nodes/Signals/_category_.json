@@ -1,0 +1,9 @@
+{
+  "label": "Signals",
+  "position": 6,
+  "collapsed": true,
+  "link": {
+    "type": "generated-index",
+    "description": "Cross-graph signalling: raise an event in one graph, listen for it in another. Three payload flavors — no payload, GameObject, or typed value."
+  }
+}

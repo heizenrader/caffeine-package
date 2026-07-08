@@ -1,0 +1,9 @@
+{
+  "label": "Renderer",
+  "position": 25,
+  "collapsed": true,
+  "link": {
+    "type": "generated-index",
+    "description": "Renderer action nodes — minimal codegen coverage. Most Renderer changes (enabled, materials, sortingOrder) go through Set Component Property."
+  }
+}

@@ -1,0 +1,9 @@
+{
+  "label": "Vector2",
+  "position": 4,
+  "collapsed": true,
+  "link": {
+    "type": "generated-index",
+    "description": "Vector2 math nodes — angle, distance, dot, lerp, project/reflect, perpendicular, and other Unity Vector2 operations exposed as Flow nodes."
+  }
+}

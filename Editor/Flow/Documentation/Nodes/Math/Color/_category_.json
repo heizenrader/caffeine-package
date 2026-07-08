@@ -1,0 +1,9 @@
+{
+  "label": "Color",
+  "position": 2,
+  "collapsed": true,
+  "link": {
+    "type": "generated-index",
+    "description": "Color nodes — Flow wrappers around Unity's Color static methods: HSV-to-RGB conversion and color interpolation."
+  }
+}

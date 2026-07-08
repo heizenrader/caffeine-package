@@ -1,0 +1,17 @@
+        [Output]
+        public #RETURNTYPE# Value;
+
+        public Func<#RETURNTYPE#> OutputValue;
+
+        public override Delegate GetDelegate(string fieldName)
+        {
+            if (OutputValue == null) OutputValue = new Func<#RETURNTYPE#>(GetValue);
+            return OutputValue;
+        }
+
+        public #RETURNTYPE# GetValue()
+        {
+            //This will take care of "grabbing" the value for nodes that output something (and no need to "update" the nodes)
+            Main();
+            return Value;
+        }

@@ -1,0 +1,9 @@
+{
+  "label": "Math",
+  "position": 3,
+  "collapsed": true,
+  "link": {
+    "type": "generated-index",
+    "description": "Math and value-type operations: Mathf utilities, Color, Quaternion, and Vector arithmetic."
+  }
+}

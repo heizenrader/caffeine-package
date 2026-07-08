@@ -1,0 +1,9 @@
+{
+  "label": "Collider",
+  "position": 22,
+  "collapsed": true,
+  "link": {
+    "type": "generated-index",
+    "description": "Collider action nodes — closest-point queries on a collider."
+  }
+}

@@ -1,0 +1,7 @@
+
+			NodePort connected#PARAMETERNAME# = GetInputPort("#PARAMETERNAME#").Connection;
+
+			if (connected#PARAMETERNAME# != null)
+			{
+				#PARAMETERNAME#= GetInputValue<#METHODPARAMETERTYPE#>("#PARAMETERNAME#");
+			}

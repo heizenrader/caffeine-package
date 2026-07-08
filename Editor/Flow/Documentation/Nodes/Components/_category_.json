@@ -1,0 +1,9 @@
+{
+  "label": "Components",
+  "position": 2,
+  "collapsed": true,
+  "link": {
+    "type": "generated-index",
+    "description": "Nodes grouped by what they touch. Most subfolders map to a Unity component (Rigidbody, AudioSource, etc.); some group Caffeine subsystems (XR, Analytics, Viewer) or non-component utilities (General, Lists, String). Each subfolder mixes Action nodes (with Flow ports) and pure-data queries (no Flow ports) — each per-node page's Kind tells you which."
+  }
+}

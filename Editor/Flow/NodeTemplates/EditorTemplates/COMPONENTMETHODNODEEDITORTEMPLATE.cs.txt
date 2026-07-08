@@ -1,0 +1,25 @@
+namespace Caffeine.Flow.Nodes.Actions
+{
+    #if UNITY_EDITOR
+    using System;
+    using System.Collections.Generic;
+    using System.Reflection;
+    using UnityEditor;
+    using UnityEngine;
+    using UnityEngine.Video;
+    using XNodeEditor;
+    
+    [CustomNodeEditor(typeof(EdXR_#COMPONENT##METHODNAME#Node#VERSION#))]
+    public class EdXR_#COMPONENT##METHODNAME#Node#VERSION#Editor : EdXR_UpdatableNodeEditor
+    {
+        public override void OnBodyGUI()
+        {
+            base.OnBodyGUI();
+            serializedObject.Update();
+	        NodeEditorGUILayout.PropertyField(serializedObject.FindProperty("#COMPONENTLOWERCASE#"));
+#PROPERTIES#
+            serializedObject.ApplyModifiedProperties();
+        }
+    }
+    #endif
+}

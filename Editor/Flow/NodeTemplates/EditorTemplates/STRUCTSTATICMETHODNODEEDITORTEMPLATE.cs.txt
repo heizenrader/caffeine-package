@@ -1,0 +1,23 @@
+namespace Caffeine.Flow.Nodes.Actions
+{
+    #if UNITY_EDITOR
+    using System;
+    using System.Collections.Generic;
+    using System.Reflection;
+    using UnityEditor;
+    using UnityEngine;
+    using XNodeEditor;
+    
+    [CustomNodeEditor(typeof(EdXR_#COMPONENT##METHODNAME#Node#VERSION#))]
+    public class EdXR_#COMPONENT##METHODNAME#Node#VERSION#Editor : EdXR_NodeEditor
+    {
+        public override void OnBodyGUI()
+        {
+            //base.OnBodyGUI();
+            serializedObject.Update();	        
+#PROPERTIES#
+            serializedObject.ApplyModifiedProperties();
+        }
+    }
+    #endif
+}

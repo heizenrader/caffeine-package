@@ -1,0 +1,9 @@
+{
+  "label": "ParticleSystem",
+  "position": 24,
+  "collapsed": true,
+  "link": {
+    "type": "generated-index",
+    "description": "ParticleSystem action nodes — Play, Stop, Pause, Clear, Emit, Simulate, IsAlive, custom-data attribute allocation, and sub-emitter triggers."
+  }
+}
