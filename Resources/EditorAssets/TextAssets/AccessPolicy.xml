@@ -16,7 +16,8 @@
     <!-- Specific Unity restrictions -->
     <Rule id="UnityRestriction">
         <assembly fullname="UnityEngine.CoreModule">
-            <type fullname="UnityEngine.Resources.Load.*"/>
+            <type fullname="UnityEngine.Object.DontDestroyOnLoad"/>
+            <type fullname="UnityEngine.Resources.Load"/>
             <type fullname="UnityEngine.Application.Quit"/>
             <type fullname="UnityEngine.Object.FindObjectsOfTypeIncludingAssets.*"/>
             <type fullname="UnityEngine.Networking.*"/>
@@ -38,6 +39,7 @@
     <!-- Core restrictions -->
     <Rule id="CoreRestrictions">
         <assembly fullname="mscorlib">
+            <type fullname="System.Diagnostics.*"/>
             <type fullname="System.IO.*"/>
             <type fullname="System.Reflection.*"/>
             <type fullname="System.Reflection.MemberInfo" access="1"/>

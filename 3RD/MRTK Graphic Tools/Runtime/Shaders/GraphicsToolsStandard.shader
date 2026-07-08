@@ -220,6 +220,7 @@ Shader "Graphics Tools/Standard"
         {
             Name "Meta"
             Tags { "LightMode" = "Meta" }
+            Cull Off
 
             HLSLPROGRAM
 
@@ -284,6 +285,7 @@ Shader "Graphics Tools/Standard"
         {
             Name "Meta"
             Tags { "LightMode" = "Meta" }
+            Cull Off
 
             HLSLPROGRAM
 

@@ -571,6 +571,27 @@ namespace Microsoft.MixedReality.GraphicsTools.Editor
                 SetShaderFeatureActive(material, Styles.gradientModeIridescence, "_GradientMode", (float)GradientMode.Iridescence);
             }
 
+            // Keep the material's GI flag in sync with the emission toggle so the Meta pass
+            // contributes to bakes. New materials default to EmissiveIsBlack, which makes the
+            // Progressive Lightmapper skip the Meta pass regardless of _EmissiveColor.
+            const MaterialGlobalIlluminationFlags anyEmissive =
+                MaterialGlobalIlluminationFlags.RealtimeEmissive |
+                MaterialGlobalIlluminationFlags.BakedEmissive;
+
+            if (material.IsKeywordEnabled("_EMISSION"))
+            {
+                var flags = material.globalIlluminationFlags & ~MaterialGlobalIlluminationFlags.EmissiveIsBlack;
+                if ((flags & anyEmissive) == 0)
+                {
+                    flags |= MaterialGlobalIlluminationFlags.BakedEmissive;
+                }
+                material.globalIlluminationFlags = flags;
+            }
+            else
+            {
+                material.globalIlluminationFlags = MaterialGlobalIlluminationFlags.EmissiveIsBlack;
+            }
+
             base.MaterialChanged(material);
         }
 
@@ -655,6 +676,7 @@ namespace Microsoft.MixedReality.GraphicsTools.Editor
             {
                 EditorGUI.indentLevel += 2;
                 materialEditor.TexturePropertySingleLine(Styles.emissiveColor, emissiveMap, emissiveColor);
+                materialEditor.LightmapEmissionProperty(2);
                 EditorGUI.indentLevel -= 2;
             }
 
