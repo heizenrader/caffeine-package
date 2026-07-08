@@ -9,7 +9,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4029485111374789083}
-  - component: {fileID: 1513234908685276442}
+  - component: {fileID: 1089374906680389124}
   - component: {fileID: 6391437306910670450}
   m_Layer: 0
   m_Name: lineRenderer
@@ -37,7 +37,7 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
---- !u!114 &1513234908685276442
+--- !u!114 &1089374906680389124
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -49,7 +49,7 @@ MonoBehaviour:
   m_Script: {fileID: 899045263, guid: 8ac8e203a0bb13147b5a2edd731298a3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  patient: {fileID: 2859395655293551402}
+  patient: {fileID: 2991191121285617796}
   dataFieldIndex: 11
   thickness: 1.5
   color: {r: 1, g: 1, b: 0, a: 1}
@@ -82,7 +82,7 @@ LineRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 438b70bd3803dda4f8e4c8f62cff0b43, type: 2}
+  - {fileID: 2100000, guid: d7b6ddbdc6136564fbb05ef2a21bf3e7, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -177,7 +177,7 @@ GameObject:
   - component: {fileID: 7196575534160125905}
   - component: {fileID: 5975545949284202937}
   - component: {fileID: 1668331857194516702}
-  - component: {fileID: 907744888384542307}
+  - component: {fileID: 1901571968141121893}
   m_Layer: 0
   m_Name: number
   m_TagString: Untagged
@@ -353,7 +353,7 @@ MonoBehaviour:
     m_VerticalOverflow: 1
     m_LineSpacing: 1
   m_Text: 00
---- !u!114 &907744888384542307
+--- !u!114 &1901571968141121893
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -365,7 +365,7 @@ MonoBehaviour:
   m_Script: {fileID: -781591579, guid: 8ac8e203a0bb13147b5a2edd731298a3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  patient: {fileID: 2859395655293551402}
+  patient: {fileID: 2991191121285617796}
   dataFieldIndex: 7
   prefix: 
   suffix: 
@@ -381,7 +381,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 6115806599135264708}
-  - component: {fileID: 415752125275244507}
+  - component: {fileID: 9036982489875722687}
   - component: {fileID: 7470627245279879304}
   m_Layer: 0
   m_Name: lineRenderer
@@ -409,7 +409,7 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
---- !u!114 &415752125275244507
+--- !u!114 &9036982489875722687
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -421,7 +421,7 @@ MonoBehaviour:
   m_Script: {fileID: 899045263, guid: 8ac8e203a0bb13147b5a2edd731298a3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  patient: {fileID: 2859395655293551402}
+  patient: {fileID: 2991191121285617796}
   dataFieldIndex: 3
   thickness: 1.5
   color: {r: 0, g: 1, b: 1, a: 1}
@@ -454,7 +454,7 @@ LineRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 438b70bd3803dda4f8e4c8f62cff0b43, type: 2}
+  - {fileID: 2100000, guid: d7b6ddbdc6136564fbb05ef2a21bf3e7, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -892,7 +892,7 @@ GameObject:
   - component: {fileID: 962128994138901446}
   - component: {fileID: 5646360230458639569}
   - component: {fileID: 2179377518461436596}
-  - component: {fileID: 7360838485719372915}
+  - component: {fileID: 8224406623107248998}
   m_Layer: 0
   m_Name: number
   m_TagString: Untagged
@@ -1068,7 +1068,7 @@ MonoBehaviour:
     m_VerticalOverflow: 1
     m_LineSpacing: 1
   m_Text: 00
---- !u!114 &7360838485719372915
+--- !u!114 &8224406623107248998
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -1080,7 +1080,7 @@ MonoBehaviour:
   m_Script: {fileID: -781591579, guid: 8ac8e203a0bb13147b5a2edd731298a3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  patient: {fileID: 2859395655293551402}
+  patient: {fileID: 2991191121285617796}
   dataFieldIndex: 9
   prefix: 
   suffix: 
@@ -1160,7 +1160,7 @@ GameObject:
   - component: {fileID: 3226603143236503767}
   - component: {fileID: 576188518013148803}
   - component: {fileID: 1591134121317018088}
-  - component: {fileID: 3751653727935209069}
+  - component: {fileID: 7230870996571594194}
   m_Layer: 0
   m_Name: systolic
   m_TagString: Untagged
@@ -1336,7 +1336,7 @@ MonoBehaviour:
     m_VerticalOverflow: 1
     m_LineSpacing: 1
   m_Text: 000/
---- !u!114 &3751653727935209069
+--- !u!114 &7230870996571594194
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -1348,7 +1348,7 @@ MonoBehaviour:
   m_Script: {fileID: -781591579, guid: 8ac8e203a0bb13147b5a2edd731298a3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  patient: {fileID: 2859395655293551402}
+  patient: {fileID: 2991191121285617796}
   dataFieldIndex: 5
   prefix: 
   suffix: /
@@ -2039,7 +2039,7 @@ GameObject:
   - component: {fileID: 4685585458281881367}
   - component: {fileID: 3690070891372704283}
   - component: {fileID: 3561659073517905683}
-  - component: {fileID: 8575258232104972974}
+  - component: {fileID: 982765890934866011}
   m_Layer: 0
   m_Name: number
   m_TagString: Untagged
@@ -2215,7 +2215,7 @@ MonoBehaviour:
     m_VerticalOverflow: 1
     m_LineSpacing: 1
   m_Text: 00
---- !u!114 &8575258232104972974
+--- !u!114 &982765890934866011
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -2227,7 +2227,7 @@ MonoBehaviour:
   m_Script: {fileID: -781591579, guid: 8ac8e203a0bb13147b5a2edd731298a3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  patient: {fileID: 2859395655293551402}
+  patient: {fileID: 2991191121285617796}
   dataFieldIndex: 8
   prefix: 
   suffix: 
@@ -2243,7 +2243,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 7045125839190735049}
-  - component: {fileID: 1539562699788209327}
+  - component: {fileID: 6600094936856081929}
   - component: {fileID: 1739468471266771814}
   m_Layer: 0
   m_Name: lineRenderer
@@ -2271,7 +2271,7 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
---- !u!114 &1539562699788209327
+--- !u!114 &6600094936856081929
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -2283,7 +2283,7 @@ MonoBehaviour:
   m_Script: {fileID: 899045263, guid: 8ac8e203a0bb13147b5a2edd731298a3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  patient: {fileID: 2859395655293551402}
+  patient: {fileID: 2991191121285617796}
   dataFieldIndex: 1
   thickness: 1.5
   color: {r: 0.29411766, g: 1, b: 0, a: 1}
@@ -2291,7 +2291,7 @@ MonoBehaviour:
   yMin: -0.7
   yMax: 1.8
   xRange: 8
-  lineRenderer: {fileID: 1739468471266771814}
+  lineRenderer: {fileID: 6391437306910670450}
 --- !u!120 &1739468471266771814
 LineRenderer:
   serializedVersion: 2
@@ -2316,7 +2316,7 @@ LineRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 438b70bd3803dda4f8e4c8f62cff0b43, type: 2}
+  - {fileID: 2100000, guid: d7b6ddbdc6136564fbb05ef2a21bf3e7, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -2342,7 +2342,7 @@ LineRenderer:
   - {x: -4.496, y: 0, z: 0}
   m_Parameters:
     serializedVersion: 3
-    widthMultiplier: 0.04685
+    widthMultiplier: 0.031233333
     widthCurve:
       serializedVersion: 2
       m_Curve:
@@ -2385,7 +2385,7 @@ LineRenderer:
       atime6: 0
       atime7: 0
       m_Mode: 0
-      m_ColorSpace: -1
+      m_ColorSpace: 0
       m_NumColorKeys: 2
       m_NumAlphaKeys: 2
     numCornerVertices: 0
@@ -2649,7 +2649,7 @@ MeshRenderer:
   m_RenderingLayerMask: 4294967295
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 4c772bb4f818e9f439c9ff88dc0eee8b, type: 2}
+  - {fileID: 2100000, guid: 726082c3265ca254b9e905a9b8b875d0, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -2701,7 +2701,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 5682325484924113560}
-  - component: {fileID: 2859395655293551402}
+  - component: {fileID: 2991191121285617796}
   m_Layer: 0
   m_Name: EdXR Patient
   m_TagString: Untagged
@@ -2726,7 +2726,7 @@ Transform:
   - {fileID: 6459397536940207333}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &2859395655293551402
+--- !u!114 &2991191121285617796
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -3548,7 +3548,7 @@ GameObject:
   - component: {fileID: 6323573407310046705}
   - component: {fileID: 5711024248055441518}
   - component: {fileID: 4692880808834461187}
-  - component: {fileID: 4232811885686336695}
+  - component: {fileID: 991581678486988870}
   m_Layer: 0
   m_Name: mean
   m_TagString: Untagged
@@ -3724,7 +3724,7 @@ MonoBehaviour:
     m_VerticalOverflow: 1
     m_LineSpacing: 1
   m_Text: (00)
---- !u!114 &4232811885686336695
+--- !u!114 &991581678486988870
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -3736,7 +3736,7 @@ MonoBehaviour:
   m_Script: {fileID: -781591579, guid: 8ac8e203a0bb13147b5a2edd731298a3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  patient: {fileID: 2859395655293551402}
+  patient: {fileID: 2991191121285617796}
   dataFieldIndex: 4
   prefix: 
   suffix: 
@@ -3834,7 +3834,7 @@ GameObject:
   - component: {fileID: 4051513749409873958}
   - component: {fileID: 6992929435395597823}
   - component: {fileID: 1053260943829577786}
-  - component: {fileID: 743554991517002165}
+  - component: {fileID: 4825323529656640723}
   m_Layer: 0
   m_Name: number
   m_TagString: Untagged
@@ -4010,7 +4010,7 @@ MonoBehaviour:
     m_VerticalOverflow: 1
     m_LineSpacing: 1
   m_Text: 00.0
---- !u!114 &743554991517002165
+--- !u!114 &4825323529656640723
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -4022,7 +4022,7 @@ MonoBehaviour:
   m_Script: {fileID: -781591579, guid: 8ac8e203a0bb13147b5a2edd731298a3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  patient: {fileID: 2859395655293551402}
+  patient: {fileID: 2991191121285617796}
   dataFieldIndex: 10
   prefix: 
   suffix: 
@@ -4161,7 +4161,7 @@ GameObject:
   - component: {fileID: 5915128990240894689}
   - component: {fileID: 3633602960048930838}
   - component: {fileID: 2046684194700572261}
-  - component: {fileID: 7269504284616310585}
+  - component: {fileID: 3678277515510005102}
   m_Layer: 0
   m_Name: number
   m_TagString: Untagged
@@ -4337,7 +4337,7 @@ MonoBehaviour:
     m_VerticalOverflow: 1
     m_LineSpacing: 1
   m_Text: 00
---- !u!114 &7269504284616310585
+--- !u!114 &3678277515510005102
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -4349,7 +4349,7 @@ MonoBehaviour:
   m_Script: {fileID: -781591579, guid: 8ac8e203a0bb13147b5a2edd731298a3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  patient: {fileID: 2859395655293551402}
+  patient: {fileID: 2991191121285617796}
   dataFieldIndex: 2
   prefix: 
   suffix: 
@@ -4632,7 +4632,7 @@ GameObject:
   - component: {fileID: 1149329547633842301}
   - component: {fileID: 3707671642028180080}
   - component: {fileID: 5254907618001934195}
-  - component: {fileID: 5400160134900253336}
+  - component: {fileID: 2001573444074039291}
   m_Layer: 0
   m_Name: diastolic
   m_TagString: Untagged
@@ -4808,7 +4808,7 @@ MonoBehaviour:
     m_VerticalOverflow: 1
     m_LineSpacing: 1
   m_Text: 00
---- !u!114 &5400160134900253336
+--- !u!114 &2001573444074039291
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -4820,7 +4820,7 @@ MonoBehaviour:
   m_Script: {fileID: -781591579, guid: 8ac8e203a0bb13147b5a2edd731298a3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  patient: {fileID: 2859395655293551402}
+  patient: {fileID: 2991191121285617796}
   dataFieldIndex: 6
   prefix: 
   suffix: 
