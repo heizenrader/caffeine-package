@@ -1,2 +1,0 @@
-		[Input(typeConstraint = TypeConstraint.Strict, backingValue = ShowBackingValue.Unconnected, connectionType = ConnectionType.Override)]
-		public #METHODPARAMETERTYPE# #PARAMETERNAME#;

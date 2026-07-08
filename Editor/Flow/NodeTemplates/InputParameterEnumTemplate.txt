@@ -1,2 +1,0 @@
-		[NodeEnum]
-		public #METHODPARAMETERTYPE# #PARAMETERNAME#;

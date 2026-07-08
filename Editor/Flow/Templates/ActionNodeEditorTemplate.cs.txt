@@ -1,0 +1,45 @@
+namespace Caffeine.Flow.Nodes.Custom
+{
+#if UNITY_EDITOR
+    using UnityEditor;
+    using XNode;
+    using XNodeEditor;
+    using Caffeine.Flow.Nodes.Actions;
+
+    // ---------------------------------------------------------------------
+    // NodeEditor for #SCRIPTNAME#.
+    //
+    // The NodeEditor controls how the node is drawn on the graph canvas.
+    // EdXR_UpdatableNodeEditor (base) already draws the standard
+    // `entry` / `exit` Flow ports at the top of the node. OnBodyGUI() is
+    // where additional inputs, outputs, and inspector-only fields are drawn
+    // below.
+    //
+    // RULE: match every [Input] / [Output] field on the node class with a
+    // NodeEditorGUILayout.PropertyField call here, or the port won't be
+    // visible on the node in the graph.
+    // ---------------------------------------------------------------------
+    [NodeEditor.CustomNodeEditorAttribute(typeof(#SCRIPTNAME#))]
+    public class #SCRIPTNAME#Editor : EdXR_UpdatableNodeEditor
+    {
+        public override void OnBodyGUI()
+        {
+            // Draws the standard `entry` (left) and `exit` (right) Flow ports.
+            base.OnBodyGUI();
+
+            serializedObject.Update();
+
+            // Draw each port from the node class.
+            //   - For input/output ports use NodeEditorGUILayout.PropertyField
+            //     (draws the port circle and the inline value).
+            //   - For inspector-only fields (no wire) use EditorGUILayout.PropertyField.
+            NodeEditorGUILayout.PropertyField(serializedObject.FindProperty("value"));
+
+            // If you uncommented the `stop` port on the node, draw it here too:
+            // NodeEditorGUILayout.PropertyField(serializedObject.FindProperty("stop"));
+
+            serializedObject.ApplyModifiedProperties();
+        }
+    }
+#endif
+}
