@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "generatedAt": "2026-07-08T16:11:00Z",
+  "generatedAt": "2026-07-23T16:59:30Z",
   "entries": [
     {
       "typeName": "Caffeine.AIBotEditor",
@@ -96,6 +96,14 @@
       "sourceFileID": 11500000,
       "sourceGuid": "0eac4d42ac7e90a4daff96d9c33279b7",
       "dllFileID": -369552493,
+      "dllGuid": "8ac8e203a0bb13147b5a2edd731298a3"
+    },
+    {
+      "typeName": "Caffeine.Editor.Flow.FlowPrefabRefHealerWindow",
+      "assemblyName": "Caffeine",
+      "sourceFileID": 11500000,
+      "sourceGuid": "ef06776cf85f128408137b59a2062e4f",
+      "dllFileID": -776195801,
       "dllGuid": "8ac8e203a0bb13147b5a2edd731298a3"
     },
     {
@@ -1720,6 +1728,14 @@
       "sourceFileID": 11500000,
       "sourceGuid": "ccaa40182dc6c1f419f28fc724ae3be9",
       "dllFileID": -1406298931,
+      "dllGuid": "8ac8e203a0bb13147b5a2edd731298a3"
+    },
+    {
+      "typeName": "Caffeine.Flow.Nodes.Actions.EdXR_GoToStepNode",
+      "assemblyName": "Caffeine",
+      "sourceFileID": 11500000,
+      "sourceGuid": "883434a3a6ef519418feac87091fb69b",
+      "dllFileID": 890131210,
       "dllGuid": "8ac8e203a0bb13147b5a2edd731298a3"
     },
     {

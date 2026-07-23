@@ -14,6 +14,7 @@ Most Course nodes target a specific step and a specific item on that step (objec
 | Node | Description |
 |---|---|
 | [Exit Course](./exit-course)                       | End the current course and return to the selection screen. |
+| [Go To Step](./go-to-step)                         | Jump the course to a specific step. |
 | [Objective Completion](./objective-completion)     | Mark a specific objective on a step as complete. |
 | [Reset A to B](./a-to-b-reset)                     | Reset an A-to-B interaction back to its starting position. |
 | [Animation Attachment](./animation-attachment)     | Trigger a step's animation attachment. |

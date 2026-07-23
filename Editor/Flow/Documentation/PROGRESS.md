@@ -8,6 +8,8 @@ This file lives at `Documentation/PROGRESS.md` and **does not ship to edxr-docs*
 **Total source nodes:** ~499 unique creator-facing menu paths (`[CreateNodeMenu("Flow/...")]` with non-empty path)
 **Last bulk-author session:** 2026-05-08 — **completed all categories**. Final push added 10 component codegen overviews (Animator ~85, AudioSource 7, Camera 26, Collider 2, Light 3, ParticleSystem 20, Renderer 1, Rigidbody 32, Transform 31, VideoPlayer 5) + 3 misc Lists nodes. ~190 nodes covered in this final push, ~210+ docs total this session.
 
+**Incremental — 2026-07-10:** documented **Go To Step** (`Course/go-to-step.md`, per-page) — new `EdXR_GoToStepNode` (`Flow/Actions/Go To Step`), jumps the course to a specific step via the step dropdown; multiplayer host-drives-steps note + Delay-composition tip. Course overview table updated.
+
 **Incremental — 2026-06-25:** documented two new node families shipped the week of 2026-06-16 (commits `8f119ac5`, `f0b86362`, `2a3cf0b7`):
 - **Collider property/type nodes** (3, per-page) → `Components/Collider/`: Get Collider Property, Set Collider Property, Is Collider Type. Collider overview intro broadened + linked.
 - **Component-list family** (8) → new `Components/Component/` subfolder (`_category_.json` position 29 + overview + 6 pages: Get Components, Get Component Item, Count Component Items, Add Component Item, Remove Component Item, Remove Component Item (Index)) + `Variables/component-list.md` + `Logic/for-each-component.md`. Mirrors the GameObject list family; documents the generic-`List<Component>` + typed-extraction model.
