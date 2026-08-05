@@ -1,0 +1,9 @@
+{
+  "label": "Operators",
+  "position": 7,
+  "collapsed": true,
+  "link": {
+    "type": "generated-index",
+    "description": "Hand-coded math operators — generic Math Operator, AnimationCurve sampling, and Vector / Quaternion convenience nodes."
+  }
+}

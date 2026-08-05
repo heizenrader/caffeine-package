@@ -1,0 +1,9 @@
+{
+  "label": "Camera",
+  "position": 15,
+  "collapsed": true,
+  "link": {
+    "type": "generated-index",
+    "description": "Camera action nodes — 2D camera lerp for cinematic moves and camera-control state toggles."
+  }
+}

@@ -1,0 +1,9 @@
+{
+  "label": "Vector4",
+  "position": 6,
+  "collapsed": true,
+  "link": {
+    "type": "generated-index",
+    "description": "Vector4 math nodes — magnitude, distance, dot, lerp, project, and other Unity Vector4 operations. Less common in gameplay; mainly used for shader uniforms and four-component data."
+  }
+}

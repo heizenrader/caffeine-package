@@ -1,0 +1,9 @@
+{
+  "label": "Input",
+  "position": 8,
+  "collapsed": true,
+  "link": {
+    "type": "generated-index",
+    "description": "Input nodes — keyboard, mouse, hand-tracking, player axes, and haptics. Read live input state inside a Flow Graph."
+  }
+}

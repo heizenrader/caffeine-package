@@ -1,0 +1,9 @@
+{
+  "label": "Events",
+  "position": 1,
+  "collapsed": true,
+  "link": {
+    "type": "generated-index",
+    "description": "Event nodes are the entry points for any Flow Graph — they kick the Flow forward when something happens in the scene."
+  }
+}

@@ -1,0 +1,8 @@
+{
+  "label": "Nodes",
+  "position": 7,
+  "link": {
+    "type": "generated-index",
+    "description": "Reference for all available Flow nodes, grouped by category."
+  }
+}

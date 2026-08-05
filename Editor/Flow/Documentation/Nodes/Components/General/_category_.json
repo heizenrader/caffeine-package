@@ -1,0 +1,9 @@
+{
+  "label": "General",
+  "position": 0,
+  "collapsed": true,
+  "link": {
+    "type": "generated-index",
+    "description": "Non-component utility action nodes — debug logging, delay, string formatting, casting, GameObject lookup, and component access."
+  }
+}

@@ -1,0 +1,54 @@
+namespace Caffeine.Flow.Nodes.Custom
+{
+    using System;
+    using UnityEngine;
+    using XNode;
+
+    // ---------------------------------------------------------------------
+    // Data node (pure-value).
+    //
+    // Data nodes inherit from EdXR_Node (NOT EdXR_UpdatableNode), so they
+    // have NO Flow ports — they expose values that downstream nodes pull on
+    // demand via xNode's GetDelegate mechanism.
+    //
+    // Pattern:
+    //   - [Input]  fields can be wired OR edited inline (typical for defaults).
+    //   - [Output] fields are the values this node exposes; downstream nodes
+    //     read them through xNode's port system.
+    //   - GetDelegate(fieldName) returns a Func<T> that, when invoked, produces
+    //     the current value for the named output port.
+    //
+    // The Func is lazy-initialized (??=) inside GetDelegate to avoid a startup
+    // race during scene-graph init — Init() vs. GetDelegate isn't safely
+    // ordered for prefab-graph copies. Always lazy-init at the use site.
+    // ---------------------------------------------------------------------
+    [CreateNodeMenu("Flow/Custom/#SCRIPTNAME#")]
+    public class #SCRIPTNAME# : EdXR_Node
+    {
+        // INPUT — a float the creator can wire in OR edit inline on the node.
+        [Input(typeConstraint = TypeConstraint.Strict, backingValue = ShowBackingValue.Unconnected, connectionType = ConnectionType.Override)]
+        public float value;
+
+        // OUTPUT — the float this node exposes to downstream consumers.
+        // typeConstraint = None lets the connection upcast/downcast where xNode allows.
+        [Output(typeConstraint = TypeConstraint.None, backingValue = ShowBackingValue.Never)]
+        public float output;
+
+        // Cached delegate. Lazy null-check inside GetDelegate is the safe pattern.
+        private Func<float> _output;
+
+        public override Delegate GetDelegate(string fieldName)
+        {
+            // ??= assigns only if _output is null. The Func<float> wraps GetValue
+            // so downstream port reads invoke GetValue() at read time.
+            return _output ??= GetValue;
+        }
+
+        private float GetValue()
+        {
+            // Prefer the wired value if there is one; otherwise the inline `value`.
+            NodePort connected = GetInputPort(nameof(value)).Connection;
+            return connected != null ? GetInputValue<float>(nameof(value)) : value;
+        }
+    }
+}

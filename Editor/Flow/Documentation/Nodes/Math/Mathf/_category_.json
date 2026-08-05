@@ -1,0 +1,9 @@
+{
+  "label": "Mathf",
+  "position": 1,
+  "collapsed": true,
+  "link": {
+    "type": "generated-index",
+    "description": "Mathf nodes — Flow wrappers around Unity's general-purpose math library: trigonometry, interpolation, rounding, powers, cyclic functions, and color-space conversions."
+  }
+}

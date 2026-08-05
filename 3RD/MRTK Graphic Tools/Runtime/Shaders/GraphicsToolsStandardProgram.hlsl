@@ -607,9 +607,18 @@ half4 PixelStage(Varyings input, bool facing : SV_IsFrontFace) : SV_Target
     // Static lighting support.
 #ifdef LIGHTMAP_ON
 #if defined(_URP)
-    albedo.rgb *= SampleLightmap(input.lightMapUV, worldNormal);
+    half3 lightmapColor = SampleLightmap(input.lightMapUV, worldNormal);
 #else
-    albedo.rgb *= DecodeLightmap(UNITY_SAMPLE_TEX2D(unity_Lightmap, input.lightMapUV));
+    half3 lightmapColor = DecodeLightmap(UNITY_SAMPLE_TEX2D(unity_Lightmap, input.lightMapUV));
+#endif
+#if !defined(_DIRECTIONAL_LIGHT) && !defined(_DISTANT_LIGHT) && !defined(_NPR_Rendering)
+    // Non-PBR path: apply lightmap directly to albedo as simplified lighting (same in both modes).
+    albedo.rgb *= lightmapColor;
+#else
+    // PBR path: legacy mode multiplies the lightmap into albedo here (matches pre-2026 behavior);
+    // current mode leaves albedo untouched and feeds the lightmap through bakedGI below.
+    if (_LegacyLightmapGraphicTools > 0.5h)
+        albedo.rgb *= lightmapColor;
 #endif
 #endif
 
@@ -778,7 +787,16 @@ half4 PixelStage(Varyings input, bool facing : SV_IsFrontFace) : SV_Target
     GTBRDFData brdfData;
     GTInitializeBRDFData(albedo.rgb, _Metallic, half3(1.0h, 1.0h, 1.0h), _Smoothness, albedo.a, brdfData);
 
- #if defined(_SPHERICAL_HARMONICS)
+#if defined(LIGHTMAP_ON)
+    // Current mode feeds the lightmap through GI. Legacy mode already applied it to albedo
+    // above, so fall back to SH / ambient here (matches pre-2026 behavior).
+#if defined(_SPHERICAL_HARMONICS)
+    half3 legacyGI = input.ambient;
+#else
+    half3 legacyGI = GTDefaultAmbientGI;
+#endif
+    half3 bakedGI = (_LegacyLightmapGraphicTools > 0.5h) ? legacyGI : lightmapColor;
+#elif defined(_SPHERICAL_HARMONICS)
     half3 bakedGI = input.ambient;
 #else
     half3 bakedGI = GTDefaultAmbientGI;

@@ -1,0 +1,9 @@
+{
+  "label": "Analytics",
+  "position": 18,
+  "collapsed": true,
+  "link": {
+    "type": "generated-index",
+    "description": "Analytics action nodes — emit and query Caffeine analytics events."
+  }
+}

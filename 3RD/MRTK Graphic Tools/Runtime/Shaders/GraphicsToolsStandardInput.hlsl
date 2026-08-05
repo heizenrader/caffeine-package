@@ -170,6 +170,15 @@ float4 _HoverLightData[HOVER_LIGHT_COUNT * HOVER_LIGHT_DATA_SIZE];
 float4 _ProximityLightData[PROXIMITY_LIGHT_COUNT * PROXIMITY_LIGHT_DATA_SIZE];
 #endif
 
+// Global uniform, set per-course at load via Shader.SetGlobalFloat(...). Long, specific name
+// to make future global-uniform collisions unlikely. NOTE: this is NOT URP-only — it affects
+// both the Built-in and URP code paths of this Graphics Tools Standard shader; the _URP branch
+// in the program only changes how the lightmap is sampled, not how this flag is applied.
+// 1 = render baked lightmaps the legacy (pre-2026) way (multiply into albedo, GI from SH);
+// 0 = current behavior (lightmap drives indirect GI in the PBR path). Declared outside
+// UnityPerMaterial so it stays a global and does not affect SRP Batcher per-material layout.
+float _LegacyLightmapGraphicTools;
+
 /// <summary>
 /// Per material properties.
 /// </summary>

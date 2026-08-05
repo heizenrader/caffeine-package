@@ -1,0 +1,9 @@
+{
+  "label": "Quaternion",
+  "position": 3,
+  "collapsed": true,
+  "link": {
+    "type": "generated-index",
+    "description": "Quaternion nodes — Flow wrappers around Unity's Quaternion math: rotation construction (Euler, AngleAxis, LookRotation), interpolation (Lerp, Slerp), inverse, and angle measurements."
+  }
+}

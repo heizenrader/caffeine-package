@@ -60,7 +60,6 @@ MetaVaryings VertexStage(MetaAttributes input)
     output.vertex = MetaVertexPosition(input.vertex, input.texcoord1.xy, input.texcoord2.xy, unity_LightmapST, unity_DynamicLightmapST);
 #else
     output.vertex = UnityMetaVertexPosition(input.vertex, input.texcoord1.xy, input.texcoord2.xy, unity_LightmapST, unity_DynamicLightmapST);
-    output.vertex = UnityObjectToClipPos(input.vertex);
 #endif
     output.uv = TRANSFORM_TEX(input.texcoord, _MainTex);
 
@@ -76,11 +75,11 @@ half4 PixelStage(MetaVaryings input) : SV_Target
     MetaInput output = (MetaInput)0;
     output.Albedo = SAMPLE_TEXTURE2D(_MainTex, sampler_MainTex, input.uv).rgb * _Color.rgb;
 #if defined(_EMISSION)
+    half3 emission = SAMPLE_TEXTURE2D(_EmissiveMap, sampler_EmissiveMap, input.uv).rgb * _EmissiveColor.rgb;
 #if defined(_CHANNEL_MAP)
-    output.Emission = SAMPLE_TEXTURE2D(_ChannelMap, sampler_ChannelMap, input.uv).rgb * _EmissiveColor.rgb;
-#else
-    output.Emission = SAMPLE_TEXTURE2D(_EmissiveMap, sampler_EmissiveMap, input.uv).rgb * _EmissiveColor.rgb;
+    emission *= SAMPLE_TEXTURE2D(_ChannelMap, sampler_ChannelMap, input.uv).b;
 #endif
+    output.Emission = emission;
 #endif
 
     return MetaFragment(output);
@@ -88,11 +87,11 @@ half4 PixelStage(MetaVaryings input) : SV_Target
     UnityMetaInput output = (UnityMetaInput)0;
     output.Albedo = tex2D(_MainTex, input.uv) * _Color;
 #if defined(_EMISSION)
+    half3 emission = tex2D(_EmissiveMap, input.uv).rgb * _EmissiveColor.rgb;
 #if defined(_CHANNEL_MAP)
-    output.Emission += tex2D(_ChannelMap, input.uv).b * _EmissiveColor;
-#else
-    output.Emission = tex2D(_EmissiveMap, input.uv) * _EmissiveColor;
+    emission *= tex2D(_ChannelMap, input.uv).b;
 #endif
+    output.Emission = emission;
 #endif
     output.SpecularColor = _LightColor0.rgb;
 

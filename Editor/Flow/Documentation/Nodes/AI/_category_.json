@@ -1,0 +1,9 @@
+{
+  "label": "AI",
+  "position": 11,
+  "collapsed": true,
+  "link": {
+    "type": "generated-index",
+    "description": "AI nodes — drive AI bot conversations and reset conversational state from a Flow Graph."
+  }
+}
