@@ -1,0 +1,9 @@
+{
+  "label": "Voice",
+  "position": 12,
+  "collapsed": true,
+  "link": {
+    "type": "generated-index",
+    "description": "Voice nodes — text-to-speech, dictation, and language switching for spoken interaction inside a Flow Graph."
+  }
+}

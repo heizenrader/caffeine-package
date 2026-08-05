@@ -1,0 +1,9 @@
+{
+  "label": "Experience",
+  "position": 3,
+  "collapsed": true,
+  "link": {
+    "type": "generated-index",
+    "description": "Runtime controls for the experience itself, including pause/resume."
+  }
+}

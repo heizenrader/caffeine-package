@@ -1,0 +1,9 @@
+{
+  "label": "Physics",
+  "position": 14,
+  "collapsed": true,
+  "link": {
+    "type": "generated-index",
+    "description": "Physics action nodes — raycasts and other Physics queries."
+  }
+}

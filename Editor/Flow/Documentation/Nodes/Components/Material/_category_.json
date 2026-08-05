@@ -1,0 +1,9 @@
+{
+  "label": "Material",
+  "position": 12,
+  "collapsed": true,
+  "link": {
+    "type": "generated-index",
+    "description": "Material action and query nodes — read and write Material references on Renderers, get and set Material properties (color, float, texture, vector, matrix), and toggle shader keywords."
+  }
+}

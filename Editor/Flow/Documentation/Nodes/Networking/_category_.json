@@ -1,0 +1,9 @@
+{
+  "label": "Networking",
+  "position": 17,
+  "collapsed": true,
+  "link": {
+    "type": "generated-index",
+    "description": "Net-only actions and queries — Net Instantiate / Destroy, ownership, host / mine checks, avatar models. Net counterparts to local nodes (events, variables) live alongside their local versions."
+  }
+}

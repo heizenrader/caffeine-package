@@ -1,0 +1,9 @@
+{
+  "label": "AR",
+  "position": 30,
+  "collapsed": true,
+  "link": {
+    "type": "generated-index",
+    "description": "AR mode nodes — turn the viewer's augmented-reality mode on or off and check whether it's active."
+  }
+}

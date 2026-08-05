@@ -1,0 +1,9 @@
+{
+  "label": "System",
+  "position": 14,
+  "collapsed": true,
+  "link": {
+    "type": "generated-index",
+    "description": "System utilities — current time and date, plus engine-level performance toggles (foveated rendering)."
+  }
+}

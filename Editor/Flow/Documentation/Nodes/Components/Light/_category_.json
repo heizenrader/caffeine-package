@@ -1,0 +1,9 @@
+{
+  "label": "Light",
+  "position": 23,
+  "collapsed": true,
+  "link": {
+    "type": "generated-index",
+    "description": "Light action nodes — reset and command-buffer management. For per-property changes (intensity, color, range), use Set Component Property."
+  }
+}

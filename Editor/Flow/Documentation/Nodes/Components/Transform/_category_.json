@@ -1,0 +1,9 @@
+{
+  "label": "Transform",
+  "position": 26,
+  "collapsed": true,
+  "link": {
+    "type": "generated-index",
+    "description": "Transform action nodes — Translate, Rotate, LookAt, hierarchy ordering, and coordinate-space conversions (TransformPoint / TransformDirection / TransformVector and inverses)."
+  }
+}

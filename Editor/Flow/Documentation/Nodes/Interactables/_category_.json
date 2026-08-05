@@ -1,0 +1,9 @@
+{
+  "label": "Interactables",
+  "position": 9,
+  "collapsed": true,
+  "link": {
+    "type": "generated-index",
+    "description": "Interactable-state nodes — query whether a GameObject is interactable, hold/release it, and respond to interaction lifecycle from a graph."
+  }
+}

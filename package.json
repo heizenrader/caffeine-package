@@ -1,6 +1,6 @@
 {
   "name": "com.caffeine",
-  "version": "1.1.21",
+  "version": "1.1.22-rc.5",
   "displayName": "Caffeine",
   "description": "Caffeine package is a collection of utility methods, design patterns, and extensions for creating, previewing, and distributing interactive courses within Unity.",
   "unity": "6000.0",
@@ -37,7 +37,8 @@
     "com.unity.xr.arfoundation": "5.1.6",
     "com.unity.visualeffectgraph": "17.0.4",
     "com.unity.cloud.gltfast": "1.0.0",
-    "com.unity.2d.sprite": "1.0.0"
+    "com.unity.2d.sprite": "1.0.0",
+    "com.unity.timeline": "1.8.9"
   },
   "documentationUrl": "https://docs.educationxr.com",
   "changelogUrl": "https://educationxr.com/caffeine-changelog/",

@@ -1,0 +1,9 @@
+{
+  "label": "Save System",
+  "position": 10,
+  "collapsed": true,
+  "link": {
+    "type": "generated-index",
+    "description": "Save System nodes — persist and restore graph state. Save, load, reset, snapshot management, plus events that fire when save data changes."
+  }
+}

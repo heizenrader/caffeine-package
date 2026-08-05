@@ -1,0 +1,9 @@
+{
+  "label": "Rigidbody",
+  "position": 20,
+  "collapsed": true,
+  "link": {
+    "type": "generated-index",
+    "description": "Rigidbody action nodes — AddForce, SetVelocity, MovePosition, and other physics-driving controls. Most are codegen wrappers around Unity Rigidbody API methods."
+  }
+}
