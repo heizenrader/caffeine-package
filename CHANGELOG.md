@@ -6,28 +6,29 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [1.1.22] - 08.05.2026
 
-This release adds Flow Search, in-editor step testing, AR authoring tools, and safer importing, plus a major wave of Flow graph and rendering fixes.
+Flow sub-graphs arrive, alongside big-graph navigation tools, faster editing on large courses, safer importing, and a major wave of reliability fixes.
 
 ### New
-- **Find every use of a variable, event, or object.** Drag it into the new Flow Search window (under Caffeine > Windows) to see every Flow node that references it, grouped by graph, and jump straight to any result with one click.
-- **Test step logic without publishing.** The new Go To Step node jumps your course to any step and keeps working even if you reorder steps, and navigating steps in editor play mode now runs the same On Step Loaded logic a published course would.
-- **More Flow nodes for physics and components.** New nodes read and set collider properties, check a collider's type, and loop through an object's components, and a repeating Timed Kick can now be stopped right from the graph. Ready-to-edit templates also make it easier to write your own custom Caffeine+ nodes.
-- **AR authoring tools.** Every step gets an AR Occlusion toggle so real-world geometry can hide virtual content, three new nodes turn AR on or off from a graph, the scene AR preview is now near-instant on big courses, and the performance overlay shows the current step's actual triangle and draw call counts.
-- **Safer course importing and validation.** A new import dialog lets you choose, asset by asset, whether to keep your project's version or the incoming one, skips identical files automatically, and protects your project's core text assets. The Course Validator also catches four more issues before you publish, from missing fonts and pink materials to prefab graph problems, most with a one-click fix.
-- **Material Optimizer now handles URP and glTF materials.** It converts URP Lit, URP Simple Lit, and glTF material types, and a new Extract Textures from glTF command pulls embedded textures out of GLB and GLTF models so you can control their compression and resolution.
-- **Build AI conversations into your course.** AI Bot Conversation nodes are now available, and the bot's prompt, temperature, model, and reference document settings are all applied, including for bots on objects spawned while the course runs.
+- **Flow sub-graphs.** Collapse any part of a graph into a single tile you can step inside: wrap a selection with Ctrl+Shift+G, double-click the tile to enter its own canvas with a breadcrumb trail to climb back out, and wire through its labeled pins, which you can rename or expose. Existing and published courses open exactly as before.
+- **Cut, jump-to-connection, and long-distance wiring in Flow.** Cut and paste nodes without losing a single wire, jump straight to a wire's other end from any port, and connect distant ports without scrolling across the canvas. A new preference can display very long wires as small labeled stubs that expand on hover, so huge graphs stay readable.
+- **Flow Search window.** Drag any variable, event, or scene object into the new Flow Search window (Caffeine > Windows) to see every place it is used across your graphs, grouped and clickable, including results inside prefabs and sub-graphs.
+- **Go To Step node.** Jump learners to any step of the course straight from a graph, with navigation that keeps working even after you reorder your steps.
+- **New Flow node families, Caffeine+ templates, and AI Bot conversation nodes.** Work with collider properties and types, manage lists of components, and stop a repeating Timed Kick right from the graph. Ready-to-edit templates jump-start custom Caffeine+ nodes, and AI Bot Conversation nodes are now available, applying your bot's prompt, model, and reference documents.
+- **AR authoring tools.** Toggle AR Occlusion per step so real-world geometry can hide virtual content, control AR mode directly from Flow nodes, and preview AR in the scene view near-instantly.
+- **Safer course importing and an expanded Course Validator.** Choose per file whether to keep your project's version or the incoming one when an import conflicts, with identical files skipped automatically and your project's core text assets protected. The Course Validator now catches nine more issues, from missing fonts and broken materials to Flow group problems, most with a one-click fix.
+- **Material Optimizer support for URP and glTF.** Optimize URP Lit, URP Simple Lit, and glTF materials, not just Standard materials as before, and extract embedded textures from GLB and glTF models to control their compression and resolution yourself.
 
 ### Improved
-- **Large courses feel dramatically snappier.** Changing steps now takes a fraction of a second instead of over a second, the ten-second hang on the first step save of a session is gone, and editing Flow graphs no longer stalls the editor in big projects.
-- **Publishing is steadier.** When a build fails, the specific error stays on screen instead of a generic failure message, retries recover better, and publish notes and settings now save immediately with no lag while typing.
-- **Uninstalling a course is safer.** Assets shared with your other installed courses are kept automatically, essential project files are protected, and leftover empty folders are cleaned up.
+- **Massively improved Flow graph performance.** Navigating big graphs is now smooth, with panning, zooming, and editing staying responsive even at hundreds of nodes.
+- **Faster step editing on large courses.** Step changes that took over a second are now near-instant, and the up-to-ten-second hang on your first save each session is gone.
+- **Publishing and course management polish.** Build failure messages stay specific instead of a generic notice, disabled platforms can no longer sneak into a publish, publish notes and settings save instantly with no typing lag, and uninstalling a course preserves shared assets and cleans up after itself.
 
 ### Fixed
-- **Copied and spawned objects keep their Flow graphs intact.** Spawning or duplicating an object or prefab with a Flow graph no longer interferes with the original or leaves the copy wired to the wrong objects, and a new Fix Polluted Prefab References tool repairs anything affected earlier. Previously published courses keep behaving exactly as before.
-- **No more pink materials on imported models.** FBX and OBJ models now render correctly when imported into URP projects, multiple URP courses can live in the same project without conflicts, and any project already affected repairs itself the next time you open the course scene.
-- **Several Flow nodes behave correctly.** Physics Raycast reports the object actually hit, Translate honors a direction typed into the inspector, and connections and inline values on math, vector, rotate, instantiate, and input nodes work as expected again.
-- **Caffeine+ courses publish with all of their scripts.** With Include All Scripts enabled, your custom code now always ships with the published course.
-- Plus other fixes: course thumbnails update reliably, the Flow graph window stays docked through play mode, dialogs no longer clip their buttons, and assorted console errors are gone.
+- **Flow graph integrity when copying and spawning.** Duplicating, spawning, or copying an object that carries a Flow graph now keeps each copy's graph correctly isolated from the original, including nested groups and prefab overrides. A new Fix Polluted Prefab References tool and a matching Validator check repair any prefabs affected earlier, and previously published courses are unaffected.
+- **Undo now works everywhere in the Flow editor.** Disconnecting or re-routing a wire, renaming a node, and deleting a sub-graph tile with its contents are all fully undoable, and a rare case where undo could permanently remove a node from the graph is fixed.
+- **Pink materials and duplicate settings files.** Imported FBX and OBJ models in URP projects no longer render pink, and already-affected projects self-heal when you open the course scene. Multiple URP courses coexist in one project without conflicts, duplicate publish-settings files no longer pile up over time, and a missing course asset shows one clear recovery dialog instead of stacked prompts.
+- **Flow node behavior corrections.** Physics Raycast reports the object actually hit, Translate honors a direction typed into the inspector, port connections on about two dozen nodes work again with inline values restored, and every wire on a port is reachable from its right-click menu, even when connections share a name.
+- **Caffeine+ publishing and testing.** Custom scripts enabled through Include All Scripts now publish correctly with your course, and testing with Build and Run no longer crashes on startup. New Caffeine+ courses exclude extra assets and scripts from publishing by default, so enable them in the course's publish settings when you need them; existing courses keep their settings.
 
 ## [1.1.21] - 05.20.2026
 
