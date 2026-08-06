@@ -1,0 +1,9 @@
+{
+  "label": "Pulse",
+  "position": 16,
+  "collapsed": true,
+  "link": {
+    "type": "generated-index",
+    "description": "Pulse physiology engine integration — query simulated patient state and apply medical actions inside a Flow Graph."
+  }
+}

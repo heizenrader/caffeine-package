@@ -1,0 +1,9 @@
+{
+  "label": "GameObject",
+  "position": 11,
+  "collapsed": true,
+  "link": {
+    "type": "generated-index",
+    "description": "GameObject action and query nodes — add and get components, set active state, manipulate parents and tags, instantiate / destroy GameObjects."
+  }
+}

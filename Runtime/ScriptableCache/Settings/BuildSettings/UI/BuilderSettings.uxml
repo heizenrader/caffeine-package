@@ -81,6 +81,10 @@
                         <ui:Toggle label="VisionOS" name="EnableVisionOS" style="margin-bottom: 0; margin-top: 0; margin-right: 0; margin-left: 0; -unity-text-align: middle-left;" />
                         <ui:Label text="* Enables VisionOS support." display-tooltip-when-elided="true" name="VisionOSNoteLabel" style="flex-grow: 1; font-size: 10px; -unity-text-align: middle-left; white-space: normal; margin-left: 15px;" />
                     </ui:VisualElement>
+                    <ui:VisualElement name="WebPlatformRow" style="flex-direction: row; margin-top: 5px; margin-bottom: 5px; flex-grow: 1; margin-left: 5px; align-self: auto; justify-content: flex-start; align-items: flex-start;">
+                        <ui:Toggle label="Web" name="EnableWeb" style="margin-bottom: 0; margin-top: 0; margin-right: 0; margin-left: 0; -unity-text-align: middle-left;" />
+                        <ui:Label text="* Enables Web support." display-tooltip-when-elided="true" name="WebNoteLabel" style="flex-grow: 1; font-size: 10px; -unity-text-align: middle-left; white-space: normal; margin-left: 15px;" />
+                    </ui:VisualElement>
                     <ui:VisualElement name="FuturePlatform" style="flex-direction: row; margin-top: 5px; margin-bottom: 5px; flex-grow: 1; margin-left: 5px; align-self: auto; justify-content: flex-start; align-items: auto; display: flex; visibility: hidden;">
                         <ui:Toggle label="VisionOS Support" name="EnableVisionOS" style="margin-bottom: 0; margin-top: 0; margin-right: 0; margin-left: 0; -unity-text-align: middle-left;" />
                         <ui:Label text="* Enables VisionOS support." display-tooltip-when-elided="true" name="VisionOSNoteLabel" style="flex-grow: 1; font-size: 10px; -unity-text-align: middle-left; white-space: normal; margin-left: 15px;" />

@@ -1,0 +1,71 @@
+namespace Caffeine.Flow.Nodes.Custom
+{
+    using UnityEngine;
+    using Caffeine.Flow.Nodes.Actions;
+    using XNode;
+
+    // ---------------------------------------------------------------------
+    // Action node (a.k.a. Updatable node).
+    //
+    // Inherits the standard `entry` / `exit` Flow ports from EdXR_UpdatableNode.
+    // When upstream Flow lands on `entry`, Main() runs, then the base class
+    // walks the connected `exit` port (via Next()) to continue downstream.
+    //
+    // [CreateNodeMenu] string below is the path creators see in the graph's
+    // Add-Node right-click menu.
+    //
+    // A sibling `#SCRIPTNAME#Editor.cs` was generated alongside this file —
+    // without a NodeEditor, additional input/output ports won't be drawn on
+    // the node body in the graph.
+    // ---------------------------------------------------------------------
+    [CreateNodeMenu("Flow/Custom/#SCRIPTNAME#")]
+    public class #SCRIPTNAME# : EdXR_UpdatableNode
+    {
+        // INPUT PORT — a float the creator can wire in OR edit inline.
+        //   typeConstraint = Strict    — connection must match the exact type
+        //   backingValue = Unconnected — show the inline default until wired
+        //   connectionType = Override  — replacing the wire swaps the connection
+        [Input(typeConstraint = TypeConstraint.Strict, backingValue = ShowBackingValue.Unconnected, connectionType = ConnectionType.Override)]
+        public float value;
+
+        // OPTIONAL: a second Flow entry port. Uncomment this AND the
+        // Event(string) override below to give this node a "stop" or "reset"
+        // semantic distinct from the standard `entry`.
+        // See EdXR_TimedKickNode for a working multi-entry example.
+        //
+        // [Input(typeConstraint = TypeConstraint.Strict)]
+        // public EventPort stop;
+
+        // Main() runs once each time the standard `entry` is fired.
+        // The base class calls Next() afterwards to continue along `exit`.
+        public override void Main()
+        {
+            // Read the float input: if a wire is connected, pull from upstream;
+            // otherwise the inline `value` field is used as-is.
+            NodePort connected = GetInputPort(nameof(value)).Connection;
+            if (connected != null)
+                value = GetInputValue<float>(nameof(value));
+
+            Debug.Log($"#SCRIPTNAME#: {value}");
+        }
+
+        // OPTIONAL: override the port-aware entry to dispatch on which Flow input
+        // was hit. Required if you've enabled the `stop` port above.
+        //
+        // public override void Event(string entryPortName)
+        // {
+        //     if (!initialized) InitializeConnectedNodes();
+        //
+        //     if (entryPortName == "stop")
+        //     {
+        //         // Stop logic. Do NOT call Next() if this port is meant to be
+        //         // a control-only input that shouldn't pass through to `exit`.
+        //         return;
+        //     }
+        //
+        //     // Default "entry" behavior — same as the base class.
+        //     Main();
+        //     Next();
+        // }
+    }
+}

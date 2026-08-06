@@ -1,0 +1,9 @@
+{
+  "label": "Vector3",
+  "position": 5,
+  "collapsed": true,
+  "link": {
+    "type": "generated-index",
+    "description": "Vector3 math nodes — angle, distance, dot/cross, lerp/slerp, project/reflect, and other Unity Vector3 operations exposed as Flow nodes."
+  }
+}

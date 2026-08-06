@@ -1,0 +1,9 @@
+{
+  "label": "String",
+  "position": 13,
+  "collapsed": true,
+  "link": {
+    "type": "generated-index",
+    "description": "String manipulation nodes — contains check, length, lowercase conversion, and substring extraction."
+  }
+}

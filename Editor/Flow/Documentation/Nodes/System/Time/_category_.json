@@ -1,0 +1,9 @@
+{
+  "label": "Time",
+  "position": 1,
+  "collapsed": true,
+  "link": {
+    "type": "generated-index",
+    "description": "Current date and time nodes."
+  }
+}

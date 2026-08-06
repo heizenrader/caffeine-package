@@ -1,0 +1,9 @@
+{
+  "label": "Animator",
+  "position": 19,
+  "collapsed": true,
+  "link": {
+    "type": "generated-index",
+    "description": "Animator action nodes — Play, CrossFade, Get/Set parameters, IK helpers, and other animator controls. Most are codegen wrappers around Unity Animator API methods."
+  }
+}

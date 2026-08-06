@@ -1,0 +1,9 @@
+{
+  "label": "XR",
+  "position": 17,
+  "collapsed": true,
+  "link": {
+    "type": "generated-index",
+    "description": "XR / VR-specific action nodes — laser pointer toggles and other VR-specific controls."
+  }
+}

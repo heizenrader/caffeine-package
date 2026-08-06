@@ -1,0 +1,9 @@
+{
+  "label": "Variables",
+  "position": 4,
+  "collapsed": true,
+  "link": {
+    "type": "generated-index",
+    "description": "Get and set graph variables, global variables, and other named values across Flow Graphs."
+  }
+}

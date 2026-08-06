@@ -1,0 +1,9 @@
+{
+  "label": "Viewer",
+  "position": 16,
+  "collapsed": true,
+  "link": {
+    "type": "generated-index",
+    "description": "Viewer-level UI action nodes — side menu toggle."
+  }
+}

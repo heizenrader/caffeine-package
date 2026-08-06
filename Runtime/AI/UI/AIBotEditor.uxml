@@ -1,0 +1,7 @@
+<ui:UXML xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements" xsi="http://www.w3.org/2001/XMLSchema-instance" engine="UnityEngine.UIElements" editor="UnityEditor.UIElements" noNamespaceSchemaLocation="../../../../../UIElementsSchema/UIElements.xsd" editor-extension-mode="False">
+    <ui:Label tabindex="-1" text="AI Bot Settings" parse-escape-sequences="true" display-tooltip-when-elided="true" style="border-top-width: 0; border-right-width: 0; border-bottom-width: 0; border-left-width: 0; -unity-font-style: bold;" />
+    <ui:VisualElement name="PromptContainer" />
+    <ui:Toggle label="Reference Documents" binding-path="ReferenceDocuments" tooltip="Indicate whether the AI Bot should reference your uploaded documents for this experience or not." name="ReferenceDocuments" />
+    <ui:Slider label="Temperature" high-value="1" show-input-field="true" binding-path="Temperature" tooltip="Specifiy the temperature value for your AI Bot." name="Temperature" />
+    <ui:DropdownField label="Model" binding-path="Model" tooltip="Select the model that you&apos;d like to use for your AI Bot." name="Model" />
+</ui:UXML>

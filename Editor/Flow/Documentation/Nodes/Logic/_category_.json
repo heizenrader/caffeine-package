@@ -1,0 +1,9 @@
+{
+  "label": "Logic",
+  "position": 5,
+  "collapsed": true,
+  "link": {
+    "type": "generated-index",
+    "description": "Control-flow nodes: branches, sequences, loops, comparisons, and boolean operations."
+  }
+}

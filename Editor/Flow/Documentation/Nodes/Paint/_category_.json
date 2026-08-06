@@ -1,0 +1,9 @@
+{
+  "label": "Paint",
+  "position": 15,
+  "collapsed": true,
+  "link": {
+    "type": "generated-index",
+    "description": "Paint nodes — read paint coverage and clear paintable surfaces in painting/coloring activities."
+  }
+}

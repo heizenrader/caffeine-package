@@ -1,0 +1,9 @@
+{
+  "label": "Player",
+  "position": 13,
+  "collapsed": true,
+  "link": {
+    "type": "generated-index",
+    "description": "Player references — get the current player's GameObject (2D camera or VR rig) and net avatar for use in other nodes."
+  }
+}

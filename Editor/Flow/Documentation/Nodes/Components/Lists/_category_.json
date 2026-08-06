@@ -1,0 +1,9 @@
+{
+  "label": "Lists",
+  "position": 28,
+  "collapsed": true,
+  "link": {
+    "type": "generated-index",
+    "description": "List manipulation nodes for typed collections — Strings, SnapshotFiles, etc."
+  }
+}

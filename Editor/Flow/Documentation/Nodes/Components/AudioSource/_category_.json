@@ -1,0 +1,9 @@
+{
+  "label": "AudioSource",
+  "position": 21,
+  "collapsed": true,
+  "link": {
+    "type": "generated-index",
+    "description": "AudioSource action nodes — play / pause / stop audio, plus low-level spatializer / ambisonic-decoder controls."
+  }
+}

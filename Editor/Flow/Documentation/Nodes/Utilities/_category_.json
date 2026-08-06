@@ -1,0 +1,9 @@
+{
+  "label": "Utilities",
+  "position": 18,
+  "collapsed": true,
+  "link": {
+    "type": "generated-index",
+    "description": "Engine-level utility nodes — type conversion, value construction, string interpolation, axis access, and the generic Get/Set property family."
+  }
+}

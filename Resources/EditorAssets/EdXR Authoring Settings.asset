@@ -13,4 +13,7 @@ MonoBehaviour:
   m_Name: EdXR Authoring Settings
   m_EditorClassIdentifier: 
   phonePreview: 3
-  desktopPreview: 0
+  desktopPreview: 2
+  materialOptimization: 0
+  URPDefaultMaterialOverride: {fileID: 0}
+  URPDefaultMaterialGeneratedGuid: 4bd34ae8fd35b964289a8a10ba157604

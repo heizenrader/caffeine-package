@@ -1,0 +1,9 @@
+{
+  "label": "Component",
+  "position": 29,
+  "collapsed": true,
+  "link": {
+    "type": "generated-index",
+    "description": "Component-list nodes — fetch every component of a type off a GameObject as a list, then add, remove, get, and count items. The Component analog of the GameObject list nodes."
+  }
+}

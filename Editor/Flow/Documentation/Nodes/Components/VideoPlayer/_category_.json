@@ -1,0 +1,9 @@
+{
+  "label": "VideoPlayer",
+  "position": 27,
+  "collapsed": true,
+  "link": {
+    "type": "generated-index",
+    "description": "VideoPlayer action nodes — playback control (play, pause, stop, prepare, step forward)."
+  }
+}
