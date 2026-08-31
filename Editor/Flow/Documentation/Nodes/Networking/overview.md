@@ -13,6 +13,26 @@ Other Net variants live alongside their local counterparts in their respective c
 Networking nodes appear in the Add Node menu under `Flow/Networking/...`. They're grouped here as a top-level category in the docs.
 :::
 
+## What makes an object networked
+
+Before any of these nodes are useful, the object has to be networked in the first place — that is, its position, rotation and scale replicate to every player in the session. Three things do that:
+
+| How | When to use it |
+|---|---|
+| The object is a **step interactable** | Anything the learner already grabs, turns, or slides. |
+| It was spawned by **[Net Instantiate](./net-instantiate)** | Objects that don't exist until runtime. |
+| It carries a **Movable Joint** component | A plain scene object that isn't an interactable. |
+
+The Movable Joint route is the one creators reach for when an object needs to be shared but isn't part of a step interaction. Add the component and set **Linear X / Y / Z Motion** to **Free**, leaving **Axis of Rotation** at zero — that gives you a fully unconstrained object whose transform is shared.
+
+Keep the object under the **Models** root. That's the only part of the hierarchy scanned for Movable Joints when the session starts, so one placed elsewhere never gets networked.
+
+:::caution Check the motion fields
+A newly added Movable Joint has all three linear motions set to **Locked**, which holds the object at its starting position. If you're adding the joint to share an object rather than to constrain it, switch all three to **Free** — otherwise the object is networked but can never move.
+
+The reverse is worth knowing too: if you add a Movable Joint purely to limit how far something can swing or slide, that object is now networked as well.
+:::
+
 ## Nodes
 
 **Spawn / destroy:**

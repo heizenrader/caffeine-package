@@ -1,6 +1,6 @@
 {
   "name": "com.caffeine",
-  "version": "1.1.22-rc.5",
+  "version": "1.1.23-rc.1",
   "displayName": "Caffeine",
   "description": "Caffeine package is a collection of utility methods, design patterns, and extensions for creating, previewing, and distributing interactive courses within Unity.",
   "unity": "6000.0",
@@ -44,6 +44,6 @@
   "changelogUrl": "https://educationxr.com/caffeine-changelog/",
   "resolutionStrategy": "highest",
   "_upm": {
-    "changelog": "## [1.1.20] - 04.16.2026\n\nPublishing and importing are noticeably more reliable on slow and unstable connections, with clearer progress feedback throughout.\n\n### Improved\n- **Uploads complete reliably on slow and cellular connections**, even under heavy congestion."
+    "changelog": "## [1.1.23] - 08.31.2026\n Added support for Unity AI to integrate with MCP."
   }
 }
