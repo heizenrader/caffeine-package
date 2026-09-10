@@ -4,6 +4,12 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [1.1.23] - 09.10.2026
+Package dependency update.
+
+### New
+- **com.unity.vectorgraphics -** Added support for SVGImage & SVG Sprite Editor
+
 ## [1.1.22] - 08.05.2026
 
 Flow sub-graphs arrive, alongside big-graph navigation tools, faster editing on large courses, safer importing, and a major wave of reliability fixes.
@@ -177,7 +183,7 @@ Faster downloads, a live import window, and a more reliable publishing experienc
 ## [1.1.6] - 07.09.2025
 ### Fixed
 - FLOW Updates
--- Nested Prefab Support (Experimental) 
+  -- Nested Prefab Support (Experimental)
 - Bug Fixes
 - Performance and User Experience Optimizations
 - URP Support (Experimental)
