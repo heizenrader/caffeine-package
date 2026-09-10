@@ -1,264 +1,365 @@
 # Changelog
+
 All notable changes to this project will be documented in this file.
 
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
-## [1.1.22] - 08.05.2026
+
+
+## \[1.1.23] - 09.10.2026
+
+### New
+
+• Added SVGImage / SVG Sprite Editor Support
+
+
+
+## \[1.1.22] - 08.05.2026
 
 Flow sub-graphs arrive, alongside big-graph navigation tools, faster editing on large courses, safer importing, and a major wave of reliability fixes.
 
 ### New
-- **Flow sub-graphs.** Collapse any part of a graph into a single tile you can step inside: wrap a selection with Ctrl+Shift+G, double-click the tile to enter its own canvas with a breadcrumb trail to climb back out, and wire through its labeled pins, which you can rename or expose. Existing and published courses open exactly as before.
-- **Cut, jump-to-connection, and long-distance wiring in Flow.** Cut and paste nodes without losing a single wire, jump straight to a wire's other end from any port, and connect distant ports without scrolling across the canvas. A new preference can display very long wires as small labeled stubs that expand on hover, so huge graphs stay readable.
-- **Flow Search window.** Drag any variable, event, or scene object into the new Flow Search window (Caffeine > Windows) to see every place it is used across your graphs, grouped and clickable, including results inside prefabs and sub-graphs.
-- **Go To Step node.** Jump learners to any step of the course straight from a graph, with navigation that keeps working even after you reorder your steps.
-- **New Flow node families, Caffeine+ templates, and AI Bot conversation nodes.** Work with collider properties and types, manage lists of components, and stop a repeating Timed Kick right from the graph. Ready-to-edit templates jump-start custom Caffeine+ nodes, and AI Bot Conversation nodes are now available, applying your bot's prompt, model, and reference documents.
-- **AR authoring tools.** Toggle AR Occlusion per step so real-world geometry can hide virtual content, control AR mode directly from Flow nodes, and preview AR in the scene view near-instantly.
-- **Safer course importing and an expanded Course Validator.** Choose per file whether to keep your project's version or the incoming one when an import conflicts, with identical files skipped automatically and your project's core text assets protected. The Course Validator now catches nine more issues, from missing fonts and broken materials to Flow group problems, most with a one-click fix.
-- **Material Optimizer support for URP and glTF.** Optimize URP Lit, URP Simple Lit, and glTF materials, not just Standard materials as before, and extract embedded textures from GLB and glTF models to control their compression and resolution yourself.
+
+* **Flow sub-graphs.** Collapse any part of a graph into a single tile you can step inside: wrap a selection with Ctrl+Shift+G, double-click the tile to enter its own canvas with a breadcrumb trail to climb back out, and wire through its labeled pins, which you can rename or expose. Existing and published courses open exactly as before.
+* **Cut, jump-to-connection, and long-distance wiring in Flow.** Cut and paste nodes without losing a single wire, jump straight to a wire's other end from any port, and connect distant ports without scrolling across the canvas. A new preference can display very long wires as small labeled stubs that expand on hover, so huge graphs stay readable.
+* **Flow Search window.** Drag any variable, event, or scene object into the new Flow Search window (Caffeine > Windows) to see every place it is used across your graphs, grouped and clickable, including results inside prefabs and sub-graphs.
+* **Go To Step node.** Jump learners to any step of the course straight from a graph, with navigation that keeps working even after you reorder your steps.
+* **New Flow node families, Caffeine+ templates, and AI Bot conversation nodes.** Work with collider properties and types, manage lists of components, and stop a repeating Timed Kick right from the graph. Ready-to-edit templates jump-start custom Caffeine+ nodes, and AI Bot Conversation nodes are now available, applying your bot's prompt, model, and reference documents.
+* **AR authoring tools.** Toggle AR Occlusion per step so real-world geometry can hide virtual content, control AR mode directly from Flow nodes, and preview AR in the scene view near-instantly.
+* **Safer course importing and an expanded Course Validator.** Choose per file whether to keep your project's version or the incoming one when an import conflicts, with identical files skipped automatically and your project's core text assets protected. The Course Validator now catches nine more issues, from missing fonts and broken materials to Flow group problems, most with a one-click fix.
+* **Material Optimizer support for URP and glTF.** Optimize URP Lit, URP Simple Lit, and glTF materials, not just Standard materials as before, and extract embedded textures from GLB and glTF models to control their compression and resolution yourself.
 
 ### Improved
-- **Massively improved Flow graph performance.** Navigating big graphs is now smooth, with panning, zooming, and editing staying responsive even at hundreds of nodes.
-- **Faster step editing on large courses.** Step changes that took over a second are now near-instant, and the up-to-ten-second hang on your first save each session is gone.
-- **Publishing and course management polish.** Build failure messages stay specific instead of a generic notice, disabled platforms can no longer sneak into a publish, publish notes and settings save instantly with no typing lag, and uninstalling a course preserves shared assets and cleans up after itself.
+
+* **Massively improved Flow graph performance.** Navigating big graphs is now smooth, with panning, zooming, and editing staying responsive even at hundreds of nodes.
+* **Faster step editing on large courses.** Step changes that took over a second are now near-instant, and the up-to-ten-second hang on your first save each session is gone.
+* **Publishing and course management polish.** Build failure messages stay specific instead of a generic notice, disabled platforms can no longer sneak into a publish, publish notes and settings save instantly with no typing lag, and uninstalling a course preserves shared assets and cleans up after itself.
 
 ### Fixed
-- **Flow graph integrity when copying and spawning.** Duplicating, spawning, or copying an object that carries a Flow graph now keeps each copy's graph correctly isolated from the original, including nested groups and prefab overrides. A new Fix Polluted Prefab References tool and a matching Validator check repair any prefabs affected earlier, and previously published courses are unaffected.
-- **Undo now works everywhere in the Flow editor.** Disconnecting or re-routing a wire, renaming a node, and deleting a sub-graph tile with its contents are all fully undoable, and a rare case where undo could permanently remove a node from the graph is fixed.
-- **Pink materials and duplicate settings files.** Imported FBX and OBJ models in URP projects no longer render pink, and already-affected projects self-heal when you open the course scene. Multiple URP courses coexist in one project without conflicts, duplicate publish-settings files no longer pile up over time, and a missing course asset shows one clear recovery dialog instead of stacked prompts.
-- **Flow node behavior corrections.** Physics Raycast reports the object actually hit, Translate honors a direction typed into the inspector, port connections on about two dozen nodes work again with inline values restored, and every wire on a port is reachable from its right-click menu, even when connections share a name.
-- **Caffeine+ publishing and testing.** Custom scripts enabled through Include All Scripts now publish correctly with your course, and testing with Build and Run no longer crashes on startup. New Caffeine+ courses exclude extra assets and scripts from publishing by default, so enable them in the course's publish settings when you need them; existing courses keep their settings.
 
-## [1.1.21] - 05.20.2026
+* **Flow graph integrity when copying and spawning.** Duplicating, spawning, or copying an object that carries a Flow graph now keeps each copy's graph correctly isolated from the original, including nested groups and prefab overrides. A new Fix Polluted Prefab References tool and a matching Validator check repair any prefabs affected earlier, and previously published courses are unaffected.
+* **Undo now works everywhere in the Flow editor.** Disconnecting or re-routing a wire, renaming a node, and deleting a sub-graph tile with its contents are all fully undoable, and a rare case where undo could permanently remove a node from the graph is fixed.
+* **Pink materials and duplicate settings files.** Imported FBX and OBJ models in URP projects no longer render pink, and already-affected projects self-heal when you open the course scene. Multiple URP courses coexist in one project without conflicts, duplicate publish-settings files no longer pile up over time, and a missing course asset shows one clear recovery dialog instead of stacked prompts.
+* **Flow node behavior corrections.** Physics Raycast reports the object actually hit, Translate honors a direction typed into the inspector, port connections on about two dozen nodes work again with inline values restored, and every wire on a port is reachable from its right-click menu, even when connections share a name.
+* **Caffeine+ publishing and testing.** Custom scripts enabled through Include All Scripts now publish correctly with your course, and testing with Build and Run no longer crashes on startup. New Caffeine+ courses exclude extra assets and scripts from publishing by default, so enable them in the course's publish settings when you need them; existing courses keep their settings.
+
+## \[1.1.21] - 05.20.2026
 
 A major Flow Editor refresh: color-code your groups, hide and rename them in one click, and navigate huge courses smoothly with new LOD rendering.
 
 ### New
-- **Group colors in the Flow Editor.** You can now assign a color to any group, making it easy to organize and navigate complex courses at a glance.
-- **Hide and rename groups with one click.** A new eye icon on each group collapses it instantly, and collapsed groups now show a pencil icon so you can rename them without expanding first.
-- **LOD rendering for large graphs.** When you zoom out, nodes simplify to clean color blocks so panning and navigating big courses stays smooth. A new "LOD (Performance)" section in Preferences lets you tune the zoom threshold and toggle name labels.
-- **Course Validator catches two more setup issues:** a missing starting point and objects with conflicting IDs, each with a one-click fix.
+
+* **Group colors in the Flow Editor.** You can now assign a color to any group, making it easy to organize and navigate complex courses at a glance.
+* **Hide and rename groups with one click.** A new eye icon on each group collapses it instantly, and collapsed groups now show a pencil icon so you can rename them without expanding first.
+* **LOD rendering for large graphs.** When you zoom out, nodes simplify to clean color blocks so panning and navigating big courses stays smooth. A new "LOD (Performance)" section in Preferences lets you tune the zoom threshold and toggle name labels.
+* **Course Validator catches two more setup issues:** a missing starting point and objects with conflicting IDs, each with a one-click fix.
 
 ### Improved
-- **Smoother interaction inside groups.** Drag-selecting now works from inside an open group, and clicking eye buttons or the Course Events panel no longer accidentally selects a group behind them. Open groups appear at lighter opacity so the nodes inside stand out.
-- **Validator collider check is now a warning,** so a label whose target lacks a collider no longer blocks publishing.
-- **Landscape and Joystick course settings** are now included in your published course's metadata.
+
+* **Smoother interaction inside groups.** Drag-selecting now works from inside an open group, and clicking eye buttons or the Course Events panel no longer accidentally selects a group behind them. Open groups appear at lighter opacity so the nodes inside stand out.
+* **Validator collider check is now a warning,** so a label whose target lacks a collider no longer blocks publishing.
+* **Landscape and Joystick course settings** are now included in your published course's metadata.
 
 ### Fixed
-- **Unpacking a prefab preserves all flow graph connections,** including in prefabs that contain text components.
-- **Several Flow Editor behaviors work correctly:** resizing a collapsed group, the show/hide eye buttons at high zoom, and duplicating a collapsed group.
 
-## [1.1.20] - 04.16.2026
+* **Unpacking a prefab preserves all flow graph connections,** including in prefabs that contain text components.
+* **Several Flow Editor behaviors work correctly:** resizing a collapsed group, the show/hide eye buttons at high zoom, and duplicating a collapsed group.
+
+## \[1.1.20] - 04.16.2026
 
 Publishing and importing are noticeably more reliable on slow and unstable connections, with clearer progress feedback throughout.
 
 ### Improved
-- **Uploads complete reliably on slow and cellular connections**, even under heavy congestion.
 
-## [1.1.19] - 04.14.2026
+* **Uploads complete reliably on slow and cellular connections**, even under heavy congestion.
+
+## \[1.1.19] - 04.14.2026
 
 A new Course Validator, smoother transfers, and a much better create-from-template experience.
 
 ### New
-- **Course Validator.** Catch missing references, misconfigured scenes, and setup issues in your course before you publish. Click any issue to jump to it, or use Fix All to resolve common problems automatically.
+
+* **Course Validator.** Catch missing references, misconfigured scenes, and setup issues in your course before you publish. Click any issue to jump to it, or use Fix All to resolve common problems automatically.
 
 ### Improved
-- **Faster, smoother uploads** with more accurate progress and timing.
-- **Creating a course from a template** now shows live progress, closes cleanly when finished, and no longer shows a spurious "Remote changes detected" warning on first open.
-- **Scrolling inside text fields** now behaves naturally instead of hijacking the surrounding graph or page.
+
+* **Faster, smoother uploads** with more accurate progress and timing.
+* **Creating a course from a template** now shows live progress, closes cleanly when finished, and no longer shows a spurious "Remote changes detected" warning on first open.
+* **Scrolling inside text fields** now behaves naturally instead of hijacking the surrounding graph or page.
 
 ### Fixed
-- Environment lighting renders correctly on Graphic Tools materials in URP projects.
-- Uploads now automatically recover from transient storage issues, and canceled or failed uploads clear themselves from the admin panel automatically.
 
-## [1.1.18] - 04.10.2026
+* Environment lighting renders correctly on Graphic Tools materials in URP projects.
+* Uploads now automatically recover from transient storage issues, and canceled or failed uploads clear themselves from the admin panel automatically.
+
+## \[1.1.18] - 04.10.2026
 
 Faster downloads, a live import window, and a more reliable publishing experience.
 
 ### New
-- **Import progress window.** Watch your course import in real time with live status updates and clear stage labels.
-- **Dirty scene protection.** You are prompted to save, cancel, or continue if you have unsaved changes before publishing.
-- **Network auto-pause and resume.** Downloads pause automatically if your connection drops and pick up where they left off when you reconnect.
-- **Environment indicator.** The title bar now shows which environment you are connected to at a glance.
-- **Resizable text areas.** Description fields in the publish view can now be resized to fit longer content.
-- **Download integrity checks.** Every downloaded file is verified automatically so corrupted transfers are caught before import.
+
+* **Import progress window.** Watch your course import in real time with live status updates and clear stage labels.
+* **Dirty scene protection.** You are prompted to save, cancel, or continue if you have unsaved changes before publishing.
+* **Network auto-pause and resume.** Downloads pause automatically if your connection drops and pick up where they left off when you reconnect.
+* **Environment indicator.** The title bar now shows which environment you are connected to at a glance.
+* **Resizable text areas.** Description fields in the publish view can now be resized to fit longer content.
+* **Download integrity checks.** Every downloaded file is verified automatically so corrupted transfers are caught before import.
 
 ### Improved
-- **Downloads are 2-3x faster,** reaching 70-80 MBps on supported connections.
-- **Course re-imports take seconds instead of minutes** when most of your content has not changed.
-- **Course thumbnails** load noticeably faster.
-- **More reliable publish view.** Platform settings update immediately when changed, broken builders are detected with a repair option, and platform toggles stay the way you set them.
+
+* **Downloads are 2-3x faster,** reaching 70-80 MBps on supported connections.
+* **Course re-imports take seconds instead of minutes** when most of your content has not changed.
+* **Course thumbnails** load noticeably faster.
+* **More reliable publish view.** Platform settings update immediately when changed, broken builders are detected with a repair option, and platform toggles stay the way you set them.
 
 ### Fixed
-- Canceling an import no longer removes a course that was already installed.
-- Downloads and imports now complete normally when the Unity editor is in the background or in Play mode.
-- Lighting renders correctly in Built-In pipeline projects.
 
-## [1.1.17] - 03.19.2026
+* Canceling an import no longer removes a course that was already installed.
+* Downloads and imports now complete normally when the Unity editor is in the background or in Play mode.
+* Lighting renders correctly in Built-In pipeline projects.
+
+## \[1.1.17] - 03.19.2026
+
 ### Added
-- GLTFast support.
 
-## [1.1.16] - 03.11.2026
+* GLTFast support.
+
+## \[1.1.16] - 03.11.2026
+
 ### Fixed
-- Fixed a bug that could result in a partially failed publish.
 
-## [1.1.15] - 03.09.2026
+* Fixed a bug that could result in a partially failed publish.
+
+## \[1.1.15] - 03.09.2026
+
 ### Fixed
-- General Bug Fixes
 
-## [1.1.14] - 03.05.2026
+* General Bug Fixes
+
+## \[1.1.14] - 03.05.2026
+
 ### Added
-- Publish Notes. Add notes when publishing to describe what changed in each version.
-- Version History & Rollback. Full publish history tracking with the ability to rollback courses to previous versions.
-- Asset Caching. Course assets are now cached locally for faster loading and more reliable update detection.
-- Platform "Select All" and "Deselect All" buttons in the publish UI.
+
+* Publish Notes. Add notes when publishing to describe what changed in each version.
+* Version History \& Rollback. Full publish history tracking with the ability to rollback courses to previous versions.
+* Asset Caching. Course assets are now cached locally for faster loading and more reliable update detection.
+* Platform "Select All" and "Deselect All" buttons in the publish UI.
+
 ### Changed
-- Improved course validation to catch more issues before publishing.
-- Creation forms auto-focus the name field and support Enter to submit.
-- Unity window title now shows the current course version and editor info.
-- Update banner is more compact and less intrusive.
-- Course update and remote change dialogs have clearer, more consistent messaging.
-- Significantly faster thumbnail loading with smarter caching and background updates.
-### Fixed
-- Fixed publish views not appearing on first publish in a new project.
-- Fixed an edge case where publish settings could temporarily carry over when creating a course from a template.
-- Resolved thumbnail images occasionally not refreshing after downloading a course update.
-- Minor focus and display fixes in creation and publish windows.
-- Improved socket connection stability.
-- Resolved an issue with macOS archive extraction.
 
-## [1.1.13] - 01.29.2026
+* Improved course validation to catch more issues before publishing.
+* Creation forms auto-focus the name field and support Enter to submit.
+* Unity window title now shows the current course version and editor info.
+* Update banner is more compact and less intrusive.
+* Course update and remote change dialogs have clearer, more consistent messaging.
+* Significantly faster thumbnail loading with smarter caching and background updates.
+
 ### Fixed
-- Fixed an issue that can sometimes cause failures in the builders while publishing.
-- Fixed two assets that had import issues.
-## [1.1.12] - 01.23.2026
+
+* Fixed publish views not appearing on first publish in a new project.
+* Fixed an edge case where publish settings could temporarily carry over when creating a course from a template.
+* Resolved thumbnail images occasionally not refreshing after downloading a course update.
+* Minor focus and display fixes in creation and publish windows.
+* Improved socket connection stability.
+* Resolved an issue with macOS archive extraction.
+
+## \[1.1.13] - 01.29.2026
+
 ### Fixed
-- Fixed a rare issue when reordering graph variables can result in a broken graph.
-## [1.1.11] - 01.15.2026
+
+* Fixed an issue that can sometimes cause failures in the builders while publishing.
+* Fixed two assets that had import issues.
+
+## \[1.1.12] - 01.23.2026
+
+### Fixed
+
+* Fixed a rare issue when reordering graph variables can result in a broken graph.
+
+## \[1.1.11] - 01.15.2026
+
 ### Added
-- URP Support. We introduced URP in beta form in 2025, with this release URP becomes an official supported workflow for creators. URP support comes with support for specific URP render features by allowing creators to overwrite the default URP asset and renderer.
-- Save and Persistence System. We are for the first time introducing a cloud sync persistence and saving system for creators. It is fully configurable to support any of our Flow types in key value form, and creators can configure their desired functionality. From progress saves, to scoreboards, the uses are unlimited. These cloud saves are user owned and sync across devices automatically so you never have to worry where you access content from.
-- Flow Event GameObject nodes.  Call events from any graph to any graph and carry a GameObject variable, extremely useful to create dynamic interaction systems.
-- Flow Prefab support, lifecycle improvements.
-- Nested Prefab support for Flow prefabs.
-- UnityEvent Flow node.
-- Graph Variable Sync On Start functionality. Graph variables now offer an option to sync on start so when users join a room they can “grab” the latest value for a graph variable from the host. This allows for synchronization of ongoing simulations in a seamless manner without the need to “program” it in Flow.
-- Step Loaded Node now supports an option for “any step” which allows creators to start a flow at the beginning of any step.
-- ForEach GameObject node. This allows to iterate through GameObject lists without having to worry about index looping in a more automated way.
-- IsPlatform node. This node allows Flow creators to obtain a bool depending on the type of platform, whether that is mobile, VR or desktop, and utilize this to customize interaction systems and locomotion depending on the platform a user access from.
-- Exit Course node. New node that allows to exit a course directly from within Flow graphs. This allows creators to control when a course is exited and the events that come with it such as analytics being sent to the backend.
-- Equal objects and Gameobjects nodes. An equality node to compare Unity Objects or GameObjects.
-- Mathf Clamp nodes.
-- Flow Events can be raised from anywhere including UnityEvents, so you can connect UI events to Flow by using flow events.
-- Split node. A node that allows you to visually split your flow in different branches. It does not provide parallel execution however as the branches will execute in order but it allows you to visually organize your graphs much better.
+
+* URP Support. We introduced URP in beta form in 2025, with this release URP becomes an official supported workflow for creators. URP support comes with support for specific URP render features by allowing creators to overwrite the default URP asset and renderer.
+* Save and Persistence System. We are for the first time introducing a cloud sync persistence and saving system for creators. It is fully configurable to support any of our Flow types in key value form, and creators can configure their desired functionality. From progress saves, to scoreboards, the uses are unlimited. These cloud saves are user owned and sync across devices automatically so you never have to worry where you access content from.
+* Flow Event GameObject nodes.  Call events from any graph to any graph and carry a GameObject variable, extremely useful to create dynamic interaction systems.
+* Flow Prefab support, lifecycle improvements.
+* Nested Prefab support for Flow prefabs.
+* UnityEvent Flow node.
+* Graph Variable Sync On Start functionality. Graph variables now offer an option to sync on start so when users join a room they can “grab” the latest value for a graph variable from the host. This allows for synchronization of ongoing simulations in a seamless manner without the need to “program” it in Flow.
+* Step Loaded Node now supports an option for “any step” which allows creators to start a flow at the beginning of any step.
+* ForEach GameObject node. This allows to iterate through GameObject lists without having to worry about index looping in a more automated way.
+* IsPlatform node. This node allows Flow creators to obtain a bool depending on the type of platform, whether that is mobile, VR or desktop, and utilize this to customize interaction systems and locomotion depending on the platform a user access from.
+* Exit Course node. New node that allows to exit a course directly from within Flow graphs. This allows creators to control when a course is exited and the events that come with it such as analytics being sent to the backend.
+* Equal objects and Gameobjects nodes. An equality node to compare Unity Objects or GameObjects.
+* Mathf Clamp nodes.
+* Flow Events can be raised from anywhere including UnityEvents, so you can connect UI events to Flow by using flow events.
+* Split node. A node that allows you to visually split your flow in different branches. It does not provide parallel execution however as the branches will execute in order but it allows you to visually organize your graphs much better.
+
 ### Changed
-- Updated EducationXR to Unity 6 LTS. With this release we mark full support for Unity 6 and all the features that come with it.
-- Updated Pulse Physiology Engine to 4.3.1 version (implementing Editor Play mode support).
-- Improved Dictation by providing a callback when timeouts occur, both with AI assistants as well as with Flow nodes.
-- Updates to Lerp nodes for better rotation lerping.
 
-## [1.1.10] - 01.15.2026
+* Updated EducationXR to Unity 6 LTS. With this release we mark full support for Unity 6 and all the features that come with it.
+* Updated Pulse Physiology Engine to 4.3.1 version (implementing Editor Play mode support).
+* Improved Dictation by providing a callback when timeouts occur, both with AI assistants as well as with Flow nodes.
+* Updates to Lerp nodes for better rotation lerping.
+
+## \[1.1.10] - 01.15.2026
+
 ### Changed
-- Migrating to a new package repository.
 
-## [1.1.9] - 08.07.2025
+* Migrating to a new package repository.
+
+## \[1.1.9] - 08.07.2025
+
 ### Fixed
-- Fixed a minor bug that could occur with FLOW graphs during prefab unpacking.
 
-## [1.1.8] - 08.07.2025
+* Fixed a minor bug that could occur with FLOW graphs during prefab unpacking.
+
+## \[1.1.8] - 08.07.2025
+
 ### Fixed
-- Bug fixes.
 
-## [1.1.7] - 07.10.2025
+* Bug fixes.
+
+## \[1.1.7] - 07.10.2025
+
 ### Fixed
-- Fixed a bug that could result in broken prefabs in certain situations.
 
-## [1.1.6] - 07.09.2025
+* Fixed a bug that could result in broken prefabs in certain situations.
+
+## \[1.1.6] - 07.09.2025
+
 ### Fixed
-- FLOW Updates
--- Nested Prefab Support (Experimental) 
-- Bug Fixes
-- Performance and User Experience Optimizations
-- URP Support (Experimental)
 
-## [1.1.5] - 01.23.2025
+* FLOW Updates
+-- Nested Prefab Support (Experimental)
+* Bug Fixes
+* Performance and User Experience Optimizations
+* URP Support (Experimental)
+
+## \[1.1.5] - 01.23.2025
+
 ### Fixed
-- Bug Fixes
 
-## [1.1.4] - 01.10.2025
+* Bug Fixes
+
+## \[1.1.4] - 01.10.2025
+
 ### Added
-- FLOW Features
-- AI Assistant
-### Fixed
-- Bug Fixes
-- Performance Improvements
 
-## [1.1.3] - 07.12.2024
+* FLOW Features
+* AI Assistant
+
+### Fixed
+
+* Bug Fixes
+* Performance Improvements
+
+## \[1.1.3] - 07.12.2024
+
 ### Added
-- VisionOS Build Support for Windows
-- Added Option to Sign On from Another Device
-- Added limited support for the use Unity Splines (More coming in a future version)
-### Fixed
-- Bug Fixes
-- Performance Enhancements
 
-## [1.1.2] - 06.06.2024
-### Fixed
-- Fixed an example shader error that affected Macs using Metal only.
+* VisionOS Build Support for Windows
+* Added Option to Sign On from Another Device
+* Added limited support for the use Unity Splines (More coming in a future version)
 
-## [1.1.1] - 06.06.2024
 ### Fixed
-- Great news, we've updated to target Unity 2022.3.20f1. Updated todate to take advantage of all the new features.
 
-## [1.1.0] - 05.18.2024
+* Bug Fixes
+* Performance Enhancements
+
+## \[1.1.2] - 06.06.2024
+
 ### Fixed
-- Preparing for new major Unity release.
 
-## [1.0.16] - 03.04.2024
+* Fixed an example shader error that affected Macs using Metal only.
+
+## \[1.1.1] - 06.06.2024
+
 ### Fixed
-- Fixed an issue that could break the builder process during auto-updates.
 
-## [1.0.15] - 02.29.2024
+* Great news, we've updated to target Unity 2022.3.20f1. Updated todate to take advantage of all the new features.
+
+## \[1.1.0] - 05.18.2024
+
 ### Fixed
-- Fixed an issue that could sometimes prevent the automatic updates from working properly on Mac operating systems.
 
-## [1.0.14] - 02.21.2024
+* Preparing for new major Unity release.
+
+## \[1.0.16] - 03.04.2024
+
 ### Fixed
-- Fixed an issue that could sometimes cause issues with node connections while loading older versions of FLOW graphs.
 
-## [1.0.13] - 02.20.2024
+* Fixed an issue that could break the builder process during auto-updates.
+
+## \[1.0.15] - 02.29.2024
+
+### Fixed
+
+* Fixed an issue that could sometimes prevent the automatic updates from working properly on Mac operating systems.
+
+## \[1.0.14] - 02.21.2024
+
+### Fixed
+
+* Fixed an issue that could sometimes cause issues with node connections while loading older versions of FLOW graphs.
+
+## \[1.0.13] - 02.20.2024
+
 ### Changed
-- Cleaned up some pesky console messages.
 
-## [1.0.12] - 02.20.2024
+* Cleaned up some pesky console messages.
+
+## \[1.0.12] - 02.20.2024
+
 ### Fixed
-- Fixed a compatibility issue with versions of unity lower than the recommended version.
 
-## [1.0.11] - 02.20.2024
+* Fixed a compatibility issue with versions of unity lower than the recommended version.
+
+## \[1.0.11] - 02.20.2024
+
 ### Added
-- Automatic detection of package updates becoming available.
 
-## [1.0.10] - 02.13.2024
-### Fixed
-- We corrected an issue that prevented some users from being able to create new courses.
+* Automatic detection of package updates becoming available.
 
-## [1.0.9] - 01.02.2024
-### Fixed
-- Well, this is embarassing. Fixed another error with the builder system.
+## \[1.0.10] - 02.13.2024
 
-## [1.0.8] - 01.02.2024
 ### Fixed
-- Fixed an error with the builder system.
+
+* We corrected an issue that prevented some users from being able to create new courses.
+
+## \[1.0.9] - 01.02.2024
+
+### Fixed
+
+* Well, this is embarassing. Fixed another error with the builder system.
+
+## \[1.0.8] - 01.02.2024
+
+### Fixed
+
+* Fixed an error with the builder system.
+
 ### Added
-- Meta file for changelog to silence unity warning.
 
-## [1.0.7] - 01.02.2024
+* Meta file for changelog to silence unity warning.
+
+## \[1.0.7] - 01.02.2024
+
 ### Fixed
-- Builder issues with dark scenes in VR should now be fixed.
+
+* Builder issues with dark scenes in VR should now be fixed.
+
 ### Added
-- New settings options for adjusting advanced builder settings.
+
+* New settings options for adjusting advanced builder settings.
+
 ### Changed
-- **[Breaking]** In the future Unity version 2021.3.32f1 will be required.
+
+* **\[Breaking]** In the future Unity version 2021.3.32f1 will be required.
+
 ### Removed
-- Redundant legacy step window.
+
+* Redundant legacy step window.
+
