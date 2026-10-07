@@ -1,0 +1,61 @@
+<ui:UXML xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements" xsi="http://www.w3.org/2001/XMLSchema-instance" engine="UnityEngine.UIElements" editor="UnityEditor.UIElements" noNamespaceSchemaLocation="../../../../../../UIElementsSchema/UIElements.xsd" editor-extension-mode="False">
+    <ui:VisualElement name="PlatformDetail" class="cpp-detail">
+        <ui:VisualElement name="HeaderRow" class="detail-header">
+            <ui:VisualElement name="DetailIcon" class="detail-header__icon" />
+            <ui:VisualElement name="TitleColumn">
+                <ui:Label name="TitleLabel" text="Publish" display-tooltip-when-elided="true" class="detail-header__title" />
+                <ui:Label name="StatusSummaryLabel" text="" display-tooltip-when-elided="true" class="detail-header__status" />
+            </ui:VisualElement>
+        </ui:VisualElement>
+        <ui:VisualElement name="Stepper" class="stepper" />
+        <ui:VisualElement name="StageBlock">
+            <ui:Label name="StageTitle" text="Waiting to start" display-tooltip-when-elided="true" class="stage-title" />
+            <ui:Label name="StageDescription" text="" display-tooltip-when-elided="true" class="stage-desc" />
+        </ui:VisualElement>
+        <ui:VisualElement name="ProgressBlock">
+            <ui:VisualElement name="BarTrack" class="bar-track">
+                <ui:VisualElement name="BarFill" class="bar-fill" style="width: 0%;">
+                    <ui:Label name="PercentLabel" text="" class="bar-fill__label" />
+                </ui:VisualElement>
+                <ui:Label name="BytesLabel" text="" class="bar-track__bytes" />
+            </ui:VisualElement>
+            <ui:VisualElement name="BarMetaRow" class="bar-meta-row">
+                <ui:Label name="EtaLabel" text="" class="bar-meta" />
+                <ui:Label name="SpeedLabel" text="" class="bar-meta" />
+            </ui:VisualElement>
+        </ui:VisualElement>
+        <ui:VisualElement name="StatRow" class="stat-row">
+            <ui:VisualElement name="ElapsedTile" class="stat-tile">
+                <ui:VisualElement name="ElapsedIcon" class="stat-tile__icon" />
+                <ui:VisualElement>
+                    <ui:Label text="Elapsed Time" class="stat-tile__caption" />
+                    <ui:Label name="ElapsedValue" text="&#8212;" class="stat-tile__value" />
+                </ui:VisualElement>
+            </ui:VisualElement>
+            <ui:VisualElement name="StepElapsedTile" class="stat-tile">
+                <ui:VisualElement name="StepElapsedIcon" class="stat-tile__icon" />
+                <ui:VisualElement>
+                    <ui:Label text="Step Elapsed" class="stat-tile__caption" />
+                    <ui:Label name="StepElapsedValue" text="&#8212;" class="stat-tile__value" />
+                </ui:VisualElement>
+            </ui:VisualElement>
+            <ui:VisualElement name="StatFiller" class="stat-tile is-last stat-tile--filler" />
+        </ui:VisualElement>
+        <ui:VisualElement name="LogCard" class="log-card">
+            <ui:VisualElement name="LogHeader" class="log-header">
+                <ui:VisualElement name="LogTabs" class="log-tabs">
+                    <ui:Button name="BuildLogTab" text="Build Log" class="log-tab is-active" />
+                    <ui:Button name="UnityLogTab" text="Unity Log" class="log-tab" />
+                </ui:VisualElement>
+                <ui:VisualElement name="LogActions" class="log-actions">
+                    <ui:Button name="ExpandLogButton" tooltip="Open this log in a larger window with search" class="log-icon-btn" />
+                </ui:VisualElement>
+            </ui:VisualElement>
+            <ui:ListView name="LogList" class="log-list" />
+            <ui:ListView name="UnityLogList" class="log-list log-list--unity" />
+        </ui:VisualElement>
+        <ui:VisualElement name="FooterRow" class="footer-row">
+            <ui:Button name="CancelButton" text="Cancel" class="cpp-btn cpp-btn--danger" />
+        </ui:VisualElement>
+    </ui:VisualElement>
+</ui:UXML>

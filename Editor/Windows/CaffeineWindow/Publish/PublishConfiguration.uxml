@@ -1,0 +1,254 @@
+<ui:UXML xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements" xsi="http://www.w3.org/2001/XMLSchema-instance" engine="UnityEngine.UIElements" editor="UnityEditor.UIElements" noNamespaceSchemaLocation="../../../../../../UIElementsSchema/UIElements.xsd" editor-extension-mode="True">
+    <ui:VisualElement name="Configuration" class="pub-section">
+        <ui:VisualElement name="Body">
+            <ui:VisualElement name="CoursePanel" class="pub-panel">
+                <ui:Button name="CourseHeader" class="pub-advanced-header">
+                    <ui:Label text="Course" class="pub-panel__title" />
+                    <ui:VisualElement name="CourseFoldout" class="pub-advanced-chevron" />
+                </ui:Button>
+                <ui:VisualElement name="CourseBody">
+                    <ui:VisualElement name="CourseSummary" class="pub-subpanel">
+                        <ui:VisualElement class="pub-group-header">
+                            <ui:Label text="Settings" class="pub-group__label" />
+                        </ui:VisualElement>
+                        <ui:VisualElement name="CourseInfoGrid" class="pub-info-grid">
+                            <ui:VisualElement class="pub-info-row">
+                                <ui:Label text="Steps" class="pub-info-row__label" />
+                                <ui:Label name="CourseSteps" text="—" class="pub-info-row__value" />
+                            </ui:VisualElement>
+                            <ui:VisualElement class="pub-info-row">
+                                <ui:Label text="Caffeine+" class="pub-info-row__label" />
+                                <ui:Label name="CourseCaffeinePlus" text="—" class="pub-info-row__value" />
+                            </ui:VisualElement>
+                            <ui:VisualElement class="pub-info-row">
+                                <ui:Label text="Render Pipeline" class="pub-info-row__label" />
+                                <ui:Label name="CoursePipeline" text="—" class="pub-info-row__value" />
+                            </ui:VisualElement>
+                            <ui:VisualElement class="pub-info-row">
+                                <ui:Label text="Modern Lightmap GI" class="pub-info-row__label" />
+                                <ui:Label name="CourseLightmap" text="—" class="pub-info-row__value" />
+                            </ui:VisualElement>
+                            <ui:VisualElement class="pub-info-row">
+                                <ui:Label text="Navigation" class="pub-info-row__label" />
+                                <ui:Label name="CourseNavigation" text="—" class="pub-info-row__value" />
+                            </ui:VisualElement>
+                            <ui:VisualElement class="pub-info-row">
+                                <ui:Label text="Orientation" class="pub-info-row__label" />
+                                <ui:Label name="CourseOrientation" text="—" class="pub-info-row__value" />
+                            </ui:VisualElement>
+                            <ui:VisualElement class="pub-info-row">
+                                <ui:Label text="Lock Teleportation" class="pub-info-row__label" />
+                                <ui:Label name="CourseTeleportation" text="—" class="pub-info-row__value" />
+                            </ui:VisualElement>
+                            <ui:VisualElement class="pub-info-row">
+                                <ui:Label text="Joystick" class="pub-info-row__label" />
+                                <ui:Label name="CourseJoystick" text="—" class="pub-info-row__value" />
+                            </ui:VisualElement>
+                        </ui:VisualElement>
+                    </ui:VisualElement>
+                </ui:VisualElement>
+            </ui:VisualElement>
+            <ui:VisualElement name="AdvancedPanel" class="pub-panel">
+                <ui:Button name="AdvancedHeader" class="pub-advanced-header">
+                    <ui:Label text="Packaging" class="pub-panel__title" />
+                    <ui:VisualElement name="AdvancedFoldout" class="pub-advanced-chevron" />
+                </ui:Button>
+                <ui:VisualElement name="AdvancedBody">
+                    <ui:VisualElement name="PublishSettings" class="pub-settings">
+                        <ui:VisualElement name="AssetOptions" class="pub-subpanel">
+                            <ui:VisualElement class="pub-group-header">
+                                <ui:Label text="Additional Assets" class="pub-group__label" />
+                                <ui:Label text="Enable only if content is missing from the published course, or to include these assets in the Cloud Backup." class="pub-panel__subtitle" />
+                            </ui:VisualElement>
+                            <ui:VisualElement name="AssetCardGrid" class="pub-card-grid">
+                                <ui:VisualElement class="pub-card-grid__row">
+                                    <ui:VisualElement name="Resources" class="pub-card">
+                                        <ui:VisualElement name="Icon" class="pub-card__icon" />
+                                        <ui:VisualElement name="Text" class="pub-card__text">
+                                            <ui:Label text="Resources" class="pub-card__title" />
+                                            <ui:Label text="Include assets from resource folders." class="pub-card__subtitle" />
+                                        </ui:VisualElement>
+                                        <ui:VisualElement name="Badge" class="pub-card__badge">
+                                            <ui:Label name="BadgeGlyph" text="" class="pub-card__badge-glyph" />
+                                        </ui:VisualElement>
+                                    </ui:VisualElement>
+                                    <ui:VisualElement name="StreamingAssets" class="pub-card">
+                                        <ui:VisualElement name="Icon" class="pub-card__icon" />
+                                        <ui:VisualElement name="Text" class="pub-card__text">
+                                            <ui:Label text="Streaming Assets" class="pub-card__title" />
+                                            <ui:Label text="Include assets from folder." class="pub-card__subtitle" />
+                                        </ui:VisualElement>
+                                        <ui:VisualElement name="Badge" class="pub-card__badge">
+                                            <ui:Label name="BadgeGlyph" text="" class="pub-card__badge-glyph" />
+                                        </ui:VisualElement>
+                                    </ui:VisualElement>
+                                </ui:VisualElement>
+                                <ui:VisualElement class="pub-card-grid__row">
+                                    <ui:VisualElement name="Includes" class="pub-card">
+                                        <ui:VisualElement name="Icon" class="pub-card__icon" />
+                                        <ui:VisualElement name="Text" class="pub-card__text">
+                                            <ui:Label text="Includes (*.cginc, hlsl)" class="pub-card__title" />
+                                            <ui:Label text="Include all shader include files." class="pub-card__subtitle" />
+                                        </ui:VisualElement>
+                                        <ui:VisualElement name="Badge" class="pub-card__badge">
+                                            <ui:Label name="BadgeGlyph" text="" class="pub-card__badge-glyph" />
+                                        </ui:VisualElement>
+                                    </ui:VisualElement>
+                                    <ui:VisualElement name="AllScripts" class="pub-card">
+                                        <ui:VisualElement name="Icon" class="pub-card__icon" />
+                                        <ui:VisualElement name="Text" class="pub-card__text">
+                                            <ui:Label text="Collect All Scripts" class="pub-card__title" />
+                                            <ui:Label text="Include all scripts in the project." class="pub-card__subtitle" />
+                                        </ui:VisualElement>
+                                        <ui:VisualElement name="Badge" class="pub-card__badge">
+                                            <ui:Label name="BadgeGlyph" text="" class="pub-card__badge-glyph" />
+                                        </ui:VisualElement>
+                                    </ui:VisualElement>
+                                </ui:VisualElement>
+                            </ui:VisualElement>
+                        </ui:VisualElement>
+                        <ui:VisualElement name="AdditionalAssets" class="pub-extra">
+                            <ui:Button name="AdditionalHeader" class="pub-extra__header">
+                                <ui:Label text="Drop additional assets below, or browse the folder structure." class="pub-extra__hint" />
+                                <ui:VisualElement name="AdditionalFoldout" class="pub-advanced-chevron" />
+                            </ui:Button>
+                            <ui:VisualElement name="AdditionalBody">
+                                <ui:VisualElement name="AssetDropZone" class="pub-dropzone">
+                                    <ui:Label text="Drop Assets Here" picking-mode="Ignore" class="pub-dropzone__label" />
+                                    <ui:Label text="or click to browse" picking-mode="Ignore" class="pub-dropzone__sublabel" />
+                                </ui:VisualElement>
+                                <ui:VisualElement name="AdditionalTreeHost" class="pub-extra__tree" />
+                                <ui:Label name="AdditionalNote" text="" class="pub-extra__note" />
+                            </ui:VisualElement>
+                        </ui:VisualElement>
+                        <ui:VisualElement name="PackageDependencies" class="pub-extra pub-deps">
+                            <ui:VisualElement class="pub-group-header">
+                                <ui:Label text="Package Dependencies" class="pub-group__label" />
+                                <ui:Label text="Editor packages this course was authored with. These packages are not available at runtime in the published course." class="pub-panel__subtitle" />
+                            </ui:VisualElement>
+                            <ui:VisualElement name="PackageDependencyList" class="pub-extra__tree pub-deps__list" />
+                            <ui:VisualElement class="pub-toolbar">
+                                <ui:Button name="AddPackageDependencyButton" text="Add From Project Manifest" class="pub-toolbar-btn" />
+                            </ui:VisualElement>
+                        </ui:VisualElement>
+                    </ui:VisualElement>
+                    <ui:VisualElement name="PackageSummary" class="pub-subpanel" style="display: none;">
+                        <ui:VisualElement class="pub-group-header">
+                            <ui:Label text="Package Contents" class="pub-group__label" />
+                            <ui:Label text="What the packaging step captured for this publish." class="pub-panel__subtitle" />
+                        </ui:VisualElement>
+                        <ui:VisualElement name="SummaryRow" class="pub-summary-row">
+                            <ui:VisualElement name="AssetsStat" class="pub-summary-stat">
+                                <ui:Label name="AssetsValue" text="0" class="pub-summary-stat__value" />
+                                <ui:Label text="Assets" class="pub-summary-stat__label" />
+                            </ui:VisualElement>
+                            <ui:VisualElement name="ScriptsStat" class="pub-summary-stat">
+                                <ui:Label name="ScriptsValue" text="0" class="pub-summary-stat__value" />
+                                <ui:Label text="Scripts" class="pub-summary-stat__label" />
+                            </ui:VisualElement>
+                            <ui:VisualElement name="SizeStat" class="pub-summary-stat">
+                                <ui:Label name="SizeValue" text="0" class="pub-summary-stat__value" />
+                                <ui:Label text="Package Size" class="pub-summary-stat__label" />
+                            </ui:VisualElement>
+                            <ui:VisualElement class="pub-summary-row__spacer" />
+                            <ui:Button name="ViewContentsButton" text="View Package Contents" class="pub-btn" />
+                        </ui:VisualElement>
+                    </ui:VisualElement>
+                </ui:VisualElement>
+            </ui:VisualElement>
+            <ui:VisualElement name="PlatformsPanel" class="pub-panel">
+                <ui:VisualElement name="Platforms">
+                    <ui:Button name="PlatformsHeader" class="pub-advanced-header">
+                        <ui:Label text="Publishing" class="pub-panel__title" />
+                        <ui:VisualElement name="PlatformsFoldout" class="pub-advanced-chevron" />
+                    </ui:Button>
+                    <ui:VisualElement name="PlatformsBody">
+                        <ui:VisualElement class="pub-panel__header">
+                            <ui:Label text="Select the platforms you want to publish to." class="pub-panel__subtitle" />
+                        </ui:VisualElement>
+                        <ui:VisualElement name="Body" class="pub-card-grid">
+                            <ui:VisualElement name="PlatformRowTop" class="pub-card-grid__row">
+                                <ui:VisualElement name="Windows" class="pub-card pub-card--platform">
+                                    <ui:VisualElement name="Icon" class="pub-platform-card__icon" />
+                                    <ui:Label text="Windows" class="pub-card__title pub-platform-card__title" />
+                                    <ui:Label name="Subtitle" text="" class="pub-card__subtitle pub-card__status pub-platform-card__status" />
+                                    <ui:VisualElement name="Badge" class="pub-card__badge pub-platform-card__badge">
+                                        <ui:Label name="BadgeGlyph" text="" class="pub-card__badge-glyph" />
+                                    </ui:VisualElement>
+                                    <ui:Button name="FixButton" class="pub-card__fix pub-platform-card__fix" />
+                                </ui:VisualElement>
+                                <ui:VisualElement name="Mac" class="pub-card pub-card--platform">
+                                    <ui:VisualElement name="Icon" class="pub-platform-card__icon" />
+                                    <ui:Label text="Mac" class="pub-card__title pub-platform-card__title" />
+                                    <ui:Label name="Subtitle" text="" class="pub-card__subtitle pub-card__status pub-platform-card__status" />
+                                    <ui:VisualElement name="Badge" class="pub-card__badge pub-platform-card__badge">
+                                        <ui:Label name="BadgeGlyph" text="" class="pub-card__badge-glyph" />
+                                    </ui:VisualElement>
+                                    <ui:Button name="FixButton" class="pub-card__fix pub-platform-card__fix" />
+                                </ui:VisualElement>
+                                <ui:VisualElement name="iOS" class="pub-card pub-card--platform">
+                                    <ui:VisualElement name="Icon" class="pub-platform-card__icon" />
+                                    <ui:Label text="iOS" class="pub-card__title pub-platform-card__title" />
+                                    <ui:Label name="Subtitle" text="" class="pub-card__subtitle pub-card__status pub-platform-card__status" />
+                                    <ui:VisualElement name="Badge" class="pub-card__badge pub-platform-card__badge">
+                                        <ui:Label name="BadgeGlyph" text="" class="pub-card__badge-glyph" />
+                                    </ui:VisualElement>
+                                    <ui:Button name="FixButton" class="pub-card__fix pub-platform-card__fix" />
+                                </ui:VisualElement>
+                            </ui:VisualElement>
+                            <ui:VisualElement name="PlatformRowBottom" class="pub-card-grid__row">
+                                <ui:VisualElement name="Android" class="pub-card pub-card--platform">
+                                    <ui:VisualElement name="Icon" class="pub-platform-card__icon" />
+                                    <ui:Label text="Android" class="pub-card__title pub-platform-card__title" />
+                                    <ui:Label name="Subtitle" text="" class="pub-card__subtitle pub-card__status pub-platform-card__status" />
+                                    <ui:VisualElement name="Badge" class="pub-card__badge pub-platform-card__badge">
+                                        <ui:Label name="BadgeGlyph" text="" class="pub-card__badge-glyph" />
+                                    </ui:VisualElement>
+                                    <ui:Button name="FixButton" class="pub-card__fix pub-platform-card__fix" />
+                                </ui:VisualElement>
+                                <ui:VisualElement name="VisionOS" class="pub-card pub-card--platform">
+                                    <ui:VisualElement name="Icon" class="pub-platform-card__icon" />
+                                    <ui:Label text="VisionOS" class="pub-card__title pub-platform-card__title" />
+                                    <ui:Label name="Subtitle" text="" class="pub-card__subtitle pub-card__status pub-platform-card__status" />
+                                    <ui:VisualElement name="Badge" class="pub-card__badge pub-platform-card__badge">
+                                        <ui:Label name="BadgeGlyph" text="" class="pub-card__badge-glyph" />
+                                    </ui:VisualElement>
+                                    <ui:Button name="FixButton" class="pub-card__fix pub-platform-card__fix" />
+                                </ui:VisualElement>
+                                <ui:VisualElement name="Web" class="pub-card pub-card--platform">
+                                    <ui:VisualElement name="Icon" class="pub-platform-card__icon" />
+                                    <ui:Label text="Web" class="pub-card__title pub-platform-card__title" />
+                                    <ui:Label name="Subtitle" text="" class="pub-card__subtitle pub-card__status pub-platform-card__status" />
+                                    <ui:VisualElement name="Badge" class="pub-card__badge pub-platform-card__badge">
+                                        <ui:Label name="BadgeGlyph" text="" class="pub-card__badge-glyph" />
+                                    </ui:VisualElement>
+                                    <ui:Button name="FixButton" class="pub-card__fix pub-platform-card__fix" />
+                                </ui:VisualElement>
+                                <ui:VisualElement name="PlatformRowFiller" class="pub-card-grid__filler" />
+                            </ui:VisualElement>
+                        </ui:VisualElement>
+                        <ui:VisualElement name="ButtonToolbar" class="pub-toolbar pub-toolbar--platform-select">
+                            <ui:Button name="SelectAllButton" text="Select All" class="pub-toolbar-btn" />
+                            <ui:Button name="DeselectAllButton" text="Deselect All" class="pub-toolbar-btn" />
+                        </ui:VisualElement>
+                        <ui:VisualElement name="PublishDetails">
+                            <ui:VisualElement class="pub-group-header">
+                                <ui:Label text="Notes" class="pub-group__label" />
+                                <ui:Label text="Add any notes for this publish." class="pub-panel__subtitle" />
+                            </ui:VisualElement>
+                            <ui:VisualElement name="NotesCard" class="pub-notes-card">
+                                <ui:VisualElement name="NotesIcon" class="pub-notes-card__icon" />
+                                <ui:VisualElement name="NotesBody" style="flex-grow: 1; flex-shrink: 1;">
+                                    <ui:VisualElement name="NotesFieldWrap" style="flex-grow: 1;">
+                                        <ui:TextField name="NotesField" multiline="true" max-length="-1" class="pub-notes-field" />
+                                        <ui:Label name="NotesPlaceholder" text="Add publish notes..." picking-mode="Ignore" class="pub-notes-placeholder" />
+                                    </ui:VisualElement>
+                                </ui:VisualElement>
+                            </ui:VisualElement>
+                        </ui:VisualElement>
+                    </ui:VisualElement>
+                </ui:VisualElement>
+            </ui:VisualElement>
+        </ui:VisualElement>
+    </ui:VisualElement>
+</ui:UXML>

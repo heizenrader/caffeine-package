@@ -12,6 +12,46 @@ using UnityEngine;
 using UnityEngine.UIElements;
 using PackageInfo = UnityEditor.PackageManager.PackageInfo;
 
+// Same rule as Caffeine.Editor.BuilderRole, duplicated because this assembly
+// references nothing (it has to keep working when Caffeine fails to compile):
+// a project is a builder when it sits in <parent>/Builders/ under a parent
+// whose Meta.json says IsParent:true, and its own Meta.json does not claim it
+// is a parent. Runtime file read, not #if CAFFEINE_BUILDER (that define is
+// retired). Unity sets the working directory to the project root.
+internal static class BuilderProject
+{
+    [Serializable]
+    private class Marker
+    {
+        public bool IsParent;
+    }
+
+    public static readonly bool IsBuilder = Detect(Directory.GetCurrentDirectory());
+
+    private static bool Detect(string projectRoot)
+    {
+        try
+        {
+            var builders = new DirectoryInfo(projectRoot.TrimEnd('/', '\\')).Parent;
+            if (builders == null || builders.Name != "Builders" || builders.Parent == null) return false;
+            if (ReadMarker(builders.Parent.FullName)?.IsParent != true) return false;
+
+            var own = ReadMarker(projectRoot);
+            return own == null || !own.IsParent;
+        }
+        catch
+        {
+            return false;
+        }
+    }
+
+    private static Marker ReadMarker(string projectRoot)
+    {
+        var path = Path.Combine(projectRoot, "Meta.json");
+        return File.Exists(path) ? JsonUtility.FromJson<Marker>(File.ReadAllText(path)) : null;
+    }
+}
+
 internal static class CaffeineUpdateCheckProgress
 {
     private const string K_Active = "CaffeineUpdater.ManualCheckProgressActive";
@@ -85,7 +125,7 @@ public class PackageManagerExtensionRegister
 {
     static PackageManagerExtensionRegister()
     {
-        if (Application.isBatchMode) return;
+        if (BuilderProject.IsBuilder) return;
         PackageManagerExtensions.RegisterExtension(new CaffeineUpdater());
     }
 }
@@ -166,6 +206,7 @@ public class CaffeineUpdater : IPackageManagerExtension
     [InitializeOnLoadMethod]
     public static void PackageUpdateCheck()
     {
+        if (BuilderProject.IsBuilder) return;
         QueueUpdateCheck(auto: true);
     }
 
@@ -178,7 +219,9 @@ public class CaffeineUpdater : IPackageManagerExtension
     
     private static void QueueUpdateCheck(bool auto)
     {
-        if (Application.isBatchMode) return;
+        // Reachable only via the menu item and the auto check, both of which
+        // are unavailable in builder Unity (BuilderProject.IsBuilder / no
+        // menus in batch) — no batch guard needed.
 
         // Prevent spamming by multiple triggers (domain reload + menu spam)
         if (_checkQueuedOrRunning) return;
@@ -280,8 +323,8 @@ public class CaffeineUpdater : IPackageManagerExtension
     [InitializeOnLoadMethod]
     private static void ResumeUpdateIfNeeded()
     {
-        // Exit If Builder
-        if (Application.isBatchMode) return;
+        // Never in builder Unity.
+        if (BuilderProject.IsBuilder) return;
 
         // Exit If Not In Progress
         if (!SessionState.GetBool(K_UpdateInProgress, false)) return;
@@ -296,13 +339,22 @@ public class CaffeineUpdater : IPackageManagerExtension
 
     public static void InstallSupportedUpdate()
     {
-        // Exit If Builder
-        if (Application.isBatchMode) return;
+        // Reachable only from the update UI, which builder Unity never shows
+        // (the extension isn't even registered there) — no batch guard needed.
 
         // If already in progress, just restore UI and bail.
         if (SessionState.GetBool(K_UpdateInProgress, false))
         {
             CaffeineUpdateProgress.RestoreIfNeeded();
+            return;
+        }
+
+        // A course package-dependency install is mid-queue (raw key: this
+        // assembly doesn't reference Caffeine). Two interleaved UPM request
+        // chains would tear each other down across their domain reloads.
+        if (!string.IsNullOrEmpty(SessionState.GetString("Caffeine.DependencyInstall.Job", null)))
+        {
+            EditorUtility.DisplayDialog("Caffeine Update", "Packages are still installing. Try again once they finish.", "Ok");
             return;
         }
 
@@ -485,7 +537,8 @@ public class CaffeineUpdater : IPackageManagerExtension
 
     public void OnPackageAddedOrUpdated(PackageInfo packageInfo)
     {
-        if (Application.isBatchMode) return;
+        // Only fires on the registered extension, and registration is
+        // skipped in builder Unity (BuilderProject.IsBuilder).
         if (packageInfo == null || string.IsNullOrEmpty(packageInfo.name) || packageInfo.name.ToLower() != "com.caffeine") return;
         
         var info = new Caffeine.Package.PackageInfo()

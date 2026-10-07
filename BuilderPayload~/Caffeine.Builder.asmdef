@@ -1,0 +1,23 @@
+{
+    "name": "Caffeine.Builder",
+    "rootNamespace": "Caffeine",
+    "references": [],
+    "includePlatforms": [
+        "Editor"
+    ],
+    "excludePlatforms": [],
+    "allowUnsafeCode": false,
+    "overrideReferences": true,
+    "precompiledReferences": [
+        "Newtonsoft.Json.dll",
+        "SharpCompress.dll",
+        "Caffeine.dll",
+        "Caffeine.Transfers.dll",
+        "XNode.dll",
+        "XNodeEditor.dll"
+    ],
+    "autoReferenced": true,
+    "defineConstraints": [],
+    "versionDefines": [],
+    "noEngineReferences": false
+}

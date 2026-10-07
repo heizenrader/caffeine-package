@@ -1,0 +1,15 @@
+<ui:UXML xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements" xsi="http://www.w3.org/2001/XMLSchema-instance" engine="UnityEngine.UIElements" editor="UnityEditor.UIElements" noNamespaceSchemaLocation="../../../../../../UIElementsSchema/UIElements.xsd" editor-extension-mode="True">
+    <ui:Template name="CloudBackup" src="CloudBackup.uxml" />
+    <ui:Template name="CrossPlatformPublish" src="CrossPlatformPublish.uxml" />
+    <ui:VisualElement name="Publishing" class="pub-section" style="flex-grow: 1;">
+        <ui:VisualElement name="Body" class="pub-section__body" style="flex-grow: 1;">
+            <ui:Instance template="CloudBackup" name="CloudBackupInstance" />
+            <ui:Instance template="CrossPlatformPublish" name="CrossPlatformPublishInstance" style="flex-grow: 1;" />
+            <ui:VisualElement name="PublishingActionBar" class="pub-action-bar">
+                <ui:VisualElement class="pub-action-bar__spacer" />
+                <ui:Button name="PublishingResetButton" text="Close" class="pub-btn" />
+                <ui:Button name="PublishingCancelButton" text="Cancel" class="pub-btn" />
+            </ui:VisualElement>
+        </ui:VisualElement>
+    </ui:VisualElement>
+</ui:UXML>

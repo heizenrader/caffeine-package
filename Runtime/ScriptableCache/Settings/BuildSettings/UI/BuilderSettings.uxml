@@ -13,10 +13,6 @@
                 <ui:Label text="* Enables simultaneous spawning of build processes for potentially faster build times, as opposed to sequential processes that wait for one to finish before starting the next." display-tooltip-when-elided="true" style="flex-grow: 1; font-size: 10px; -unity-text-align: middle-left; white-space: normal; margin-left: 15px;" />
             </ui:VisualElement>
             <ui:VisualElement style="flex-direction: row; margin-top: 0; margin-bottom: 10px; flex-grow: 1; margin-left: 5px; margin-right: 0;">
-                <ui:Toggle label="Use Staggered Building" name="StaggeredBuild" style="margin-left: 13px; margin-right: 0; margin-top: 0; margin-bottom: 0; -unity-text-align: middle-left;" />
-                <ui:Label text="* Staggers the start times of parallel build processes to prevent sudden spikes in CPU/RAM usage. Ensures a slight delay between initiating each process." display-tooltip-when-elided="true" name="StaggeredTooltip" style="flex-grow: 1; font-size: 10px; -unity-text-align: middle-left; white-space: normal; margin-left: 15px;" />
-            </ui:VisualElement>
-            <ui:VisualElement style="flex-direction: row; margin-top: 0; margin-bottom: 10px; flex-grow: 1; margin-left: 5px; margin-right: 0;">
                 <ui:Toggle label="Publish Before Backup" name="PublishBeforeExport" style="margin-bottom: 0; margin-top: 0; margin-right: 0; margin-left: 0; -unity-text-align: middle-left;" />
                 <ui:Label text="* Ensures build processes complete before initiating cloud backup. When disabled, building and backup tasks run concurrently." display-tooltip-when-elided="true" style="flex-grow: 1; font-size: 10px; -unity-text-align: middle-left; white-space: normal; margin-left: 15px;" />
             </ui:VisualElement>

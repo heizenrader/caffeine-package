@@ -3,26 +3,56 @@
          engine="UnityEngine.UIElements" editor="UnityEditor.UIElements"
          noNamespaceSchemaLocation="../../../../UIElementsSchema/UIElements.xsd"
          editor-extension-mode="True">
-    <ui:VisualElement name="BuildRunRoot" style="flex-direction: column; flex-grow: 1; padding-left: 10px; padding-right: 10px; padding-top: 10px;">
+    <ui:VisualElement name="BuildRunRoot" class="cpp-root br-root">
 
-        <!-- Body first -->
-        <ui:GroupBox name="Body" style="flex-grow: 1; align-items: stretch;" />
+        <!-- 2D / VR target -->
+        <ui:VisualElement name="ModeRow" class="mode-row">
+            <ui:Button name="BtnMode2D" text="2D" class="seg-btn left is-selected" />
+            <ui:Button name="BtnModeVR" text="VR" class="seg-btn right" />
+        </ui:VisualElement>
 
-        <!-- Bottom buttons -->
-        <ui:VisualElement name="BottomBar" style="flex-direction: column; align-items: center; justify-content: center;">
-            <ui:VisualElement name="BottomRight" style="flex-direction: row; align-items: center; justify-content: center;">
-                <ui:Button name="BtnBuildRun" text="Build &amp; Run" />
-                <ui:Button name="BtnRunOnly" text="Run" />
-                <ui:Button name="BtnCancel" text="Cancel" />
+        <!-- Queued → Preparing → Building → Launching → Complete (built in code) -->
+        <ui:VisualElement name="Stepper" class="stepper" />
+
+        <ui:VisualElement name="BarTrack" class="bar-track br-bar">
+            <ui:VisualElement name="BarFill" class="bar-fill" style="width: 0%;" />
+        </ui:VisualElement>
+
+        <ui:VisualElement name="StatRow" class="stat-row">
+            <ui:VisualElement name="ElapsedTile" class="stat-tile">
+                <ui:VisualElement name="ElapsedIcon" class="stat-tile__icon" />
+                <ui:VisualElement>
+                    <ui:Label text="Elapsed Time" class="stat-tile__caption" />
+                    <ui:Label name="ElapsedValue" text="&#8212;" class="stat-tile__value" />
+                </ui:VisualElement>
+            </ui:VisualElement>
+            <ui:VisualElement name="StepElapsedTile" class="stat-tile is-last">
+                <ui:VisualElement name="StepElapsedIcon" class="stat-tile__icon" />
+                <ui:VisualElement>
+                    <ui:Label text="Step Elapsed" class="stat-tile__caption" />
+                    <ui:Label name="StepElapsedValue" text="&#8212;" class="stat-tile__value" />
+                </ui:VisualElement>
             </ui:VisualElement>
         </ui:VisualElement>
 
-        <!-- TopBar LAST so it’s on top of overlaps -->
-        <ui:VisualElement name="TopBar" class="top-bar">
-            <ui:VisualElement name="ModeRow" class="mode-row">
-                <ui:Button name="BtnMode2D" text="2D" class="seg-btn left is-selected" />
-                <ui:Button name="BtnModeVR" text="VR" class="seg-btn right" />
+        <ui:VisualElement name="LogCard" class="log-card br-log-card">
+            <ui:VisualElement name="LogHeader" class="log-header">
+                <ui:VisualElement name="LogTabs" class="log-tabs">
+                    <ui:Button name="BuildLogTab" text="Build Log" class="log-tab is-active" />
+                    <ui:Button name="UnityLogTab" text="Unity Log" class="log-tab" />
+                </ui:VisualElement>
+                <ui:VisualElement name="LogActions" class="log-actions">
+                    <ui:Button name="ExpandLogButton" tooltip="Open this log in a larger window with search" class="log-icon-btn" />
+                </ui:VisualElement>
             </ui:VisualElement>
+            <ui:ListView name="LogList" class="log-list" />
+            <ui:ListView name="UnityLogList" class="log-list log-list--unity" />
+        </ui:VisualElement>
+
+        <ui:VisualElement name="FooterRow" class="br-footer">
+            <ui:Button name="BtnBuildRun" text="Build &amp; Run" class="cpp-btn cpp-btn--primary br-btn br-btn--first" />
+            <ui:Button name="BtnRunOnly" text="Run" class="cpp-btn cpp-btn--neutral br-btn" />
+            <ui:Button name="BtnCancel" text="Cancel" class="cpp-btn cpp-btn--neutral br-btn" />
         </ui:VisualElement>
     </ui:VisualElement>
 </ui:UXML>
