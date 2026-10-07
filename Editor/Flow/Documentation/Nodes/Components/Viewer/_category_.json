@@ -4,6 +4,6 @@
   "collapsed": true,
   "link": {
     "type": "generated-index",
-    "description": "Viewer-level UI action nodes — side menu toggle."
+    "description": "Viewer-level UI action nodes — side menu toggle, and per-platform show/hide of the on-screen chrome."
   }
 }

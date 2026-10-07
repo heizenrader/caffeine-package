@@ -4,6 +4,57 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [1.1.23] - 09.10.2026
+Package dependency update.
+
+### New
+- **com.unity.vectorgraphics -** Added support for SVGImage & SVG Sprite Editor
+
+## [1.1.22] - 08.05.2026
+
+Flow sub-graphs arrive, alongside big-graph navigation tools, faster editing on large courses, safer importing, and a major wave of reliability fixes.
+
+### New
+- **Flow sub-graphs.** Collapse any part of a graph into a single tile you can step inside: wrap a selection with Ctrl+Shift+G, double-click the tile to enter its own canvas with a breadcrumb trail to climb back out, and wire through its labeled pins, which you can rename or expose. Existing and published courses open exactly as before.
+- **Cut, jump-to-connection, and long-distance wiring in Flow.** Cut and paste nodes without losing a single wire, jump straight to a wire's other end from any port, and connect distant ports without scrolling across the canvas. A new preference can display very long wires as small labeled stubs that expand on hover, so huge graphs stay readable.
+- **Flow Search window.** Drag any variable, event, or scene object into the new Flow Search window (Caffeine > Windows) to see every place it is used across your graphs, grouped and clickable, including results inside prefabs and sub-graphs.
+- **Go To Step node.** Jump learners to any step of the course straight from a graph, with navigation that keeps working even after you reorder your steps.
+- **New Flow node families, Caffeine+ templates, and AI Bot conversation nodes.** Work with collider properties and types, manage lists of components, and stop a repeating Timed Kick right from the graph. Ready-to-edit templates jump-start custom Caffeine+ nodes, and AI Bot Conversation nodes are now available, applying your bot's prompt, model, and reference documents.
+- **AR authoring tools.** Toggle AR Occlusion per step so real-world geometry can hide virtual content, control AR mode directly from Flow nodes, and preview AR in the scene view near-instantly.
+- **Safer course importing and an expanded Course Validator.** Choose per file whether to keep your project's version or the incoming one when an import conflicts, with identical files skipped automatically and your project's core text assets protected. The Course Validator now catches nine more issues, from missing fonts and broken materials to Flow group problems, most with a one-click fix.
+- **Material Optimizer support for URP and glTF.** Optimize URP Lit, URP Simple Lit, and glTF materials, not just Standard materials as before, and extract embedded textures from GLB and glTF models to control their compression and resolution yourself.
+
+### Improved
+- **Massively improved Flow graph performance.** Navigating big graphs is now smooth, with panning, zooming, and editing staying responsive even at hundreds of nodes.
+- **Faster step editing on large courses.** Step changes that took over a second are now near-instant, and the up-to-ten-second hang on your first save each session is gone.
+- **Publishing and course management polish.** Build failure messages stay specific instead of a generic notice, disabled platforms can no longer sneak into a publish, publish notes and settings save instantly with no typing lag, and uninstalling a course preserves shared assets and cleans up after itself.
+
+### Fixed
+- **Flow graph integrity when copying and spawning.** Duplicating, spawning, or copying an object that carries a Flow graph now keeps each copy's graph correctly isolated from the original, including nested groups and prefab overrides. A new Fix Polluted Prefab References tool and a matching Validator check repair any prefabs affected earlier, and previously published courses are unaffected.
+- **Undo now works everywhere in the Flow editor.** Disconnecting or re-routing a wire, renaming a node, and deleting a sub-graph tile with its contents are all fully undoable, and a rare case where undo could permanently remove a node from the graph is fixed.
+- **Pink materials and duplicate settings files.** Imported FBX and OBJ models in URP projects no longer render pink, and already-affected projects self-heal when you open the course scene. Multiple URP courses coexist in one project without conflicts, duplicate publish-settings files no longer pile up over time, and a missing course asset shows one clear recovery dialog instead of stacked prompts.
+- **Flow node behavior corrections.** Physics Raycast reports the object actually hit, Translate honors a direction typed into the inspector, port connections on about two dozen nodes work again with inline values restored, and every wire on a port is reachable from its right-click menu, even when connections share a name.
+- **Caffeine+ publishing and testing.** Custom scripts enabled through Include All Scripts now publish correctly with your course, and testing with Build and Run no longer crashes on startup. New Caffeine+ courses exclude extra assets and scripts from publishing by default, so enable them in the course's publish settings when you need them; existing courses keep their settings.
+
+## [1.1.21] - 05.20.2026
+
+A major Flow Editor refresh: color-code your groups, hide and rename them in one click, and navigate huge courses smoothly with new LOD rendering.
+
+### New
+- **Group colors in the Flow Editor.** You can now assign a color to any group, making it easy to organize and navigate complex courses at a glance.
+- **Hide and rename groups with one click.** A new eye icon on each group collapses it instantly, and collapsed groups now show a pencil icon so you can rename them without expanding first.
+- **LOD rendering for large graphs.** When you zoom out, nodes simplify to clean color blocks so panning and navigating big courses stays smooth. A new "LOD (Performance)" section in Preferences lets you tune the zoom threshold and toggle name labels.
+- **Course Validator catches two more setup issues:** a missing starting point and objects with conflicting IDs, each with a one-click fix.
+
+### Improved
+- **Smoother interaction inside groups.** Drag-selecting now works from inside an open group, and clicking eye buttons or the Course Events panel no longer accidentally selects a group behind them. Open groups appear at lighter opacity so the nodes inside stand out.
+- **Validator collider check is now a warning,** so a label whose target lacks a collider no longer blocks publishing.
+- **Landscape and Joystick course settings** are now included in your published course's metadata.
+
+### Fixed
+- **Unpacking a prefab preserves all flow graph connections,** including in prefabs that contain text components.
+- **Several Flow Editor behaviors work correctly:** resizing a collapsed group, the show/hide eye buttons at high zoom, and duplicating a collapsed group.
+
 ## [1.1.20] - 04.16.2026
 
 Publishing and importing are noticeably more reliable on slow and unstable connections, with clearer progress feedback throughout.
@@ -132,7 +183,7 @@ Faster downloads, a live import window, and a more reliable publishing experienc
 ## [1.1.6] - 07.09.2025
 ### Fixed
 - FLOW Updates
--- Nested Prefab Support (Experimental) 
+  -- Nested Prefab Support (Experimental)
 - Bug Fixes
 - Performance and User Experience Optimizations
 - URP Support (Experimental)

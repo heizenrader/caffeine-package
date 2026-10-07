@@ -1,0 +1,1072 @@
+/* Publish page theme — loaded once onto the PublishNode root (class
+   pub-root) by PublishNode.cs. Covers the Configuration section (card
+   toggles, notes, platform cards), the Publishing section shell, and the
+   Cloud Backup banner. The Cross Platform Publish rail/detail keeps its
+   own stylesheet (CrossPlatformPublish.uss); palettes are aligned by
+   value. */
+
+.pub-root {
+    --pub-bg: rgb(32, 32, 35);
+    --pub-panel: rgb(40, 40, 44);
+    --pub-card: rgb(48, 48, 53);
+    --pub-card-hover: rgb(56, 56, 62);
+    --pub-border: rgb(64, 64, 70);
+    --pub-track: rgb(24, 24, 27);
+    --pub-accent: rgb(47, 128, 237);
+    --pub-green: rgb(94, 190, 105);
+    --pub-warning: rgb(224, 184, 74);
+    --pub-danger: rgb(214, 80, 73);
+    --pub-text: rgb(228, 228, 230);
+    --pub-text-dim: rgb(152, 152, 160);
+}
+
+/* ---------------- Section shell (Configuration / Publishing) ---------------- */
+
+.pub-section {
+    padding: 0 10px;
+    flex-shrink: 0;
+    margin-bottom: 10px;
+}
+
+.pub-section__body {
+    background-color: var(--pub-bg);
+    border-radius: 8px;
+    padding: 12px;
+    margin: 0;
+}
+
+/* ---------------- Panels (Platforms / Advanced Options) ---------------- */
+
+.pub-panel {
+    background-color: var(--pub-bg);
+    border-radius: 8px;
+    border-width: 1px;
+    border-color: var(--pub-border);
+    padding: 12px;
+    margin-bottom: 10px;
+}
+
+.pub-panel__header {
+    margin-bottom: 10px;
+}
+
+.pub-panel__title {
+    color: var(--pub-text);
+    font-size: 14px;
+    -unity-font-style: bold;
+    padding: 0;
+    margin: 0;
+}
+
+.pub-panel__subtitle {
+    color: var(--pub-text-dim);
+    font-size: 11px;
+    margin-top: 2px;
+    padding: 0;
+    white-space: normal;
+}
+
+/* Bordered sub-block inside a panel (Assets group). */
+.pub-subpanel {
+    background-color: var(--pub-panel);
+    border-radius: 6px;
+    border-width: 1px;
+    border-color: var(--pub-border);
+    padding: 10px 12px 4px 12px;
+    margin-bottom: 12px;
+}
+
+/* ---------------- Group labels + toolbar ---------------- */
+
+.pub-group-header {
+    margin-bottom: 8px;
+}
+
+.pub-group__label {
+    color: var(--pub-text);
+    font-size: 13px;
+    -unity-font-style: bold;
+    padding: 0;
+    margin: 0;
+}
+
+.pub-toolbar {
+    flex-direction: row;
+    flex-shrink: 0;
+}
+
+/* The platform selection tools, sitting under the first platform card
+   rather than in a bar of their own. The card row already carries an 8px
+   bottom gutter, so the top margin only closes the gap to the cards; the
+   bottom one is the breathing room before the Notes group. */
+.pub-toolbar--platform-select {
+    margin: 2px 0 18px 0;
+}
+
+.pub-toolbar-btn {
+    background-color: var(--pub-card);
+    color: var(--pub-text-dim);
+    border-width: 1px;
+    border-color: var(--pub-border);
+    border-radius: 4px;
+    padding: 4px 12px;
+    margin: 0 6px 0 0;
+    font-size: 11px;
+}
+
+.pub-toolbar-btn:hover:enabled {
+    background-color: var(--pub-card-hover);
+    color: var(--pub-text);
+}
+
+/* ---------------- Action bar (selection tools + publish buttons) ---------------- */
+
+.pub-action-bar {
+    flex-direction: row;
+    align-items: center;
+    background-color: var(--pub-panel);
+    border-radius: 6px;
+    border-width: 1px;
+    border-color: var(--pub-border);
+    padding: 8px 10px;
+    margin-top: 2px;
+}
+
+.pub-action-bar__spacer {
+    flex-grow: 1;
+}
+
+/* ---------------- Course at-a-glance rows ---------------- */
+
+/* Read-only "label: value" chips describing the course in the open scene.
+   Wrapping row so they pack two-up at normal window widths and stack when
+   the window is narrow. Presentation only — nothing here is interactive. */
+.pub-info-grid {
+    flex-direction: row;
+    flex-wrap: wrap;
+    margin-right: -8px;
+}
+
+.pub-info-row {
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    flex-grow: 1;
+    flex-basis: 40%;
+    min-width: 180px;
+    background-color: var(--pub-card);
+    border-radius: 4px;
+    border-width: 1px;
+    border-color: var(--pub-border);
+    padding: 5px 8px;
+    margin: 0 8px 8px 0;
+}
+
+.pub-info-row__label {
+    color: var(--pub-text-dim);
+    font-size: 11px;
+    margin: 0 8px 0 0;
+    padding: 0;
+}
+
+.pub-info-row__value {
+    color: var(--pub-text);
+    font-size: 11px;
+    -unity-font-style: bold;
+    -unity-text-align: middle-right;
+    flex-shrink: 1;
+    margin: 0;
+    padding: 0;
+}
+
+/* ---------------- Step footer (Configure page CTA bar) ---------------- */
+
+/* One bar for the whole configure flow: it names the step the course is
+   on (validate → package → publish) and shows only that step's action.
+   Sits outside the page's ScrollView, pinned under it, so the CTA never
+   scrolls away. Everything in it runs ~20% larger than the panels above,
+   and the bar is inverted — a white card under the dark page — so the step
+   the course is on is the one thing on screen that can't be missed. That
+   means everything inside it runs on a light scheme: near-black text,
+   darkened status tiers, light-chrome buttons. Those overrides are all
+   scoped to the footer, so the page's dark palette is untouched. */
+.pub-step-footer {
+    flex-direction: row;
+    align-items: center;
+    flex-shrink: 0;
+    background-color: rgb(247, 247, 249);
+    border-radius: 10px;
+    border-width: 1px;
+    border-color: rgb(206, 206, 212);
+    padding: 12px 15px;
+    margin: 4px 10px 12px 10px;
+}
+
+.pub-step-footer__text {
+    flex-direction: column;
+    flex-shrink: 1;
+}
+
+.pub-step-footer__step {
+    color: rgb(24, 24, 28);
+    font-size: 14px;
+    -unity-font-style: bold;
+    letter-spacing: 0.5px;
+    margin: 0;
+    padding: 0;
+}
+
+/* The step's one-line status — validation outcome, packaging progress,
+   or the next action's prompt. Colour tiers mirror the validator's. */
+.pub-step-footer__message {
+    color: rgb(88, 88, 96);
+    font-size: 13px;
+    margin: 0;
+    padding: 0;
+    white-space: normal;
+}
+
+/* Darkened counterparts of --pub-green/--pub-warning/--pub-danger: the
+   page's tiers are mixed for dark panels and wash out on white. */
+.pub-step-footer__message--pass {
+    color: rgb(30, 122, 55);
+}
+
+.pub-step-footer__message--warn {
+    color: rgb(150, 102, 6);
+}
+
+.pub-step-footer__message--fail {
+    color: rgb(178, 44, 38);
+}
+
+/* The status line and its link sit on one row: the message text is
+   written to end mid-sentence ("… — open the") and the link closes it. */
+.pub-step-footer__message-row {
+    flex-direction: row;
+    align-items: center;
+    flex-wrap: wrap;
+    margin: 3px 0 0 0;
+}
+
+/* The route into the Course Validator, as the tail of the sentence rather
+   than a control of its own: no button chrome, link blue, underlined by
+   the rich-text <u> the footer wraps it in (USS has no text-decoration). */
+/* The lead-in and the link travel together. Left to itself the row breaks
+   between them … "… found — open the" / "Course Validator" … which reads
+   as a severed sentence, so the group, not its words, is what wraps: the
+   whole "open the Course Validator" drops to the next line instead. */
+.pub-step-footer__action {
+    flex-direction: row;
+    align-items: center;
+    flex-shrink: 0;
+    margin-left: 4px;
+}
+
+.pub-step-footer__link {
+    background-color: rgba(0, 0, 0, 0);
+    border-width: 0;
+    color: rgb(28, 100, 205);
+    font-size: 13px;
+    margin: 0 0 0 4px;
+    padding: 0;
+    cursor: link;
+}
+
+.pub-step-footer__link:hover:enabled {
+    background-color: rgba(0, 0, 0, 0);
+    color: rgb(56, 132, 240);
+}
+
+.pub-step-footer__spacer {
+    flex-grow: 1;
+    min-width: 14px;
+}
+
+/* The footer's CTAs run one size up from the buttons inside the panels,
+   and on light chrome rather than the page's dark cards — scoped here so
+   the shared .pub-btn keeps its own look everywhere else on the page. */
+.pub-step-footer .pub-btn {
+    background-color: rgb(255, 255, 255);
+    border-color: rgb(190, 190, 198);
+    color: rgb(36, 36, 42);
+    border-radius: 5px;
+    padding: 8px 19px;
+    margin: 0 0 0 10px;
+    font-size: 14px;
+}
+
+.pub-step-footer .pub-btn:hover:enabled {
+    background-color: rgb(234, 234, 240);
+}
+
+/* The primary CTA keeps the page's accent — white on --pub-accent clears
+   contrast on the light ground as readily as it did on the dark one. */
+.pub-step-footer .pub-btn--primary {
+    background-color: var(--pub-accent);
+    border-color: rgb(36, 106, 200);
+    color: rgb(255, 255, 255);
+}
+
+.pub-step-footer .pub-btn--primary:hover:enabled {
+    background-color: rgb(72, 145, 245);
+}
+
+.pub-btn {
+    background-color: var(--pub-card);
+    color: var(--pub-text);
+    border-width: 1px;
+    border-color: var(--pub-border);
+    border-radius: 4px;
+    padding: 6px 16px;
+    margin: 0 0 0 8px;
+    font-size: 12px;
+}
+
+.pub-btn:hover:enabled {
+    background-color: var(--pub-card-hover);
+}
+
+.pub-btn:disabled {
+    opacity: 0.5;
+}
+
+.pub-btn--primary {
+    background-color: var(--pub-accent);
+    border-color: var(--pub-accent);
+    color: rgb(255, 255, 255);
+    -unity-font-style: bold;
+}
+
+.pub-btn--primary:hover:enabled {
+    background-color: rgb(72, 145, 245);
+}
+
+/* ---------------- Advanced Options foldout ---------------- */
+
+.pub-advanced-header {
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    background-color: rgba(0, 0, 0, 0);
+    border-width: 0;
+    border-radius: 4px;
+    padding: 2px 0;
+    margin: 0 0 8px 0;
+}
+
+.pub-advanced-header:hover {
+    background-color: rgba(255, 255, 255, 0.03);
+}
+
+.pub-advanced-chevron {
+    width: 12px;
+    height: 12px;
+    flex-shrink: 0;
+    margin-right: 2px;
+    background-image: resource('EditorAssets/Icons/dropdown-icon');
+    background-size: contain;
+    -unity-background-image-tint-color: var(--pub-text-dim);
+}
+
+/* ---------------- Card toggles ---------------- */
+
+/* Additional Assets grid — two real sub-rows of two cards instead of one
+   wrapping row. A wrapped row is sized for its first line only, so the second
+   pair spilled out past the subpanel once the window got narrow enough to
+   break the line. Stacking rows keeps the measured height honest. When the
+   panel is wide enough for all four cards the two sub-rows sit side by side
+   and read as a single row (threshold in PublishSettingsView). The negative
+   right margin swallows the trailing card's 8px gutter so the grid's edges
+   line up with its full-width neighbours. */
+.pub-card-grid {
+    flex-direction: column;
+    margin-right: -8px;
+}
+
+.pub-card-grid__row {
+    flex-direction: row;
+    align-items: stretch;
+}
+
+/* An empty slot standing in for the card a short row is missing, so the
+   platform grid's 3 + 2 rows size their cards identically instead of the
+   short row stretching its two cards wider than the long row's three. It
+   carries a card's margins but none of its minimum width, so it is the first
+   thing to give when the row runs out of room. */
+.pub-card-grid__filler {
+    flex-grow: 1;
+    flex-basis: 0;
+    margin: 0 8px 8px 0;
+}
+
+.pub-card-grid--wide {
+    flex-direction: row;
+}
+
+.pub-card-grid--wide > .pub-card-grid__row {
+    flex-grow: 1;
+    flex-basis: 0;
+}
+
+.pub-card {
+    flex-direction: row;
+    align-items: center;
+    background-color: var(--pub-card);
+    border-radius: 6px;
+    border-width: 1px;
+    border-color: var(--pub-border);
+    padding: 10px 10px 10px 12px;
+    margin: 0 8px 8px 0;
+    min-width: 190px;
+    flex-grow: 1;
+    flex-basis: 0;
+}
+
+.pub-card:hover {
+    background-color: var(--pub-card-hover);
+}
+
+.pub-card.is-on {
+    border-color: var(--pub-green);
+}
+
+.pub-card.is-broken {
+    border-color: var(--pub-danger);
+}
+
+.pub-card:disabled {
+    opacity: 0.5;
+}
+
+/* Platform availability tiers. Not Enabled — build module present but the
+   platform is off in Builder Settings; still clickable (routes to the
+   settings page), so it keeps a hover response. Not Available — the Unity
+   install lacks the module (or the license blocks it); fully inert, so
+   hover is suppressed. Tooltips carry the explanation in both tiers. */
+.pub-card.is-not-enabled {
+    opacity: 0.65;
+}
+
+.pub-card.is-unavailable {
+    opacity: 0.45;
+}
+
+.pub-card.is-unavailable:hover {
+    background-color: var(--pub-card);
+}
+
+/* Platform variant — tall vertical cards: big icon on top, name,
+   availability line, check badge at the bottom. */
+.pub-card--platform {
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+    min-width: 118px;
+    padding: 16px 10px 14px 10px;
+}
+
+/* Platform-card child rules are scoped under .pub-card--platform so they
+   outrank the single-class .pub-card__* base rules declared later in this
+   file (equal specificity would let file order hand the win to the base). */
+.pub-card--platform .pub-platform-card__icon {
+    width: 36px;
+    height: 36px;
+    flex-shrink: 0;
+    margin-bottom: 10px;
+    background-size: contain;
+}
+
+.pub-card--platform .pub-platform-card__title {
+    font-size: 13px;
+    margin-bottom: 2px;
+}
+
+/* flex-grow pushes the badge to the card's bottom edge so badges line
+   up across the row regardless of title/status wrapping. */
+.pub-card--platform .pub-platform-card__status {
+    flex-grow: 1;
+    margin-bottom: 10px;
+    color: var(--pub-text-dim);
+}
+
+.pub-card--platform .pub-platform-card__badge {
+    width: 20px;
+    height: 20px;
+    border-radius: 10px;
+    flex-shrink: 0;
+}
+
+/* The red wrench sits in the card's top-right corner on the vertical
+   layout instead of trailing the badge. */
+.pub-card--platform .pub-platform-card__fix {
+    position: absolute;
+    top: 6px;
+    right: 6px;
+    margin-left: 0;
+}
+
+/* Dense variant — applied to the platform card row by Platforms.cs when
+   the row narrows past its breakpoint (window at or near minimum size).
+   Cards tighten and drop the status line so more still fit per row. */
+.pub-card-grid--dense .pub-card--platform {
+    min-width: 96px;
+    padding: 10px 8px;
+}
+
+.pub-card-grid--dense .pub-card--platform .pub-platform-card__icon {
+    width: 24px;
+    height: 24px;
+    margin-bottom: 6px;
+}
+
+.pub-card-grid--dense .pub-card--platform .pub-platform-card__status {
+    display: none;
+}
+
+.pub-card-grid--dense .pub-card--platform .pub-platform-card__title {
+    margin-bottom: 8px;
+}
+
+.pub-card__icon {
+    width: 24px;
+    height: 24px;
+    flex-shrink: 0;
+    margin-right: 10px;
+    background-size: contain;
+}
+
+.pub-card__text {
+    flex-grow: 1;
+    flex-shrink: 1;
+    overflow: hidden;
+    margin-right: 8px;
+}
+
+.pub-card__title {
+    color: var(--pub-text);
+    font-size: 12px;
+    -unity-font-style: bold;
+    padding: 0;
+    margin: 0;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+.pub-card__subtitle {
+    color: var(--pub-text-dim);
+    font-size: 10px;
+    margin-top: 1px;
+    padding: 0;
+    white-space: normal;
+}
+
+/* Platform card status line (Available / Not Enabled / Not Available). */
+.pub-card__status {
+    color: var(--pub-text-dim);
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.pub-card.is-not-enabled .pub-card__status,
+.pub-card.is-unavailable .pub-card__status {
+    color: var(--pub-text-dim);
+}
+
+.pub-card__badge {
+    width: 18px;
+    height: 18px;
+    flex-shrink: 0;
+    border-radius: 9px;
+    border-width: 2px;
+    border-color: var(--pub-text-dim);
+    align-items: center;
+    justify-content: center;
+}
+
+.pub-card__badge-glyph {
+    font-size: 10px;
+    -unity-font-style: bold;
+    color: rgb(255, 255, 255);
+    padding: 0;
+    margin: 0;
+}
+
+.pub-card.is-on .pub-card__badge {
+    background-color: var(--pub-green);
+    border-color: var(--pub-green);
+}
+
+.pub-card.is-broken .pub-card__badge {
+    border-color: var(--pub-danger);
+}
+
+/* Red wrench affordance shown on broken platform cards (replaces the old
+   standalone fix button; same FixPlatformAsync behavior). */
+.pub-card__fix {
+    width: 22px;
+    height: 22px;
+    flex-shrink: 0;
+    margin-left: 6px;
+    padding: 0;
+    border-width: 0;
+    border-radius: 4px;
+    background-color: rgba(0, 0, 0, 0);
+    background-image: resource('EditorAssets/Icons/fix-builder-icon');
+    -unity-background-image-tint-color: rgb(255, 0, 0);
+    background-size: contain;
+    display: none;
+}
+
+.pub-card__fix:hover {
+    background-color: var(--pub-card-hover);
+}
+
+/* ---------------- Notes card ---------------- */
+
+.pub-notes-card {
+    flex-direction: row;
+    align-items: flex-start;
+    background-color: var(--pub-card);
+    border-radius: 6px;
+    border-width: 1px;
+    border-color: var(--pub-border);
+    padding: 10px 12px;
+    margin-bottom: 8px;
+}
+
+.pub-notes-card__icon {
+    width: 28px;
+    height: 28px;
+    flex-shrink: 0;
+    margin-right: 12px;
+    margin-top: 2px;
+    background-size: contain;
+}
+
+/* Roughly four text lines tall by default (user-requested 3-6 lines). */
+.pub-notes-field {
+    margin: 2px 0 0 0;
+    min-height: 64px;
+}
+
+.pub-notes-field > .unity-text-field__input {
+    background-color: rgba(0, 0, 0, 0);
+    border-width: 0;
+    padding: 0;
+    min-height: 62px;
+    color: var(--pub-text);
+    white-space: normal;
+}
+
+.pub-notes-placeholder {
+    position: absolute;
+    left: 0;
+    top: 0;
+    color: var(--pub-text-dim);
+    font-size: 12px;
+    padding: 0;
+    margin: 0;
+}
+
+/* ---------------- Cloud Backup banner ---------------- */
+
+.backup-banner {
+    flex-direction: row;
+    align-items: center;
+    background-color: var(--pub-panel);
+    border-radius: 8px;
+    border-width: 1px;
+    border-color: var(--pub-border);
+    padding: 10px 12px;
+    margin-bottom: 12px;
+}
+
+.backup-banner__icon {
+    width: 28px;
+    height: 28px;
+    flex-shrink: 0;
+    margin-right: 10px;
+    background-size: contain;
+}
+
+.backup-banner__titles {
+    flex-shrink: 0;
+    margin-right: 14px;
+    max-width: 40%;
+}
+
+.backup-banner__title {
+    color: var(--pub-text);
+    font-size: 13px;
+    -unity-font-style: bold;
+    padding: 0;
+    margin: 0;
+}
+
+.backup-banner__status {
+    color: var(--pub-text-dim);
+    font-size: 11px;
+    margin-top: 1px;
+    padding: 0;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+.backup-banner__status.is-success {
+    color: var(--pub-green);
+}
+
+.backup-banner__bar-wrap {
+    flex-grow: 1;
+    flex-shrink: 1;
+    justify-content: center;
+}
+
+.pub-bar-track {
+    height: 16px;
+    border-radius: 8px;
+    background-color: var(--pub-track);
+    border-width: 1px;
+    border-color: var(--pub-border);
+    overflow: hidden;
+    flex-direction: row;
+}
+
+.pub-bar-fill {
+    background-color: var(--pub-accent);
+    border-radius: 7px;
+    justify-content: center;
+    align-items: flex-end;
+}
+
+.pub-bar-fill.is-success {
+    background-color: var(--pub-green);
+}
+
+.pub-bar-fill__label {
+    color: rgb(255, 255, 255);
+    font-size: 9px;
+    -unity-font-style: bold;
+    margin-right: 7px;
+    padding: 0;
+}
+
+.backup-banner__stats {
+    flex-direction: row;
+    flex-shrink: 0;
+    align-items: center;
+    margin-left: 14px;
+}
+
+.backup-banner__stat {
+    color: var(--pub-text-dim);
+    font-size: 11px;
+    margin-left: 10px;
+    padding: 0;
+}
+
+/* ---------------- Package summary (post-packaging) ---------------- */
+
+/* Row of compact stat chips + the View Package Contents button. Sits in
+   a .pub-subpanel whose bottom padding is only 4px, so the row carries
+   the same 8px bottom margin the asset cards use. */
+.pub-summary-row {
+    flex-direction: row;
+    align-items: center;
+    flex-wrap: wrap;
+    margin-bottom: 8px;
+}
+
+.pub-summary-stat {
+    background-color: var(--pub-card);
+    border-radius: 6px;
+    border-width: 1px;
+    border-color: var(--pub-border);
+    padding: 6px 14px;
+    margin: 0 8px 0 0;
+    align-items: center;
+    min-width: 84px;
+}
+
+.pub-summary-stat__value {
+    color: var(--pub-text);
+    font-size: 14px;
+    -unity-font-style: bold;
+    padding: 0;
+    margin: 0;
+}
+
+.pub-summary-stat__label {
+    color: var(--pub-text-dim);
+    font-size: 10px;
+    margin-top: 1px;
+    padding: 0;
+}
+
+.pub-summary-row__spacer {
+    flex-grow: 1;
+}
+
+/* ---------------- Additional Assets: drop zone + inclusion tree ---------------- */
+
+/* Holds the two Additional Assets blocks (the option cards and the drop
+   zone panel); each carries its own frame, so this is only a stack. */
+.pub-settings {
+    margin: 0;
+}
+
+/* The drop zone + inclusion tree read as their own block under the asset
+   cards, so they sit in a panel of their own on the .pub-subpanel rhythm
+   rather than trailing the cards inside theirs. */
+.pub-extra {
+    background-color: var(--pub-panel);
+    border-radius: 6px;
+    border-width: 1px;
+    border-color: var(--pub-border);
+    padding: 10px 12px 10px 12px;
+    margin-bottom: 12px;
+}
+
+.pub-extra__hint {
+    color: var(--pub-text-dim);
+    font-size: 11px;
+    padding: 0;
+    margin: 0 0 8px 0;
+    white-space: normal;
+}
+
+/* The hint doubles as an inline foldout: a bare button (no button chrome)
+   holding the hint text with the panel chevron at the far right. It takes
+   over the hint's bottom margin so nothing is left under it when folded. */
+.pub-extra__header {
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    background-color: rgba(0, 0, 0, 0);
+    border-width: 0;
+    border-radius: 0;
+    padding: 0;
+    margin: 0 0 8px 0;
+}
+
+.pub-extra .pub-extra__header:hover,
+.pub-extra .pub-extra__header:active {
+    background-color: rgba(0, 0, 0, 0);
+}
+
+.pub-extra.is-collapsed .pub-extra__header {
+    margin-bottom: 0;
+}
+
+.pub-extra__header .pub-extra__hint {
+    margin: 0;
+    flex-shrink: 1;
+}
+
+.pub-extra__header .pub-advanced-chevron {
+    margin-left: 8px;
+}
+
+/* A dashed drop target with room to read as a target: the dashes are
+   painted in AssetDropZone (USS has no dashed borders) using the overlay's
+   own color, so the rules below still drive every state. */
+.pub-dropzone {
+    height: 84px;
+    margin-bottom: 10px;
+    align-items: center;
+    justify-content: center;
+    border-radius: 6px;
+    background-color: rgba(255, 255, 255, 0.015);
+    cursor: link;
+}
+
+.pub-dropzone__label {
+    color: var(--pub-text);
+    font-size: 15px;
+    -unity-font-style: bold;
+    padding: 0;
+    margin: 0;
+}
+
+.pub-dropzone__sublabel {
+    color: var(--pub-text-dim);
+    font-size: 11px;
+    padding: 0;
+    margin: 4px 0 0 0;
+}
+
+/* Dash overlay: covers the zone, painted with this element's color. */
+.pub-dropzone__dashes {
+    position: absolute;
+    left: 0;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    color: rgb(96, 96, 104);
+}
+
+.pub-dropzone:hover {
+    background-color: rgba(255, 255, 255, 0.04);
+}
+
+.pub-dropzone:hover .pub-dropzone__dashes {
+    color: var(--pub-text-dim);
+}
+
+.pub-dropzone.is-drag-valid {
+    background-color: rgba(47, 128, 237, 0.08);
+}
+
+.pub-dropzone.is-drag-valid .pub-dropzone__label {
+    color: var(--pub-accent);
+}
+
+.pub-dropzone.is-drag-valid .pub-dropzone__dashes {
+    color: var(--pub-accent);
+}
+
+.pub-dropzone:disabled {
+    opacity: 0.5;
+}
+
+.pub-extra__tree {
+    background-color: var(--pub-card);
+    border-radius: 6px;
+    border-width: 1px;
+    border-color: var(--pub-border);
+    margin-bottom: 6px;
+    overflow: hidden;
+}
+
+/* Rows keep their natural width and the tree scrolls sideways when a deep
+   folder's indent runs past the edge (horizontalScrollingEnabled). The − is
+   inline after the name + count, so it is always beside its item; names are
+   capped (ellipsis) so one long name can't push its − far away. min-width
+   keeps the row stripes spanning the whole tree when nothing overflows. */
+.pub-extra__tree-view .unity-scroll-view__content-container {
+    min-width: 100%;
+}
+
+.pub-extra__tree-view .unity-tree-view__item-content {
+    flex-shrink: 0;
+}
+
+/* Connector-line overlay (drawn in AdditionalAssetsTree.DrawGuides with
+   this element's color). Covers the whole item, behind its children. */
+.pub-extra .pub-extra__guides {
+    position: absolute;
+    left: 0;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    color: rgb(86, 86, 94);
+}
+
+.pub-extra .pub-extra__row {
+    flex-direction: row;
+    align-items: center;
+    flex-grow: 1;
+    flex-shrink: 0;
+    height: 18px;
+    padding-right: 8px;
+}
+
+.pub-extra .pub-extra__icon {
+    width: 16px;
+    height: 16px;
+    flex-shrink: 0;
+    margin-right: 4px;
+    background-size: contain;
+}
+
+/* Capped widths + ellipsis: the full path is in the row tooltip. */
+.pub-extra .pub-extra__prefix {
+    color: var(--pub-text-dim);
+    font-size: 11px;
+    padding: 0;
+    margin: 0;
+    max-width: 200px;
+    flex-shrink: 0;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+.pub-extra .pub-extra__name {
+    color: var(--pub-text);
+    font-size: 11px;
+    padding: 0;
+    margin: 0;
+    max-width: 280px;
+    flex-shrink: 0;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+.pub-extra .pub-extra__count {
+    color: var(--pub-text-dim);
+    font-size: 10px;
+    padding: 0;
+    margin: 0 0 0 8px;
+    flex-shrink: 0;
+}
+
+.pub-extra .pub-extra__row.is-missing .pub-extra__name {
+    color: var(--pub-warning);
+}
+
+.pub-extra .pub-row-remove {
+    width: 16px;
+    height: 16px;
+    flex-shrink: 0;
+    padding: 0;
+    margin: 0 0 0 6px;
+    border-width: 0;
+    border-radius: 3px;
+    background-color: rgba(0, 0, 0, 0);
+    color: var(--pub-danger);
+    font-size: 14px;
+    -unity-font-style: bold;
+    -unity-text-align: middle-center;
+}
+
+.pub-extra .pub-row-remove:hover {
+    background-color: var(--pub-card-hover);
+}
+
+.pub-extra--locked .pub-row-remove {
+    display: none;
+}
+
+.pub-extra__note {
+    color: var(--pub-text-dim);
+    font-size: 10px;
+    padding: 0;
+    margin: 0;
+    white-space: normal;
+    display: none;
+}
+
+/* ---------------- Package Dependencies ---------------- */
+
+/* Same block as the Additional Assets panel (.pub-extra) and the same row
+   parts (.pub-extra__row / __icon / __name / __count, .pub-row-remove) — a
+   flat list instead of a tree, so the rows only need their own inset. */
+.pub-deps__list {
+    padding: 3px 0;
+    margin-bottom: 8px;
+}
+
+.pub-deps .pub-extra__row {
+    flex-grow: 0;
+    padding-left: 8px;
+}
+
+.pub-deps .pub-extra__name {
+    max-width: 360px;
+}

@@ -4,9 +4,14 @@ Tracks every node in the Caffeine Flow source against its documentation status. 
 
 This file lives at `Documentation/PROGRESS.md` and **does not ship to edxr-docs** — it stays in the staging folder. Only `Documentation/Nodes/` gets copied across.
 
-**Last scan:** 2026-06-25
+**Last scan:** 2026-07-21
 **Total source nodes:** ~499 unique creator-facing menu paths (`[CreateNodeMenu("Flow/...")]` with non-empty path)
 **Last bulk-author session:** 2026-05-08 — **completed all categories**. Final push added 10 component codegen overviews (Animator ~85, AudioSource 7, Camera 26, Collider 2, Light 3, ParticleSystem 20, Renderer 1, Rigidbody 32, Transform 31, VideoPlayer 5) + 3 misc Lists nodes. ~190 nodes covered in this final push, ~210+ docs total this session.
+
+**Incremental — 2026-07-21:** re-ran the menu-path audit (baseline = 2026-06-25 audit commit `d6a83688a`) — **one new path, Go To Step, already documented; zero removed; no gaps.** Refreshed 4 existing pages for behavior fixes shipped since the audit:
+- `Components/Physics/physics-raycast.md` — compound-collider contract (commit `7b243c2bd`): `hitTransform`/`hitGameObject` now report the collider actually struck (not the Rigidbody root); `hitGameObject` nulls on a miss. Added a Compound colliders note.
+- `Components/General/translate.md` — unconnected `direction` now honors the inline node value (commit `f986bf302`); noted in the port row.
+- `Components/GameObject/instantiate.md` + `Events/on-enable.md` — On Enable fires on runtime-spawned prefab instances at spawn (commit `f6176462`); cross-linked both pages.
 
 **Incremental — 2026-07-10:** documented **Go To Step** (`Course/go-to-step.md`, per-page) — new `EdXR_GoToStepNode` (`Flow/Actions/Go To Step`), jumps the course to a specific step via the step dropdown; multiplayer host-drives-steps note + Delay-composition tip. Course overview table updated.
 
@@ -61,7 +66,7 @@ This file lives at `Documentation/PROGRESS.md` and **does not ship to edxr-docs*
 | **Components / Component** | 6 / 6 | per-page | ✅ Complete (2026-06-25) — new subfolder. Get Components, Get Component Item, Count Component Items, Add / Remove Component Item, Remove Component Item (Index). Pairs with For Each Component (Logic) + Component List (Variables). |
 | **Components / Lists** | 3 / 3 | per-page | ✅ Complete — Get String Item, Get SnapshotFile Item, Count SnapshotFile Items. (Source-menu paths are split across `Flow/Actions/GameObject/`, `Flow/Actions/List/`, `Flow/Actions/SnapshotFile/`; consolidated under docs `Components/Lists/`.) |
 | **Components / Physics** | 1 / 1 | per-page | ✅ Complete |
-| **Components / Viewer** | 1 / 1 | per-page | ✅ Complete (Side Menu; Camera nodes moved to `Components/Camera/`) |
+| **Components / Viewer** | 3 / 3 | per-page | ✅ Complete (Side Menu, Show UI Element, Hide UI Element; Camera nodes moved to `Components/Camera/`) |
 | **Components / XR** | 1 / 1 | per-page | ✅ Complete |
 | **Components / AR** | 3 / 3 | per-page | ✅ Complete (2026-06-25) — new subfolder. Enable AR, Disable AR, Is AR On (viewer camera-passthrough mode toggle/query). |
 | **Components / Analytics** | 2 / 2 | per-page | ✅ Complete |

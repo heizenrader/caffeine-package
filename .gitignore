@@ -549,3 +549,12 @@ Assets/Temp.meta
 manifest.json
 
 # packages-lock.json
+
+# Builder V3.5 ships two Unity-ignored ~folders; negate the blanket *~ rule
+# (mirrors the com.caffeine source repo). BuilderPayload~ is the builder-side
+# package junctioned into builder projects; Tools~ holds the publish
+# supervisor binaries.
+!BuilderPayload~/
+!BuilderPayload~/**
+!Tools~/
+!Tools~/**

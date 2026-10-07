@@ -1,0 +1,728 @@
+/* Cross Platform Publish — section stylesheet.
+   Loaded once onto the section root by CrossPlatformPublish.cs; the rail
+   cells and the detail panel are cloned underneath it, so every class here
+   resolves for them too. Tokens follow the button_style.uss custom-property
+   convention. */
+
+.cpp-root {
+    --cpp-bg: rgb(32, 32, 35);
+    --cpp-panel: rgb(40, 40, 44);
+    --cpp-card: rgb(48, 48, 53);
+    --cpp-card-hover: rgb(56, 56, 62);
+    --cpp-border: rgb(64, 64, 70);
+    --cpp-track: rgb(24, 24, 27);
+    --cpp-accent: rgb(47, 128, 237);
+    --cpp-accent-soft: rgb(36, 84, 148);
+    --cpp-success: rgb(94, 190, 105);
+    --cpp-danger: rgb(214, 80, 73);
+    --cpp-warning: rgb(212, 168, 74);
+    --cpp-text: rgb(228, 228, 230);
+    --cpp-text-dim: rgb(152, 152, 160);
+}
+
+/* No horizontal padding: the rail/detail must line up with the Cloud Backup
+   banner and the action bar, which are siblings of this element under
+   .pub-section__body and inset only by that parent's 12px padding. */
+.cpp-body {
+    flex-direction: row;
+    align-items: stretch;
+    background-color: var(--cpp-bg);
+    border-radius: 8px;
+    padding: 12px 0;
+    margin: 0;
+}
+
+/* ---------------- Left rail ---------------- */
+
+.cpp-rail {
+    width: 240px;
+    flex-shrink: 0;
+    margin-right: 12px;
+}
+
+.platform-cell {
+    flex-direction: row;
+    align-items: center;
+    background-color: var(--cpp-card);
+    border-radius: 6px;
+    border-width: 1px;
+    border-color: var(--cpp-border);
+    padding: 10px 10px 10px 12px;
+    margin-bottom: 8px;
+}
+
+.platform-cell:hover {
+    background-color: var(--cpp-card-hover);
+}
+
+.platform-cell.is-selected {
+    background-color: var(--cpp-accent-soft);
+    border-color: var(--cpp-accent);
+}
+
+.platform-cell__icon {
+    width: 24px;
+    height: 24px;
+    flex-shrink: 0;
+    margin-right: 10px;
+    background-size: contain;
+}
+
+.platform-cell__text {
+    flex-grow: 1;
+    flex-shrink: 1;
+    overflow: hidden;
+}
+
+.platform-cell__name {
+    color: var(--cpp-text);
+    font-size: 13px;
+    -unity-font-style: bold;
+}
+
+.platform-cell__status {
+    color: var(--cpp-text-dim);
+    font-size: 11px;
+    margin-top: 1px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+.platform-cell__status.is-success {
+    color: var(--cpp-success);
+}
+
+.platform-cell__status.is-failed {
+    color: var(--cpp-danger);
+}
+
+/* Trailing state glyph: a 18x18 circle whose look is switched by state
+   class. The active (spinner) state hides the label and rotates the ring
+   from C# — USS has no keyframe animations. */
+
+.state-glyph {
+    width: 18px;
+    height: 18px;
+    flex-shrink: 0;
+    margin-left: 8px;
+    border-radius: 9px;
+    border-width: 2px;
+    border-color: var(--cpp-text-dim);
+    align-items: center;
+    justify-content: center;
+}
+
+.state-glyph__label {
+    font-size: 10px;
+    -unity-font-style: bold;
+    color: var(--cpp-text-dim);
+    padding: 0;
+    margin: 0;
+}
+
+.state-glyph--active {
+    border-top-color: var(--cpp-accent);
+    border-right-color: var(--cpp-accent);
+    border-bottom-color: var(--cpp-accent);
+    border-left-color: rgba(0, 0, 0, 0);
+}
+
+.state-glyph--success {
+    border-color: var(--cpp-success);
+}
+
+.state-glyph--success .state-glyph__label {
+    color: var(--cpp-success);
+}
+
+.state-glyph--failed {
+    border-color: var(--cpp-danger);
+}
+
+.state-glyph--failed .state-glyph__label {
+    color: var(--cpp-danger);
+}
+
+/* ---------------- Detail panel ---------------- */
+
+.cpp-detail-host {
+    flex-grow: 1;
+    flex-shrink: 1;
+}
+
+.cpp-detail {
+    flex-grow: 1;
+    background-color: var(--cpp-panel);
+    border-radius: 8px;
+    border-width: 1px;
+    border-color: var(--cpp-border);
+    padding: 14px;
+}
+
+.detail-header {
+    flex-direction: row;
+    align-items: center;
+    margin-bottom: 14px;
+}
+
+.detail-header__icon {
+    width: 32px;
+    height: 32px;
+    flex-shrink: 0;
+    margin-right: 10px;
+    background-size: contain;
+}
+
+.detail-header__title {
+    color: var(--cpp-text);
+    font-size: 16px;
+    -unity-font-style: bold;
+}
+
+.detail-header__status {
+    color: var(--cpp-text-dim);
+    font-size: 12px;
+    margin-top: 2px;
+}
+
+.detail-header__status.is-success {
+    color: var(--cpp-success);
+}
+
+.detail-header__status.is-failed {
+    color: var(--cpp-danger);
+}
+
+/* ---------------- Stage stepper ---------------- */
+
+.stepper {
+    flex-direction: row;
+    align-items: flex-start;
+    margin-bottom: 14px;
+}
+
+.step {
+    flex-grow: 1;
+    flex-basis: 0;
+    align-items: stretch;
+}
+
+.step__label {
+    color: var(--cpp-text-dim);
+    font-size: 11px;
+    -unity-text-align: middle-center;
+    margin-bottom: 6px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+.step.is-active .step__label {
+    color: var(--cpp-text);
+    -unity-font-style: bold;
+}
+
+.step__line-row {
+    flex-direction: row;
+    align-items: center;
+}
+
+.step__conn {
+    flex-grow: 1;
+    height: 2px;
+    background-color: var(--cpp-border);
+}
+
+.step__conn.is-complete {
+    background-color: var(--cpp-success);
+}
+
+.step__conn.is-active {
+    background-color: var(--cpp-accent);
+}
+
+.step__conn.is-hidden {
+    background-color: rgba(0, 0, 0, 0);
+}
+
+.step__circle {
+    width: 26px;
+    height: 26px;
+    flex-shrink: 0;
+    border-radius: 13px;
+    border-width: 2px;
+    border-color: var(--cpp-border);
+    background-color: var(--cpp-panel);
+    align-items: center;
+    justify-content: center;
+    margin: 0 2px;
+}
+
+.step__number {
+    color: var(--cpp-text-dim);
+    font-size: 11px;
+    -unity-font-style: bold;
+    padding: 0;
+    margin: 0;
+}
+
+.step__check {
+    color: rgb(255, 255, 255);
+    font-size: 12px;
+    -unity-font-style: bold;
+    padding: 0;
+    margin: 0;
+    display: none;
+}
+
+.step.is-complete .step__circle {
+    background-color: var(--cpp-success);
+    border-color: var(--cpp-success);
+}
+
+.step.is-complete .step__number {
+    display: none;
+}
+
+.step.is-complete .step__check {
+    display: flex;
+}
+
+.step.is-active .step__circle {
+    background-color: var(--cpp-accent);
+    border-color: var(--cpp-accent);
+}
+
+.step.is-active .step__number {
+    color: rgb(255, 255, 255);
+}
+
+.step.is-failed .step__circle {
+    background-color: var(--cpp-danger);
+    border-color: var(--cpp-danger);
+}
+
+.step.is-failed .step__number {
+    color: rgb(255, 255, 255);
+}
+
+/* ---------------- Current stage + progress ---------------- */
+
+.stage-title {
+    color: var(--cpp-text);
+    font-size: 14px;
+    -unity-font-style: bold;
+}
+
+.stage-desc {
+    color: var(--cpp-text-dim);
+    font-size: 12px;
+    margin-top: 2px;
+    margin-bottom: 10px;
+    /* Stage-detail lines ("Compiling shaders — …") can run long; wrap
+       rather than elide so the counters stay readable. */
+    white-space: normal;
+}
+
+.bar-track {
+    height: 18px;
+    border-radius: 9px;
+    background-color: var(--cpp-track);
+    border-width: 1px;
+    border-color: var(--cpp-border);
+    overflow: hidden;
+    flex-direction: row;
+}
+
+.bar-fill {
+    background-color: var(--cpp-accent);
+    border-radius: 8px;
+    justify-content: center;
+    align-items: flex-end;
+}
+
+.bar-fill.is-success {
+    background-color: var(--cpp-success);
+}
+
+.bar-fill__label {
+    color: rgb(255, 255, 255);
+    font-size: 10px;
+    -unity-font-style: bold;
+    margin-right: 8px;
+    padding: 0;
+}
+
+.bar-track__bytes {
+    position: absolute;
+    right: 8px;
+    top: 1px;
+    bottom: 0;
+    color: var(--cpp-text-dim);
+    font-size: 10px;
+    -unity-text-align: middle-right;
+    padding: 0;
+}
+
+.bar-meta-row {
+    flex-direction: row;
+    justify-content: space-between;
+    margin-top: 4px;
+    margin-bottom: 12px;
+}
+
+.bar-meta {
+    color: var(--cpp-text-dim);
+    font-size: 11px;
+}
+
+/* ---------------- Stat tiles ---------------- */
+
+.stat-row {
+    flex-direction: row;
+    background-color: var(--cpp-card);
+    border-radius: 6px;
+    border-width: 1px;
+    border-color: var(--cpp-border);
+    margin-bottom: 12px;
+}
+
+.stat-tile {
+    flex-grow: 1;
+    flex-basis: 0;
+    flex-direction: row;
+    align-items: center;
+    padding: 10px;
+    border-right-width: 1px;
+    border-right-color: var(--cpp-border);
+}
+
+.stat-tile.is-last {
+    border-right-width: 0;
+}
+
+/* Holds the width the retired Throughput/Destination tiles used to occupy,
+   so the two live tiles keep their original proportions. Childless by
+   design — the space stays deliberately blank. */
+.stat-tile--filler {
+    flex-grow: 2;
+}
+
+.stat-tile__icon {
+    width: 20px;
+    height: 20px;
+    flex-shrink: 0;
+    margin-right: 8px;
+    background-size: contain;
+}
+
+.stat-tile__caption {
+    color: var(--cpp-text-dim);
+    font-size: 10px;
+}
+
+.stat-tile__value {
+    color: var(--cpp-text);
+    font-size: 12px;
+    -unity-font-style: bold;
+    margin-top: 1px;
+}
+
+/* ---------------- Build log ---------------- */
+
+.log-card {
+    background-color: var(--cpp-card);
+    border-radius: 6px;
+    border-width: 1px;
+    border-color: var(--cpp-border);
+    margin-bottom: 12px;
+}
+
+.log-header {
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    padding: 8px 10px;
+    border-bottom-width: 1px;
+    border-bottom-color: var(--cpp-border);
+}
+
+/* Tab strip replacing the old static "Build Log" title. Flat buttons, not
+   a Unity Tab control: the card owns its own chrome and a real tab view
+   would drag in its own background and border. */
+.log-tabs {
+    flex-direction: row;
+    flex-shrink: 0;
+}
+
+.log-tab {
+    background-color: transparent;
+    border-width: 0;
+    border-radius: 4px;
+    color: var(--cpp-text-dim);
+    font-size: 12px;
+    -unity-font-style: bold;
+    padding: 2px 8px;
+    margin: 0 4px 0 0;
+}
+
+.log-tab:hover {
+    color: var(--cpp-text);
+}
+
+.log-tab.is-active {
+    color: var(--cpp-text);
+    background-color: var(--cpp-panel);
+}
+
+.log-actions {
+    flex-direction: row;
+    flex-shrink: 0;
+}
+
+/* Square icon-only button (magnifier): opens the full-size UnityLogWindow.
+   Unity Log tab only — the Build Log has no file behind it to open. */
+.log-icon-btn {
+    width: 22px;
+    height: 18px;
+    background-color: transparent;
+    border-width: 0;
+    border-radius: 4px;
+    padding: 0;
+    margin: 0;
+    font-size: 11px;
+    color: var(--cpp-text-dim);
+    -unity-background-scale-mode: scale-to-fit;
+}
+
+.log-icon-btn:hover {
+    background-color: var(--cpp-panel);
+}
+
+.log-list {
+    height: 150px;
+    padding: 4px 0;
+}
+
+.log-row {
+    flex-direction: row;
+    align-items: flex-start;
+    padding: 2px 10px;
+}
+
+.log-row__time {
+    color: var(--cpp-text-dim);
+    font-size: 11px;
+    width: 60px;
+    flex-shrink: 0;
+    padding: 0;
+    margin: 0;
+}
+
+.log-row__icon {
+    width: 14px;
+    height: 14px;
+    flex-shrink: 0;
+    margin-right: 8px;
+    background-size: contain;
+}
+
+/* Wraps instead of ellipsing: a status line long enough to be cut off is
+   exactly the one worth reading. The list virtualizes on measured heights
+   (CollectionVirtualizationMethod.DynamicHeight) to pay for it. */
+.log-row__text {
+    color: var(--cpp-text);
+    font-size: 11px;
+    flex-grow: 1;
+    flex-shrink: 1;
+    white-space: normal;
+    padding: 0;
+    margin: 0;
+}
+
+.log-row.is-active .log-row__text {
+    color: var(--cpp-accent);
+}
+
+/* ---------------- Unity log rows ----------------
+   Raw editor-log lines: no timestamp column (Unity writes its own) and no
+   kind icon — just the line, wrapped to the panel width. Stack traces and
+   the command-line dump run hundreds of characters, and those are the
+   lines someone opened this tab to read. */
+
+.log-row--unity {
+    flex-direction: row;
+    align-items: flex-start;
+    padding: 2px 10px;
+}
+
+.log-row__unity-text {
+    color: var(--cpp-text);
+    font-size: 11px;
+    flex-grow: 1;
+    flex-shrink: 1;
+    white-space: normal;
+    padding: 0;
+    margin: 0;
+}
+
+.log-row__unity-text.is-warning {
+    color: var(--cpp-warning);
+}
+
+.log-row__unity-text.is-error {
+    color: var(--cpp-danger);
+}
+
+/* ---------------- Footer actions ---------------- */
+
+.footer-row {
+    flex-direction: row;
+    justify-content: flex-end;
+}
+
+.cpp-btn {
+    border-radius: 4px;
+    border-width: 1px;
+    padding: 6px 14px;
+    margin: 0 0 0 8px;
+    font-size: 12px;
+}
+
+.cpp-btn--neutral {
+    background-color: var(--cpp-card);
+    border-color: var(--cpp-border);
+    color: var(--cpp-text);
+}
+
+.cpp-btn--neutral:hover:enabled {
+    background-color: var(--cpp-card-hover);
+}
+
+.cpp-btn--danger {
+    background-color: var(--cpp-danger);
+    border-color: var(--cpp-danger);
+    color: rgb(255, 255, 255);
+}
+
+/* Reserved for the Phase 3 Retry button, which shares this footer row. */
+.cpp-btn--primary {
+    background-color: var(--cpp-accent);
+    border-color: var(--cpp-accent);
+    color: rgb(255, 255, 255);
+}
+
+.cpp-btn:disabled {
+    opacity: 0.5;
+}
+
+/* ---------------- Unity log window ----------------
+   UnityLogWindow builds its tree in code and adds .cpp-root so the tokens
+   above resolve; rows reuse .log-row--unity from the section, so the window
+   is recognisably the panel's list with room to breathe. */
+
+.log-window {
+    background-color: var(--cpp-bg);
+    flex-grow: 1;
+}
+
+.log-window__bar {
+    flex-direction: row;
+    align-items: center;
+    padding: 6px 8px;
+    background-color: var(--cpp-card);
+    border-bottom-width: 1px;
+    border-bottom-color: var(--cpp-border);
+}
+
+.log-window__search {
+    width: 320px;
+    flex-shrink: 0;
+    margin: 0 8px 0 0;
+}
+
+.log-window__matches {
+    color: var(--cpp-text-dim);
+    font-size: 11px;
+    flex-grow: 1;
+    padding: 0;
+    margin: 0;
+}
+
+.log-window__matches.is-empty {
+    color: var(--cpp-warning);
+}
+
+.log-window__follow {
+    flex-shrink: 0;
+    margin: 0;
+}
+
+.log-window__follow Label {
+    color: var(--cpp-text-dim);
+    font-size: 11px;
+    min-width: auto;
+    margin-right: 4px;
+}
+
+.log-window__list {
+    flex-grow: 1;
+    padding: 4px 0;
+}
+
+/* ---------------- Unity log window: selection + detail pane ----------------
+   The list selects whole rows; the text you can drag-highlight and copy
+   lives in the pane below, the way Unity's own Console splits the two.
+   UI Toolkit selection is per-TextElement, so there is no third option. */
+
+.log-window__split {
+    flex-grow: 1;
+}
+
+/* Unity's default item highlight is a flat blue that reads as "form control"
+   against this panel. Same accent the rest of the publish UI selects with. */
+.log-window__list .unity-collection-view__item--selected {
+    background-color: var(--cpp-accent-soft);
+}
+
+.log-window__detail {
+    background-color: var(--cpp-panel);
+    border-top-width: 1px;
+    border-top-color: var(--cpp-border);
+    min-height: 64px;
+}
+
+.log-window__detail-bar {
+    flex-direction: row;
+    align-items: center;
+    padding: 4px 8px 4px 10px;
+}
+
+.log-window__detail-title {
+    color: var(--cpp-text-dim);
+    font-size: 11px;
+    -unity-font-style: bold;
+    flex-grow: 1;
+    padding: 0;
+    margin: 0;
+}
+
+.log-window__detail-scroll {
+    flex-grow: 1;
+}
+
+/* Wraps like the rows above it, so a 400-character command line is readable
+   without a horizontal scrollbar. The clipboard gets the unwrapped source. */
+.log-window__detail-text {
+    color: var(--cpp-text);
+    font-size: 11px;
+    white-space: normal;
+    padding: 0 10px 8px 10px;
+    margin: 0;
+}
+
+.log-window__detail-text.is-placeholder {
+    color: var(--cpp-text-dim);
+    -unity-font-style: italic;
+}
