@@ -57,11 +57,11 @@ The reverse is worth knowing too: if you add a Movable Joint purely to limit how
 | [Net Avatar](/docs/Flow/Nodes/Player/net-avatar) | Query a player's avatar (documented under Player). |
 | [Set Net Avatar Models](./set-net-avatar-models) | Replace the head / hand models of an avatar by player ID. |
 
-**Other:**
+**Run on every device:**
 
 | Node | Description |
 |---|---|
-| [Net Kick](./net-kick) | Internal Net trampoline used by other Net flows. Rarely added directly. |
+| [Net Kick](./net-kick) | Runs the rest of the chain on every player's device: here at once, elsewhere when the message arrives. |
 
 ## See also
 

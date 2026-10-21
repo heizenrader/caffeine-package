@@ -144,6 +144,93 @@
     color: var(--cpp-danger);
 }
 
+/* Per-platform cancel: an X badge straddling the cell's top-right corner,
+   shown only while the platform can still be stopped. */
+.platform-cell__cancel {
+    position: absolute;
+    top: -7px;
+    right: -7px;
+    width: 18px;
+    height: 18px;
+    margin: 0;
+    padding: 0;
+    border-radius: 9px;
+    border-width: 1px;
+    border-color: var(--cpp-danger);
+    background-color: var(--cpp-danger);
+    color: rgb(255, 255, 255);
+    font-size: 10px;
+    -unity-font-style: bold;
+    -unity-text-align: middle-center;
+}
+
+.platform-cell__cancel:hover:enabled {
+    border-color: rgb(255, 255, 255);
+}
+
+.platform-cell__cancel:disabled {
+    opacity: 0.5;
+}
+
+/* Compact layout: CrossPlatformPublish toggles .cpp-body--compact when the
+   body is too narrow for the full rail beside a readable detail panel.
+   The rail moves above the detail as a single-row strip whose cells share
+   its width equally, so the detail panel gets the body's full width. Cells
+   drop to icon + name (the selected platform's status is in the detail
+   panel; the others' is on the cell tooltip). */
+.cpp-body--compact {
+    flex-direction: column;
+}
+
+/* The -6px right margin cancels the last cell's gutter (USS has no
+   :last-child), so the strip lines up with the detail panel's edge. */
+.cpp-body--compact .cpp-rail {
+    width: auto;
+    flex-direction: row;
+    margin-right: -6px;
+    margin-bottom: 10px;
+}
+
+/* Each cell is a cloned TemplateContainer; that wrapper is the flex item
+   the strip lays out. */
+.cpp-body--compact .cpp-rail > TemplateContainer {
+    flex-grow: 1;
+    flex-basis: 0;
+    min-width: 0;
+    margin-right: 6px;
+}
+
+.cpp-body--compact .platform-cell {
+    justify-content: center;
+    padding: 7px 6px;
+    margin-bottom: 0;
+}
+
+.cpp-body--compact .platform-cell__text {
+    flex-grow: 0;
+}
+
+.cpp-body--compact .platform-cell__icon {
+    width: 18px;
+    height: 18px;
+    margin-right: 6px;
+}
+
+.cpp-body--compact .platform-cell__name {
+    font-size: 12px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+.cpp-body--compact .platform-cell__status {
+    display: none;
+}
+
+.cpp-body--compact .state-glyph {
+    display: none;
+}
+
 /* ---------------- Detail panel ---------------- */
 
 .cpp-detail-host {
@@ -402,13 +489,6 @@
     border-right-width: 0;
 }
 
-/* Holds the width the retired Throughput/Destination tiles used to occupy,
-   so the two live tiles keep their original proportions. Childless by
-   design — the space stays deliberately blank. */
-.stat-tile--filler {
-    flex-grow: 2;
-}
-
 .stat-tile__icon {
     width: 20px;
     height: 20px;
@@ -417,9 +497,20 @@
     background-size: contain;
 }
 
+/* Shrinks and clips inside its tile: at the window's minimum width an
+   unconstrained caption spilled over the neighbouring tile. */
+.stat-tile__text {
+    flex-shrink: 1;
+    min-width: 0;
+    overflow: hidden;
+}
+
 .stat-tile__caption {
     color: var(--cpp-text-dim);
     font-size: 10px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
 }
 
 .stat-tile__value {

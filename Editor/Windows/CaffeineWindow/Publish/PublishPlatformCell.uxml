@@ -8,5 +8,6 @@
         <ui:VisualElement name="StateGlyph" class="state-glyph">
             <ui:Label name="GlyphLabel" text="" class="state-glyph__label" />
         </ui:VisualElement>
+        <ui:Button name="CancelPlatformButton" text="✕" class="platform-cell__cancel" />
     </ui:VisualElement>
 </ui:UXML>

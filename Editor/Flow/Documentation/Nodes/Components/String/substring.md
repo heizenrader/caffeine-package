@@ -14,7 +14,7 @@ Extracts a portion of a string by start index and length.
 
 | Port | Type | Description |
 |---|---|---|
-| input      | String | The source string. |
+| input      | String | The source string. An empty string gives an empty string. |
 | startIndex | Int    | Starting position (0-based). Negative values wrap from the end of the string. |
 | length     | Int    | Number of characters to extract. Use 0 or less to return an empty string. |
 

@@ -6,7 +6,7 @@ title: Net OnPlayerEnter
 
 # <span class="net-node">Net OnPlayerEnter</span> <span class="net-badge">NET</span>
 
-Fires on every existing client when a new player joins the multiplayer session. Use it to update rosters, spawn UI for the new player, or sync state to them.
+Fires on the host only, once a new player has joined the multiplayer session and loaded the course.
 
 **Category:** Event (Net, Lifecycle)
 **Component / Source:** Built-in (multiplayer)
@@ -15,10 +15,10 @@ Fires on every existing client when a new player joins the multiplayer session. 
 
 | Port | Type | Description |
 |---|---|---|
-| Flow | Flow | Kicks on every existing client when a new player joins. |
+| Flow | Flow | Kicks on the host only, once the new player has loaded the course. |
 
-:::tip Pair with Net Avatar
-After the event fires, query [Net Avatar](/docs/Flow/Nodes/Player/net-avatar) for the joining player to set up per-player UI or effects.
+:::note Host only
+What this event runs happens on the host's device only, and it has no output for the joining player: UI or effects set up here appear on the host's screen only.
 :::
 
 ## See also

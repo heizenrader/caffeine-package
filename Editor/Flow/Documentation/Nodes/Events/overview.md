@@ -7,10 +7,10 @@ sidebar_label: Overview
 
 Event nodes are the entry points for any **Flow Graph**. They "kick" the Flow forward when something happens in the scene — a click, a frame update, a collision, a course step, or a custom signal raised from another graph. Every behavior you build in Flow starts at an event node.
 
-Local event nodes share a common shape: an `Enabled` boolean port on the left that gates whether the event fires, and one or more Flow output ports on the right that kick connected nodes when the event triggers. Many events also have a **Net** counterpart (shown in purple) that fires on every player in a multiplayer session — see [Networking in Flow](/docs/Flow/flow-networking) for when to prefer one over the other.
+Local event nodes share a common shape: an `Enabled` boolean port on the left that gates whether the event fires (Select Event, Trigger Event, Collision Event and OnAnimatorIK don't have one), and one or more Flow output ports on the right that kick connected nodes when the event triggers. Many events also have a **Net** counterpart (shown in purple) that fires on every player in a multiplayer session — see [Networking in Flow](/docs/Flow/flow-networking) for when to prefer one over the other.
 
 :::tip Enabled port (local events only)
-The green `Enabled` boolean port on the left of every local event node lets you turn the event on or off at runtime by wiring a variable into it. This is cleaner than disabling the whole graph when you only want to mute one event. Net event nodes don't have this port — gate downstream logic with a Branch on a graph variable instead.
+The green `Enabled` boolean port on the left of a local event node lets you turn the event on or off at runtime by wiring a variable into it. This is cleaner than disabling the whole graph when you only want to mute one event. Select Event, Trigger Event, Collision Event and OnAnimatorIK fire straight from their component and don't read it, and Net event nodes don't have this port — gate their logic with a Branch right after the event instead (for example, a Branch on the current step for a click that belongs to one step).
 :::
 
 ## Lifecycle
@@ -47,7 +47,7 @@ Multiplayer session events.
 
 | Node | Description |
 |---|---|
-| [Net OnPlayerEnter](./net-on-player-enter) | Fires on every existing client when a new player joins. |
+| [Net OnPlayerEnter](./net-on-player-enter) | Fires on the host only, once a new player has loaded the course. |
 | [Net OnPlayerExit](./net-on-player-exit)   | Fires on every remaining client when a player leaves. |
 
 ## Course

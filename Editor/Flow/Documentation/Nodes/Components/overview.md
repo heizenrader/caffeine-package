@@ -56,7 +56,7 @@ Variable (pure-data) nodes have none of the above — no Flow input, no `exit`. 
 | [AudioSource](./AudioSource/overview)       | Play, stop, pause, set clip, set volume. |
 | [Camera](./Camera/overview)                 | Set field of view, target, culling. |
 | [Collider](./Collider/overview)             | Closest-point queries; get/set shape properties (size, radius, center, trigger…); test collider type. |
-| [GameObject](/docs/Flow/Nodes/Components/GameObject) | Add / get component, get children, set active, instantiate, destroy, parenting, tag queries, null check. Mix of Actions and Variable queries. |
+| [GameObject](/docs/category/gameobject) | Add / get component, get children, set active, instantiate, destroy, parenting, tag queries, null check. Mix of Actions and Variable queries. |
 | [Light](./Light/overview)                   | Set intensity, color, range, enable/disable. |
 | [Material](./Material/overview)             | Get/set material, set color, set property, enable/disable shader keyword. |
 | [ParticleSystem](./ParticleSystem/overview) | Play, stop, emit. |
@@ -70,10 +70,11 @@ Variable (pure-data) nodes have none of the above — no Flow input, no `exit`. 
 
 | Subfolder | Typical contents |
 |---|---|
-| [Analytics](/docs/Flow/Nodes/Components/Analytics) | Emit analytic events from a Flow Graph. |
+| [Analytics](/docs/category/analytics) | Emit analytic events from a Flow Graph. |
 | [AR](./AR/overview)                                | Turn the viewer's augmented-reality mode on/off and check whether it's active. |
-| [Viewer](/docs/Flow/Nodes/Components/Viewer)       | Side-menu and viewer-shell control. |
-| [XR](/docs/Flow/Nodes/Components/XR)               | XR-rig and runtime hooks. |
+| [LMS](/docs/category/lms)             | Report what learners do in a course to the LMS's learning record store (Send xAPI Statement). |
+| [Viewer](/docs/category/viewer)       | Side-menu and viewer-shell control. |
+| [XR](/docs/category/xr)               | XR-rig and runtime hooks. |
 
 **Non-component utilities.** Groupings of related nodes that don't bind to any single component or subsystem.
 

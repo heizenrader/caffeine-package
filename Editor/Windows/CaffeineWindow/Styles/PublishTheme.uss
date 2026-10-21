@@ -1070,3 +1070,9 @@
 .pub-deps .pub-extra__name {
     max-width: 360px;
 }
+
+/* The version takes the row's spare width, so the − sits at the right edge. */
+.pub-deps .pub-extra__count {
+    flex-grow: 1;
+    flex-shrink: 1;
+}

@@ -27,19 +27,18 @@
         <ui:VisualElement name="StatRow" class="stat-row">
             <ui:VisualElement name="ElapsedTile" class="stat-tile">
                 <ui:VisualElement name="ElapsedIcon" class="stat-tile__icon" />
-                <ui:VisualElement>
+                <ui:VisualElement class="stat-tile__text">
                     <ui:Label text="Elapsed Time" class="stat-tile__caption" />
                     <ui:Label name="ElapsedValue" text="&#8212;" class="stat-tile__value" />
                 </ui:VisualElement>
             </ui:VisualElement>
-            <ui:VisualElement name="StepElapsedTile" class="stat-tile">
+            <ui:VisualElement name="StepElapsedTile" class="stat-tile is-last">
                 <ui:VisualElement name="StepElapsedIcon" class="stat-tile__icon" />
-                <ui:VisualElement>
+                <ui:VisualElement class="stat-tile__text">
                     <ui:Label text="Step Elapsed" class="stat-tile__caption" />
                     <ui:Label name="StepElapsedValue" text="&#8212;" class="stat-tile__value" />
                 </ui:VisualElement>
             </ui:VisualElement>
-            <ui:VisualElement name="StatFiller" class="stat-tile is-last stat-tile--filler" />
         </ui:VisualElement>
         <ui:VisualElement name="LogCard" class="log-card">
             <ui:VisualElement name="LogHeader" class="log-header">
@@ -54,8 +53,6 @@
             <ui:ListView name="LogList" class="log-list" />
             <ui:ListView name="UnityLogList" class="log-list log-list--unity" />
         </ui:VisualElement>
-        <ui:VisualElement name="FooterRow" class="footer-row">
-            <ui:Button name="CancelButton" text="Cancel" class="cpp-btn cpp-btn--danger" />
-        </ui:VisualElement>
+        <ui:VisualElement name="FooterRow" class="footer-row" />
     </ui:VisualElement>
 </ui:UXML>

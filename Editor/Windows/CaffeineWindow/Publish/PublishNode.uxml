@@ -27,9 +27,8 @@
         <ui:VisualElement class="pub-step-footer__spacer" />
         <ui:Button name="ValidateButton" text="Validate Course" class="pub-btn pub-btn--primary" />
         <ui:Button name="ProceedAnywayButton" text="Proceed Anyway" class="pub-btn" />
-        <ui:Button name="StartPackagingButton" text="Start Packaging" class="pub-btn pub-btn--primary" />
         <ui:Button name="NextButton" text="Next" class="pub-btn pub-btn--primary" />
         <ui:Button name="StartButton" text="Start Publishing" class="pub-btn pub-btn--primary" />
-        <ui:Button name="ResetButton" text="Reset" class="pub-btn" />
+        <ui:Button name="StepBackButton" text="Back" class="pub-btn" />
     </ui:VisualElement>
 </ui:UXML>

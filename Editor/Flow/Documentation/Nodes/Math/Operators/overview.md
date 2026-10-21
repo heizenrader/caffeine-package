@@ -28,7 +28,7 @@ Single-purpose operators wrapping a Unity API call:
 |---|---|---|---|
 | Vector3 Operator    | a, b (Vector3)                  | Vector3                | Add or subtract two Vector3s. Subset of [Math Operator](./math-operator)'s Vector3 mode — the more flexible Math Operator covers `+`, `-`, `*`, `/`, `%`. |
 | Vector Angle        | a, b (Vector3)                  | Float (degrees, 0–180) | `Vector3.Angle(a, b)`. Duplicates [Vector3 Angle](/docs/Flow/Nodes/Math/Vector3/overview) from codegen — same behavior. |
-| Quaternion Angle    | a, b (Quaternion)               | Float (degrees, 0–180) | `Quaternion.Angle(a, b)`. Duplicates [Quaternion Angle](/docs/Flow/Nodes/Math/Quaternion/overview). |
+| Quaternion Angle    | a, b (Quaternion)               | Float (degrees, 0–180) | `Quaternion.Angle(a, b)`. Deprecated: no longer in the node menu; existing graphs keep it. Use [Quaternion Angle (a, b)](/docs/Flow/Nodes/Math/Quaternion/overview). |
 | Cross Product       | a, b (Vector3)                  | Vector3                | `Vector3.Cross(a, b)`. Duplicates [Vector3 Cross](/docs/Flow/Nodes/Math/Vector3/overview). |
 | Dot Product         | a, b (Vector3)                  | Float                  | `Vector3.Dot(a, b)`. Duplicates [Vector3 Dot](/docs/Flow/Nodes/Math/Vector3/overview). |
 | Vector Multiple     | a (Vector3), b (Float)          | Vector3 (a × b)        | Scale a Vector3 by a scalar. Useful for "direction × speed" patterns where the codegen Vector3 wrappers don't cover scalar multiplication directly. |

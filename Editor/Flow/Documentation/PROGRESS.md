@@ -8,6 +8,8 @@ This file lives at `Documentation/PROGRESS.md` and **does not ship to edxr-docs*
 **Total source nodes:** ~499 unique creator-facing menu paths (`[CreateNodeMenu("Flow/...")]` with non-empty path)
 **Last bulk-author session:** 2026-05-08 — **completed all categories**. Final push added 10 component codegen overviews (Animator ~85, AudioSource 7, Camera 26, Collider 2, Light 3, ParticleSystem 20, Renderer 1, Rigidbody 32, Transform 31, VideoPlayer 5) + 3 misc Lists nodes. ~190 nodes covered in this final push, ~210+ docs total this session.
 
+**Incremental — 2026-10-16:** documented **Send xAPI Statement** (`Components/LMS/send-xapi-statement.md`, per-page) — new `EdXR_SendXapiStatementNode` (`Flow/Actions/LMS/Send xAPI Statement`), reports an answer, choice or score to the LMS's learning record store. New `Components/LMS/` subfolder (`_category_.json` position 31, overview-less) and a row in the Components overview. The minimum-app-version line on the page is a placeholder to fill in at release. The Last scan date above is unchanged: the menu-path audit was not re-run.
+
 **Incremental — 2026-07-21:** re-ran the menu-path audit (baseline = 2026-06-25 audit commit `d6a83688a`) — **one new path, Go To Step, already documented; zero removed; no gaps.** Refreshed 4 existing pages for behavior fixes shipped since the audit:
 - `Components/Physics/physics-raycast.md` — compound-collider contract (commit `7b243c2bd`): `hitTransform`/`hitGameObject` now report the collider actually struck (not the Rigidbody root); `hitGameObject` nulls on a miss. Added a Compound colliders note.
 - `Components/General/translate.md` — unconnected `direction` now honors the inline node value (commit `f986bf302`); noted in the port row.
@@ -70,6 +72,7 @@ This file lives at `Documentation/PROGRESS.md` and **does not ship to edxr-docs*
 | **Components / XR** | 1 / 1 | per-page | ✅ Complete |
 | **Components / AR** | 3 / 3 | per-page | ✅ Complete (2026-06-25) — new subfolder. Enable AR, Disable AR, Is AR On (viewer camera-passthrough mode toggle/query). |
 | **Components / Analytics** | 2 / 2 | per-page | ✅ Complete |
+| **Components / LMS** | 1 / 1 | per-page | ✅ Complete (2026-10-16) — new subfolder. Send xAPI Statement. App-version line to fill in at release. |
 | **Components / Interactables (in menu)** | 5 / 5 | per-page | ✅ Complete (docs category: `Interactables/`) |
 | **Networking / Net Actions** | 8 / 8 | per-page | ✅ Complete — top-level `Networking/` category for Net-only actions/queries (Net Avatar lives in Player). |
 | **Input** | 10 / 10 | per-page | ✅ Complete — incl. Mobile Joystick / Mobile Joystick Active / Mobile Joystick Button (2026-06-25; predate the May audit but were missed by it). |
@@ -143,7 +146,7 @@ Source: scattered across `Nodes/Actions/` (legacy hand-coded math). These have m
 - [ ] Cross Product (`Flow/Math/Cross Product`)
 - [ ] Dot Product (`Flow/Math/Dot Product`)
 - [ ] Math Operator (`Flow/Math/Math Operator`) — likely a multi-type +/-/×/÷ operator
-- [ ] Quaternion Angle (`Flow/Math/Quaternion Angle`) *(may overlap with codegen Quaternion Angle — confirm)*
+- [ ] Quaternion Angle (`Flow/Math/Quaternion Angle`) *(duplicate of the code-generated node; hidden in round 27)*
 - [ ] Sample Curve (`Flow/Math/Sample Curve`)
 - [ ] Vector Angle (`Flow/Math/Vector Angle`) *(may overlap with codegen Vector3/2 Angle)*
 - [ ] Vector Multiple (`Flow/Math/Vector Multiple`)
@@ -304,7 +307,7 @@ Source: `Nodes/NetNodes/Actions/`
 - [ ] Net Instantiate (`Flow/Networking/Net Instantiate`)
 - [ ] Net Is Host (`Flow/Networking/Net Is Host`)
 - [ ] Net Is Mine (`Flow/Networking/Net Is Mine`)
-- [ ] Net Kick (`Flow/Networking/Net Kick`)
+- [x] Net Kick (`Flow/Networking/Net Kick`)
 - [ ] Net Avatar (`Flow/Networking/Net Avatar`)
 - [ ] Get Net Ownership (`Flow/Networking/Get Net Ownership`)
 - [ ] Set Net Avatar Models (`Flow/Networking/Set Net Avatar Models`)

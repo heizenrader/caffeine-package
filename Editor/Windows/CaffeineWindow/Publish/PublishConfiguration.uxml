@@ -132,28 +132,6 @@
                             </ui:VisualElement>
                         </ui:VisualElement>
                     </ui:VisualElement>
-                    <ui:VisualElement name="PackageSummary" class="pub-subpanel" style="display: none;">
-                        <ui:VisualElement class="pub-group-header">
-                            <ui:Label text="Package Contents" class="pub-group__label" />
-                            <ui:Label text="What the packaging step captured for this publish." class="pub-panel__subtitle" />
-                        </ui:VisualElement>
-                        <ui:VisualElement name="SummaryRow" class="pub-summary-row">
-                            <ui:VisualElement name="AssetsStat" class="pub-summary-stat">
-                                <ui:Label name="AssetsValue" text="0" class="pub-summary-stat__value" />
-                                <ui:Label text="Assets" class="pub-summary-stat__label" />
-                            </ui:VisualElement>
-                            <ui:VisualElement name="ScriptsStat" class="pub-summary-stat">
-                                <ui:Label name="ScriptsValue" text="0" class="pub-summary-stat__value" />
-                                <ui:Label text="Scripts" class="pub-summary-stat__label" />
-                            </ui:VisualElement>
-                            <ui:VisualElement name="SizeStat" class="pub-summary-stat">
-                                <ui:Label name="SizeValue" text="0" class="pub-summary-stat__value" />
-                                <ui:Label text="Package Size" class="pub-summary-stat__label" />
-                            </ui:VisualElement>
-                            <ui:VisualElement class="pub-summary-row__spacer" />
-                            <ui:Button name="ViewContentsButton" text="View Package Contents" class="pub-btn" />
-                        </ui:VisualElement>
-                    </ui:VisualElement>
                 </ui:VisualElement>
             </ui:VisualElement>
             <ui:VisualElement name="PlatformsPanel" class="pub-panel">
