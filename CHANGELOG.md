@@ -4,6 +4,14 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [1.1.24-rc.4] - 10.23.2026
+
+### Improved
+- **No "NormalMap settings" window when the Material Optimizer converts a glTF model.** A normal map inside a .glb or .gltf can't be marked as a normal map, so converting such a model's materials to Graphics Tools opened Unity's "NormalMap settings" window, and Fix now changed nothing. The converters now write the model's normal maps once to a Textures folder next to it, imported as normal maps (the same files Extract Textures from glTF writes, which it then reuses), and the converted materials use those files. Extract Textures from glTF also reuses an image it wrote earlier under a numbered name ("name 1.png") instead of writing another copy.
+- **The Course Validator's prefab warnings are about your course's prefabs only.** "Prefab References" warnings (graphs with baked runtime state, graphs on prefab variants) used to list every such prefab in the project, so publishing one course asked you to accept warnings about prefabs only other courses use, and fixing them would have changed those courses. They now come up only for prefabs the course ships (from its scene, its Additional Assets, or the Resources folders when Include Resources is on). Each one says what in the course uses the prefab (an object in the scene, a Flow graph or the Publish Settings) and which other scenes in the project use it too, since a fix changes it for them as well.
+- **No "Remote changes detected" after your own publish.** A publish started by an AI assistant uploads the cloud backup long before the builds finish, and the editor only noted it at the very end: clicking back into Unity meanwhile showed the dialog for your own new version. The backup is now noted as soon as it lands, and the check never asks about a course this editor is publishing.
+- **The apps tell EducationXR about the error popups they show.** A sign-in that expired (error 1001), a request the server refused or an answer that could not be read used to reach us only when the server itself failed; now the app sends one short report to the content service (the error's code, title and text, the scene it was in and the id of the request that failed; no sign-in token and nothing you typed), so we hear about it and can fix the cause. The same error in the same place is sent once a minute, ten at most each launch, never when you are offline, and it never shows you anything or slows the app down. Hosts that do not want it set `ClientErrorReporter.Enabled = false`.
+
 ## [1.1.24-rc.2] - 10.21.2026
 
 ### New
