@@ -570,7 +570,7 @@ public class CaffeineUpdater : IPackageManagerExtension
         if (packageInfo == null || string.IsNullOrEmpty(packageInfo.name)) return;
 
         var packageName = packageInfo.name.ToLower();
-        if (packageName.Contains("com.caffeine"))
+        if (packageName == "com.caffeine")
         {
             RemoveCaffeineBuilders();
         }
@@ -590,7 +590,9 @@ public class CaffeineUpdater : IPackageManagerExtension
 
                     foreach (var package in _listRequest.Result)
                     {
-                        if (!package.name.ToLower().StartsWith("com.caffeine"))
+                        // Exactly Caffeine: com.caffeine.mcp / com.caffeine.ai-harness
+                        // have versions of their own.
+                        if (package.name.ToLower() != "com.caffeine")
                             continue;
 
                         foundCaffeine = true;

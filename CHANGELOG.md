@@ -4,6 +4,18 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [1.1.24-rc.7] - 10.26.2026
+
+### New
+- **Mesh Optimizer tools.** With Unity's Asset Transformer / Pixyz toolkit (`com.unity.industry.toolkit` 3.3.0 or newer) installed, Caffeine > Tools > Mesh Optimizer opens: optimize selected models (Fine, Medium or Hard), import a model already optimized, and the Course Readiness wizard, which takes an imported CAD model to course-ready one skippable step at a time. Caffeine turns the tools on when the toolkit is installed and off when it is removed (it adds or removes `CAFFEINE_ASSET_TRANSFORMER` in the active platform's Scripting Define Symbols, then scripts recompile once). Projects without the toolkit see no change.
+- **Course links can ask where a course is.** `LaunchCheckGetRequest` asks the content service whether the signed-in user can open a course, and when they can, whether the app should first switch to the course's organization. The EducationXR apps use it for course links. A failed check only means the app keeps its own message.
+
+### Improved
+- **Publishing works on Intel Macs.** 1.1.24-rc.6 shipped only the Apple Silicon build of the publish supervisor, so on an Intel Mac every platform failed right away with "Publish supervisor exited before reporting all platforms". The package now includes an Intel build too, and Caffeine picks the one that runs on your Mac (Apple Silicon runs its own build even when Unity runs under Rosetta). If the right build is missing, Publish says which folder it needs instead of starting.
+- **When the publish supervisor stops early, the console says why.** The error now includes the supervisor's exit code and the end of its own log (`supervisor.log` in the publish's folder under `Library/CaffeineSupervisor`). If there is no log, it says the supervisor never started.
+- **Builders use Caffeine itself when the AI Harness or MCP package is installed.** Those packages' folders sort ahead of Caffeine's, so a new builder could be linked to one of them instead (it then had no builder code), and the Caffeine version in published courses, asset metadata, transfer logs and the update check could be read from the wrong package. Caffeine now finds `com.caffeine` by its exact name, and a builder linked to the wrong package is linked again.
+- **Single sign-on lookup accepts a full email.** A sign-in connection limited to test addresses can only be found by the full email; the lookup now sends the email intact (including `@`, `+` and `.`).
+
 ## [1.1.24-rc.4] - 10.23.2026
 
 ### Improved
