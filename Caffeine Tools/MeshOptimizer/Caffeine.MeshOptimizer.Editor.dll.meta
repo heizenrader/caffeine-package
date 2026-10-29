@@ -9,7 +9,7 @@ PluginImporter:
   - CAFFEINE_ASSET_TRANSFORMER
   isPreloaded: 0
   isOverridable: 0
-  isExplicitlyReferenced: 0
+  isExplicitlyReferenced: 1
   validateReferences: 1
   platformData:
     Any:
