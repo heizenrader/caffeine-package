@@ -1,0 +1,9 @@
+{
+  "label": "LMS",
+  "position": 31,
+  "collapsed": true,
+  "link": {
+    "type": "generated-index",
+    "description": "LMS action nodes — report what learners do in a course to your LMS's learning record store."
+  }
+}

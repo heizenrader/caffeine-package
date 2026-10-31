@@ -14,18 +14,7 @@
                     </ui:VisualElement>
                 </ui:VisualElement>
             </ui:VisualElement>
-            <ui:VisualElement name="RightContainer" style="justify-content: flex-end; align-items: flex-end; flex-direction: column; flex-grow: 1; width: auto; min-height: auto; margin-top: 0;">
-                <ui:VisualElement name="TopRow" style="flex-grow: 0; flex-direction: row;">
-                    <ui:VisualElement style="flex-direction: row; flex-grow: 0; justify-content: flex-end;">
-                        <ui:Label text="Search" display-tooltip-when-elided="true" enable-rich-text="false" style="flex-shrink: 1; -unity-text-align: middle-left; justify-content: center; margin-bottom: 3px;" />
-                        <ui:TextField picking-mode="Ignore" name="FilterInput" style="flex-grow: 1; flex-shrink: 1; margin-left: 10px; min-width: 250px;" />
-                        <ui:Button text="X" display-tooltip-when-elided="true" name="ClearFilterButton" style="flex-shrink: 1; width: auto; height: auto;" />
-                    </ui:VisualElement>
-                </ui:VisualElement>
-                <ui:VisualElement name="BottomRow" style="flex-grow: 0; flex-direction: row; min-height: auto; justify-content: center; align-items: auto;">
-                    <ui:Toggle label="Installed" name="InstalledToggle" class="customToggle" style="min-height: auto; justify-content: center; align-items: auto; flex-shrink: 0; margin-top: 5px; -unity-text-align: upper-left; left: auto; width: 100px; height: auto; flex-direction: column-reverse;" />
-                </ui:VisualElement>
-            </ui:VisualElement>
+            <ui:VisualElement name="SearchBarHost" style="justify-content: flex-end; align-items: flex-end; flex-direction: column; flex-grow: 1; width: auto; min-height: auto; margin-top: 0;" />
         </ui:VisualElement>
         <ui:VisualElement name="SubHeader" style="max-height: 50px; margin-bottom: 10px;">
             <ui:Label text="Courses" display-tooltip-when-elided="true" name="SubTitle" style="align-items: auto; -unity-text-align: upper-center;" />

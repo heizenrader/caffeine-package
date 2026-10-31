@@ -4,6 +4,22 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [1.1.24] - 10.30.2026
+
+A new publishing experience, Web publishing, and new tools for models and AI assistants.
+
+### New
+- **A new publishing experience:** A guided flow with live progress for every platform, running in the background so you can keep building while your course publishes.
+- **Publish to Web:** Reach learners in any desktop browser through the EducationXR web app.
+- **Mesh Optimizer and Course Readiness wizard:** Effortlessly lighten heavy models and turn imported CAD models into course-ready content.
+- **Caffeine AI Harness:** Build courses with an AI assistant that tests its own work in specialized phone, tablet and VR simulators before anything is published, and publishes only with your approval.
+
+### Improved
+- **Find, start and import courses faster:** Search as you type, star your favorites and see every course's status at a glance. New courses start on the Universal Render Pipeline, and imports bring along the packages a course needs.
+- **A smarter Course Validator:** Course-focused warnings, new checks and one-click fixes.
+
+Plus steadier sign-in and many other stability and performance improvements.
+
 ## [1.1.23] - 09.10.2026
 Package dependency update.
 

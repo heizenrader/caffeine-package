@@ -1,0 +1,14 @@
+<ui:UXML xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements" xsi="http://www.w3.org/2001/XMLSchema-instance" engine="UnityEngine.UIElements" editor="UnityEditor.UIElements" noNamespaceSchemaLocation="../../../../UIElementsSchema/UIElements.xsd" editor-extension-mode="True">
+    <Style src="project://database/Packages/com.caffeine/Editor/Windows/CaffeineWindow/Styles/CoursesView.uss?fileID=7433441132597879392&amp;guid=4285b8f8bb8f3354eb61a60073b6b70a&amp;type=3#CoursesView" />
+    <ui:VisualElement name="SearchBar" style="justify-content: flex-end; align-items: flex-end; flex-direction: column; flex-grow: 1; width: auto; min-height: auto; margin-top: 0;">
+        <ui:VisualElement name="TopRow" style="flex-grow: 0; flex-direction: row;">
+            <ui:VisualElement style="flex-direction: row; flex-grow: 0; justify-content: flex-end; align-items: center;">
+                <ui:Label text="Search" display-tooltip-when-elided="true" enable-rich-text="false" style="flex-shrink: 1; -unity-text-align: middle-left; justify-content: center; margin-bottom: 3px;" />
+                <ui:TextField picking-mode="Ignore" name="FilterInput" style="flex-grow: 1; flex-shrink: 1; margin-left: 10px; min-width: 250px;" />
+                <ui:Button text="X" display-tooltip-when-elided="true" name="ClearFilterButton" style="flex-shrink: 1; width: auto; height: auto;" />
+                <ui:VisualElement name="TrailingSlot" style="flex-direction: row; flex-grow: 0; align-items: center;" />
+            </ui:VisualElement>
+        </ui:VisualElement>
+        <ui:VisualElement name="OptionsSlot" style="flex-grow: 0; flex-direction: row; min-height: auto; justify-content: flex-end; align-items: center; margin-top: 5px;" />
+    </ui:VisualElement>
+</ui:UXML>

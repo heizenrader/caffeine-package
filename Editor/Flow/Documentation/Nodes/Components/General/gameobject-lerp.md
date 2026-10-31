@@ -17,6 +17,14 @@ Smoothly tweens a GameObject's position and rotation toward target values over a
 | inputPosition | Vector3    | Target world position. |
 | inputRotation | Quaternion | Target rotation (defaults to `Quaternion.identity`). |
 
+:::note Eases out — not a steady speed
+The move starts fast and slows into the target: halfway through `lerpTime` it has covered about three quarters of the way, and it starts at twice its average speed. That suits placing objects and camera moves. For something that should keep one speed — a person walking, a vehicle, a conveyor — move it a little every frame instead: an [Update](/docs/Flow/Nodes/Events/update) event that sets its position to [Vector3 MoveTowards](/docs/Flow/Nodes/Math/Vector3/overview) (current position, target, speed × [Delta Time](/docs/Flow/Nodes/Variables/delta-time)).
+:::
+
+:::note Rotation turns over the same time
+The object turns to `inputRotation` over the whole `lerpTime`, together with the move. To face the way first and then travel, run a short Lerp that keeps the position and changes only the rotation, then the move with that same rotation.
+:::
+
 :::tip Tween-based, not per-frame
 The tween runs in the background once kicked — the standard `exit` fires immediately when the tween starts, not when it finishes. There's no "completed" callback on this node; if you need to chain on completion, use a [Delay](./delay) of the same duration.
 :::

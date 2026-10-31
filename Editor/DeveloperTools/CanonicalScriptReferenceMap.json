@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "generatedAt": "2026-07-23T16:59:30Z",
+  "generatedAt": "2026-10-07T20:17:21Z",
   "entries": [
     {
       "typeName": "Caffeine.AIBotEditor",
@@ -83,6 +83,14 @@
       "dllGuid": "8ac8e203a0bb13147b5a2edd731298a3"
     },
     {
+      "typeName": "Caffeine.Editor.CourseDependencies.DependencyInstallSummaryWindow",
+      "assemblyName": "Caffeine",
+      "sourceFileID": 11500000,
+      "sourceGuid": "c1913544eb212cc30ea197b536e3eae6",
+      "dllFileID": -527013990,
+      "dllGuid": "8ac8e203a0bb13147b5a2edd731298a3"
+    },
+    {
       "typeName": "Caffeine.Editor.CourseHelper",
       "assemblyName": "Caffeine",
       "sourceFileID": 11500000,
@@ -112,6 +120,14 @@
       "sourceFileID": 11500000,
       "sourceGuid": "2492f3a995e06484488563f108045873",
       "dllFileID": -363311222,
+      "dllGuid": "8ac8e203a0bb13147b5a2edd731298a3"
+    },
+    {
+      "typeName": "Caffeine.Editor.Flow.GraphPrefabStageState",
+      "assemblyName": "Caffeine",
+      "sourceFileID": 11500000,
+      "sourceGuid": "2909711014400994e89c724da51d360d",
+      "dllFileID": 2120185117,
       "dllGuid": "8ac8e203a0bb13147b5a2edd731298a3"
     },
     {
@@ -283,6 +299,14 @@
       "dllGuid": "8ac8e203a0bb13147b5a2edd731298a3"
     },
     {
+      "typeName": "Caffeine.Editor.Views.Courses.PackageContentsWindow",
+      "assemblyName": "Caffeine",
+      "sourceFileID": 11500000,
+      "sourceGuid": "53cd78a66fd94a5419e5635ec7c10572",
+      "dllFileID": -900843761,
+      "dllGuid": "8ac8e203a0bb13147b5a2edd731298a3"
+    },
+    {
       "typeName": "Caffeine.Editor.Views.Courses.SharedAssetsWindow",
       "assemblyName": "Caffeine",
       "sourceFileID": 11500000,
@@ -312,6 +336,14 @@
       "sourceFileID": 11500000,
       "sourceGuid": "6dc71325aecb4f44a9c68148afdd935f",
       "dllFileID": -333545188,
+      "dllGuid": "8ac8e203a0bb13147b5a2edd731298a3"
+    },
+    {
+      "typeName": "Caffeine.Editor.Windows.UnityLogWindow",
+      "assemblyName": "Caffeine",
+      "sourceFileID": 11500000,
+      "sourceGuid": "d4be3d9d38504a7eb8b8be77001c97fc",
+      "dllFileID": 533419095,
       "dllGuid": "8ac8e203a0bb13147b5a2edd731298a3"
     },
     {
@@ -1739,6 +1771,14 @@
       "dllGuid": "8ac8e203a0bb13147b5a2edd731298a3"
     },
     {
+      "typeName": "Caffeine.Flow.Nodes.Actions.EdXR_HideViewerUINode",
+      "assemblyName": "Caffeine",
+      "sourceFileID": 11500000,
+      "sourceGuid": "fdcd08f44c9bd8d4f9fcb89097025ada",
+      "dllFileID": -1169584389,
+      "dllGuid": "8ac8e203a0bb13147b5a2edd731298a3"
+    },
+    {
       "typeName": "Caffeine.Flow.Nodes.Actions.EdXR_InstantiateNode",
       "assemblyName": "Caffeine",
       "sourceFileID": 11500000,
@@ -2955,6 +2995,14 @@
       "dllGuid": "8ac8e203a0bb13147b5a2edd731298a3"
     },
     {
+      "typeName": "Caffeine.Flow.Nodes.Actions.EdXR_ShowViewerUINode",
+      "assemblyName": "Caffeine",
+      "sourceFileID": 11500000,
+      "sourceGuid": "9d15ae3c7aeaed74192fa9509f243afe",
+      "dllFileID": -282362397,
+      "dllGuid": "8ac8e203a0bb13147b5a2edd731298a3"
+    },
+    {
       "typeName": "Caffeine.Flow.Nodes.Actions.EdXR_SideMenuNode",
       "assemblyName": "Caffeine",
       "sourceFileID": 11500000,
@@ -3696,6 +3744,14 @@
       "sourceFileID": 11500000,
       "sourceGuid": "cdba2a265ba242546a45628d2e7e68f4",
       "dllFileID": 1917320282,
+      "dllGuid": "8ac8e203a0bb13147b5a2edd731298a3"
+    },
+    {
+      "typeName": "Caffeine.Flow.Nodes.Actions.EdXR_ViewerUIVisibilityNode",
+      "assemblyName": "Caffeine",
+      "sourceFileID": 11500000,
+      "sourceGuid": "730583c0926c79341b76832980dd13e7",
+      "dllFileID": 839132271,
       "dllGuid": "8ac8e203a0bb13147b5a2edd731298a3"
     },
     {
@@ -4819,6 +4875,14 @@
       "dllGuid": "8ac8e203a0bb13147b5a2edd731298a3"
     },
     {
+      "typeName": "Caffeine.Runtime.Core.Utilities.ClipboardPrearm",
+      "assemblyName": "Caffeine",
+      "sourceFileID": 11500000,
+      "sourceGuid": "3d1ccfa3b04254b3bb56e3277b43bf93",
+      "dllFileID": -1845053428,
+      "dllGuid": "8ac8e203a0bb13147b5a2edd731298a3"
+    },
+    {
       "typeName": "Caffeine.Runtime.Core.Utilities.HeatmapObjGenerator",
       "assemblyName": "Caffeine",
       "sourceFileID": 11500000,
@@ -5075,6 +5139,14 @@
       "dllGuid": "8ac8e203a0bb13147b5a2edd731298a3"
     },
     {
+      "typeName": "Caffeine.Runtime.Transfers.WebFrameTicker",
+      "assemblyName": "Caffeine",
+      "sourceFileID": 11500000,
+      "sourceGuid": "554a3ccf9f7564eefa296acd6eac2be9",
+      "dllFileID": -1100905443,
+      "dllGuid": "8ac8e203a0bb13147b5a2edd731298a3"
+    },
+    {
       "typeName": "Caffeine.Runtime.Voice.EventVoiceBotSO",
       "assemblyName": "Caffeine",
       "sourceFileID": 11500000,
@@ -5216,6 +5288,22 @@
       "sourceFileID": 11500000,
       "sourceGuid": "69b7d5d9917028441a8aa7378d801276",
       "dllFileID": -198418756,
+      "dllGuid": "8ac8e203a0bb13147b5a2edd731298a3"
+    },
+    {
+      "typeName": "Caffeine.UI.StepPanelTint",
+      "assemblyName": "Caffeine",
+      "sourceFileID": 11500000,
+      "sourceGuid": "e38ca5b8a1590f74294adf0a01cc45ac",
+      "dllFileID": 1270480339,
+      "dllGuid": "8ac8e203a0bb13147b5a2edd731298a3"
+    },
+    {
+      "typeName": "Caffeine.UI.StepPanelTintPreview",
+      "assemblyName": "Caffeine",
+      "sourceFileID": 11500000,
+      "sourceGuid": "b6abfe947ad54a8632c91d62bda7af7f",
+      "dllFileID": 1034260499,
       "dllGuid": "8ac8e203a0bb13147b5a2edd731298a3"
     },
     {

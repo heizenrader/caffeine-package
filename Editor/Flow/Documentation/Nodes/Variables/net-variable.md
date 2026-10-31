@@ -40,6 +40,12 @@ If two players should see the same value (a score, a selected answer, a current 
 
 :::warning Every write is broadcast
 Each kick of a Net Variable produces a network message. Don't put one inside a tight [Update](/docs/Flow/Nodes/Events/update) loop unless you genuinely need per-frame replication — gate writes behind a [Comparison](/docs/Flow/Nodes/Logic/comparison) so the network only sees changes worth sending.
+
+Writing the value it already holds still sends it, and `exit` fires again on every player.
+:::
+
+:::caution Players who join later
+A Net Variable node doesn't send its current value to a player who joins mid-session: they start from the variable's default until the next write. To give late joiners the current value, keep it in a [Graph Variable](./graph-variable) with **Sync On Start** ticked — the host sends its value to each player who joins.
 :::
 
 ## See also

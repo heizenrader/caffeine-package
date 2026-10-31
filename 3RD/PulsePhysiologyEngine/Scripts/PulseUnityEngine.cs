@@ -17,7 +17,7 @@ namespace Pulse.Unity
   [ExecuteInEditMode]
   public class PulseUnityEngine : PulseEngineBase
   {
-#if UNITY_IOS
+#if UNITY_IOS || UNITY_WEBGL
     private const string Attribute = "__Internal";
 #else
     private const string Attribute = "PulseC";
@@ -25,8 +25,12 @@ namespace Pulse.Unity
 
     public PulseUnityEngine(eModelType m = eModelType.HumanAdultWholeBody, string data_dir = "./") : base(m, data_dir) { }
 
+    // NOTE: the C++ PulseC entrypoint returns void (it writes the string via the
+    // out-param). Declaring a 'double' return works on desktop/iOS by luck of ABI,
+    // but WebAssembly is strongly typed and traps on the signature mismatch
+    // ("attempted pop from empty stack"). Must be 'void' for the WebGL build.
     [DllImport(Attribute)]
-    private static extern double PulseVersion(out IntPtr version_str);
+    private static extern void PulseVersion(out IntPtr version_str);
     public static string Version()
     {
       if (version.Length == 0)
@@ -38,8 +42,9 @@ namespace Pulse.Unity
       return version;
     }
 
+    // See PulseVersion note: C++ returns void; must be 'void' for the WebGL build.
     [DllImport(Attribute)]
-    private static extern double PulseHash(out IntPtr version_str);
+    private static extern void PulseHash(out IntPtr version_str);
     public static string Hash()
     {
       if (hash.Length == 0)

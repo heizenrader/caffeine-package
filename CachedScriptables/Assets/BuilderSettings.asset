@@ -19,6 +19,7 @@ MonoBehaviour:
       iOS: 0
       Android: 0
       VisionOS: 0
+      Web: 0
     ParallelBuild: 1
     StaggeredBuild: 0
     PublishBeforeExport: 0
@@ -32,3 +33,4 @@ MonoBehaviour:
     EnableWindows: 1
     EnableiOS: 1
     EnableAndroid: 1
+    EnableWeb: 1

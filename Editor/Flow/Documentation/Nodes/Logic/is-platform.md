@@ -44,8 +44,8 @@ On a VR build, `Phone` / `Tablet` / `Desktop` all return `false` regardless of u
 The Android phone/tablet split uses the size Android itself reports for the device — the same one Android apps use to pick layouts. It's more reliable than computing diagonal inches from screen DPI, because manufacturers often misreport DPI. If the lookup fails for any reason, Android defaults to Phone (the common case).
 :::
 
-:::tip Editor is always Desktop
-Even with the device simulator window open faking an iPhone, `IsPlatform(Desktop)` still returns `true` in play mode. Content authors expect "editor == desktop" for flow authoring; test phone/tablet branches on real builds or in builds run on a phone/tablet device.
+:::tip Editor is Desktop, unless you simulate a phone or tablet
+In play mode in the editor, `IsPlatform(Desktop)` returns `true`, even with the device simulator window open faking an iPhone. To test the Phone or Tablet branches, turn on **Caffeine > Debug > Phone Simulator** (or **Tablet Simulator**) before entering play mode: that play session answers `Phone` (or `Tablet`) and not `Desktop`, and it ends when play mode ends. Set the Game view to the device's resolution too, so screen-space UI lays out as on the device. The viewer's own buttons and step menu are not drawn.
 :::
 
 :::tip Cached after first query

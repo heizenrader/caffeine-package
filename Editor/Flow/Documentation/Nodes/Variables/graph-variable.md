@@ -32,6 +32,10 @@ Both flavors share the same Inputs, Outputs, and Inspector parameters described 
 Each kick of the Net flavor produces a network message. Don't put one inside a tight Update loop — gate writes behind a [Comparison](/docs/Flow/Nodes/Logic/comparison) so only meaningful changes go over the network.
 :::
 
+## Sync On Start (players who join late)
+
+Each graph variable has a **Sync On Start** toggle next to its Name, Type and value. When it is ticked, the host sends the variable's current value to each player who joins the session late, so they start from the live value (an ongoing simulation, a round counter) instead of the starting value. Without it, a late joiner starts from the starting value until the next Net write. A [Net Variable](./net-variable) node has no such option.
+
 ## Inputs
 
 The `inputGraphVariable(Type)Value` port matching the variable's declared `Type`. When connected, the connected value is written on each kick; when unconnected, the inspector default is written.

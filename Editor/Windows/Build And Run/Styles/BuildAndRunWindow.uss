@@ -1,120 +1,143 @@
-/* Build & Run Window — full USS */
+/* Build & Run Window.
+   Loaded after CrossPlatformPublish.uss, whose tokens (.cpp-root) and
+   stepper / stat tile / log card classes this window reuses so it reads like
+   the Publishing page. Only the window layout and overrides live here. */
 
-/* Root */
-#BuildRunRoot {
-    position: relative;
-    height: 100%;
-    flex-direction: column;
+.br-root {
     flex-grow: 1;
-}
-
-/* Main body — reserve space for TOP mode strip + bottom buttons */
-#Body {
-    padding-top: 56px;
-}
-
-/* raise the top bar above Body */
-#TopBar {
-    position: absolute;
-    left: 10px; right: 10px; top: 8px;
-    height: 36px;
-    justify-content: center;
-    align-items: center;
-}
-
-/* Bottom container: only the main buttons now */
-#BottomBar {
-    position: absolute;
-    left: 10px; right: 10px; bottom: 8px;
-    height: 48px;
-    justify-content: center;
-    align-items: center;
     flex-direction: column;
+    background-color: var(--cpp-bg);
+    padding: 14px 16px 16px 16px;
 }
 
 /* ---------- Segmented Mode Switch (2D / VR) ---------- */
 
-.mode-row {
+.br-root .mode-row {
     flex-direction: row;
     justify-content: center;
     align-items: center;
-    height: 34px;
-    margin: 0;
+    flex-shrink: 0;
+    margin-bottom: 18px;
 }
 
-/* Base segment look */
 .seg-btn {
-    min-height: 30px; 
-    min-width: 84px;
-    padding-left: 14px; 
+    min-height: 30px;
+    min-width: 88px;
+    padding-left: 14px;
     padding-right: 14px;
     font-size: 14px;
     margin: 0;
     border-width: 1px;
-    border-color: rgba(0,0,0,0.45);
-    background-color: rgba(0,0,0,0.15);
-    color: #d7d7d7;
+    border-color: var(--cpp-border);
+    background-color: var(--cpp-card);
+    color: var(--cpp-text);
 }
 
-/* Join into a pill */
 .seg-btn.left {
     border-radius: 8px 0 0 8px;
 }
+
 .seg-btn.right {
     border-radius: 0 8px 8px 0;
     margin-left: -1px; /* hide double seam */
 }
 
-/* Selected state */
+.seg-btn:hover {
+    background-color: var(--cpp-card-hover);
+}
+
 .seg-btn.is-selected {
-    background-color: #2c5aa0;
-    border-color: #214679;
-    color: white;
+    background-color: var(--cpp-accent-soft);
+    border-color: var(--cpp-accent);
+    color: rgb(255, 255, 255);
     -unity-font-style: bold;
 }
 
-/* Hover states (UI Toolkit-safe) */
-.seg-btn:hover {
-    background-color: rgba(0,0,0,0.25);
-}
 .seg-btn.is-selected:hover {
-    background-color: #2f67ba;
+    background-color: var(--cpp-accent);
 }
 
-/* Disabled overrides */
 .seg-btn:disabled,
 .seg-btn:disabled:hover {
-    background-color: rgba(0,0,0,0.15);
-    border-color: rgba(0,0,0,0.25);
-    color: #9b9b9b;
-    -unity-font-style: normal;
+    opacity: 0.6;
 }
 
-/* ---------- Main buttons ---------- */
+/* ---------- Progress ---------- */
 
-#BtnBuildRun, #BtnRunOnly, #BtnCancel {
-    min-height: 28px; min-width: 108px;
-    padding-left: 12px; padding-right: 12px;
-    font-size: 12px;
+.br-root .stepper {
+    flex-shrink: 0;
+    margin-bottom: 16px;
 }
-#BtnBuildRun { margin-right: 8px; -unity-font-style: bold; }
-#BtnRunOnly  { margin-right: 8px; }
 
-/* Hide the left-hand 'Status' label text */
-#BuildPlatformLabel {
-    display: none;
+.br-root .br-bar {
+    height: 10px;
+    flex-shrink: 0;
+    border-radius: 5px;
+    margin-bottom: 14px;
 }
-#BuildStatus { align-items: flex-start; }
 
-#BuildDetails {
-    font-size: 13px;              
+.br-root .br-bar .bar-fill {
+    border-radius: 5px;
+}
+
+.br-root .bar-fill.is-failed {
+    background-color: var(--cpp-danger);
+}
+
+.br-root .stat-row {
+    flex-shrink: 0;
+    margin-bottom: 14px;
+}
+
+/* ---------- Logs: take whatever height is left ---------- */
+
+/* The only element that gives up height when the window is made smaller —
+   everything above it is flex-shrink: 0, so the run state can never be
+   clipped away. Below its min-height the window itself stops resizing
+   (minSize in BuildAndRunWindow.cs). */
+.br-root .br-log-card {
+    flex-grow: 1;
+    flex-shrink: 1;
+    flex-basis: 0;
+    min-height: 150px;
+    margin-bottom: 16px;
+}
+
+/* flex-basis: 0 is load-bearing. The publish panel gives these lists a fixed
+   height; this window lets them fill instead, and with the default
+   flex-basis: auto each list is first sized from its CONTENT. The Build Log
+   (a handful of lines) then grew to fill, while the Unity Log (thousands of
+   raw lines) claimed a base size far taller than the card and got squeezed
+   back into a condensed strip. Sizing from zero makes both tabs fill the
+   same box regardless of how much is in them. */
+.br-root .log-list {
+    height: auto;
+    flex-grow: 1;
+    flex-shrink: 1;
+    flex-basis: 0;
+    min-height: 100px;
+}
+
+/* ---------- Buttons ---------- */
+
+.br-footer {
+    flex-direction: row;
+    flex-shrink: 0;
+}
+
+.br-root .br-btn {
+    flex-grow: 1;
+    flex-basis: 0;
+    min-height: 34px;
+    margin: 0 0 0 10px;
+    font-size: 13px;
+}
+
+.br-root .br-btn--first {
+    margin-left: 0;
     -unity-font-style: bold;
-    margin-bottom: 4px;
 }
 
-#SubBuildDetails {
-    font-size: 12px;
-    -unity-font-style: normal;
-    opacity: 0.9;
-    margin-top: 10px;
+.br-root .cpp-btn--primary:hover:enabled {
+    background-color: rgb(64, 142, 245);
 }

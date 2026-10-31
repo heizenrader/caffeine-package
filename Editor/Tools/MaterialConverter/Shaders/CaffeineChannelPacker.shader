@@ -7,6 +7,9 @@
 //   _<Name>MapChannel    0=R, 1=G, 2=B, 3=A, 4=RGBAverage (luminance)
 //   _<Name>Uniform       >=0: use this constant value INSTEAD of sampling
 //   _<Name>Multiplier    multiplied with the sampled (not uniform) value
+//   _<Name>Bias          added to the sampled value after the multiplier
+//                        (default 0; GraphicsToolsMaterialFactory's occlusion
+//                        strength: occ * s + (1 - s))
 //   _<Name>Invert        0 or 1: when 1, output = 1 - value
 //
 // Output layout matches Graphics Tools/Standard's _ChannelMap:
@@ -25,24 +28,28 @@ Shader "Hidden/CaffeineChannelPacker"
         _MetallicMapChannel("Metallic Map Channel", Int) = 0
         _MetallicUniform("Metallic Uniform", Float) = -0.01
         _MetallicMultiplier("Metallic Multiplier", Float) = 1.0
+        _MetallicBias("Metallic Bias", Float) = 0.0
         _MetallicInvert("Metallic Invert", Int) = 0
 
         _OcclusionMap("Occlusion Map", 2D) = "white" {}
         _OcclusionMapChannel("Occlusion Map Channel", Int) = 1
         _OcclusionUniform("Occlusion Uniform", Float) = -0.01
         _OcclusionMultiplier("Occlusion Multiplier", Float) = 1.0
+        _OcclusionBias("Occlusion Bias", Float) = 0.0
         _OcclusionInvert("Occlusion Invert", Int) = 0
 
         _EmissionMap("Emission Map", 2D) = "black" {}
         _EmissionMapChannel("Emission Map Channel", Int) = 4
         _EmissionUniform("Emission Uniform", Float) = -0.01
         _EmissionMultiplier("Emission Multiplier", Float) = 1.0
+        _EmissionBias("Emission Bias", Float) = 0.0
         _EmissionInvert("Emission Invert", Int) = 0
 
         _SmoothnessMap("Smoothness Map", 2D) = "gray" {}
         _SmoothnessMapChannel("Smoothness Map Channel", Int) = 3
         _SmoothnessUniform("Smoothness Uniform", Float) = -0.01
         _SmoothnessMultiplier("Smoothness Multiplier", Float) = 1.0
+        _SmoothnessBias("Smoothness Bias", Float) = 0.0
         _SmoothnessInvert("Smoothness Invert", Int) = 0
     }
     SubShader
@@ -72,21 +79,25 @@ Shader "Hidden/CaffeineChannelPacker"
             int _MetallicMapChannel;
             float _MetallicUniform;
             float _MetallicMultiplier;
+            float _MetallicBias;
             int _MetallicInvert;
             sampler2D _OcclusionMap;
             int _OcclusionMapChannel;
             float _OcclusionUniform;
             float _OcclusionMultiplier;
+            float _OcclusionBias;
             int _OcclusionInvert;
             sampler2D _EmissionMap;
             int _EmissionMapChannel;
             float _EmissionUniform;
             float _EmissionMultiplier;
+            float _EmissionBias;
             int _EmissionInvert;
             sampler2D _SmoothnessMap;
             int _SmoothnessMapChannel;
             float _SmoothnessUniform;
             float _SmoothnessMultiplier;
+            float _SmoothnessBias;
             int _SmoothnessInvert;
 
             v2f vert(appdata v)
@@ -102,22 +113,22 @@ Shader "Hidden/CaffeineChannelPacker"
                 return color.r * 0.21 + color.g * 0.71 + color.b * 0.08;
             }
 
-            fixed Sample(fixed4 color, int channel, float uniformValue, float multiplier, int invert)
+            fixed Sample(fixed4 color, int channel, float uniformValue, float multiplier, float bias, int invert)
             {
                 fixed v;
                 if (uniformValue >= 0.0)
                 {
                     // Uniform path: caller already baked the desired value into
-                    // the scalar; do NOT multiply again.
+                    // the scalar; do NOT multiply (or bias) again.
                     v = uniformValue;
                 }
                 else if (channel == 4)
                 {
-                    v = ToGrayScale(color) * multiplier;
+                    v = ToGrayScale(color) * multiplier + bias;
                 }
                 else
                 {
-                    v = color[channel] * multiplier;
+                    v = color[channel] * multiplier + bias;
                 }
                 return invert != 0 ? 1.0 - v : v;
             }
@@ -125,10 +136,10 @@ Shader "Hidden/CaffeineChannelPacker"
             fixed4 frag(v2f i) : SV_Target
             {
                 fixed4 output;
-                output.r = Sample(tex2D(_MetallicMap, i.uv),  _MetallicMapChannel,  _MetallicUniform,  _MetallicMultiplier,  _MetallicInvert);
-                output.g = Sample(tex2D(_OcclusionMap, i.uv), _OcclusionMapChannel, _OcclusionUniform, _OcclusionMultiplier, _OcclusionInvert);
-                output.b = Sample(tex2D(_EmissionMap, i.uv),  _EmissionMapChannel,  _EmissionUniform,  _EmissionMultiplier,  _EmissionInvert);
-                output.a = Sample(tex2D(_SmoothnessMap, i.uv),_SmoothnessMapChannel,_SmoothnessUniform,_SmoothnessMultiplier,_SmoothnessInvert);
+                output.r = Sample(tex2D(_MetallicMap, i.uv),  _MetallicMapChannel,  _MetallicUniform,  _MetallicMultiplier,  _MetallicBias,  _MetallicInvert);
+                output.g = Sample(tex2D(_OcclusionMap, i.uv), _OcclusionMapChannel, _OcclusionUniform, _OcclusionMultiplier, _OcclusionBias, _OcclusionInvert);
+                output.b = Sample(tex2D(_EmissionMap, i.uv),  _EmissionMapChannel,  _EmissionUniform,  _EmissionMultiplier,  _EmissionBias,  _EmissionInvert);
+                output.a = Sample(tex2D(_SmoothnessMap, i.uv),_SmoothnessMapChannel,_SmoothnessUniform,_SmoothnessMultiplier,_SmoothnessBias,_SmoothnessInvert);
                 return output;
             }
 

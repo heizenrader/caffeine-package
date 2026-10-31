@@ -28,7 +28,7 @@ Fires on every player in the multiplayer session when a specified collider pair 
 
 | Field | Type | Description |
 |---|---|---|
-| eventType | Enum&lt;TriggerEventType&gt; | `OnEnter` or `OnExit` (Net Trigger uses these only — no `OnStay`). |
+| eventType | Enum&lt;TriggerEventType&gt; | `OnEnter` (once, when `gameObjectB` enters), `OnExit` (once, when it leaves) or `OnStay` (every frame on every device while it is inside — gate downstream work rather than acting every frame). |
 
 :::tip Net Trigger requires both colliders configured
 The Net version checks for collisions between two specific GameObjects (A and B), not against any random collider entering. This makes the event predictable across players.
