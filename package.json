@@ -45,6 +45,6 @@
   "changelogUrl": "https://educationxr.com/caffeine-changelog/",
   "resolutionStrategy": "highest",
   "_upm": {
-    "changelog": "## [1.1.25] - 11.03.2026\n\n### Fixed\n- Minor bug fixes."
+    "changelog": "## [1.1.25] - 11.03.2026\n\nMinor bug fixes."
   }
 }
