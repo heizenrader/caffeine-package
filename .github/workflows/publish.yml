@@ -38,7 +38,7 @@ concurrency:
 env:
   PACKAGE_NAME: com.caffeine
   # edxr-cli commit that has `edxr package check` and the publish readback (R15). Bump it on purpose.
-  EDXR_CLI_REF: 68932efc65adfaf29a239695b176a6f2c716eda0
+  EDXR_CLI_REF: f7476a4b79cdace182b62deb89c0a7cd0c60d55b
   # UPM CLI release, checksum-verified (the same pin as package-nexus's Dockerfile.publish).
   UPM_CLI_VERSION: v9.35.0
   UPM_CLI_SHA256: 5b4e125f380f6e0432f96ed71c8be55ecd89dbe6bf544e009cd44acd50583396
@@ -89,7 +89,7 @@ jobs:
           fi
 
       # Re-running a publish for a version the registry already has is not an error: end the run, quietly.
-      # Only a clear answer skips: 200 with the version listed. Anything the probe cannot read (a 5xx, a
+      # Only a clear answer skips: 200 with the version listed and its tarball's sha1 equal to the document's. Anything the probe cannot read (a 5xx, a
       # transport error, a page that is not a package document, no version in package.json) fails the run.
       - name: Is this version already published?
         id: probe
@@ -107,7 +107,21 @@ jobs:
               exists=$(jq -r --arg v "$version" '.versions | has($v)' "$RUNNER_TEMP/probe.json")
               case "$exists" in
                 true)
-                  echo "version $version already published to $CHANNEL; nothing to do" | tee -a "$GITHUB_STEP_SUMMARY"
+                  # skip only after the published file is proven intact: its sha1 must equal the document's shasum
+                  unverified() {
+                    echo "UPLOADED BUT NOT VERIFIED: $PACKAGE_NAME $version is in $CHANNEL on $TARGET but $1" | tee -a "$RUNNER_TEMP/publish.log"
+                    exit 1
+                  }
+                  tarball=$(jq -r --arg v "$version" '.versions[$v].dist.tarball // empty' "$RUNNER_TEMP/probe.json")
+                  shasum=$(jq -r --arg v "$version" '.versions[$v].dist.shasum // empty' "$RUNNER_TEMP/probe.json" | tr 'A-F' 'a-f')
+                  { [ -n "$tarball" ] && [ -n "$shasum" ]; } || unverified "its document has no dist.tarball or dist.shasum"
+                  tcode=$(curl -sS -L --max-time 1800 -A 'edxr-publish-probe/1.0' -o "$RUNNER_TEMP/published.tgz" -w '%{http_code}' "$tarball") \
+                    || unverified "its tarball could not be downloaded"
+                  [ "$tcode" = 200 ] || unverified "its tarball answered HTTP $tcode"
+                  actual=$(sha1sum "$RUNNER_TEMP/published.tgz" | cut -d' ' -f1)
+                  [ "$actual" = "$shasum" ] || unverified "its tarball sha1 $actual differs from the document's shasum $shasum"
+                  rm -f "$RUNNER_TEMP/published.tgz"
+                  echo "version $version already published to $CHANNEL (tarball sha1 verified); nothing to do" | tee -a "$GITHUB_STEP_SUMMARY"
                   echo "ALREADY_PUBLISHED=true" >> "$GITHUB_ENV" ;;
                 false) echo "version $version is not in $CHANNEL on $TARGET yet" ;;
                 *) echo "::error::unexpected probe answer: $exists"; exit 1 ;;
