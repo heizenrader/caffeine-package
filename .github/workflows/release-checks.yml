@@ -1,5 +1,11 @@
 name: Release checks
 
+# Required on deploy-dev and deploy-prod (status check name: release-checks). It runs on every pull
+# request into them, with no path filter, so the required check always reports. A pull request that does
+# not change package.json's version against the base branch is not a release: it passes with a
+# "no release in this PR" line, and R4-R7 (version, changelog) are skipped by `edxr package check
+# --base-version`; the other rules still run.
+#
 # The PR check: the same release rules (R1-R12, R14, R17) the publish runs, on the pull request's
 # commit, against the channel its base branch publishes to. Replaces the GitHub OIDC call to
 # package-deploy.educationxr.com/check-*. Reads the registry anonymously; no signing, no publish.
@@ -16,7 +22,7 @@ permissions:
 env:
   PACKAGE_NAME: com.caffeine
   # edxr-cli commit that has `edxr package check`. Bump it on purpose, together with publish.yml.
-  EDXR_CLI_REF: e2ad7ebff2aa5a9cba97965c7629799dc5715c0d
+  EDXR_CLI_REF: 68932efc65adfaf29a239695b176a6f2c716eda0
 
 jobs:
   release-checks:
@@ -68,6 +74,20 @@ jobs:
           (cd "$RUNNER_TEMP/edxr-cli" && go build -o "$RUNNER_TEMP/bin/edxr" .)
           echo "$RUNNER_TEMP/bin" >> "$GITHUB_PATH"
 
+      # The version package.json has on the base branch. If it cannot be read (no package.json there, no
+      # version), BASE_VERSION stays empty and every rule runs: only a clear answer relaxes the check.
+      - name: Read the base branch's version
+        env:
+          BASE: ${{ github.event.pull_request.base.ref }}
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          base_version=""
+          if gh api -H 'Accept: application/vnd.github.raw' "repos/$GITHUB_REPOSITORY/contents/package.json?ref=$BASE" > "$RUNNER_TEMP/base-package.json"; then
+            base_version=$(jq -r '.version // empty | select(type == "string")' "$RUNNER_TEMP/base-package.json" || true)
+          fi
+          echo "base branch $BASE has version: ${base_version:-(unknown)}"
+          echo "BASE_VERSION=$base_version" >> "$GITHUB_ENV"
+
       # prod is where both deploy branches publish to (deploy-dev goes to unity-dev on prod)
       - name: Release checks
-        run: edxr package check . --env prod --channel "$CHANNEL" --name "$PACKAGE_NAME"
+        run: edxr package check . --env prod --channel "$CHANNEL" --name "$PACKAGE_NAME" ${BASE_VERSION:+--base-version "$BASE_VERSION"}

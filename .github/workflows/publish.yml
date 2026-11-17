@@ -38,7 +38,7 @@ concurrency:
 env:
   PACKAGE_NAME: com.caffeine
   # edxr-cli commit that has `edxr package check` and the publish readback (R15). Bump it on purpose.
-  EDXR_CLI_REF: e2ad7ebff2aa5a9cba97965c7629799dc5715c0d
+  EDXR_CLI_REF: 68932efc65adfaf29a239695b176a6f2c716eda0
   # UPM CLI release, checksum-verified (the same pin as package-nexus's Dockerfile.publish).
   UPM_CLI_VERSION: v9.35.0
   UPM_CLI_SHA256: 5b4e125f380f6e0432f96ed71c8be55ecd89dbe6bf544e009cd44acd50583396
@@ -88,7 +88,36 @@ jobs:
             exit 1
           fi
 
+      # Re-running a publish for a version the registry already has is not an error: end the run, quietly.
+      # Only a clear answer skips: 200 with the version listed. Anything the probe cannot read (a 5xx, a
+      # transport error, a page that is not a package document, no version in package.json) fails the run.
+      - name: Is this version already published?
+        id: probe
+        # piped (curl status, jq): pipefail
+        shell: bash --noprofile --norc -eo pipefail {0}
+        run: |
+          version=$(jq -er '.version | select(type == "string" and length > 0)' package.json)
+          if [ "$TARGET" = prod ]; then base=https://packages.educationxr.com; else base=https://dev.packages.educationxr.com; fi
+          code=$(curl -sS --max-time 30 -A 'edxr-publish-probe/1.0' -H 'Accept: application/json' \
+            -o "$RUNNER_TEMP/probe.json" -w '%{http_code}' "$base/repository/$CHANNEL/$PACKAGE_NAME")
+          case "$code" in
+            200)
+              # an unusable document fails the run; it is never read as "not published"
+              jq -e 'type == "object" and (.versions | type == "object")' "$RUNNER_TEMP/probe.json" > /dev/null
+              exists=$(jq -r --arg v "$version" '.versions | has($v)' "$RUNNER_TEMP/probe.json")
+              case "$exists" in
+                true)
+                  echo "version $version already published to $CHANNEL; nothing to do" | tee -a "$GITHUB_STEP_SUMMARY"
+                  echo "ALREADY_PUBLISHED=true" >> "$GITHUB_ENV" ;;
+                false) echo "version $version is not in $CHANNEL on $TARGET yet" ;;
+                *) echo "::error::unexpected probe answer: $exists"; exit 1 ;;
+              esac ;;
+            404) echo "$PACKAGE_NAME is not in $CHANNEL on $TARGET yet (first publish)" ;;
+            *) echo "::error::could not read the $CHANNEL document for $PACKAGE_NAME on $TARGET (HTTP $code)"; exit 1 ;;
+          esac
+
       - name: Install Go
+        if: env.ALREADY_PUBLISHED != 'true'
         id: go
         uses: actions/setup-go@0aaccfd150d50ccaeb58ebd88d36e91967a5f35b # v5.4.0
         with:
@@ -96,6 +125,7 @@ jobs:
           cache: false
 
       - name: Install edxr
+        if: env.ALREADY_PUBLISHED != 'true'
         id: install
         env:
           GOPRIVATE: github.com/heizenrader/*
@@ -117,6 +147,7 @@ jobs:
           echo "$RUNNER_TEMP/bin" >> "$GITHUB_PATH"
 
       - name: Install the UPM CLI
+        if: env.ALREADY_PUBLISHED != 'true'
         id: upm
         run: |
           mkdir -p "$RUNNER_TEMP/upm" "$RUNNER_TEMP/bin"
@@ -130,12 +161,14 @@ jobs:
 
       # Every step from here on appends its output to $RUNNER_TEMP/publish.log, which the alert step reads.
       - name: Release checks
+        if: env.ALREADY_PUBLISHED != 'true'
         id: check
         # piped to tee: pipefail, or a failing command would report success through the pipe
         shell: bash --noprofile --norc -eo pipefail {0}
         run: edxr package check . --env "$TARGET" --channel "$CHANNEL" --name "$PACKAGE_NAME" 2>&1 | tee -a "$RUNNER_TEMP/publish.log"
 
       - name: Sign and pack (upm pack)
+        if: env.ALREADY_PUBLISHED != 'true'
         id: pack
         # piped to tee: pipefail, or a failing command would report success through the pipe
         shell: bash --noprofile --norc -eo pipefail {0}
@@ -158,6 +191,7 @@ jobs:
           timeout 20m upm pack . --organization-id "$UPM_ORG_ID" --destination "$RUNNER_TEMP/out" 2>&1 | tee -a "$RUNNER_TEMP/publish.log"
 
       - name: Check the tarball is signed and holds no LFS pointer
+        if: env.ALREADY_PUBLISHED != 'true'
         id: signed
         run: |
           shopt -s nullglob
@@ -191,12 +225,14 @@ jobs:
 
       # R13 (size jump) and R14 (dependency changes) need the packed file.
       - name: Release checks on the tarball
+        if: env.ALREADY_PUBLISHED != 'true'
         id: checktar
         # piped to tee: pipefail, or a failing command would report success through the pipe
         shell: bash --noprofile --norc -eo pipefail {0}
         run: edxr package check . --env "$TARGET" --channel "$CHANNEL" --name "$PACKAGE_NAME" --tarball "$TARBALL" 2>&1 | tee -a "$RUNNER_TEMP/publish.log"
 
       - name: Publish
+        if: env.ALREADY_PUBLISHED != 'true'
         id: publish
         # piped to tee: pipefail, or a failing command would report success through the pipe
         shell: bash --noprofile --norc -eo pipefail {0}
