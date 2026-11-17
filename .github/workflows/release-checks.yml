@@ -16,11 +16,12 @@ permissions:
 env:
   PACKAGE_NAME: com.caffeine
   # edxr-cli commit that has `edxr package check`. Bump it on purpose, together with publish.yml.
-  EDXR_CLI_REF: 4562cfe2a65395c9bfd2b7ae5c399e6dab0b8662
+  EDXR_CLI_REF: a4d641448dafedd4547c86a4cee1baaebabab4e6
 
 jobs:
   release-checks:
     runs-on: ubuntu-latest
+    timeout-minutes: 15
     steps:
       - name: Channel this pull request publishes to
         env:
@@ -36,13 +37,13 @@ jobs:
 
       # the check lists tracked files and reads text; it needs no LFS content
       - name: Check out the pull request's commit
-        uses: actions/checkout@v4
+        uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683 # v4.2.2
         with:
           ref: ${{ github.event.pull_request.head.sha }}
           persist-credentials: false
 
       - name: Install Go
-        uses: actions/setup-go@v5
+        uses: actions/setup-go@0aaccfd150d50ccaeb58ebd88d36e91967a5f35b # v5.4.0
         with:
           go-version: '1.25'
           cache: false
@@ -51,11 +52,11 @@ jobs:
         env:
           GOPRIVATE: github.com/heizenrader/*
           GOWORK: 'off'
-          # the token reaches git for this step only, as an in-memory url rewrite (never written to a config file)
+          # the token reaches git for this step only, through a credential helper (never in a URL or a config file)
           GH_MODULES_TOKEN: ${{ secrets.GH_MODULES_TOKEN }}
           GIT_CONFIG_COUNT: '1'
-          GIT_CONFIG_KEY_0: url.https://${{ secrets.GH_MODULES_TOKEN }}:x-oauth-basic@github.com/.insteadOf
-          GIT_CONFIG_VALUE_0: https://github.com/
+          GIT_CONFIG_KEY_0: credential.https://github.com.helper
+          GIT_CONFIG_VALUE_0: '!f() { echo username=x-access-token; echo "password=$GH_MODULES_TOKEN"; }; f'
         run: |
           if [ -z "$GH_MODULES_TOKEN" ]; then
             echo "::error::GH_MODULES_TOKEN is not available to this repository (private heizenrader/edxr-cli and its modules cannot be fetched)"

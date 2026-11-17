@@ -8,6 +8,10 @@ name: Publish
 #   push to deploy-dev       -> channel unity-dev   on prod
 #   workflow_dispatch        -> the chosen target; channel unity on deploy-prod, unity-dev elsewhere
 #
+# The branch is judged by github.ref (refs/heads/...), so a tag named deploy-prod is refused. The job
+# runs in the GitHub Environment `prod` (target prod) or `dev` (target dev); the signing and publish
+# secrets live in those environments, whose deployment-branch policy limits them to the deploy branches.
+#
 # Every step stops the run before anything is published: the release checks, the pack, the
 # signature, the LFS guard and the publish itself.
 
@@ -34,7 +38,7 @@ concurrency:
 env:
   PACKAGE_NAME: com.caffeine
   # edxr-cli commit that has `edxr package check` and the publish readback (R15). Bump it on purpose.
-  EDXR_CLI_REF: 4562cfe2a65395c9bfd2b7ae5c399e6dab0b8662
+  EDXR_CLI_REF: a4d641448dafedd4547c86a4cee1baaebabab4e6
   # UPM CLI release, checksum-verified (the same pin as package-nexus's Dockerfile.publish).
   UPM_CLI_VERSION: v9.35.0
   UPM_CLI_SHA256: 5b4e125f380f6e0432f96ed71c8be55ecd89dbe6bf544e009cd44acd50583396
@@ -43,58 +47,64 @@ jobs:
   publish:
     runs-on: ubuntu-latest
     timeout-minutes: 60
+    environment: ${{ (github.event_name == 'push' || inputs.target == 'prod') && 'prod' || 'dev' }}
     env:
       TARGET: ${{ github.event_name == 'push' && 'prod' || inputs.target }}
-      CHANNEL: ${{ github.ref_name == 'deploy-prod' && 'unity' || 'unity-dev' }}
+      CHANNEL: ${{ github.ref == 'refs/heads/deploy-prod' && 'unity' || 'unity-dev' }}
     steps:
-      - name: Refuse a target this branch may not publish to
+      - name: Refuse a target this ref may not publish to
         run: |
-          case "$GITHUB_REF_NAME" in
-            deploy-dev|deploy-prod) ;;
+          case "$GITHUB_REF" in
+            refs/heads/deploy-dev|refs/heads/deploy-prod) ;;
             *)
               if [ "$TARGET" = prod ]; then
-                echo "::error::publishing to prod is only allowed from deploy-dev (unity-dev) and deploy-prod (unity); this run is on $GITHUB_REF_NAME"
+                echo "::error::publishing to prod is only allowed from the branches deploy-dev (unity-dev) and deploy-prod (unity); this run is on $GITHUB_REF"
                 exit 1
               fi ;;
           esac
-          echo "publishing $PACKAGE_NAME to channel $CHANNEL on $TARGET from $GITHUB_REF_NAME"
+          echo "publishing $PACKAGE_NAME to channel $CHANNEL on $TARGET from $GITHUB_REF"
 
       # LFS must be real: a tarball of LFS pointers would install a broken package for every customer.
       - name: Check out with LFS
-        uses: actions/checkout@v4
+        id: checkout
+        uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683 # v4.2.2
         with:
           lfs: true
           persist-credentials: false
 
       - name: Refuse LFS pointer files in the checkout
+        id: lfs
         run: |
+          git lfs ls-files --name-only > "$RUNNER_TEMP/lfs-files.txt"
           bad=""
           while IFS= read -r f; do
             [ -f "$f" ] || continue
             if [ "$(wc -c < "$f")" -le 1024 ] && [ "$(head -c 64 "$f" | head -n 1 | tr -d '\r')" = 'version https://git-lfs.github.com/spec/v1' ]; then
               bad="$f"; break
             fi
-          done < <(git lfs ls-files --name-only)
+          done < "$RUNNER_TEMP/lfs-files.txt"
           if [ -n "$bad" ]; then
             echo "::error::Git LFS pointer file in the checkout instead of content: $bad"
             exit 1
           fi
 
       - name: Install Go
-        uses: actions/setup-go@v5
+        id: go
+        uses: actions/setup-go@0aaccfd150d50ccaeb58ebd88d36e91967a5f35b # v5.4.0
         with:
           go-version: '1.25'
           cache: false
 
       - name: Install edxr
+        id: install
         env:
           GOPRIVATE: github.com/heizenrader/*
           GOWORK: 'off'
-          # the token reaches git for this step only, as an in-memory url rewrite (never written to a config file)
+          # the token reaches git for this step only, through a credential helper (never in a URL or a config file)
           GH_MODULES_TOKEN: ${{ secrets.GH_MODULES_TOKEN }}
           GIT_CONFIG_COUNT: '1'
-          GIT_CONFIG_KEY_0: url.https://${{ secrets.GH_MODULES_TOKEN }}:x-oauth-basic@github.com/.insteadOf
-          GIT_CONFIG_VALUE_0: https://github.com/
+          GIT_CONFIG_KEY_0: credential.https://github.com.helper
+          GIT_CONFIG_VALUE_0: '!f() { echo username=x-access-token; echo "password=$GH_MODULES_TOKEN"; }; f'
         run: |
           if [ -z "$GH_MODULES_TOKEN" ]; then
             echo "::error::GH_MODULES_TOKEN is not available to this repository (private heizenrader/edxr-cli and its modules cannot be fetched)"
@@ -107,6 +117,7 @@ jobs:
           echo "$RUNNER_TEMP/bin" >> "$GITHUB_PATH"
 
       - name: Install the UPM CLI
+        id: upm
         run: |
           mkdir -p "$RUNNER_TEMP/upm" "$RUNNER_TEMP/bin"
           curl -fsSL -o "$RUNNER_TEMP/upm/upm.zip" "https://cdn.packages.unity.com/upm-cli/releases/${UPM_CLI_VERSION}/upm-linux-x64.zip"
@@ -117,10 +128,13 @@ jobs:
           chmod +x "$RUNNER_TEMP/bin/upm"
           upm --version | grep -F "${UPM_CLI_VERSION#v}"
 
+      # Every step from here on appends its output to $RUNNER_TEMP/publish.log, which the alert step reads.
       - name: Release checks
-        run: edxr package check . --env "$TARGET" --channel "$CHANNEL" --name "$PACKAGE_NAME"
+        id: check
+        run: edxr package check . --env "$TARGET" --channel "$CHANNEL" --name "$PACKAGE_NAME" 2>&1 | tee -a "$RUNNER_TEMP/publish.log"
 
       - name: Sign and pack (upm pack)
+        id: pack
         env:
           UPM_ORG_ID: ${{ secrets.UPM_ORG_ID }}
           UPM_SERVICE_ACCOUNT_KEY_ID: ${{ secrets.UPM_SERVICE_ACCOUNT_KEY_ID }}
@@ -137,9 +151,10 @@ jobs:
           # outside the package directory, so the tarball is never packed into itself
           rm -rf "$RUNNER_TEMP/out"
           mkdir -p "$RUNNER_TEMP/out"
-          timeout 20m upm pack . --organization-id "$UPM_ORG_ID" --destination "$RUNNER_TEMP/out"
+          timeout 20m upm pack . --organization-id "$UPM_ORG_ID" --destination "$RUNNER_TEMP/out" 2>&1 | tee -a "$RUNNER_TEMP/publish.log"
 
-      - name: Check the tarball is signed
+      - name: Check the tarball is signed and holds no LFS pointer
+        id: signed
         run: |
           shopt -s nullglob
           tgz=("$RUNNER_TEMP"/out/*.tgz)
@@ -156,13 +171,27 @@ jobs:
             echo "::error::package/.attestation.p7m is empty"
             exit 1
           fi
+          # P0's guard: a small file in the tarball that starts with the LFS pointer line is a pointer, not content
+          chk="$RUNNER_TEMP/lfs-check"
+          rm -rf "$chk"; mkdir -p "$chk"
+          tar -xzf "${tgz[0]}" -C "$chk"
+          find "$chk" -type f -size -1025c -print0 > "$RUNNER_TEMP/small-files.txt"
+          while IFS= read -r -d '' f; do
+            if [ "$(head -c 64 "$f" | head -n 1 | tr -d '\r')" = 'version https://git-lfs.github.com/spec/v1' ]; then
+              echo "::error::Git LFS pointer file packed instead of content: ${f#"$chk"/}"
+              exit 1
+            fi
+          done < "$RUNNER_TEMP/small-files.txt"
+          rm -rf "$chk"
           echo "TARBALL=${tgz[0]}" >> "$GITHUB_ENV"
 
       # R13 (size jump) and R14 (dependency changes) need the packed file.
       - name: Release checks on the tarball
-        run: edxr package check . --env "$TARGET" --channel "$CHANNEL" --name "$PACKAGE_NAME" --tarball "$TARBALL"
+        id: checktar
+        run: edxr package check . --env "$TARGET" --channel "$CHANNEL" --name "$PACKAGE_NAME" --tarball "$TARBALL" 2>&1 | tee -a "$RUNNER_TEMP/publish.log"
 
       - name: Publish
+        id: publish
         env:
           EDXR_API_KEY_PROD: ${{ secrets.EDXR_API_KEY }}
           EDXR_API_KEY_DEV: ${{ secrets.EDXR_API_KEY_DEV }}
@@ -173,4 +202,67 @@ jobs:
           else
             export EDXR_API_KEY="$EDXR_API_KEY_DEV"
           fi
-          edxr package publish "$TARBALL" --env "$TARGET" --channel "$CHANNEL"
+          edxr package publish "$TARBALL" --env "$TARGET" --channel "$CHANNEL" 2>&1 | tee -a "$RUNNER_TEMP/publish.log"
+
+      # The Nexus publisher's alerts, through the staff alert API (POST /api/ddd/package-alert, via the gateway):
+      # release_refused when a release check failed, upload_unverified when the R15 readback failed after the
+      # version was registered, publish_failed for anything else. A failure here never masks the run's failure.
+      - name: Raise the package alert
+        if: failure()
+        continue-on-error: true
+        env:
+          ALERT_KEY_PROD: ${{ secrets.EDXR_ALERT_API_KEY }}
+          ALERT_KEY_DEV: ${{ secrets.EDXR_ALERT_API_KEY_DEV }}
+          OUT_CHECKOUT: ${{ steps.checkout.outcome }}
+          OUT_CHECK: ${{ steps.check.outcome }}
+          OUT_PACK: ${{ steps.pack.outcome }}
+          OUT_SIGNED: ${{ steps.signed.outcome }}
+          OUT_CHECKTAR: ${{ steps.checktar.outcome }}
+          OUT_PUBLISH: ${{ steps.publish.outcome }}
+        run: |
+          set -u
+          log="$RUNNER_TEMP/publish.log"; : >> "$log"
+          clean() { tr -cd '[:print:]\n' | cut -c1-200; }
+          lines() { jq -R . | jq -s .; }
+          failures=$({ grep -E '^FAIL ' "$log" || true; } | clean | head -10 | lines)
+          warnings=$({ grep -E '^WARN ' "$log" || true; } | clean | head -5 | lines)
+          tail15=$(tail -n 15 "$log" | clean | lines)
+          unverified=$(grep -m1 'UPLOADED BUT NOT VERIFIED' "$log" | clean || true)
+          nfail=$(printf '%s' "$failures" | jq length)
+          if [ -n "$unverified" ]; then
+            kind=package.upload_unverified; stage=upload; summary="$unverified"
+          elif { [ "$OUT_CHECK" = failure ] || [ "$OUT_CHECKTAR" = failure ]; } && [ "$nfail" -gt 0 ]; then
+            kind=package.release_refused; stage=release_check; summary="the release check refused this version; nothing was published"
+          else
+            kind=package.publish_failed
+            if [ "$OUT_CHECKOUT" = failure ]; then stage=clone
+            elif [ "$OUT_CHECK" = failure ] || [ "$OUT_CHECKTAR" = failure ]; then stage=release_check
+            elif [ "$OUT_PACK" = failure ] || [ "$OUT_SIGNED" = failure ]; then stage=pack
+            elif [ "$OUT_PUBLISH" = failure ]; then stage=upload
+            else stage=setup; fi
+            summary="the publish run failed at $stage"
+          fi
+          version=$(jq -r '.version // empty' package.json 2>/dev/null || true)
+          if [ "$TARGET" = prod ]; then
+            url=https://api.educationxr.com/api/ddd/package-alert; key="$ALERT_KEY_PROD"
+          else
+            url=https://dev.api.educationxr.com/api/ddd/package-alert; key="$ALERT_KEY_DEV"
+          fi
+          if [ -z "$key" ]; then
+            echo "::warning::no alert key for $TARGET (EDXR_ALERT_API_KEY / EDXR_ALERT_API_KEY_DEV), so the $kind alert was not sent"
+            exit 0
+          fi
+          body=$(jq -n --arg kind "$kind" --arg package "$PACKAGE_NAME" --arg version "$version" --arg channel "$CHANNEL" \
+            --arg repository "$GITHUB_REPOSITORY" --arg commit "$GITHUB_SHA" --arg stage "$stage" --arg summary "$summary" \
+            --argjson failures "$failures" --argjson warnings "$warnings" --argjson logTail "$tail15" \
+            '{kind:$kind, package:$package, channel:$channel, repository:$repository, commit:$commit, stage:$stage, summary:$summary,
+              failures:$failures, warnings:$warnings, logTail:$logTail}
+             + (if $version == "" then {} else {version:$version} end)
+             | with_entries(select(.value != []))')
+          # the key goes to curl on stdin, never on the command line
+          code=$(printf 'header = "Authorization: Bearer %s"\n' "$key" | curl -sS -K - --max-time 20 -o "$RUNNER_TEMP/alert.out" -w '%{http_code}' \
+            -H 'Content-Type: application/json' --data "$body" "$url" || echo 000)
+          case "$code" in
+            200|201) echo "package alert $kind sent" ;;
+            *) echo "::warning::the $kind alert was not accepted (HTTP $code)" ;;
+          esac
