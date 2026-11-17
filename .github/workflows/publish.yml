@@ -1,0 +1,176 @@
+name: Publish
+
+# Signs the package with the UPM CLI (`upm pack --organization-id`) and publishes it to the
+# EducationXR package registry with `edxr package publish`. Replaces the call-webhook-*.yml
+# workflows and the Nexus publisher.
+#
+#   push to deploy-prod      -> channel unity       on prod
+#   push to deploy-dev       -> channel unity-dev   on prod
+#   workflow_dispatch        -> the chosen target; channel unity on deploy-prod, unity-dev elsewhere
+#
+# Every step stops the run before anything is published: the release checks, the pack, the
+# signature, the LFS guard and the publish itself.
+
+on:
+  push:
+    branches: [deploy-dev, deploy-prod]
+  workflow_dispatch:
+    inputs:
+      target:
+        description: Registry to publish to
+        required: true
+        type: choice
+        options: [dev, prod]
+        default: dev
+
+permissions:
+  contents: read
+
+# One publish per branch at a time; a second waits instead of cancelling a running one.
+concurrency:
+  group: publish-${{ github.ref }}
+  cancel-in-progress: false
+
+env:
+  PACKAGE_NAME: com.caffeine
+  # edxr-cli commit that has `edxr package check` and the publish readback (R15). Bump it on purpose.
+  EDXR_CLI_REF: e6ed0793ccea778916391d591f2377912e497148
+  # UPM CLI release, checksum-verified (the same pin as package-nexus's Dockerfile.publish).
+  UPM_CLI_VERSION: v9.35.0
+  UPM_CLI_SHA256: 5b4e125f380f6e0432f96ed71c8be55ecd89dbe6bf544e009cd44acd50583396
+
+jobs:
+  publish:
+    runs-on: ubuntu-latest
+    timeout-minutes: 60
+    env:
+      TARGET: ${{ github.event_name == 'push' && 'prod' || inputs.target }}
+      CHANNEL: ${{ github.ref_name == 'deploy-prod' && 'unity' || 'unity-dev' }}
+    steps:
+      - name: Refuse a target this branch may not publish to
+        run: |
+          case "$GITHUB_REF_NAME" in
+            deploy-dev|deploy-prod) ;;
+            *)
+              if [ "$TARGET" = prod ]; then
+                echo "::error::publishing to prod is only allowed from deploy-dev (unity-dev) and deploy-prod (unity); this run is on $GITHUB_REF_NAME"
+                exit 1
+              fi ;;
+          esac
+          echo "publishing $PACKAGE_NAME to channel $CHANNEL on $TARGET from $GITHUB_REF_NAME"
+
+      # LFS must be real: a tarball of LFS pointers would install a broken package for every customer.
+      - name: Check out with LFS
+        uses: actions/checkout@v4
+        with:
+          lfs: true
+          persist-credentials: false
+
+      - name: Refuse LFS pointer files in the checkout
+        run: |
+          bad=""
+          while IFS= read -r f; do
+            [ -f "$f" ] || continue
+            if [ "$(wc -c < "$f")" -le 1024 ] && [ "$(head -c 64 "$f" | head -n 1 | tr -d '\r')" = 'version https://git-lfs.github.com/spec/v1' ]; then
+              bad="$f"; break
+            fi
+          done < <(git lfs ls-files --name-only)
+          if [ -n "$bad" ]; then
+            echo "::error::Git LFS pointer file in the checkout instead of content: $bad"
+            exit 1
+          fi
+
+      - name: Install Go
+        uses: actions/setup-go@v5
+        with:
+          go-version: '1.25'
+          cache: false
+
+      - name: Install edxr
+        env:
+          GOPRIVATE: github.com/heizenrader/*
+          GOWORK: 'off'
+          # the token reaches git for this step only, as an in-memory url rewrite (never written to a config file)
+          GH_MODULES_TOKEN: ${{ secrets.GH_MODULES_TOKEN }}
+          GIT_CONFIG_COUNT: '1'
+          GIT_CONFIG_KEY_0: url.https://${{ secrets.GH_MODULES_TOKEN }}:x-oauth-basic@github.com/.insteadOf
+          GIT_CONFIG_VALUE_0: https://github.com/
+        run: |
+          if [ -z "$GH_MODULES_TOKEN" ]; then
+            echo "::error::GH_MODULES_TOKEN is not available to this repository (private heizenrader/edxr-cli and its modules cannot be fetched)"
+            exit 1
+          fi
+          git clone --quiet https://github.com/heizenrader/edxr-cli.git "$RUNNER_TEMP/edxr-cli"
+          git -C "$RUNNER_TEMP/edxr-cli" checkout --quiet "$EDXR_CLI_REF"
+          mkdir -p "$RUNNER_TEMP/bin"
+          (cd "$RUNNER_TEMP/edxr-cli" && go build -o "$RUNNER_TEMP/bin/edxr" .)
+          echo "$RUNNER_TEMP/bin" >> "$GITHUB_PATH"
+
+      - name: Install the UPM CLI
+        run: |
+          mkdir -p "$RUNNER_TEMP/upm" "$RUNNER_TEMP/bin"
+          curl -fsSL -o "$RUNNER_TEMP/upm/upm.zip" "https://cdn.packages.unity.com/upm-cli/releases/${UPM_CLI_VERSION}/upm-linux-x64.zip"
+          echo "${UPM_CLI_SHA256}  $RUNNER_TEMP/upm/upm.zip" | sha256sum -c -
+          unzip -q "$RUNNER_TEMP/upm/upm.zip" -d "$RUNNER_TEMP/upm/bin"
+          chmod +x "$RUNNER_TEMP/upm/bin/UnityPackageManager"
+          printf '#!/bin/sh\nexec "%s/upm/bin/UnityPackageManager" "$@"\n' "$RUNNER_TEMP" > "$RUNNER_TEMP/bin/upm"
+          chmod +x "$RUNNER_TEMP/bin/upm"
+          upm --version | grep -F "${UPM_CLI_VERSION#v}"
+
+      - name: Release checks
+        run: edxr package check . --env "$TARGET" --channel "$CHANNEL" --name "$PACKAGE_NAME"
+
+      - name: Sign and pack (upm pack)
+        env:
+          UPM_ORG_ID: ${{ secrets.UPM_ORG_ID }}
+          UPM_SERVICE_ACCOUNT_KEY_ID: ${{ secrets.UPM_SERVICE_ACCOUNT_KEY_ID }}
+          UPM_SERVICE_ACCOUNT_KEY_SECRET: ${{ secrets.UPM_SERVICE_ACCOUNT_KEY_SECRET }}
+        run: |
+          missing=""
+          for v in UPM_ORG_ID UPM_SERVICE_ACCOUNT_KEY_ID UPM_SERVICE_ACCOUNT_KEY_SECRET; do
+            [ -n "${!v}" ] || missing="$missing $v"
+          done
+          if [ -n "$missing" ]; then
+            echo "::error::missing required secret(s):$missing"
+            exit 1
+          fi
+          # outside the package directory, so the tarball is never packed into itself
+          rm -rf "$RUNNER_TEMP/out"
+          mkdir -p "$RUNNER_TEMP/out"
+          timeout 20m upm pack . --organization-id "$UPM_ORG_ID" --destination "$RUNNER_TEMP/out"
+
+      - name: Check the tarball is signed
+        run: |
+          shopt -s nullglob
+          tgz=("$RUNNER_TEMP"/out/*.tgz)
+          if [ "${#tgz[@]}" -ne 1 ]; then
+            echo "::error::expected exactly one .tgz from upm pack, found ${#tgz[@]}"
+            exit 1
+          fi
+          if ! tar -tzf "${tgz[0]}" | grep -qx 'package/\.attestation\.p7m'; then
+            echo "::error::unsigned tarball: no package/.attestation.p7m in $(basename "${tgz[0]}")"
+            exit 1
+          fi
+          size=$(tar -xzOf "${tgz[0]}" package/.attestation.p7m | wc -c)
+          if [ "$size" -le 0 ]; then
+            echo "::error::package/.attestation.p7m is empty"
+            exit 1
+          fi
+          echo "TARBALL=${tgz[0]}" >> "$GITHUB_ENV"
+
+      # R13 (size jump) and R14 (dependency changes) need the packed file.
+      - name: Release checks on the tarball
+        run: edxr package check . --env "$TARGET" --channel "$CHANNEL" --name "$PACKAGE_NAME" --tarball "$TARBALL"
+
+      - name: Publish
+        env:
+          EDXR_API_KEY_PROD: ${{ secrets.EDXR_API_KEY }}
+          EDXR_API_KEY_DEV: ${{ secrets.EDXR_API_KEY_DEV }}
+        run: |
+          # the publish key is read only from EDXR_API_KEY; each registry has its own package-bound key
+          if [ "$TARGET" = prod ]; then
+            export EDXR_API_KEY="$EDXR_API_KEY_PROD"
+          else
+            export EDXR_API_KEY="$EDXR_API_KEY_DEV"
+          fi
+          edxr package publish "$TARBALL" --env "$TARGET" --channel "$CHANNEL"
