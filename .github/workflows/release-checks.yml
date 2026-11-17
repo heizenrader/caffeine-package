@@ -16,7 +16,7 @@ permissions:
 env:
   PACKAGE_NAME: com.caffeine
   # edxr-cli commit that has `edxr package check`. Bump it on purpose, together with publish.yml.
-  EDXR_CLI_REF: e6ed0793ccea778916391d591f2377912e497148
+  EDXR_CLI_REF: 4562cfe2a65395c9bfd2b7ae5c399e6dab0b8662
 
 jobs:
   release-checks:

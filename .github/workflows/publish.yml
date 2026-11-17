@@ -34,7 +34,7 @@ concurrency:
 env:
   PACKAGE_NAME: com.caffeine
   # edxr-cli commit that has `edxr package check` and the publish readback (R15). Bump it on purpose.
-  EDXR_CLI_REF: e6ed0793ccea778916391d591f2377912e497148
+  EDXR_CLI_REF: 4562cfe2a65395c9bfd2b7ae5c399e6dab0b8662
   # UPM CLI release, checksum-verified (the same pin as package-nexus's Dockerfile.publish).
   UPM_CLI_VERSION: v9.35.0
   UPM_CLI_SHA256: 5b4e125f380f6e0432f96ed71c8be55ecd89dbe6bf544e009cd44acd50583396
