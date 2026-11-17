@@ -38,7 +38,7 @@ concurrency:
 env:
   PACKAGE_NAME: com.caffeine
   # edxr-cli commit that has `edxr package check` and the publish readback (R15). Bump it on purpose.
-  EDXR_CLI_REF: a4d641448dafedd4547c86a4cee1baaebabab4e6
+  EDXR_CLI_REF: e2ad7ebff2aa5a9cba97965c7629799dc5715c0d
   # UPM CLI release, checksum-verified (the same pin as package-nexus's Dockerfile.publish).
   UPM_CLI_VERSION: v9.35.0
   UPM_CLI_SHA256: 5b4e125f380f6e0432f96ed71c8be55ecd89dbe6bf544e009cd44acd50583396
@@ -131,10 +131,14 @@ jobs:
       # Every step from here on appends its output to $RUNNER_TEMP/publish.log, which the alert step reads.
       - name: Release checks
         id: check
+        # piped to tee: pipefail, or a failing command would report success through the pipe
+        shell: bash --noprofile --norc -eo pipefail {0}
         run: edxr package check . --env "$TARGET" --channel "$CHANNEL" --name "$PACKAGE_NAME" 2>&1 | tee -a "$RUNNER_TEMP/publish.log"
 
       - name: Sign and pack (upm pack)
         id: pack
+        # piped to tee: pipefail, or a failing command would report success through the pipe
+        shell: bash --noprofile --norc -eo pipefail {0}
         env:
           UPM_ORG_ID: ${{ secrets.UPM_ORG_ID }}
           UPM_SERVICE_ACCOUNT_KEY_ID: ${{ secrets.UPM_SERVICE_ACCOUNT_KEY_ID }}
@@ -188,10 +192,14 @@ jobs:
       # R13 (size jump) and R14 (dependency changes) need the packed file.
       - name: Release checks on the tarball
         id: checktar
+        # piped to tee: pipefail, or a failing command would report success through the pipe
+        shell: bash --noprofile --norc -eo pipefail {0}
         run: edxr package check . --env "$TARGET" --channel "$CHANNEL" --name "$PACKAGE_NAME" --tarball "$TARBALL" 2>&1 | tee -a "$RUNNER_TEMP/publish.log"
 
       - name: Publish
         id: publish
+        # piped to tee: pipefail, or a failing command would report success through the pipe
+        shell: bash --noprofile --norc -eo pipefail {0}
         env:
           EDXR_API_KEY_PROD: ${{ secrets.EDXR_API_KEY }}
           EDXR_API_KEY_DEV: ${{ secrets.EDXR_API_KEY_DEV }}
