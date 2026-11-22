@@ -1,0 +1,362 @@
+name: Nightly
+
+# Builds the dev line every night and publishes X.Y.Z-nightly.YYYYMMDD to the `nightly` channel on the prod
+# registry (packages.educationxr.com) with the same checks, signing, publish and readback as publish.yml.
+#
+# A schedule only runs from the default branch, but the signing and publish secrets only reach deploy-dev and
+# deploy-prod (the deployment-branch policy of the `prod` environment). So:
+#   - on any ref other than deploy-dev (the schedule, or a manual run elsewhere), the only job re-dispatches this
+#     workflow on deploy-dev;
+#   - on deploy-dev, the nightly job builds the source line (`development` if that branch exists, else the default
+#     branch) in the `prod` environment. The workflow and its scripts come from deploy-dev; the source is checked out
+#     beside them and is never run, only packed.
+#
+# The nightly skips when the source has no commit in the last 24 hours, or when this day's version is already in
+# the channel. package.json and CHANGELOG.md are changed in the workspace only and never committed. The channel
+# `nightly` must exist on prod before the first run; its own cleanup decides how long old nightlies are kept.
+
+on:
+  schedule:
+    - cron: '0 9 * * *' # 02:00 Mountain
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+# One nightly per ref at a time; a second waits instead of cancelling a running one.
+concurrency:
+  group: nightly-${{ github.ref }}
+  cancel-in-progress: false
+
+env:
+  PACKAGE_NAME: com.caffeine
+  CHANNEL: nightly
+  TARGET: prod
+  # edxr-cli commit that has `edxr package check` and the publish readback (R15): the same pin as publish.yml.
+  EDXR_CLI_REF: f7476a4b79cdace182b62deb89c0a7cd0c60d55b
+  # UPM CLI release, checksum-verified (the same pin as publish.yml).
+  UPM_CLI_VERSION: v9.35.0
+  UPM_CLI_SHA256: 5b4e125f380f6e0432f96ed71c8be55ecd89dbe6bf544e009cd44acd50583396
+
+jobs:
+  dispatch:
+    name: Run on deploy-dev
+    if: github.ref != 'refs/heads/deploy-dev'
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    permissions:
+      actions: write
+    steps:
+      - name: Dispatch nightly.yml on deploy-dev
+        env:
+          GH_TOKEN: ${{ github.token }}
+          GH_REPO: ${{ github.repository }}
+        run: |
+          gh workflow run nightly.yml --ref deploy-dev
+          echo "dispatched nightly.yml on deploy-dev (from $GITHUB_REF); the build and its result are in that run" | tee -a "$GITHUB_STEP_SUMMARY"
+
+  nightly:
+    if: github.ref == 'refs/heads/deploy-dev'
+    runs-on: ubuntu-latest
+    timeout-minutes: 60
+    environment: prod
+    defaults:
+      run:
+        working-directory: src
+    steps:
+      - name: Refuse any ref but deploy-dev
+        working-directory: ${{ github.workspace }}
+        run: |
+          if [ "$GITHUB_REF" != refs/heads/deploy-dev ]; then
+            echo "::error::the nightly publishes to prod only from deploy-dev; this run is on $GITHUB_REF"
+            exit 1
+          fi
+          echo "nightly $PACKAGE_NAME to channel $CHANNEL on $TARGET from $GITHUB_REF"
+
+      # The scripts that run come from this ref (deploy-dev), never from the source being built.
+      - name: Check out the workflow scripts
+        uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683 # v4.2.2
+        with:
+          path: ci
+          sparse-checkout: .github/scripts
+          persist-credentials: false
+
+      - name: Pick the source line
+        id: source
+        working-directory: ${{ github.workspace }}
+        env:
+          GH_TOKEN: ${{ github.token }}
+          GH_REPO: ${{ github.repository }}
+          DEFAULT_BRANCH: ${{ github.event.repository.default_branch }}
+        run: |
+          # a failing call fails the step; only a clear "no such branch" answer falls back to the default branch
+          n=$(gh api "repos/$GH_REPO/git/matching-refs/heads/development" --jq '[.[] | select(.ref == "refs/heads/development")] | length')
+          if [ "$n" = 1 ]; then ref=development; else ref="$DEFAULT_BRANCH"; fi
+          [ -n "$ref" ] || { echo "::error::no source branch"; exit 1; }
+          echo "ref=$ref" >> "$GITHUB_OUTPUT"
+          echo "building the nightly from $ref" | tee -a "$GITHUB_STEP_SUMMARY"
+
+      # LFS must be real: a tarball of LFS pointers would install a broken package for every customer.
+      # The whole history is fetched: the notes list the commits since the previous nightly.
+      - name: Check out the source with LFS
+        id: checkout
+        uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683 # v4.2.2
+        with:
+          ref: ${{ steps.source.outputs.ref }}
+          path: src
+          lfs: true
+          fetch-depth: 0
+          persist-credentials: false
+
+      - name: Refuse LFS pointer files in the checkout
+        id: lfs
+        run: |
+          git lfs ls-files --name-only > "$RUNNER_TEMP/lfs-files.txt"
+          bad=""
+          while IFS= read -r f; do
+            [ -f "$f" ] || continue
+            if [ "$(wc -c < "$f")" -le 1024 ] && [ "$(head -c 64 "$f" | head -n 1 | tr -d '\r')" = 'version https://git-lfs.github.com/spec/v1' ]; then
+              bad="$f"; break
+            fi
+          done < "$RUNNER_TEMP/lfs-files.txt"
+          if [ -n "$bad" ]; then
+            echo "::error::Git LFS pointer file in the checkout instead of content: $bad"
+            exit 1
+          fi
+
+      # Skips are quiet successes, written to the run summary: no commit in 24 hours, or this day's version is already there.
+      - name: Is there anything to build?
+        id: plan
+        # piped (curl status, jq): pipefail
+        shell: bash --noprofile --norc -eo pipefail {0}
+        env:
+          SOURCE_REF: ${{ steps.source.outputs.ref }}
+        run: |
+          nightly="$GITHUB_WORKSPACE/ci/.github/scripts/nightly.py"
+          src_sha=$(git rev-parse HEAD)
+          echo "SOURCE_SHA=$src_sha" >> "$GITHUB_ENV"
+          recent=$(python3 -I "$nightly" recent --repo . --hours 24)
+          if [ "$recent" -eq 0 ]; then
+            echo "skipped: no commits on $SOURCE_REF in the last 24 hours (head $src_sha)" | tee -a "$GITHUB_STEP_SUMMARY"
+            echo "SKIP=true" >> "$GITHUB_ENV"
+            exit 0
+          fi
+          # read a channel's document: 200 must be a package document, 404 means the package is not in that channel, anything else fails the run
+          fetch() {
+            code=$(curl -sS --max-time 30 -A 'edxr-nightly-probe/1.0' -H 'Accept: application/json' \
+              -o "$RUNNER_TEMP/$1.json" -w '%{http_code}' "https://packages.educationxr.com/repository/$1/$PACKAGE_NAME")
+            case "$code" in
+              200) jq -e 'type == "object" and (.versions | type == "object")' "$RUNNER_TEMP/$1.json" > /dev/null ;;
+              404) : > "$RUNNER_TEMP/$1.json" ;;
+              *) echo "::error::could not read the $1 document for $PACKAGE_NAME (HTTP $code)"; exit 1 ;;
+            esac
+          }
+          fetch unity
+          fetch "$CHANNEL"
+          date=$(date -u +%Y%m%d)
+          echo "N_DATE=$date" >> "$GITHUB_ENV"
+          python3 -I "$nightly" plan --package-json package.json --stable "$RUNNER_TEMP/unity.json" --nightly "$RUNNER_TEMP/$CHANNEL.json" --date "$date" > "$RUNNER_TEMP/plan.env"
+          cat "$RUNNER_TEMP/plan.env"
+          # KEY=value lines of fixed keys written by the script; read, never sourced
+          while IFS='=' read -r k v; do
+            case "$k" in
+              BASE|VERSION|ALREADY_PUBLISHED|PREV_VERSION|PREV_REVISION) echo "N_$k=$v" >> "$GITHUB_ENV" ;;
+            esac
+          done < "$RUNNER_TEMP/plan.env"
+          if grep -qx 'ALREADY_PUBLISHED=true' "$RUNNER_TEMP/plan.env"; then
+            echo "skipped: $(sed -n 's/^VERSION=//p' "$RUNNER_TEMP/plan.env") is already in channel $CHANNEL" | tee -a "$GITHUB_STEP_SUMMARY"
+            echo "SKIP=true" >> "$GITHUB_ENV"
+          fi
+
+      # Workspace only, never committed: the version in package.json and a section at the top of CHANGELOG.md
+      # (and _upm.changelog when the package has one), so R5/R6 see notes that name this version.
+      - name: Write the nightly version and notes
+        if: env.SKIP != 'true'
+        id: notes
+        run: |
+          python3 -I "$GITHUB_WORKSPACE/ci/.github/scripts/nightly.py" apply --repo . --version "$N_VERSION" --date "$N_DATE" --prev-revision "$N_PREV_REVISION" | tee -a "$GITHUB_STEP_SUMMARY"
+          echo "publishing $PACKAGE_NAME $N_VERSION from $SOURCE_SHA to $CHANNEL" | tee -a "$GITHUB_STEP_SUMMARY"
+
+      - name: Install Go
+        if: env.SKIP != 'true'
+        id: go
+        uses: actions/setup-go@0aaccfd150d50ccaeb58ebd88d36e91967a5f35b # v5.4.0
+        with:
+          go-version: '1.25'
+          cache: false
+
+      - name: Install edxr
+        if: env.SKIP != 'true'
+        id: install
+        env:
+          GOPRIVATE: github.com/heizenrader/*
+          GOWORK: 'off'
+          # the token reaches git for this step only, through a credential helper (never in a URL or a config file)
+          GH_MODULES_TOKEN: ${{ secrets.GH_MODULES_TOKEN }}
+          GIT_CONFIG_COUNT: '1'
+          GIT_CONFIG_KEY_0: credential.https://github.com.helper
+          GIT_CONFIG_VALUE_0: '!f() { echo username=x-access-token; echo "password=$GH_MODULES_TOKEN"; }; f'
+        run: |
+          if [ -z "$GH_MODULES_TOKEN" ]; then
+            echo "::error::GH_MODULES_TOKEN is not available to this repository (private heizenrader/edxr-cli and its modules cannot be fetched)"
+            exit 1
+          fi
+          git clone --quiet https://github.com/heizenrader/edxr-cli.git "$RUNNER_TEMP/edxr-cli"
+          git -C "$RUNNER_TEMP/edxr-cli" checkout --quiet "$EDXR_CLI_REF"
+          mkdir -p "$RUNNER_TEMP/bin"
+          (cd "$RUNNER_TEMP/edxr-cli" && go build -o "$RUNNER_TEMP/bin/edxr" .)
+          echo "$RUNNER_TEMP/bin" >> "$GITHUB_PATH"
+
+      - name: Install the UPM CLI
+        if: env.SKIP != 'true'
+        id: upm
+        run: |
+          mkdir -p "$RUNNER_TEMP/upm" "$RUNNER_TEMP/bin"
+          curl -fsSL -o "$RUNNER_TEMP/upm/upm.zip" "https://cdn.packages.unity.com/upm-cli/releases/${UPM_CLI_VERSION}/upm-linux-x64.zip"
+          echo "${UPM_CLI_SHA256}  $RUNNER_TEMP/upm/upm.zip" | sha256sum -c -
+          unzip -q "$RUNNER_TEMP/upm/upm.zip" -d "$RUNNER_TEMP/upm/bin"
+          chmod +x "$RUNNER_TEMP/upm/bin/UnityPackageManager"
+          printf '#!/bin/sh\nexec "%s/upm/bin/UnityPackageManager" "$@"\n' "$RUNNER_TEMP" > "$RUNNER_TEMP/bin/upm"
+          chmod +x "$RUNNER_TEMP/bin/upm"
+          upm --version | grep -F "${UPM_CLI_VERSION#v}"
+
+      # Every step from here on appends its output to $RUNNER_TEMP/publish.log, which the alert step reads.
+      - name: Release checks
+        if: env.SKIP != 'true'
+        id: check
+        # piped to tee: pipefail, or a failing command would report success through the pipe
+        shell: bash --noprofile --norc -eo pipefail {0}
+        run: edxr package check . --env "$TARGET" --channel "$CHANNEL" --name "$PACKAGE_NAME" 2>&1 | tee -a "$RUNNER_TEMP/publish.log"
+
+      - name: Sign and pack (upm pack)
+        if: env.SKIP != 'true'
+        id: pack
+        # piped to tee: pipefail, or a failing command would report success through the pipe
+        shell: bash --noprofile --norc -eo pipefail {0}
+        env:
+          UPM_ORG_ID: ${{ secrets.UPM_ORG_ID }}
+          UPM_SERVICE_ACCOUNT_KEY_ID: ${{ secrets.UPM_SERVICE_ACCOUNT_KEY_ID }}
+          UPM_SERVICE_ACCOUNT_KEY_SECRET: ${{ secrets.UPM_SERVICE_ACCOUNT_KEY_SECRET }}
+        run: |
+          missing=""
+          for v in UPM_ORG_ID UPM_SERVICE_ACCOUNT_KEY_ID UPM_SERVICE_ACCOUNT_KEY_SECRET; do
+            [ -n "${!v}" ] || missing="$missing $v"
+          done
+          if [ -n "$missing" ]; then
+            echo "::error::missing required secret(s):$missing"
+            exit 1
+          fi
+          # outside the package directory, so the tarball is never packed into itself
+          rm -rf "$RUNNER_TEMP/out"
+          mkdir -p "$RUNNER_TEMP/out"
+          timeout 20m upm pack . --organization-id "$UPM_ORG_ID" --destination "$RUNNER_TEMP/out" 2>&1 | tee -a "$RUNNER_TEMP/publish.log"
+
+      - name: Check the tarball is signed and holds no LFS pointer
+        if: env.SKIP != 'true'
+        id: signed
+        run: |
+          shopt -s nullglob
+          tgz=("$RUNNER_TEMP"/out/*.tgz)
+          if [ "${#tgz[@]}" -ne 1 ]; then
+            echo "::error::expected exactly one .tgz from upm pack, found ${#tgz[@]}"
+            exit 1
+          fi
+          if ! tar -tzf "${tgz[0]}" | grep -qx 'package/\.attestation\.p7m'; then
+            echo "::error::unsigned tarball: no package/.attestation.p7m in $(basename "${tgz[0]}")"
+            exit 1
+          fi
+          size=$(tar -xzOf "${tgz[0]}" package/.attestation.p7m | wc -c)
+          if [ "$size" -le 0 ]; then
+            echo "::error::package/.attestation.p7m is empty"
+            exit 1
+          fi
+          # P0's guard: a small file in the tarball that starts with the LFS pointer line is a pointer, not content
+          chk="$RUNNER_TEMP/lfs-check"
+          rm -rf "$chk"; mkdir -p "$chk"
+          tar -xzf "${tgz[0]}" -C "$chk"
+          find "$chk" -type f -size -1025c -print0 > "$RUNNER_TEMP/small-files.txt"
+          while IFS= read -r -d '' f; do
+            if [ "$(head -c 64 "$f" | head -n 1 | tr -d '\r')" = 'version https://git-lfs.github.com/spec/v1' ]; then
+              echo "::error::Git LFS pointer file packed instead of content: ${f#"$chk"/}"
+              exit 1
+            fi
+          done < "$RUNNER_TEMP/small-files.txt"
+          rm -rf "$chk"
+          echo "TARBALL=${tgz[0]}" >> "$GITHUB_ENV"
+
+      # R13 (size jump) and R14 (dependency changes) need the packed file.
+      - name: Release checks on the tarball
+        if: env.SKIP != 'true'
+        id: checktar
+        # piped to tee: pipefail, or a failing command would report success through the pipe
+        shell: bash --noprofile --norc -eo pipefail {0}
+        run: edxr package check . --env "$TARGET" --channel "$CHANNEL" --name "$PACKAGE_NAME" --tarball "$TARBALL" 2>&1 | tee -a "$RUNNER_TEMP/publish.log"
+
+      - name: Publish
+        if: env.SKIP != 'true'
+        id: publish
+        # piped to tee: pipefail, or a failing command would report success through the pipe
+        shell: bash --noprofile --norc -eo pipefail {0}
+        env:
+          # the publish key is read only from EDXR_API_KEY
+          EDXR_API_KEY: ${{ secrets.EDXR_API_KEY }}
+        run: edxr package publish "$TARBALL" --env "$TARGET" --channel "$CHANNEL" 2>&1 | tee -a "$RUNNER_TEMP/publish.log"
+
+      # The same alerts as publish.yml, through the staff alert API (POST /api/ddd/package-alert, via the gateway):
+      # release_refused when a release check failed, upload_unverified when the R15 readback failed after the
+      # version was registered, publish_failed for anything else. A failure here never masks the run's failure.
+      - name: Raise the package alert
+        if: failure()
+        continue-on-error: true
+        env:
+          ALERT_KEY_PROD: ${{ secrets.EDXR_ALERT_API_KEY }}
+          OUT_CHECKOUT: ${{ steps.checkout.outcome }}
+          OUT_CHECK: ${{ steps.check.outcome }}
+          OUT_PACK: ${{ steps.pack.outcome }}
+          OUT_SIGNED: ${{ steps.signed.outcome }}
+          OUT_CHECKTAR: ${{ steps.checktar.outcome }}
+          OUT_PUBLISH: ${{ steps.publish.outcome }}
+        run: |
+          set -u
+          log="$RUNNER_TEMP/publish.log"; : >> "$log"
+          clean() { tr -cd '[:print:]\n' | cut -c1-200; }
+          lines() { jq -R . | jq -s .; }
+          failures=$({ grep -E '^FAIL ' "$log" || true; } | clean | head -10 | lines)
+          warnings=$({ grep -E '^WARN ' "$log" || true; } | clean | head -5 | lines)
+          tail15=$(tail -n 15 "$log" | clean | lines)
+          unverified=$(grep -m1 'UPLOADED BUT NOT VERIFIED' "$log" | clean || true)
+          nfail=$(printf '%s' "$failures" | jq length)
+          if [ -n "$unverified" ]; then
+            kind=package.upload_unverified; stage=upload; summary="$unverified"
+          elif { [ "$OUT_CHECK" = failure ] || [ "$OUT_CHECKTAR" = failure ]; } && [ "$nfail" -gt 0 ]; then
+            kind=package.release_refused; stage=release_check; summary="the release check refused this nightly; nothing was published"
+          else
+            kind=package.publish_failed
+            if [ "$OUT_CHECKOUT" = failure ]; then stage=clone
+            elif [ "$OUT_CHECK" = failure ] || [ "$OUT_CHECKTAR" = failure ]; then stage=release_check
+            elif [ "$OUT_PACK" = failure ] || [ "$OUT_SIGNED" = failure ]; then stage=pack
+            elif [ "$OUT_PUBLISH" = failure ]; then stage=upload
+            else stage=setup; fi
+            summary="the nightly run failed at $stage"
+          fi
+          version=$(jq -r '.version // empty' package.json 2>/dev/null || true)
+          commit="${SOURCE_SHA:-$GITHUB_SHA}"
+          url=https://api.educationxr.com/api/ddd/package-alert; key="$ALERT_KEY_PROD"
+          if [ -z "$key" ]; then
+            echo "::warning::no alert key for $TARGET (EDXR_ALERT_API_KEY), so the $kind alert was not sent"
+            exit 0
+          fi
+          body=$(jq -n --arg kind "$kind" --arg package "$PACKAGE_NAME" --arg version "$version" --arg channel "$CHANNEL" \
+            --arg repository "$GITHUB_REPOSITORY" --arg commit "$commit" --arg stage "$stage" --arg summary "$summary" \
+            --argjson failures "$failures" --argjson warnings "$warnings" --argjson logTail "$tail15" \
+            '{kind:$kind, package:$package, channel:$channel, repository:$repository, commit:$commit, stage:$stage, summary:$summary,
+              failures:$failures, warnings:$warnings, logTail:$logTail}
+             + (if $version == "" then {} else {version:$version} end)
+             | with_entries(select(.value != []))')
+          # the key goes to curl on stdin, never on the command line
+          code=$(printf 'header = "Authorization: Bearer %s"\n' "$key" | curl -sS -K - --max-time 20 -o "$RUNNER_TEMP/alert.out" -w '%{http_code}' \
+            -H 'Content-Type: application/json' --data "$body" "$url" || echo 000)
+          case "$code" in
+            200|201) echo "package alert $kind sent" ;;
+            *) echo "::warning::the $kind alert was not accepted (HTTP $code)" ;;
+          esac
