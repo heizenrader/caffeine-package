@@ -185,6 +185,15 @@ jobs:
           go-version: '1.25'
           cache: false
 
+      - name: Token for the private Go modules (GitHub App, read-only, 1 hour)
+        id: modules-token
+        uses: actions/create-github-app-token@fee1f7d63c2ff003460e3d139729b119787bc349 # v2.2.2
+        with:
+          app-id: ${{ vars.CI_MODULES_APP_ID }}
+          private-key: ${{ secrets.CI_MODULES_APP_KEY }}
+          owner: heizenrader
+          repositories: rapid-api-core,edxr-cli
+
       - name: Install edxr
         if: env.SKIP != 'true'
         id: install
@@ -192,7 +201,7 @@ jobs:
           GOPRIVATE: github.com/heizenrader/*
           GOWORK: 'off'
           # the token reaches git for this step only, through a credential helper (never in a URL or a config file)
-          GH_MODULES_TOKEN: ${{ secrets.GH_MODULES_TOKEN }}
+          GH_MODULES_TOKEN: ${{ steps.modules-token.outputs.token }}
           GIT_CONFIG_COUNT: '1'
           GIT_CONFIG_KEY_0: credential.https://github.com.helper
           GIT_CONFIG_VALUE_0: '!f() { echo username=x-access-token; echo "password=$GH_MODULES_TOKEN"; }; f'
